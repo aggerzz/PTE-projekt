@@ -1,20 +1,36 @@
 # PTE-projekt
 I uge 10-12 skal vi arbejde med vores PTE projekt hvor vi hjælper produktions-teknologerne med at løse deres eksamensopgaver. 
 
-#Kom godt i gang.
-Trin 1: Åben dit Eclipse... (har du ikke Eclipse så kan det hentes her: https://www.eclipse.org/downloads/ )
+#Lav din egen fork
 
-Trin 2: I dit Eclipse gå til Window -> Show View -> Other -> Marker "Git Repositories" og "Git Staging" og tryk ok.
+Tryk på fork oppe i højre hjørne af https://github.com/HEDMU-2016/PTE-projekt/
+
+<img src="http://imgur.com/sYtVHaj.png">
+
+Så skal du trykke på din egen profil som vist her
+
+<img src="http://imgur.com/IDnwcKu.png">
+
+Så vil github loade i et stykke tid, hvorefter du vil blive sendt til din egen fork af projektet, her skal du trykke "clone or download"
+
+<img src="http://imgur.com/4K0ebyT.png">
+
+Så kopiere du linket
+
+<img src="http://imgur.com/0LdkeFY.png">
+
+#Importer til eclipse.
+Åben dit Eclipse... (har du ikke Eclipse så kan det hentes her: https://www.eclipse.org/downloads/ )
+
+I dit Eclipse gå til Window -> Show View -> Other -> Marker "Git Repositories" og "Git Staging" og tryk ok.
 
 <img src="http://imgur.com/M2MPPl8.png">      <img src="http://imgur.com/9bcgIfL.png">
-
-Trin 3: Kopier følgende "https://github.com/HEDMU-2016/PTE-projekt.git"
 
 Højreklik i dit "Git Repositories" vindue og tryk "Paste Repository Path or URL"
 
 <img src="http://imgur.com/I3u6EqW.png">
 
-Trin 4: Udfyld User og Password med dine loginoplysninger til GitHub, og sæt ✓ i "Store in Secure Store" 
+Udfyld User og Password med dine loginoplysninger til GitHub, og sæt ✓ i "Store in Secure Store" 
 
 <img src="http://imgur.com/brClyzI.png">
 
@@ -28,7 +44,7 @@ Så vil du blive mødt af denne skærm, her skal du blot trykke "Finish"
 
 <img src="http://imgur.com/dJE5bQj.png">
 
-Trin 5: For at kunne arbejde på projektet skal du nu importere det til dine projects - dette gøres ved at højreklikke i dit Package Explorer og vælge "Import..." 
+For at kunne arbejde på projektet skal du nu importere det til dine projects - dette gøres ved at højreklikke i dit Package Explorer og vælge "Import..." 
 
 <img src="http://imgur.com/tfwNccG.png">
 
@@ -79,3 +95,29 @@ Så vil du blive mødt med dette vindue:
 Her tykker du "Apply" og "OK"
 
 Hvis dit Eclipse giver dig en masse fejl, så prøv lige at genstarte det før du spørger om hjælp.
+
+#Få din ændring gennemført
+
+Når du nu har lavet en ændring og pushet den til din fork skal du oprette en pull request for at få ændringen ud til alle andre, dette gøres på følgende måde:
+
+Du går ind på din egen fork af projektet og trykker på "New pull request"
+
+<img src="http://imgur.com/v5spJ7t.png">
+
+Nu bliver du præsenteret for dine ændringer, hvis dette ser fint ud trykker du på "Create pull request"
+
+<img src="http://imgur.com/EvLGw98.png">
+
+Så skal du beskrive dine ændringer så administratoren kan gennemskue hvad du har lavet
+
+<img src="http://imgur.com/CaoqH0E.png">
+
+Nu kan du se status på din pull request, her vil administratoren kunne tilføje kommentare til request hvis der er noget han/hun ikke kan lide
+
+<img src="http://imgur.com/y4ZcVII.png">
+
+Når din commit er godkendt vil dette vindue se sådan her ud:
+
+<img src="http://imgur.com/firNRql.png">
+
+
