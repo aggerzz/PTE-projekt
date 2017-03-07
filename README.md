@@ -98,6 +98,68 @@ Hvis dit Eclipse giver dig en masse fejl, så prøv lige at genstarte det før d
 
 #Få din ændring gennemført
 
+For at få din ændring gennemført skal du sørge for at du fetcher fra HEDMU repositoryet, dette gøres sådan her:
+
+Gå ind i eclipse, "Git Repositories" -> "PTE-Projekt", højreklik på remotes og vælg "Create Remote..."
+
+<img src="http://imgur.com/dJuvc6v.png">
+
+Så får du en pop-up, her skal du som navn skrive "HEDMU" og vælge "Configure fetch" og trykke OK
+
+<img src="http://imgur.com/WxaLF5m.png">
+
+Ved den næste skærm skal du trykke "Change", så får du endnu et pop-up
+
+<img src="http://imgur.com/csmaJaK.png">
+
+Her skal du skrive "https://github.com/HEDMU-2016/PTE-projekt.git" I URL, hvis du så har fuldt instrukserne indtil nu burde den selv flyde resten ud så du kan trykke på "Finish"
+
+<img src="http://imgur.com/114QTFx.png">
+
+Så trykker du på Save:
+
+<img src="http://imgur.com/aw4fG0V.png">
+
+Nu har du to remotes:
+
+<img src="http://imgur.com/6hdnHjt.png">
+
+For så at få de nyeste ændringer fra vores fælles git skal du først fetche fra "HEDMU"
+
+<img src="http://imgur.com/gIizT0p.png">
+
+Herefter får du et popup der minder om dette, her skal du bare trykke "OK":
+
+<img src="http://imgur.com/etaUVaP.png">
+
+Så skal du pulle, ved at højreklikke på projektet og gå til "Team" -> "Pull"
+
+<img src="http://imgur.com/MoVfxwH.png">
+
+Så får du endnu et vindue hvor du kan se hvilke ændringer der er kommet
+
+<img src="http://imgur.com/AZUBMtI.png">
+
+
+
+Når du skal pushe skal du gøre det på følgende måde:
+
+Gem dine ændringer, gå til Git Staging og læg de filer du vil uploade ned i staged files, skriv din commit besked og tryk på Commit
+
+<img src="http://imgur.com/F2tTsMv.png">
+<img src="http://imgur.com/46q8VSy.png">
+
+Herefter skal du ud til dine remotes og højreklike på origin og trykke push
+
+<img src="http://imgur.com/Iotf94L.png">
+
+Så får du en pop-up der ligner denne, her skal du bare trykke "OK"
+
+<img src="http://imgur.com/lndUIkC.png">
+
+Nu har du pushet din ændring til din fork!
+
+
 Når du nu har lavet en ændring og pushet den til din fork skal du oprette en pull request for at få ændringen ud til alle andre, dette gøres på følgende måde:
 
 Du går ind på din egen fork af projektet og trykker på "New pull request"
