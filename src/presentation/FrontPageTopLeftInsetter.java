@@ -32,14 +32,14 @@ public class FrontPageTopLeftInsetter {
 
 		StackPane trianglePane = new StackPane();
 		trianglePane.setPadding(new Insets(20, 20, 20, 20));
-		horizontalAngle = new TextField();
-		verticalAngle = new TextField();
+		horizontalAngle = new HorizontalAngleTextField();
+		verticalAngle = new VerticalAngleTextField();
 		weightValue = new TextField();
 		weightUnit = new ComboBox<String>(FXCollections.observableArrayList( insetUnitOptions() ));
 		weightUnit.setValue("Kg");
 		
 		//disabler horizontalAngle og udregner dens vinkel
-		verticalAngle.setOnKeyReleased(e -> {
+/*		verticalAngle.setOnKeyReleased(e -> {
 
 			if (!verticalAngle.getText().isEmpty()) {
 				
@@ -70,14 +70,14 @@ public class FrontPageTopLeftInsetter {
 
 			}
 		});
-
+	*/
 		triangle = td.createTriangle(canvas,40);
 		
-		horizontalAngle.setPromptText("horizontal angle");
+/*		horizontalAngle.setPromptText("horizontal angle");
 		horizontalAngle.setMaxSize(150, 20);
 
 		verticalAngle.setMaxSize(150, 20);
-		verticalAngle.setPromptText("vertical angle");
+		verticalAngle.setPromptText("vertical angle");*/
 		
 		//for at få verticalAngle textFeltet på linje med trekanten
 		GridPane verticalGrid = new GridPane();
@@ -138,6 +138,12 @@ public class FrontPageTopLeftInsetter {
 
 	public void setWeightUnit(ComboBox<String> weightUnit) {
 		this.weightUnit = weightUnit;
+	}
+	public Canvas getTriangle() {
+		return triangle;
+	}
+	public void setTriangle(Canvas triangle) {
+		this.triangle = triangle;
 	}
 	
 

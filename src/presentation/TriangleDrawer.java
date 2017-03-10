@@ -8,12 +8,15 @@ import javafx.scene.paint.Color;
 public class TriangleDrawer extends Canvas {
 
 	public Canvas createTriangle(Canvas canvas,double vGrad) {
-		
 		if(vGrad>90){
 			vGrad = vGrad - ((int)vGrad/90)*90;
 		}
-		
-		double x2 = 50; // Variabel
+		if(vGrad<0){
+			vGrad = vGrad - 2*vGrad;
+		}
+		System.out.println(vGrad);
+
+		double x2 = 2*(90-vGrad); // Variabel
 		double x1 = 0;
 		// Variabel
 		double vRad = (vGrad / 360) * (2 * Math.PI);
