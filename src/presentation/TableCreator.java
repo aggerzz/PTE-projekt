@@ -12,7 +12,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 public class TableCreator {
 
 	public TableView<Beregning> beregningTable(TableView<Beregning> beregningsTable) {
-
+//		udfylder tabel
 		ObservableList<Beregning> beregninger = FXCollections.observableArrayList();
 
 		TableColumn<Beregning, String> resultNameCol = new TableColumn<Beregning, String>("result name");

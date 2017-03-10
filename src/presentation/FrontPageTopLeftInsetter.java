@@ -24,7 +24,7 @@ public class FrontPageTopLeftInsetter {
 	TriangleDrawer td = new TriangleDrawer();
 
 	public GridPane insetLeft() {
-		Canvas canvas = new Canvas(250,250);
+		Canvas canvas = new Canvas(150,150);
 		GridPane beregnerGrid = new GridPane();
 		beregnerGrid.setAlignment(Pos.TOP_LEFT);
 
@@ -38,52 +38,14 @@ public class FrontPageTopLeftInsetter {
 		weightUnit = new ComboBox<String>(FXCollections.observableArrayList( insetUnitOptions() ));
 		weightUnit.setValue("Kg");
 		
-		//disabler horizontalAngle og udregner dens vinkel
-/*		verticalAngle.setOnKeyReleased(e -> {
 
-			if (!verticalAngle.getText().isEmpty()) {
-				
-				horizontalAngle.setText(Integer.toString(90 - Integer.parseInt(verticalAngle.getText())));
-				horizontalAngle.setDisable(true);
-
-				triangle = td.createTriangle(canvas,Double.parseDouble(verticalAngle.getText()));
-				
-			} else {
-				horizontalAngle.setDisable(false);
-				horizontalAngle.setText("");
-			}
-			
-		});
-		//disabler verticalAngle og udregner dens vinkel.
-		horizontalAngle.setOnKeyReleased(e -> {
-
-			if (!horizontalAngle.getText().isEmpty()) {
-				
-				verticalAngle.setText(Integer.toString(90 - Integer.parseInt(horizontalAngle.getText())));
-				verticalAngle.setDisable(true);
-				
-				triangle = td.createTriangle(canvas,Double.parseDouble( Integer.toString(90 - Integer.parseInt(horizontalAngle.getText())) ));
-				
-			} else {
-				verticalAngle.setDisable(false);
-				verticalAngle.setText("");
-
-			}
-		});
-	*/
 		triangle = td.createTriangle(canvas,40);
-		
-/*		horizontalAngle.setPromptText("horizontal angle");
-		horizontalAngle.setMaxSize(150, 20);
-
-		verticalAngle.setMaxSize(150, 20);
-		verticalAngle.setPromptText("vertical angle");*/
 		
 		//for at få verticalAngle textFeltet på linje med trekanten
 		GridPane verticalGrid = new GridPane();
 		verticalGrid.setGridLinesVisible(true);
 		verticalGrid.add(verticalAngle, 0, 1);
-		verticalGrid.setPadding(new Insets(200, 0, 0, 0));
+		verticalGrid.setPadding(new Insets(125, 0, 0, 0));
 
 		weightValue.setPromptText("inset weight");
 
@@ -93,8 +55,6 @@ public class FrontPageTopLeftInsetter {
 		beregnerGrid.add(triangle, 0, 1,1,2);
 		beregnerGrid.add(verticalGrid, 1, 2);
 		
-		weightValue.requestFocus();
-
 		return beregnerGrid;
 
 	}
