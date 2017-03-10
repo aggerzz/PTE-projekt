@@ -24,7 +24,7 @@ public class FrontPageTopLeftInsetter {
 	TriangleDrawer td = new TriangleDrawer();
 
 	public GridPane insetLeft() {
-		Canvas canvas = new Canvas(250,250);
+		Canvas canvas = new Canvas(150,150);
 		GridPane beregnerGrid = new GridPane();
 		beregnerGrid.setAlignment(Pos.TOP_LEFT);
 
@@ -83,7 +83,7 @@ public class FrontPageTopLeftInsetter {
 		GridPane verticalGrid = new GridPane();
 		verticalGrid.setGridLinesVisible(true);
 		verticalGrid.add(verticalAngle, 0, 1);
-		verticalGrid.setPadding(new Insets(200, 0, 0, 0));
+		verticalGrid.setPadding(new Insets(125, 0, 0, 0));
 
 		weightValue.setPromptText("inset weight");
 
@@ -93,8 +93,6 @@ public class FrontPageTopLeftInsetter {
 		beregnerGrid.add(triangle, 0, 1,1,2);
 		beregnerGrid.add(verticalGrid, 1, 2);
 		
-		weightValue.requestFocus();
-
 		return beregnerGrid;
 
 	}
