@@ -1,6 +1,6 @@
 package presentation;
 
-import Domain.Beregning;
+import domain.Beregning;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableView;

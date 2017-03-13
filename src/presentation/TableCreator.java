@@ -2,7 +2,7 @@ package presentation;
 
 import java.math.BigDecimal;
 
-import Domain.Beregning;
+import domain.Beregning;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
