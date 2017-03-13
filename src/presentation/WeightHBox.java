@@ -7,6 +7,10 @@ import javafx.collections.FXCollections;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
+import logic.DimensionerendeKraftEjDefineretException;
+import logic.PTECalculatorController;
+import logic.PTECalculatorControllerImpl;
+import logic.UnitConverter;
 
 public class WeightHBox extends HBox {
 	TextField weightTextField;
@@ -26,6 +30,18 @@ public class WeightHBox extends HBox {
 		});
 		weightTextField.setOnKeyReleased(e -> {
 
+			try {
+				if (!weightTextField.getText().isEmpty() && !weightTextField.getText().contains("-")) {
+					FrontPage.frontPageMediator.getObserver().getPteCalc()
+							.angivVaegt(new UnitConverter().convertToKg(weightTextField.getText(), unit.getValue()));
+				}
+			} catch (NumberFormatException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (DimensionerendeKraftEjDefineretException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		});
 	}
 
@@ -38,7 +54,6 @@ public class WeightHBox extends HBox {
 		unitOptions.add("N");
 		return unitOptions;
 	}
-
 
 	public TextField getWeightTextField() {
 		return weightTextField;

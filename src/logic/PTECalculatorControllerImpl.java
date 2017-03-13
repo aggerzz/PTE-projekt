@@ -58,12 +58,13 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 		return normalkraftMellemregning;
 
 	}
+
 	@Override
-	public void angivVaegt(double kg) throws DimensionerendeKraftEjDefineretException{
+	public void angivVaegt(double kg) throws DimensionerendeKraftEjDefineretException {
 		fdim = new DimensionerendekraftImpl();
-		
+
 		fdim.setKg(kg);
-		
+
 		notifyObservers();
 	}
 
@@ -75,12 +76,12 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 		}
 
 	}
-	
 
 	@Override
 	public double getVinkel() throws VinkelEjDefineretException {
-		if(vinkel==null) throw new VinkelEjDefineretException();
-	return vinkel.getGrader();
+		if (vinkel == null)
+			throw new VinkelEjDefineretException();
+		return vinkel.getGrader();
 	}
 
 	@Override
@@ -100,13 +101,12 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 		ft.angivVinkel(vinkel);
 
 		notifyObservers();
-		
+
 	}
 
 	@Override
 	public String getTvaerkraftMellemregning() throws TvaerkraftEjDefineretException,
 			DimensionerendeKraftEjDefineretException, VinkelEjDefineretException {
-
 
 		if (ft == null) {
 			throw new TvaerkraftEjDefineretException();
@@ -116,13 +116,13 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 		String tvaerkraftMellemregning = ft.getMellemregning();
 
 		return tvaerkraftMellemregning;
-		
+
 	}
 
 	@Override
 	public double getTvaerkraft() throws TvaerkraftEjDefineretException, DimensionerendeKraftEjDefineretException,
 			VinkelEjDefineretException {
-		
+
 		if (ft == null) {
 			throw new TvaerkraftEjDefineretException();
 
@@ -131,6 +131,42 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 		double ftNewton = ft.getNewton();
 
 		return ftNewton;
+	}
+
+	@Override
+	public void angivVinkel(double vinkel, boolean MaaltTilLodret) {
+		if(this.vinkel == null){
+			this.vinkel = new VinkelImpl();
+		}
+		
+		this.vinkel.setGrader(vinkel);
+		this.vinkel.setMaaltTilLodret(MaaltTilLodret);
+		
+		try {
+			beregnTvaerkraft();
+		} catch (DimensionerendeKraftEjDefineretException | VinkelEjDefineretException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			beregnNormalkraft();
+		} catch (DimensionerendeKraftEjDefineretException | VinkelEjDefineretException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		notifyObservers();
+	}
+
+	@Override
+	public void tilmeldObserver(PTEObserver observer) {
+		this.observer = observer;
+		
+	}
+	@Override
+	public Dimensionerendekraft getDimensionerendekraft() {
+		
+		return fdim;
 	}
 
 }
