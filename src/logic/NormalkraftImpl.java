@@ -31,4 +31,10 @@ public class NormalkraftImpl implements Normalkraft {
 		return fnNewton;
 	}
 
+	@Override //TO DO
+	public String getBeregning() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
