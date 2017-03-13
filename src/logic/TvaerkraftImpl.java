@@ -9,17 +9,17 @@ public class TvaerkraftImpl implements Tvaerkraft {
 	public String getMellemregning() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException {
 		return mellemregning;
 	}
-
 	@Override
 	public void angivDimensionerendekraft(Dimensionerendekraft fdim) throws DimensionerendeKraftEjDefineretException {
-		// TODO Auto-generated method stub
-		
+		if(fdim==null) 
+			throw new DimensionerendeKraftEjDefineretException();
+		this.fdim = fdim;
 	}
-
 	@Override
 	public void angivVinkel(Vinkel vinkel) throws VinkelEjDefineretException {
-		
-		
+		if(vinkel==null) 
+			throw new VinkelEjDefineretException();
+		this.vinkel = vinkel;
 	}
 
 	@Override
