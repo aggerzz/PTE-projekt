@@ -40,8 +40,7 @@ public class PTEObserverImpl implements PTEObserver {
 	private void insaetMellemregninger() {
 		try {
 			TextArea mellemregninger = frontPageMediator.getMellemRegninger();
-			// mellemregninger.appendText(pteCalc.getDimensionerendeKraft().getMellemregninger()
-			// + "\n");
+			mellemregninger.appendText(pteCalc.getDimensionerendekraft().getMellemRegning() + "\n");
 			mellemregninger.appendText(pteCalc.getTvaerkraftMellemregning() + "\n");
 			mellemregninger.appendText(pteCalc.getNormalkraftMellemregning() + "\n");
 		} catch (NormalkraftEjDefineretException e) {

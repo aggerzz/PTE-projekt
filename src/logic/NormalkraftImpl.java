@@ -4,6 +4,7 @@ public class NormalkraftImpl implements Normalkraft {
 	
 	private Vinkel vinkel;
 	private Dimensionerendekraft fdim;
+	public String mellemRegning;
 	
 	@Override
 	public void angivDimensionerendekraft(Dimensionerendekraft fdim) throws DimensionerendeKraftEjDefineretException {
@@ -26,10 +27,12 @@ public class NormalkraftImpl implements Normalkraft {
 		
 		if (erMaaltTilLodret) {
 			fnNewton = Math.sin(grader) * fdimNewton;
+			mellemRegning = "Fn = sin("+vinkel+") * "+fdimNewton;
 		}
 		
 		else {
 			fnNewton = Math.cos(grader) * fdimNewton;
+			mellemRegning = "Fn = cos("+vinkel+") * "+fdimNewton;
 		}
 		
 		return fnNewton;
@@ -37,8 +40,7 @@ public class NormalkraftImpl implements Normalkraft {
 
 	@Override //TO DO
 	public String getMellemregning() {
-		// TODO Auto-generated method stub
-		return null;
+		return mellemRegning;
 	}
 
 }
