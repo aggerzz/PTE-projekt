@@ -14,14 +14,14 @@ public interface PTECalculatorController {
 	
 	public void notifyObservers();
 	
-	public double getVinkel();
+	public double getVinkel() throws VinkelEjDefineretException;
 	
 	public void beregnTvaerkraft() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException;
 	
-	public String getTvaerkraftMellemregning() throws NormalkraftEjDefineretException, DimensionerendeKraftEjDefineretException,
+	public String getTvaerkraftMellemregning() throws TvaerkraftEjDefineretException, DimensionerendeKraftEjDefineretException,
 	VinkelEjDefineretException;
 	
-	public double getTvaerkraft() throws NormalkraftEjDefineretException, DimensionerendeKraftEjDefineretException,
+	public double getTvaerkraft() throws TvaerkraftEjDefineretException, DimensionerendeKraftEjDefineretException,
 	VinkelEjDefineretException;
 
 }

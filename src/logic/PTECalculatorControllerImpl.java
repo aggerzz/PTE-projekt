@@ -3,6 +3,7 @@ package logic;
 public class PTECalculatorControllerImpl implements PTECalculatorController {
 
 	private Dimensionerendekraft fdim;
+	private Tvaerkraft ft;
 	private Vinkel vinkel;
 	private Normalkraft fn;
 	private PTEObserver observer;
@@ -52,9 +53,9 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 
 		}
 
-		String normalkraftBeregning = fn.getMellemregning();
+		String normalkraftMellemregning = fn.getMellemregning();
 
-		return normalkraftBeregning;
+		return normalkraftMellemregning;
 
 	}
 	@Override
@@ -77,29 +78,59 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 	
 
 	@Override
-	public double getVinkel() {
-		// TODO Auto-generated method stub
-		return 0;
+	public double getVinkel() throws VinkelEjDefineretException {
+		if(vinkel==null) throw new VinkelEjDefineretException();
+	return vinkel.getGrader();
 	}
 
 	@Override
 	public void beregnTvaerkraft() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException {
-		// TODO Auto-generated method stub
+		if (fdim == null) {
+			throw new DimensionerendeKraftEjDefineretException();
+		}
+
+		if (vinkel == null) {
+			throw new VinkelEjDefineretException();
+		}
+
+		ft = new TvaerkraftImpl();
+
+		ft.angivDimensionerendekraft(fdim);
+
+		ft.angivVinkel(vinkel);
+
+		notifyObservers();
 		
 	}
 
 	@Override
-	public String getTvaerkraftMellemregning() throws NormalkraftEjDefineretException,
+	public String getTvaerkraftMellemregning() throws TvaerkraftEjDefineretException,
 			DimensionerendeKraftEjDefineretException, VinkelEjDefineretException {
-		// TODO Auto-generated method stub
-		return null;
+
+
+		if (ft == null) {
+			throw new TvaerkraftEjDefineretException();
+
+		}
+
+		String tvaerkraftMellemregning = ft.getMellemregning();
+
+		return tvaerkraftMellemregning;
+		
 	}
 
 	@Override
-	public double getTvaerkraft() throws NormalkraftEjDefineretException, DimensionerendeKraftEjDefineretException,
+	public double getTvaerkraft() throws TvaerkraftEjDefineretException, DimensionerendeKraftEjDefineretException,
 			VinkelEjDefineretException {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		if (ft == null) {
+			throw new TvaerkraftEjDefineretException();
+
+		}
+
+		double ftNewton = ft.getNewton();
+
+		return ftNewton;
 	}
 
 }
