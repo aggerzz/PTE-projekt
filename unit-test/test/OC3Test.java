@@ -20,7 +20,7 @@ public class OC3Test {
 		Dimensionerendekraft fdim = new DimensionerendekraftImpl();
 		
 		vinkel.setGrader(0);
-		vinkel.getMaaltTilLodret(false);
+		vinkel.setMaaltTilLodret(false);
 		fdim.setKg(100);		
 		
 		assertEquals(0, fn.getNewton() ,0.001);
@@ -35,7 +35,7 @@ public class OC3Test {
 		Dimensionerendekraft fdim = new DimensionerendekraftImpl();
 		
 		vinkel.setGrader(-1);
-		vinkel.getMaaltTilLodret(false);
+		vinkel.setMaaltTilLodret(false);
 		fdim.setKg(100);
 		
 		assertTrue(0<=fn.getNewton());
@@ -50,7 +50,7 @@ public class OC3Test {
 		Dimensionerendekraft fdim = new DimensionerendekraftImpl();
 		
 		vinkel.setGrader(1);
-		vinkel.getMaaltTilLodret(false);
+		vinkel.setMaaltTilLodret(false);
 		fdim.setKg(100);
 		
 		assertEquals(17.131, fn.getNewton(), 0.001);
@@ -64,7 +64,7 @@ public class OC3Test {
 		Dimensionerendekraft fdim = new DimensionerendekraftImpl();
 		
 		vinkel.setGrader(90);
-		vinkel.getMaaltTilLodret(false);
+		vinkel.setMaaltTilLodret(false);
 		fdim.setKg(100);
 		
 		assertEquals(981.450, fn.getNewton(), 0.001);
@@ -79,7 +79,7 @@ public class OC3Test {
 		Dimensionerendekraft fdim = new DimensionerendekraftImpl();
 		
 		vinkel.setGrader(a);
-		vinkel.getMaaltTilLodret(false);
+		vinkel.setMaaltTilLodret(false);
 		fdim.setKg(100);
 		
 		assertTrue(vinkel.fejlInput());
@@ -92,7 +92,7 @@ public class OC3Test {
 		Dimensionerendekraft fdim = new DimensionerendekraftImpl();
 		
 		vinkel.setGrader(181);
-		vinkel.getMaaltTilLodret(false);
+		vinkel.setMaaltTilLodret(false);
 		fdim.setKg(100);
 		
 		
@@ -105,7 +105,7 @@ public class OC3Test {
 		Dimensionerendekraft fdim = new DimensionerendekraftImpl();
 		
 		vinkel.setGrader(1);
-		vinkel.getMaaltTilLodret(true);
+		vinkel.setMaaltTilLodret(true);
 		fdim.setKg(100);
 		
 		assertEquals(981.45, fn.getNewton(), 0.001);
@@ -119,7 +119,7 @@ public class OC3Test {
 		Dimensionerendekraft fdim = new DimensionerendekraftImpl();
 		
 		vinkel.setGrader(45);
-		vinkel.getMaaltTilLodret(false);
+		vinkel.setMaaltTilLodret(false);
 		fdim.setKg(100);
 		
 		assertEquals(ft.getNewton, fn.getNewton());
@@ -132,7 +132,7 @@ public class OC3Test {
 		Dimensionerendekraft fdim = new DimensionerendekraftImpl();
 		
 		vinkel.setGrader(45);
-		vinkel.getMaaltTilLodret(false);
+		vinkel.setMaaltTilLodret(false);
 		fdim.setKg(100);
 		
 		assertEquals(0, fn.getNewton(), 0.001);
