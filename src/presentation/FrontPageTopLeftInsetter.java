@@ -46,7 +46,7 @@ public class FrontPageTopLeftInsetter {
 		verticalGrid.setGridLinesVisible(true);
 		verticalGrid.add(verticalAngle, 0, 1);
 		verticalGrid.setPadding(new Insets(125, 0, 0, 0));
-
+		
 		weightValue.setPromptText("inset weight");
 
 		beregnerGrid.add(horizontalAngle, 0, 0);

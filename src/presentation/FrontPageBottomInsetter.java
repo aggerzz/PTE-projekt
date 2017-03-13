@@ -11,7 +11,7 @@ public class FrontPageBottomInsetter {
 		
 		GridPane buttomGrid = new GridPane();
 		
-		//opretter
+		//opretter table
 		beregningsTable = new TableView<Beregning>();
 		beregningsTable = new TableCreator().beregningTable(beregningsTable);
 		buttomGrid.add(beregningsTable, 0, 0, 10, 10);
