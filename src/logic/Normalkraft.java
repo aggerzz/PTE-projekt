@@ -8,5 +8,5 @@ public interface Normalkraft {
 	
 	public double getNewton() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException;
 
-	public String getBeregning() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException;
+	public String getMellemregning() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException;
 }

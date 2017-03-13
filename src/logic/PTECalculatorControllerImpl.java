@@ -44,7 +44,7 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 	}
 
 	@Override
-	public String getNormalkraftBeregninger() throws NormalkraftEjDefineretException,
+	public String getNormalkraftMellemregning() throws NormalkraftEjDefineretException,
 			DimensionerendeKraftEjDefineretException, VinkelEjDefineretException {
 
 		if (fn == null) {
@@ -52,7 +52,7 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 
 		}
 
-		String normalkraftBeregning = fn.getBeregning();
+		String normalkraftBeregning = fn.getMellemregning();
 
 		return normalkraftBeregning;
 

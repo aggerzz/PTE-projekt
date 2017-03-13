@@ -7,7 +7,7 @@ public interface PTECalculatorController {
 	public double getNormalkraft() throws NormalkraftEjDefineretException, DimensionerendeKraftEjDefineretException,
 			VinkelEjDefineretException;
 
-	String getNormalkraftBeregninger() throws NormalkraftEjDefineretException, DimensionerendeKraftEjDefineretException,
+	String getNormalkraftMellemregning() throws NormalkraftEjDefineretException, DimensionerendeKraftEjDefineretException,
 			VinkelEjDefineretException;
 	
 	public void angivVaegt(double Kg) throws DimensionerendeKraftEjDefineretException;
