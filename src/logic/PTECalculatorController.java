@@ -11,5 +11,7 @@ public interface PTECalculatorController {
 			VinkelEjDefineretException;
 
 	public void notifyObservers();
+	
+	public double getVinkel();
 
 }
