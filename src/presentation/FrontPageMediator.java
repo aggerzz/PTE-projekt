@@ -1,6 +1,5 @@
 package presentation;
 
-import domain.Beregning;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableView;
@@ -30,10 +29,6 @@ public class FrontPageMediator {
 
 	public ComboBox<String> getWeightUnitComboBox() {
 		return frontPageTopLeft.getWeightValueHBox().getUnit();
-	}
-
-	public TableView<Beregning> getTable() {
-		return frontPageBottom.getBeregningsTable();
 	}
 
 	public Canvas getTriangle() {
