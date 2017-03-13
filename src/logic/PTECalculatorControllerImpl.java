@@ -67,4 +67,10 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 
 	}
 
+	@Override
+	public double getVinkel() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }
