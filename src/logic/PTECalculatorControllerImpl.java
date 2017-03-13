@@ -82,4 +82,24 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 		return 0;
 	}
 
+	@Override
+	public void beregnTvaerkraft() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public String getTvaerkraftMellemregning() throws NormalkraftEjDefineretException,
+			DimensionerendeKraftEjDefineretException, VinkelEjDefineretException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public double getTvaerkraft() throws NormalkraftEjDefineretException, DimensionerendeKraftEjDefineretException,
+			VinkelEjDefineretException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }
