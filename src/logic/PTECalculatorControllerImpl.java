@@ -8,10 +8,10 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 	private PTEObserver observer;
 
 	@Override
-	public void beregnNormalkraft() throws DimensionerendekraftEjDefineretException, VinkelEjDefineretException {
+	public void beregnNormalkraft() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException {
 
 		if (fdim == null) {
-			throw new DimensionerendekraftEjDefineretException();
+			throw new DimensionerendeKraftEjDefineretException();
 		}
 
 		if (vinkel == null) {
@@ -29,7 +29,7 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 	}
 
 	@Override
-	public double getNormalkraft() throws NormalkraftEjDefineretException, DimensionerendekraftEjDefineretException,
+	public double getNormalkraft() throws NormalkraftEjDefineretException, DimensionerendeKraftEjDefineretException,
 			VinkelEjDefineretException {
 
 		if (fn == null) {
@@ -45,7 +45,7 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 
 	@Override
 	public String getNormalkraftBeregninger() throws NormalkraftEjDefineretException,
-			DimensionerendekraftEjDefineretException, VinkelEjDefineretException {
+			DimensionerendeKraftEjDefineretException, VinkelEjDefineretException {
 
 		if (fn == null) {
 			throw new NormalkraftEjDefineretException();
@@ -57,6 +57,14 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 		return normalkraftBeregning;
 
 	}
+	@Override
+	public void angivVaegt(double kg) throws DimensionerendeKraftEjDefineretException{
+		fdim = new DimensionerendekraftImpl();
+		
+		fdim.setKg(kg);
+		
+		notifyObservers();
+	}
 
 	@Override
 	public void notifyObservers() {
@@ -66,6 +74,7 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 		}
 
 	}
+	
 
 	@Override
 	public double getVinkel() {

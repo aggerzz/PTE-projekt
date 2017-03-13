@@ -6,7 +6,7 @@ public class NormalkraftImpl implements Normalkraft {
 	private Dimensionerendekraft fdim;
 	
 
-	public void angivDimensionerendekraft(Dimensionerendekraft fdim) throws DimensionerendekraftEjDefineretException {
+	public void angivDimensionerendekraft(Dimensionerendekraft fdim) throws DimensionerendeKraftEjDefineretException {
 
 	}
 
@@ -14,7 +14,7 @@ public class NormalkraftImpl implements Normalkraft {
 
 	}
 
-	public double getNewton() throws DimensionerendekraftEjDefineretException, VinkelEjDefineretException {
+	public double getNewton() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException {
 		double grader = vinkel.getGrader();
 		boolean erMaaltTilLodret = vinkel.getMaaltTilLodret();
 		double fdimNewton = fdim.getNewton();
