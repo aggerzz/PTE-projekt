@@ -12,7 +12,7 @@ public class OC4Test {
 		Tvearkraft ft = new TvaerkraftImpl();
 		
 		vinkel.setGrader(55);
-		vinkel.getMaaltTilLodret(true);
+		vinkel.setMaaltTilLodret(true);
 		fdim.setNewton(500);
 		
 		assertEquals(409.58,ft.getNewton(), 0.001);
@@ -24,7 +24,7 @@ public class OC4Test {
 		Tvearkraft ft = new TvaerkraftImpl();
 		
 		vinkel.setGrader(null);
-		vinkel.getMaaltTilLodret(true);
+		vinkel.setMaaltTilLodret(true);
 		fdim.setNewton(500);
 		
 		assertTrue(vinkel.VinkelErNullFejl);
@@ -36,7 +36,7 @@ public class OC4Test {
 		Tvearkraft ft = new TvaerkraftImpl();
 		
 		vinkel.setGrader(25);
-		vinkel.getMaaltTilLodret(false);
+		vinkel.setMaaltTilLodret(false);
 		fdim.setNewton(null);
 		
 		assertTrue(fdim.VægtErIkkeAngivetFejl);
@@ -48,7 +48,7 @@ public class OC4Test {
 		Tvearkraft ft = new TvaerkraftImpl();
 		
 		vinkel.setGrader(60);
-		vinkel.getMaaltTilLodret(false);
+		vinkel.setMaaltTilLodret(false);
 		fdim.setNewton(800);
 		
 		assertEquals(400.00 ,ft.getNewton(),0.001);
