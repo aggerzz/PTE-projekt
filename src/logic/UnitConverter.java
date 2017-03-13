@@ -7,22 +7,22 @@ import presentation.FrontPageMediator;
 
 public class UnitConverter {
 
-	private BigDecimal convertFromGram(BigDecimal g){
-		return g.divide(new BigDecimal("1000"));
+	private double convertFromGram(double g){
+		return g/1000;
 	}
-	private BigDecimal convertFromTon(BigDecimal ton){
-		return ton.multiply(new BigDecimal("1000"));
+	private double convertFromTon(double ton){
+		return ton*1000;
 	}
-	public BigDecimal convertToKg(String currentWeightValue,String currentUnit){
+	public double convertToKg(String currentWeightValue,String currentUnit){
 		if(currentUnit == "G"){
-			return convertFromGram( new BigDecimal(currentWeightValue) );
+			return convertFromGram(Double.parseDouble(currentWeightValue) );
 		}
 		if(currentUnit == "Kg"){
-			return new BigDecimal(currentWeightValue);
+			return Double.parseDouble(currentWeightValue);
 		}
 		if(currentUnit == "T"){
-			return convertFromTon(new BigDecimal(currentWeightValue));
+			return convertFromTon(Double.parseDouble(currentWeightValue));
 		}
-		return null;
+		return -1;
 	}
 }

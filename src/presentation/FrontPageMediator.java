@@ -2,17 +2,29 @@ package presentation;
 
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import logic.PTEObserver;
+import logic.PTEObserverImpl;
 
 public class FrontPageMediator {
 	FrontPageTopLeftInsetter frontPageTopLeft;
 	FrontPageBottomInsetter frontPageBottom;
-
+	PTEObserverImpl pteObs = new PTEObserverImpl(this);
+	
 	public FrontPageMediator(FrontPageTopLeftInsetter frontPageTopLeft, FrontPageBottomInsetter frontPageBottom) {
 		this.frontPageTopLeft = frontPageTopLeft;
 		this.frontPageBottom = frontPageBottom;
+	}
+	public PTEObserverImpl getObserver(){
+		return pteObs;
+	}
+	public TextField getFtTextField() {
+		return frontPageBottom.getFtTextField();
+	}
+	
+	public TextField getFnTextField() {
+		return frontPageBottom.getFnTextField();
 	}
 
 	public TextField getVerticalAngleText() {
