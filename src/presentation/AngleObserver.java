@@ -58,6 +58,10 @@ public class AngleObserver {
 			if (!regex.contains(input.substring(i, j))) {
 				return false;
 			}
+			if(input.contains(",")){
+				input.replace(",", ".");
+			}
+			
 			// TODO : hvis input indeholder komma, skal komma omskrives til
 			// punktum.
 		}
