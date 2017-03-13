@@ -6,5 +6,7 @@ public interface Normalkraft {
 	
 	public void angivVinkel(Vinkel vinkel) throws VinkelEjDefineretException;
 	
-	public void getNewton() throws NormalkraftEjDefineretException,DimensionerendekraftEjDefineretException, VinkelEjDefineretException;
+	public double getNewton() throws DimensionerendekraftEjDefineretException, VinkelEjDefineretException;
+
+	public String getBeregning();
 }

@@ -2,9 +2,14 @@ package logic;
 
 public interface PTECalculatorController {
 
-	public void beregnNormalkraft();
-	
-	public double getNormalkraft();
+	public void beregnNormalkraft() throws DimensionerendekraftEjDefineretException, VinkelEjDefineretException;
 
-	
+	public double getNormalkraft() throws NormalkraftEjDefineretException, DimensionerendekraftEjDefineretException,
+			VinkelEjDefineretException;
+
+	String getNormalkraftBeregninger() throws NormalkraftEjDefineretException, DimensionerendekraftEjDefineretException,
+			VinkelEjDefineretException;
+
+	public void notifyObservers();
+
 }
