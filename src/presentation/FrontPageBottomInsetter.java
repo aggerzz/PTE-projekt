@@ -1,6 +1,6 @@
 package presentation;
 
-import Domain.Beregning;
+import domain.Beregning;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.GridPane;
 
