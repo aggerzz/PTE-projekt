@@ -27,6 +27,7 @@ public class TvaerkraftImpl implements Tvaerkraft {
 		double grader = vinkel.getGrader();
 		boolean erMaaltTilLodret = vinkel.getMaaltTilLodret();
 		double fdimNewton = fdim.getNewton();
+
 		double ftNewton = 0;
 		double sinV = Math.sin(Math.toRadians(grader));
 		double cosV = Math.cos(Math.toRadians(grader));
@@ -38,6 +39,7 @@ public class TvaerkraftImpl implements Tvaerkraft {
 		else {
 			ftNewton = sinV * fdimNewton;
 			mellemregning = "FT = sin(vinkel) * FDim" + "\n" + ftNewton + " = sin(" + grader + ") * " + fdimNewton; 
+
 		}
 		
 		return ftNewton;
