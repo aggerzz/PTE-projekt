@@ -1,5 +1,9 @@
 package logic;
 
+import exceptions.DimensionerendeKraftEjDefineretException;
+import exceptions.NormalkraftEjDefineretException;
+import exceptions.TvaerkraftEjDefineretException;
+import exceptions.VinkelEjDefineretException;
 import exceptions.erUnderFejlgraenseException;
 
 public interface PTECalculatorController {

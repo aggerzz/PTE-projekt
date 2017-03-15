@@ -1,5 +1,8 @@
 package logic;
 
+import exceptions.DimensionerendeKraftEjDefineretException;
+import exceptions.VinkelEjDefineretException;
+
 public class NormalkraftImpl implements Normalkraft {
 	
 	private Vinkel vinkel;

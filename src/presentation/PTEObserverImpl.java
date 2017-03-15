@@ -1,8 +1,13 @@
-package logic;
+package presentation;
 
+import exceptions.DimensionerendeKraftEjDefineretException;
+import exceptions.NormalkraftEjDefineretException;
+import exceptions.TvaerkraftEjDefineretException;
+import exceptions.VinkelEjDefineretException;
 import javafx.scene.control.TextArea;
-import presentation.FrontPage;
-import presentation.FrontPageMediator;
+import logic.PTECalculatorController;
+import logic.PTECalculatorControllerImpl;
+import logic.PTEObserver;
 
 public class PTEObserverImpl implements PTEObserver {
 	FrontPageMediator frontPageMediator;
@@ -15,7 +20,6 @@ public class PTEObserverImpl implements PTEObserver {
 	}
 
 	public void update() {
-		System.out.println(frontPageMediator);
 		if (frontPageMediator.getMellemRegninger() != null) {
 			frontPageMediator.getMellemRegninger().clear();
 		}
