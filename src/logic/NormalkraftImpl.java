@@ -24,16 +24,15 @@ public class NormalkraftImpl implements Normalkraft {
 		boolean erMaaltTilLodret = vinkel.getMaaltTilLodret();
 		double fdimNewton = fdim.getNewton();
 		double fnNewton = 0;
+		double sin = Math.sin(Math.toRadians(grader));
+		double cos = Math.cos(Math.toRadians(grader));
 		
-		
-		if (erMaaltTilLodret) {
-			fnNewton = Math.sinh(grader) * fdimNewton;
-			mellemRegning = "Fn = sin("+vinkel+") * "+fdimNewton;
-		}
-		
-		else {
-			fnNewton = Math.cosh(grader) * fdimNewton;
-			mellemRegning = "Fn = cos("+vinkel+") * "+fdimNewton;
+		if (erMaaltTilLodret==false) {
+			fnNewton = sin * fdimNewton;
+			mellemRegning = "Fn = sin("+vinkel.getGrader()+") * "+fdimNewton;
+		} else {
+			fnNewton = cos * fdimNewton;
+			mellemRegning = "Fn = cos("+vinkel.getGrader()+") * "+fdimNewton;
 		}
 		
 		return fnNewton;
