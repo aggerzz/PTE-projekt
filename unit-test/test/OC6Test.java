@@ -21,7 +21,7 @@ public class OC6Test {
 	}
 	
 	@Test
-	public void test1AngivAreal() {
+	public void test1AngivAreal() throws NegativArealException {
 		
 		Areal a = new ArealImpl(); 
 		
