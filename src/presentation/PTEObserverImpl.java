@@ -1,10 +1,14 @@
 package presentation;
 
+
+
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+
 import exceptions.DimensionerendeKraftEjDefineretException;
 import exceptions.NormalkraftEjDefineretException;
 import exceptions.TvaerkraftEjDefineretException;
 import exceptions.VinkelEjDefineretException;
-import javafx.scene.control.TextArea;
 import logic.PTECalculatorController;
 import logic.PTECalculatorControllerImpl;
 import logic.PTEObserver;
@@ -21,9 +25,11 @@ public class PTEObserverImpl implements PTEObserver {
 
 	public void update() {
 		frontPageMediator.getMellemRegninger().clear();
+		   DecimalFormat formatter = new DecimalFormat("##.000");
+		    
 		try {
 			double fDim = pteCalc.getDimensionerendekraft();
-			String fDimText = Double.toString(fDim); //TODO formater til 3 decimaler
+			String fDimText = formatter.format(fDim); //TODO formater til 3 decimaler
 			frontPageMediator.getFdimTextField().setText(fDimText );
 			String fDimMellemregning = pteCalc.getDimensionerendekraftMellemregning();
 			frontPageMediator.getMellemRegninger().appendText(fDimMellemregning);
@@ -33,7 +39,7 @@ public class PTEObserverImpl implements PTEObserver {
 		
 		try {
 			double tvaerkraft = pteCalc.getTvaerkraft();
-			String tvaerkraftText = Double.toString(tvaerkraft);
+			String tvaerkraftText = formatter.format(tvaerkraft);
 			frontPageMediator.getFtTextField().setText(tvaerkraftText);
 			String tvaerkraftMellemregning = pteCalc.getTvaerkraftMellemregning();
 			frontPageMediator.getMellemRegninger().appendText(tvaerkraftMellemregning);
@@ -44,7 +50,7 @@ public class PTEObserverImpl implements PTEObserver {
 		
 		try {
 			double normalkraft = pteCalc.getNormalkraft();
-			String normalkraftText = Double.toString(normalkraft);
+			String normalkraftText = formatter.format(normalkraft);
 			frontPageMediator.getFnTextField().setText(normalkraftText);
 			String normalkraftMellemregning = pteCalc.getNormalkraftMellemregning();
 			frontPageMediator.getMellemRegninger().appendText(normalkraftMellemregning);
@@ -52,64 +58,7 @@ public class PTEObserverImpl implements PTEObserver {
 				| VinkelEjDefineretException e1) {
 			frontPageMediator.getFnTextField().clear();
 		}
-		}
-		
-		
-		
-//		
-//		if (frontPageMediator.getMellemRegninger() != null) {
-//			frontPageMediator.getMellemRegninger().clear();
-//		}
-//		if(frontPageMediator.getWeightValueTextField() != null ){
-//		frontPageMediator.getFdimTextField().setText(Double.toString(pteCalc.getDimensionerendekraft()));
-//		}
-//		try {
-//			if(frontPageMediator.getHorizontalAngleText() != null && frontPageMediator.getVerticalAngleText() != null && frontPageMediator.getFdimTextField() != null) {
-//				frontPageMediator.getFtTextField().setText(Double.toString(pteCalc.getTvaerkraft()));
-//				frontPageMediator.getFnTextField().setText(Double.toString(pteCalc.getNormalkraft()));
-//
-//			}
-//		} catch (TvaerkraftEjDefineretException e) {
-//			System.out.println("TvaerkraftEjDefineretException");
-////			e.printStackTrace();
-//		} catch (DimensionerendeKraftEjDefineretException e) {
-//			System.out.println("DimensionerendeKraftEjDefineretException");
-////			e.printStackTrace();
-//		} catch (VinkelEjDefineretException e) {
-//			System.out.println("VinkelEjDefineretException");
-////			e.printStackTrace();
-//		} catch (NormalkraftEjDefineretException e) {
-//			System.out.println("NormalkraftEjDefineretException");
-////			e.printStackTrace();
-//		}
-//		insaetMellemregninger();
-//	}
-
-
-//	private void insaetMellemregninger() {
-//		try {
-//			
-//			TextArea mellemregninger = frontPageMediator.getMellemRegninger();
-//			if(frontPageMediator.getFdimTextField() != null)
-//			mellemregninger.appendText(pteCalc.getDimensionerendekraft() + "\n");
-//			if(frontPageMediator.getFtTextField() != null)
-//			mellemregninger.appendText(pteCalc.getTvaerkraftMellemregning() + "\n");
-//			if (frontPageMediator.getFnTextField() != null)
-//			mellemregninger.appendText(pteCalc.getNormalkraftMellemregning() + "\n");
-//		} catch (NormalkraftEjDefineretException e) {
-//			System.out.println("NormalkraftEjDefineretException");
-//			e.printStackTrace();
-//		} catch (DimensionerendeKraftEjDefineretException e) {
-//			System.out.println("DimensionerendeKraftEjDefineretException");
-//			e.printStackTrace();
-//		} catch (VinkelEjDefineretException e) {
-//			System.out.println("VinkelEjDefineretException");
-//			e.printStackTrace();
-//		} catch (TvaerkraftEjDefineretException e) {
-//			System.out.println("TvaerkraftEjDefineretException");
-//			e.printStackTrace();
-//		}
-//	}
+	}		
 
 	public PTECalculatorController getPteCalc() {
 		return pteCalc;

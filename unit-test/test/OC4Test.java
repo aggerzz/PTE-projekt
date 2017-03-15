@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import exceptions.DimensionerendeKraftEjDefineretException;
 import exceptions.VinkelEjDefineretException;
+import exceptions.VinkelErNaNException;
 import exceptions.erUnderFejlgraenseException;
 import logic.Dimensionerendekraft;
 import logic.DimensionerendekraftImpl;
@@ -31,17 +32,14 @@ public class OC4Test {
 		
 		assertEquals(409.58,ft.getNewton(), 0.001);
 	}
-	@Test
-	public void testVinkelErNull() throws erUnderFejlgraenseException {
+	@Test// (expected = VinkelErNaNException.class)
+	public void testVinkelErNaN() throws erUnderFejlgraenseException {
 		Vinkel vinkel = new VinkelImpl();
-		Dimensionerendekraft fdim = new DimensionerendekraftImpl();
-		Tvaerkraft ft = new TvaerkraftImpl();
+
+		vinkel.setGrader(Double.NaN);
+
 		
-		vinkel.setGrader(0);
-		vinkel.setMaaltTilLodret(true);
-		fdim.setNewton(500);
-		
-		fail("VinkelErNullException Ej Lavet");
+		fail("VinkelErNaNException Ej Lavet");
 //		assertTrue(vinkel.VinkelErNullFejl);
 	}
 	@Test
