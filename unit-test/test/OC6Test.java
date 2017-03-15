@@ -29,6 +29,13 @@ public class OC6Test {
 		assertEquals(0.001, a.getMm2() , 0.001); 
 		
 	}
+	@Test
+	public void test2UinitialiseretAreal(){
+		Areal a = new ArealImpl(); 
+		
+		
+		assertEquals(Double.NaN, a.getMm2() , 0.001);
+	}
 	
 
 }
