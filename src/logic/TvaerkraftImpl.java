@@ -1,5 +1,8 @@
 package logic;
 
+import exceptions.DimensionerendeKraftEjDefineretException;
+import exceptions.VinkelEjDefineretException;
+
 public class TvaerkraftImpl implements Tvaerkraft {
 	private Vinkel vinkel;
 	private Dimensionerendekraft fdim;
