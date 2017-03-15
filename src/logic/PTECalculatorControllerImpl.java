@@ -170,8 +170,9 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 		
 	}
 	@Override
-	public double getDimensionerendekraft() {
-		
+	public double getDimensionerendekraft() throws DimensionerendeKraftEjDefineretException {
+		if(fdim == null)
+			throw new DimensionerendeKraftEjDefineretException();
 		return fdim.getNewton();
 	}
 

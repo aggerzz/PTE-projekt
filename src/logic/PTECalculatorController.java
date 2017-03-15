@@ -34,6 +34,6 @@ public interface PTECalculatorController {
 
 	public void tilmeldObserver(PTEObserver observer);
 	
-	public double getDimensionerendekraft();
+	public double getDimensionerendekraft() throws DimensionerendeKraftEjDefineretException;
 
 }
