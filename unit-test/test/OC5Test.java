@@ -5,6 +5,8 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import exceptions.erUnderFejlgraenseException;
+import logic.Normalkraft;
+import logic.NormalkraftImpl;
 
 public class OC5Test {
 	
