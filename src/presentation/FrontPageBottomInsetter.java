@@ -29,7 +29,7 @@ public class FrontPageBottomInsetter {
 		HBox fdimHBox = superSubStringHBox.generateSubHBox("F", "Dim");
 		fdimTextField = new TextField();
 		fdimTextField.setPromptText("Fdim");
-
+		
 		HBox ftHBox = superSubStringHBox.generateSubHBox("F", "T");
 		ftTextField = new TextField();
 		ftTextField.setPromptText("Ft");
@@ -61,6 +61,13 @@ public class FrontPageBottomInsetter {
 		Label sfLabel = new Label("SF: ");
 		sfTextField = new TextField();
 		sfTextField.setPromptText("SF");
+		
+		//Disable textfelterne som ikke bliver brugt endnu
+		tauTextField.setDisable(true);
+		sigmaNTextField.setDisable(true);
+		sigmaBTextField.setDisable(true);
+		sigmaRefTextField.setDisable(true);
+		sfTextField.setDisable(true);
 
 		// TODO mangler get og set motoder p�, MB - tau - sigmaN - sigmaB -
 		// sigmaRef - SF
