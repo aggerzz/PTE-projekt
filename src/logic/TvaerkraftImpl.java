@@ -4,9 +4,10 @@ import exceptions.DimensionerendeKraftEjDefineretException;
 import exceptions.VinkelEjDefineretException;
 
 public class TvaerkraftImpl implements Tvaerkraft {
-	private Vinkel vinkel;
-	private Dimensionerendekraft fdim;
+	private Vinkel vinkel = new VinkelImpl();
+	private Dimensionerendekraft fdim = new DimensionerendekraftImpl();
 	private String mellemregning = null;
+	private double ftNewton = 0;
 	
 	@Override
 	public String getMellemregning() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException {
@@ -31,7 +32,7 @@ public class TvaerkraftImpl implements Tvaerkraft {
 		boolean erMaaltTilLodret = vinkel.getMaaltTilLodret();
 		double fdimNewton = fdim.getNewton();
 
-		double ftNewton = 0;
+		//double ftNewton = 0;
 		double sinV = Math.sin(Math.toRadians(grader));
 		double cosV = Math.cos(Math.toRadians(grader));
 		if (erMaaltTilLodret==false) {
@@ -46,6 +47,9 @@ public class TvaerkraftImpl implements Tvaerkraft {
 		}
 		
 		return ftNewton;
+	}
+	public void setFtNewton(double ftNewton) {
+		this.ftNewton = ftNewton;
 	}
 
 }
