@@ -5,9 +5,10 @@ import exceptions.VinkelEjDefineretException;
 
 public class NormalkraftImpl implements Normalkraft {
 	
-	private Vinkel vinkel;
-	private Dimensionerendekraft fdim;
+	private Vinkel vinkel = new VinkelImpl();
+	private Dimensionerendekraft fdim = new DimensionerendekraftImpl();
 	public String mellemRegning;
+	private double fnNewton;
 	
 	@Override
 	public void angivDimensionerendekraft(Dimensionerendekraft fdim) throws DimensionerendeKraftEjDefineretException {
@@ -39,6 +40,10 @@ public class NormalkraftImpl implements Normalkraft {
 		}
 		
 		return fnNewton;
+	}
+	
+	public void setFnNewton(double fnNewton){
+		this.fnNewton = fnNewton;
 	}
 
 	@Override //TO DO

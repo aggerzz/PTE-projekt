@@ -1,5 +1,5 @@
 package exceptions;
 
-public class ArealEjDefineretExcception extends Exception  {
+public class ArealEjDefineretException extends Exception  {
 
 }
