@@ -11,9 +11,11 @@ public class NormalkraftImpl implements Normalkraft {
 	
 	@Override
 	public void angivDimensionerendekraft(Dimensionerendekraft fdim) throws DimensionerendeKraftEjDefineretException {
-		if(fdim==null) 
+		if(fdim!=null) 
+			this.fdim = fdim;
+		else
 			throw new DimensionerendeKraftEjDefineretException();
-		this.fdim = fdim;
+
 	}
 	@Override
 	public void angivVinkel(Vinkel vinkel) throws VinkelEjDefineretException {
@@ -30,18 +32,18 @@ public class NormalkraftImpl implements Normalkraft {
 		double sin = Math.sin(Math.toRadians(grader));
 		double cos = Math.cos(Math.toRadians(grader));
 		
-		if (erMaaltTilLodret==false) {
-			fnNewton = sin * fdimNewton;
-			mellemRegning = "Fn = sin("+vinkel.getGrader()+") * "+fdimNewton;
-		} else {
+		if (erMaaltTilLodret) {
 			fnNewton = cos * fdimNewton;
 			mellemRegning = "Fn = cos("+vinkel.getGrader()+") * "+fdimNewton;
+		} else {
+			fnNewton = sin * fdimNewton;
+			mellemRegning = "Fn = sin("+vinkel.getGrader()+") * "+fdimNewton;
 		}
 		
 		return fnNewton;
 	}
 
-	@Override //TO DO
+	@Override //TODO Det ser ud til metoden er færdig (SA)
 	public String getMellemregning() {
 		return mellemRegning;
 	}
