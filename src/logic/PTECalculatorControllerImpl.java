@@ -12,6 +12,7 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 	private Tvaerkraft ft;
 	private Vinkel vinkel;
 	private Normalkraft fn;
+	private ForskydningsSpaendning tau;
 	private PTEObserver observer;
 
 	@Override
@@ -72,6 +73,11 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 		fdim.setKg(kg);
 
 		notifyObservers();
+	}
+	
+	@Override
+	public double beregnTau() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException{
+		return tau.beregnTau();				
 	}
 
 	@Override
