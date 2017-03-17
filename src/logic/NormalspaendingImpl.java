@@ -3,7 +3,7 @@ package logic;
 import exceptions.DimensionerendeKraftEjDefineretException;
 import exceptions.VinkelEjDefineretException;
 
-public class NormalspaendingImpl {
+public class NormalspaendingImpl implements Normalspaending {
 	Normalkraft fn = new NormalkraftImpl();
 	Areal a = new ArealImpl();
 	private double fnNewton = Double.NaN;

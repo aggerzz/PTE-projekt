@@ -4,17 +4,24 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import exceptions.ArealEjDefineretException;
+import exceptions.NormalkraftEjDefineretException;
 import exceptions.erUnderFejlgraenseException;
+import logic.Areal;
+import logic.ArealImpl;
 import logic.Normalkraft;
 import logic.NormalkraftImpl;
+import logic.Normalspaending;
+import logic.NormalspaendingImpl;
 
 public class OC5Test {
 	
 	@Test
 	public void testBeregnSigmaNMedMellemregning() {
 		Normalkraft fn = new NormalkraftImpl();
-		Areal a = new ArealImpl();
 		Normalspaending sigmaN = new NormalspaendingImpl();
+		Areal a = new ArealImpl();
+		
 		
 		fn.setNewton(100);
 		a.setMm2(50);
@@ -37,8 +44,8 @@ public class OC5Test {
 		fail("ArealEjDefineretException ej kastet");		
 	}
 	
-	@Test(expected=NewtonEjDefineretException.class)
-	public void sigmaNewtonEjDefineretException() throws NewtonEjDefineretException{
+	@Test(expected=NormalkraftEjDefineretException.class)
+	public void sigmaNewtonEjDefineretException() throws NormalkraftEjDefineretException{
 		Areal a = new ArealImpl();
 		Normalspaending sigmaN = new NormalspaendingImpl();
 		
@@ -46,6 +53,6 @@ public class OC5Test {
 		sigmaN.getAreal(a);
 		sigmaN.getNmm2();
 		
-		fail("NewtonEjDefineretException ej kastet");
+		fail("NormalkraftEjDefineretException ej kastet");
 	}	
 }
