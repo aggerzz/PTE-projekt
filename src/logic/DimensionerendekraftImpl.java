@@ -2,9 +2,9 @@ package logic;
 
 public class DimensionerendekraftImpl implements Dimensionerendekraft {
 
-	double kg;
-	double newton;
-	String mellemRegning;
+	private double kg;
+	private double newton;
+	private String mellemRegning;
 
 	@Override
 	public double setNewton(double newton) {
