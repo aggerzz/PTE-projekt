@@ -41,4 +41,8 @@ public interface PTECalculatorController {
 	public double beregnForskydningsspaendning() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException;
 	
 	public double beregnNormalspaending() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException;
+	
+	public void setFtNewton(double ftNewton) throws TvaerkraftEjDefineretException, DimensionerendeKraftEjDefineretException;
+	
+	public void setFnNewton(double fnNewton) throws DimensionerendeKraftEjDefineretException;
 }

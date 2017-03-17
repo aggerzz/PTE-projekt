@@ -12,5 +12,6 @@ public interface Tvaerkraft {
 	public void angivVinkel(Vinkel vinkel) throws VinkelEjDefineretException;
 	
 	public double getNewton() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException;
-
+	
+	public void setFtNewton(double ftNewton);
 }

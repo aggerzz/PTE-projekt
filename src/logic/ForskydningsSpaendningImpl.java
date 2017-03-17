@@ -25,5 +25,21 @@ public class ForskydningsSpaendningImpl implements ForskydningsSpaendning {
 	
 	public String getMellemregning(){
 		return mellemregning;
+	}
+
+	public Tvaerkraft getFt() {
+		return ft;
+	}
+
+	public void setFt(Tvaerkraft ft) {
+		this.ft = ft;
+	}
+
+	public double getMm2() {
+		return mm2;
+	}
+
+	public void setMm2(double mm2) {
+		this.mm2 = mm2;
 	}	
 }
