@@ -1,6 +1,7 @@
 package logic;
 
 import exceptions.DimensionerendeKraftEjDefineretException;
+import exceptions.NegativKgException;
 import exceptions.NormalkraftEjDefineretException;
 import exceptions.TvaerkraftEjDefineretException;
 import exceptions.VinkelEjDefineretException;
@@ -45,4 +46,6 @@ public interface PTECalculatorController {
 	public void setFtNewton(double ftNewton) throws TvaerkraftEjDefineretException, DimensionerendeKraftEjDefineretException;
 	
 	public void setFnNewton(double fnNewton) throws DimensionerendeKraftEjDefineretException;
+	
+	public boolean erVaegtNormal() throws NegativKgException;
 }

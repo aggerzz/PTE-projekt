@@ -5,6 +5,8 @@ public class DimensionerendekraftImpl implements Dimensionerendekraft {
 	double kg;
 	double newton;
 	String mellemRegning;
+	double oevreGraense;
+	double nedreGraense;
 
 	@Override
 	public double setNewton(double newton) {
@@ -36,5 +38,11 @@ public class DimensionerendekraftImpl implements Dimensionerendekraft {
 	@Override
 	public String getMellemRegning() {
 		return mellemRegning;
+	}
+
+	@Override
+	public boolean erVaegtNormal() {
+		if(nedreGraense<=kg && kg<=oevreGraense);
+		return true;
 	}
 }

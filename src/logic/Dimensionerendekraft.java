@@ -9,6 +9,6 @@ public interface Dimensionerendekraft {
 	public String getMellemRegning();
 	public static final double tyngdekraft = 9.816;
 	public double setNewton(double newton);
-	
+	public boolean erVaegtNormal();
 	
 }
