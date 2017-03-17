@@ -10,7 +10,7 @@ public class ForskydningsSpaendningImpl implements ForskydningsSpaendning {
 	public double tau = Double.NaN;
 	private String mellemregning;	
 	
-	public double beregnTau() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException{
+	public double beregnForskydningsspaendning() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException{
 		double ftNewton = ft.getNewton();
 		
 		mm2 = a.getMm2();

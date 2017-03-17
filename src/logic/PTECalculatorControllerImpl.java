@@ -14,6 +14,7 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 	private Normalkraft fn;
 	private ForskydningsSpaendning tau;
 	private PTEObserver observer;
+	private Normalspaending sigmaN;
 
 	@Override
 	public void beregnNormalkraft() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException {
@@ -76,8 +77,13 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 	}
 	
 	@Override
-	public double beregnTau() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException{
-		return tau.beregnTau();				
+	public double beregnForskydningsspaendning() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException{
+		return tau.beregnForskydningsspaendning();				
+	}
+	
+	@Override
+	public double beregnNormalspaending() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException{
+		return sigmaN.beregnNormalspaending();
 	}
 
 	@Override

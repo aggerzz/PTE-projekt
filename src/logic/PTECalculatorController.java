@@ -38,5 +38,7 @@ public interface PTECalculatorController {
 
 	public String getDimensionerendekraftMellemregning() throws DimensionerendeKraftEjDefineretException;
 	
-	public double beregnTau() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException;
+	public double beregnForskydningsspaendning() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException;
+	
+	public double beregnNormalspaending() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException;
 }
