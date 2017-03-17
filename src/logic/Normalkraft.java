@@ -12,4 +12,6 @@ public interface Normalkraft {
 	public double getNewton() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException;
 
 	public String getMellemregning() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException;
+	
+	public void setFnNewton(double fnNewton);
 }

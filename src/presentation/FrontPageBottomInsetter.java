@@ -5,6 +5,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 
 public class FrontPageBottomInsetter {
 	private TextField fdimTextField;
@@ -19,20 +20,21 @@ public class FrontPageBottomInsetter {
 	private TextArea mellemRegninger;
 
 	public GridPane insetButtom() {
+		SuperSubStringHBox superSubStringHBox = new SuperSubStringHBox();
 
 		GridPane buttomGrid = new GridPane();
 		buttomGrid.setPadding(new Insets(20, 20, 20, 20));
 		mellemRegninger = new TextArea();
 
-		Label fdimLabel = new Label("Fdim: ");
+		HBox fdimHBox = superSubStringHBox.generateSubHBox("F", "Dim");
 		fdimTextField = new TextField();
 		fdimTextField.setPromptText("Fdim");
-
-		Label ftLabel = new Label("Ft: ");
+		
+		HBox ftHBox = superSubStringHBox.generateSubHBox("F", "T");
 		ftTextField = new TextField();
 		ftTextField.setPromptText("Ft");
 
-		Label fnLabel = new Label("Fn: ");
+		HBox fnHBox = superSubStringHBox.generateSubHBox("F", "N");
 		fnTextField = new TextField();
 		fnTextField.setPromptText("Fn");
 
@@ -44,40 +46,47 @@ public class FrontPageBottomInsetter {
 		tauTextField = new TextField();
 		tauTextField.setPromptText("Tau");
 
-		Label sigmaNLabel = new Label("sigmaN: ");
+		HBox sigmaNHBox = superSubStringHBox.generateSubHBox("\u03C3", "N");
 		sigmaNTextField = new TextField();
 		sigmaNTextField.setPromptText("sigmaN");
 
-		Label sigmaBLabel = new Label("sigmaB: ");
+		HBox sigmaBHBox = superSubStringHBox.generateSubHBox("\u03C3", "B");
 		sigmaBTextField = new TextField();
 		sigmaBTextField.setPromptText("sigmaB");
 
-		Label sigmaRefLabel = new Label("sigmaRef: ");
+		HBox sigmaRefHBox = superSubStringHBox.generateSubHBox("\u03C3", "Ref");
 		sigmaRefTextField = new TextField();
 		sigmaRefTextField.setPromptText("sigmaRef");
 
 		Label sfLabel = new Label("SF: ");
 		sfTextField = new TextField();
 		sfTextField.setPromptText("SF");
+		
+		//Disable textfelterne som ikke bliver brugt endnu
+		tauTextField.setDisable(true);
+		sigmaNTextField.setDisable(true);
+		sigmaBTextField.setDisable(true);
+		sigmaRefTextField.setDisable(true);
+		sfTextField.setDisable(true);
 
 		// TODO mangler get og set motoder p�, MB - tau - sigmaN - sigmaB -
 		// sigmaRef - SF
 
-		buttomGrid.add(fdimLabel, 0, 0);
+		buttomGrid.add(fdimHBox, 0, 0);
 		buttomGrid.add(fdimTextField, 1, 0);
-		buttomGrid.add(ftLabel, 0, 1);
+		buttomGrid.add(ftHBox, 0, 1);
 		buttomGrid.add(ftTextField, 1, 1);
-		buttomGrid.add(fnLabel, 0, 2);
+		buttomGrid.add(fnHBox, 0, 2);
 		buttomGrid.add(fnTextField, 1, 2);
 		buttomGrid.add(mbLabel, 0, 3);
 		buttomGrid.add(mbTextField, 1, 3);
 		buttomGrid.add(tauLabel, 0, 4);
 		buttomGrid.add(tauTextField, 1, 4);
-		buttomGrid.add(sigmaNLabel, 0, 5);
+		buttomGrid.add(sigmaNHBox, 0, 5);
 		buttomGrid.add(sigmaNTextField, 1, 5);
-		buttomGrid.add(sigmaBLabel, 0, 6);
+		buttomGrid.add(sigmaBHBox, 0, 6);
 		buttomGrid.add(sigmaBTextField, 1, 6);
-		buttomGrid.add(sigmaRefLabel, 0, 7);
+		buttomGrid.add(sigmaRefHBox, 0, 7);
 		buttomGrid.add(sigmaRefTextField, 1, 7);
 		buttomGrid.add(sfLabel, 0, 8);
 		buttomGrid.add(sfTextField, 1, 8);

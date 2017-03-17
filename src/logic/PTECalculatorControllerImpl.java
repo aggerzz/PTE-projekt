@@ -194,5 +194,23 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 			throw new DimensionerendeKraftEjDefineretException();
 		return fdim.getMellemRegning();
 	}
+	
+	@Override
+	public void setFtNewton(double ftNewton) throws TvaerkraftEjDefineretException, DimensionerendeKraftEjDefineretException{
+		ft = new TvaerkraftImpl();
+
+		ft.setFtNewton(ftNewton);
+
+		notifyObservers();
+	}
+	
+	@Override
+	public void setFnNewton(double fnNewton) throws DimensionerendeKraftEjDefineretException {
+		fn = new NormalkraftImpl();
+		fn.setFnNewton(fnNewton);
+		
+		notifyObservers();
+	}
+	
 
 }
