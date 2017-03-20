@@ -1,6 +1,9 @@
 package logic;
 
+import exceptions.ArealEjDefineretException;
 import exceptions.DimensionerendeKraftEjDefineretException;
+import exceptions.NegativKgException;
+import exceptions.ForskydningsspaendingEjDefineretException;
 import exceptions.NormalkraftEjDefineretException;
 import exceptions.TvaerkraftEjDefineretException;
 import exceptions.VinkelEjDefineretException;
@@ -38,11 +41,13 @@ public interface PTECalculatorController {
 
 	public String getDimensionerendekraftMellemregning() throws DimensionerendeKraftEjDefineretException;
 	
-	public double beregnForskydningsspaendning() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException;
+	public double beregnForskydningsspaendning() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException, ForskydningsspaendingEjDefineretException, ArealEjDefineretException, TvaerkraftEjDefineretException;
 	
 	public double beregnNormalspaending() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException;
 	
 	public void setFtNewton(double ftNewton) throws TvaerkraftEjDefineretException, DimensionerendeKraftEjDefineretException;
 	
 	public void setFnNewton(double fnNewton) throws DimensionerendeKraftEjDefineretException;
+	
+	public boolean erVaegtNormal() throws NegativKgException;
 }
