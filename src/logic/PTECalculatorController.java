@@ -2,6 +2,7 @@ package logic;
 
 import exceptions.ArealEjDefineretException;
 import exceptions.DimensionerendeKraftEjDefineretException;
+import exceptions.NegativKgException;
 import exceptions.ForskydningsspaendingEjDefineretException;
 import exceptions.NegativArealException;
 import exceptions.NormalkraftEjDefineretException;
@@ -49,7 +50,7 @@ public interface PTECalculatorController {
 	
 	public void setFnNewton(double fnNewton) throws DimensionerendeKraftEjDefineretException;
 
-	public void angivAreal(double mm2) throws NegativArealException;
+  public void angivAreal(double mm2) throws NegativArealException;
 	
 	public double getAreal() throws ArealEjDefineretException;
 
@@ -58,5 +59,9 @@ public interface PTECalculatorController {
 	public double getForskydningsspaending() throws ForskydningsspaendingEjDefineretException, ArealEjDefineretException, TvaerkraftEjDefineretException, DimensionerendeKraftEjDefineretException, VinkelEjDefineretException;
 
 	public void setForskydningsspaending(double nMm2);
+  
+  public boolean erVaegtNormal() 
+    
+  //throws NegativKgException;
 
 }
