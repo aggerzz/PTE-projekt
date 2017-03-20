@@ -1,14 +1,11 @@
 package presentation;
 
-
-
 import java.text.DecimalFormat;
-import java.text.NumberFormat;
-
 import exceptions.ArealEjDefineretException;
 import exceptions.DimensionerendeKraftEjDefineretException;
 import exceptions.ForskydningsspaendingEjDefineretException;
 import exceptions.NormalkraftEjDefineretException;
+import exceptions.NormalspaendingEjDefineretException;
 import exceptions.TvaerkraftEjDefineretException;
 import exceptions.VinkelEjDefineretException;
 import logic.PTECalculatorController;
@@ -83,12 +80,22 @@ public class PTEObserverImpl implements PTEObserver {
 				| VinkelEjDefineretException  e1) {
 			frontPageMediator.getTauTextField().clear();
 			
-		}		
+		}	
 		
+		try {
+			double normalspaending = pteCalc.getNormalspaending();
+			String normalspaendingText = formatter.format(normalspaending);
+			
+			frontPageMediator.getSigmaNTextField().setText(normalspaendingText);
+			String normalspaendingMellemregning = pteCalc.getNormalspaendingMellemregning();
+			frontPageMediator.getMellemRegninger().appendText(normalspaendingMellemregning);
+		} catch (NormalspaendingEjDefineretException | DimensionerendeKraftEjDefineretException
+				| VinkelEjDefineretException  e1) {
+			frontPageMediator.getSigmaNTextField().clear();			
+		}				
 	}		
 
 	public PTECalculatorController getPteCalc() {
 		return pteCalc;
 	}
-
 }
