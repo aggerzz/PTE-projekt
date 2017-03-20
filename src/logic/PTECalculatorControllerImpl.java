@@ -2,6 +2,7 @@ package logic;
 
 import exceptions.ArealEjDefineretException;
 import exceptions.DimensionerendeKraftEjDefineretException;
+import exceptions.NegativKgException;
 import exceptions.ForskydningsspaendingEjDefineretException;
 import exceptions.NegativArealException;
 import exceptions.NormalkraftEjDefineretException;
@@ -225,6 +226,13 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 		fn.setFnNewton(fnNewton);
 		
 		notifyObservers();
+	}
+
+	@Override
+	public boolean erVaegtNormal() throws NegativKgException {
+		fdim = new DimensionerendekraftImpl();
+		
+		return false;
 	}
 	
 	@Override
