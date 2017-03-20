@@ -1,11 +1,15 @@
 package logic;
 
+import exceptions.ArealEjDefineretException;
 import exceptions.DimensionerendeKraftEjDefineretException;
+import exceptions.ForskydningsspaendingEjDefineretException;
+import exceptions.TvaerkraftEjDefineretException;
 import exceptions.VinkelEjDefineretException;
 
 public interface ForskydningsSpaendning {
 	
-	public double beregnForskydningsspaendning() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException;
-	public void setMellemregning(String mellemregning);
 	public String getMellemregning();
+	public void angivTvaerkraft(Tvaerkraft ft) throws ForskydningsspaendingEjDefineretException;
+	public void angivAreal(Areal a) throws ArealEjDefineretException;
+	public double getNmm2() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException, ForskydningsspaendingEjDefineretException, ArealEjDefineretException, TvaerkraftEjDefineretException;
 }

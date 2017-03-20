@@ -1,7 +1,9 @@
 package logic;
 
+import exceptions.ArealEjDefineretException;
 import exceptions.DimensionerendeKraftEjDefineretException;
 import exceptions.NegativKgException;
+import exceptions.ForskydningsspaendingEjDefineretException;
 import exceptions.NormalkraftEjDefineretException;
 import exceptions.TvaerkraftEjDefineretException;
 import exceptions.VinkelEjDefineretException;
@@ -78,8 +80,8 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 	}
 	
 	@Override
-	public double beregnForskydningsspaendning() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException{
-		return tau.beregnForskydningsspaendning();				
+	public double beregnForskydningsspaendning() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException, ForskydningsspaendingEjDefineretException, ArealEjDefineretException, TvaerkraftEjDefineretException {
+		return tau.getNmm2();				
 	}
 	
 	@Override
