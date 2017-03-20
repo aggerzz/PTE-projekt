@@ -1,6 +1,8 @@
 package logic;
 
+import exceptions.ArealEjDefineretException;
 import exceptions.DimensionerendeKraftEjDefineretException;
+import exceptions.ForskydningsspaendingEjDefineretException;
 import exceptions.NormalkraftEjDefineretException;
 import exceptions.TvaerkraftEjDefineretException;
 import exceptions.VinkelEjDefineretException;
@@ -38,7 +40,7 @@ public interface PTECalculatorController {
 
 	public String getDimensionerendekraftMellemregning() throws DimensionerendeKraftEjDefineretException;
 	
-	public double beregnForskydningsspaendning() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException;
+	public double beregnForskydningsspaendning() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException, ForskydningsspaendingEjDefineretException, ArealEjDefineretException, TvaerkraftEjDefineretException;
 	
 	public double beregnNormalspaending() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException;
 	

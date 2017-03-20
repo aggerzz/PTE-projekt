@@ -1,25 +1,16 @@
 package logic;
 
+import exceptions.ArealEjDefineretException;
 import exceptions.DimensionerendeKraftEjDefineretException;
+import exceptions.ForskydningsspaendingEjDefineretException;
 import exceptions.VinkelEjDefineretException;
 
 public class ForskydningsSpaendningImpl implements ForskydningsSpaendning {
-	private Areal a = new ArealImpl();
-	private Tvaerkraft ft = new TvaerkraftImpl();
-	private double mm2 = Double.NaN;
-	public double tau = Double.NaN;
+	private Areal a ;
+	private Tvaerkraft ft ;
 	private String mellemregning;	
 	
-	public double beregnForskydningsspaendning() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException{
-		double ftNewton = ft.getNewton();
-		
-		mm2 = a.getMm2();
-		tau = ftNewton / mm2;
-		setMellemregning("Tau = Ft / A = " + "\n" + ftNewton / mm2);
-		return tau ;		
-	}
-	
-	public void setMellemregning(String mellemregning){
+	private void setMellemregning(String mellemregning){
 		this.mellemregning = mellemregning;
 	}
 	
@@ -27,19 +18,28 @@ public class ForskydningsSpaendningImpl implements ForskydningsSpaendning {
 		return mellemregning;
 	}
 
-	public Tvaerkraft getFt() {
-		return ft;
+	public void angivTvaerkraft(Tvaerkraft ft) throws ForskydningsspaendingEjDefineretException{
+		if (ft != null) {
+			this.ft = ft;
+		}		
 	}
-
-	public void setFt(Tvaerkraft ft) {
-		this.ft = ft;
+	
+	public void angivAreal(Areal a) throws ArealEjDefineretException{
+		
+		if (a != null) {
+			this.a=a;			
+		}		
 	}
-
-	public double getMm2() {
-		return mm2;
+	
+	public double getNmm2() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException, ForskydningsspaendingEjDefineretException, ArealEjDefineretException{
+		if(ft == null || a == null) {
+			throw new ForskydningsspaendingEjDefineretException();
+		}		
+		
+		double ftNewton = ft.getNewton();
+		
+		double mm2 = a.getMm2();
+		double tau = ftNewton / mm2;
+		setMellemregning("Tau = Ft / A = " + "\n" + ftNewton / mm2);		return tau ;		
 	}
-
-	public void setMm2(double mm2) {
-		this.mm2 = mm2;
-	}	
 }
