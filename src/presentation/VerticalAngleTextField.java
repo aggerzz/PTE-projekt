@@ -9,7 +9,7 @@ import observers.AngleObserver;
 
 public class VerticalAngleTextField extends TextField{
 	public VerticalAngleTextField () {
-		this.setPromptText("vertical angle");
+		this.setPromptText("Vertical angle");
 		this.setMaxSize(150, 20);
 		
 		this.setOnKeyReleased(e->{

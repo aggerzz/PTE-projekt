@@ -5,7 +5,9 @@ package presentation;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 
+import exceptions.ArealEjDefineretException;
 import exceptions.DimensionerendeKraftEjDefineretException;
+import exceptions.ForskydningsspaendingEjDefineretException;
 import exceptions.NormalkraftEjDefineretException;
 import exceptions.TvaerkraftEjDefineretException;
 import exceptions.VinkelEjDefineretException;
@@ -48,7 +50,7 @@ public class PTEObserverImpl implements PTEObserver {
 			frontPageMediator.getFtTextField().clear();
 		}
 		
-		try {
+		try {			
 			double normalkraft = pteCalc.getNormalkraft();
 			String normalkraftText = formatter.format(normalkraft);
 			frontPageMediator.getFnTextField().setText(normalkraftText);
@@ -57,7 +59,23 @@ public class PTEObserverImpl implements PTEObserver {
 		} catch (NormalkraftEjDefineretException | DimensionerendeKraftEjDefineretException
 				| VinkelEjDefineretException e1) {
 			frontPageMediator.getFnTextField().clear();
-		}
+		}	
+		
+		try {
+			System.out.println("test2");
+			double forskydningsspaending = pteCalc.getForskydningsspaending();
+			System.out.println("forskydningsspaending = " +forskydningsspaending);
+			String forskydningsspaendingText = formatter.format(forskydningsspaending);
+			
+			frontPageMediator.getTauTextField().setText(forskydningsspaendingText);
+			String forskydningsspaendingMellemregning = pteCalc.getForskydningsspaendingMellemregning();
+			frontPageMediator.getMellemRegninger().appendText(forskydningsspaendingMellemregning);
+		} catch (ForskydningsspaendingEjDefineretException | TvaerkraftEjDefineretException | ArealEjDefineretException| DimensionerendeKraftEjDefineretException
+				| VinkelEjDefineretException  e1) {
+			frontPageMediator.getTauTextField().clear();
+			
+		}		
+		
 	}		
 
 	public PTECalculatorController getPteCalc() {

@@ -4,6 +4,7 @@ import exceptions.ArealEjDefineretException;
 import exceptions.DimensionerendeKraftEjDefineretException;
 import exceptions.NegativKgException;
 import exceptions.ForskydningsspaendingEjDefineretException;
+import exceptions.NegativArealException;
 import exceptions.NormalkraftEjDefineretException;
 import exceptions.TvaerkraftEjDefineretException;
 import exceptions.VinkelEjDefineretException;
@@ -21,7 +22,7 @@ public interface PTECalculatorController {
 
 	public void angivVaegt(double Kg) throws DimensionerendeKraftEjDefineretException;
 
-	public void notifyObservers() throws DimensionerendeKraftEjDefineretException;
+	public void notifyObservers();
 
 	public double getVinkel() throws VinkelEjDefineretException;
 
@@ -41,13 +42,26 @@ public interface PTECalculatorController {
 
 	public String getDimensionerendekraftMellemregning() throws DimensionerendeKraftEjDefineretException;
 	
-	public double beregnForskydningsspaendning() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException, ForskydningsspaendingEjDefineretException, ArealEjDefineretException, TvaerkraftEjDefineretException;
+	public void beregnForskydningsspaendning() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException, ForskydningsspaendingEjDefineretException, ArealEjDefineretException, TvaerkraftEjDefineretException;
 	
 	public double beregnNormalspaending() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException;
 	
 	public void setFtNewton(double ftNewton) throws TvaerkraftEjDefineretException, DimensionerendeKraftEjDefineretException;
 	
 	public void setFnNewton(double fnNewton) throws DimensionerendeKraftEjDefineretException;
+
+  public void angivAreal(double mm2) throws NegativArealException;
 	
-	public boolean erVaegtNormal() throws NegativKgException;
+	public double getAreal() throws ArealEjDefineretException;
+
+	public String getForskydningsspaendingMellemregning() throws ForskydningsspaendingEjDefineretException;
+
+	public double getForskydningsspaending() throws ForskydningsspaendingEjDefineretException, ArealEjDefineretException, TvaerkraftEjDefineretException, DimensionerendeKraftEjDefineretException, VinkelEjDefineretException;
+
+	public void setForskydningsspaending(double nMm2);
+  
+  public boolean erVaegtNormal() 
+    
+  //throws NegativKgException;
+
 }
