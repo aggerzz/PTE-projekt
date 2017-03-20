@@ -176,18 +176,18 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 		this.vinkel.setGrader(vinkel);
 		this.vinkel.setMaaltTilLodret(MaaltTilLodret);
 		
-		try {
-			beregnTvaerkraft();
-		} catch (DimensionerendeKraftEjDefineretException | VinkelEjDefineretException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			beregnNormalkraft();
-		} catch (DimensionerendeKraftEjDefineretException | VinkelEjDefineretException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try {
+//			beregnTvaerkraft();
+//		} catch (DimensionerendeKraftEjDefineretException | VinkelEjDefineretException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		try {
+//			beregnNormalkraft();
+//		} catch (DimensionerendeKraftEjDefineretException | VinkelEjDefineretException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		
 		notifyObservers();
 	}
@@ -245,7 +245,6 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 		if (a == null) {
 			throw new ArealEjDefineretException();
 		}	
-		System.out.println("Opret tau");
 		tau = new ForskydningsSpaendningImpl();				
 		tau.angivTvaerkraft(ft);
 		tau.angivAreal(a);
@@ -256,18 +255,14 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 	
 	@Override
 	public double getForskydningsspaending() throws ForskydningsspaendingEjDefineretException, ArealEjDefineretException, DimensionerendeKraftEjDefineretException, VinkelEjDefineretException, TvaerkraftEjDefineretException {
-//		System.out.println("getForskydningsspaending()");
-		if (tau == null) {
-			System.out.println("getForskydningsspaending()");
+
+		if (tau == null) {			
 			throw new ForskydningsspaendingEjDefineretException();
 
-		}
-		System.out.println(tau.getNmm2());
+		}		
 		double tauMm2 = tau.getNmm2();
-		System.out.println("Tau = " + tauMm2);
-
-		return tauMm2;
 		
+		return tauMm2;		
 	}
 	
 	@Override

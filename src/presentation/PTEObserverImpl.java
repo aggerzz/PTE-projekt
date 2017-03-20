@@ -59,12 +59,21 @@ public class PTEObserverImpl implements PTEObserver {
 		} catch (NormalkraftEjDefineretException | DimensionerendeKraftEjDefineretException
 				| VinkelEjDefineretException e1) {
 			frontPageMediator.getFnTextField().clear();
-		}	
+		}
 		
+//		try {
+//			double areal = pteCalc.getAreal();
+//			String arealText = formatter.format(areal); //TODO formater til 3 decimaler
+//			frontPageMediator.getArealText().setText(arealText );
+//
+//			
+//		} catch (ArealEjDefineretException e1) {
+//			frontPageMediator.getArealText().clear();
+//			
+//		}		
+		 
 		try {
-			System.out.println("test2");
 			double forskydningsspaending = pteCalc.getForskydningsspaending();
-			System.out.println("forskydningsspaending = " +forskydningsspaending);
 			String forskydningsspaendingText = formatter.format(forskydningsspaending);
 			
 			frontPageMediator.getTauTextField().setText(forskydningsspaendingText);
