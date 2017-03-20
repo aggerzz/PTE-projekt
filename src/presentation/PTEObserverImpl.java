@@ -71,7 +71,7 @@ public class PTEObserverImpl implements PTEObserver {
 //			frontPageMediator.getArealText().clear();
 //			
 //		}		
-		
+		 
 		try {
 			double forskydningsspaending = pteCalc.getForskydningsspaending();
 			String forskydningsspaendingText = formatter.format(forskydningsspaending);
