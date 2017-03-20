@@ -3,7 +3,11 @@ package presentation;
 import java.util.ArrayList;
 import java.util.List;
 
+import exceptions.ArealEjDefineretException;
 import exceptions.DimensionerendeKraftEjDefineretException;
+import exceptions.ForskydningsspaendingEjDefineretException;
+import exceptions.TvaerkraftEjDefineretException;
+import exceptions.VinkelEjDefineretException;
 import javafx.collections.FXCollections;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
@@ -41,6 +45,25 @@ public class WeightHBox extends HBox {
 			} catch (DimensionerendeKraftEjDefineretException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
+			}
+			
+			try {
+				FrontPage.frontPageMediator.getObserver().getPteCalc().beregnNormalkraft();
+			} catch (DimensionerendeKraftEjDefineretException | VinkelEjDefineretException e2) {
+				// Gør ingen ting
+			}
+			try {
+				FrontPage.frontPageMediator.getObserver().getPteCalc().beregnTvaerkraft();
+			} catch (DimensionerendeKraftEjDefineretException | VinkelEjDefineretException e2) {
+				// Gør ingen ting
+			}
+
+			try {
+				FrontPage.frontPageMediator.getObserver().getPteCalc().beregnForskydningsspaendning();
+			} catch (DimensionerendeKraftEjDefineretException | VinkelEjDefineretException
+					| ForskydningsspaendingEjDefineretException | ArealEjDefineretException
+					| TvaerkraftEjDefineretException e1) {
+				// Gør ingen ting
 			}
 		});
 	}
