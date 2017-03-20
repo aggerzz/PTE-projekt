@@ -3,6 +3,7 @@ package logic;
 import exceptions.ArealEjDefineretException;
 import exceptions.DimensionerendeKraftEjDefineretException;
 import exceptions.ForskydningsspaendingEjDefineretException;
+import exceptions.NegativArealException;
 import exceptions.NormalkraftEjDefineretException;
 import exceptions.TvaerkraftEjDefineretException;
 import exceptions.VinkelEjDefineretException;
@@ -17,6 +18,7 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 	private ForskydningsSpaendning tau;
 	private PTEObserver observer;
 	private Normalspaending sigmaN;
+	private Areal a;
 
 	@Override
 	public void beregnNormalkraft() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException {
@@ -45,7 +47,6 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 
 		if (fn == null) {
 			throw new NormalkraftEjDefineretException();
-
 		}
 
 		double fnNewton = fn.getNewton();
@@ -64,10 +65,9 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 		}
 
 		String normalkraftMellemregning = fn.getMellemregning();
-
 		return normalkraftMellemregning;
 
-	}
+	}	
 
 	@Override
 	public void angivVaegt(double kg) throws DimensionerendeKraftEjDefineretException {
@@ -79,9 +79,22 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 	}
 	
 	@Override
-	public double beregnForskydningsspaendning() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException, ForskydningsspaendingEjDefineretException, ArealEjDefineretException, TvaerkraftEjDefineretException {
-		return tau.getNmm2();				
+	public double getAreal() throws ArealEjDefineretException{
+		if(a == null){
+			throw new ArealEjDefineretException();
+		}
+		return a.getMm2();
 	}
+	
+	@Override
+	public void angivAreal(double mm2) throws NegativArealException {
+		if (this.a == null) {
+			this.a = new ArealImpl();
+		}
+		this.a.setMm2(mm2);
+
+		notifyObservers();
+	}	
 	
 	@Override
 	public double beregnNormalspaending() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException{
@@ -89,7 +102,7 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 	}
 
 	@Override
-	public void notifyObservers() throws DimensionerendeKraftEjDefineretException {
+	public void notifyObservers() {
 
 		if (observer != null) {
 			observer.update();
@@ -214,5 +227,62 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 		notifyObservers();
 	}
 	
+	@Override
+	public void beregnForskydningsspaendning() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException, ForskydningsspaendingEjDefineretException, ArealEjDefineretException, TvaerkraftEjDefineretException {
+		
+		if (ft == null) {
+			throw new TvaerkraftEjDefineretException();
+		}
 
+		if (a == null) {
+			throw new ArealEjDefineretException();
+		}	
+		System.out.println("Opret tau");
+		tau = new ForskydningsSpaendningImpl();				
+		tau.angivTvaerkraft(ft);
+		tau.angivAreal(a);
+		
+		notifyObservers();			
+	}
+	
+	
+	@Override
+	public double getForskydningsspaending() throws ForskydningsspaendingEjDefineretException, ArealEjDefineretException, DimensionerendeKraftEjDefineretException, VinkelEjDefineretException, TvaerkraftEjDefineretException {
+//		System.out.println("getForskydningsspaending()");
+		if (tau == null) {
+			System.out.println("getForskydningsspaending()");
+			throw new ForskydningsspaendingEjDefineretException();
+
+		}
+		System.out.println(tau.getNmm2());
+		double tauMm2 = tau.getNmm2();
+		System.out.println("Tau = " + tauMm2);
+
+		return tauMm2;
+		
+	}
+	
+	@Override
+	public String getForskydningsspaendingMellemregning() throws ForskydningsspaendingEjDefineretException  {
+
+		if (tau == null) {
+			throw new ForskydningsspaendingEjDefineretException();
+
+		}
+
+		String forskydningsspaendingMellemregning = tau.getMellemregning();
+
+		return forskydningsspaendingMellemregning;
+
+	}
+	
+	@Override
+	public void setForskydningsspaending (double nMm2) {
+		tau = new ForskydningsSpaendningImpl();
+		tau.setNmm2(nMm2);
+		
+		notifyObservers();
+	}
+	
+	
 }
