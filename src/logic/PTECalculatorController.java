@@ -26,7 +26,8 @@ public interface PTECalculatorController {
 
 	public double getVinkel() throws VinkelEjDefineretException;
 
-	public void angivVinkel(double vinkel, boolean maaltTilLodret) throws erUnderFejlgraenseException, DimensionerendeKraftEjDefineretException;
+	public void angivVinkel(double vinkel, boolean maaltTilLodret)
+			throws erUnderFejlgraenseException, DimensionerendeKraftEjDefineretException;
 
 	public void beregnTvaerkraft() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException;
 
@@ -37,31 +38,34 @@ public interface PTECalculatorController {
 			throws TvaerkraftEjDefineretException, DimensionerendeKraftEjDefineretException, VinkelEjDefineretException;
 
 	public void tilmeldObserver(PTEObserver observer);
-	
+
 	public double getDimensionerendekraft() throws DimensionerendeKraftEjDefineretException;
 
 	public String getDimensionerendekraftMellemregning() throws DimensionerendeKraftEjDefineretException;
-	
-	public void beregnForskydningsspaendning() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException, ForskydningsspaendingEjDefineretException, ArealEjDefineretException, TvaerkraftEjDefineretException;
-	
+
+	public void beregnForskydningsspaendning()
+			throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException,
+			ForskydningsspaendingEjDefineretException, ArealEjDefineretException, TvaerkraftEjDefineretException;
+
 	public double beregnNormalspaending() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException;
-	
-	public void setFtNewton(double ftNewton) throws TvaerkraftEjDefineretException, DimensionerendeKraftEjDefineretException;
-	
+
+	public void setFtNewton(double ftNewton)
+			throws TvaerkraftEjDefineretException, DimensionerendeKraftEjDefineretException;
+
 	public void setFnNewton(double fnNewton) throws DimensionerendeKraftEjDefineretException;
 
-  public void angivAreal(double mm2) throws NegativArealException;
-	
+	public void angivAreal(double mm2) throws NegativArealException;
+
 	public double getAreal() throws ArealEjDefineretException;
 
 	public String getForskydningsspaendingMellemregning() throws ForskydningsspaendingEjDefineretException;
 
-	public double getForskydningsspaending() throws ForskydningsspaendingEjDefineretException, ArealEjDefineretException, TvaerkraftEjDefineretException, DimensionerendeKraftEjDefineretException, VinkelEjDefineretException;
+	public double getForskydningsspaending()
+			throws ForskydningsspaendingEjDefineretException, ArealEjDefineretException, TvaerkraftEjDefineretException,
+			DimensionerendeKraftEjDefineretException, VinkelEjDefineretException;
 
 	public void setForskydningsspaending(double nMm2);
-  
-  public boolean erVaegtNormal() 
-    
-  //throws NegativKgException;
+
+	public boolean erVaegtNormal() throws NegativKgException;
 
 }
