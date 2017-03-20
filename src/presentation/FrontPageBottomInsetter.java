@@ -63,8 +63,8 @@ public class FrontPageBottomInsetter {
 		sfTextField.setPromptText("SF");
 		
 		//Disable textfelterne som ikke bliver brugt endnu
-		tauTextField.setDisable(true);
-		sigmaNTextField.setDisable(true);
+//		tauTextField.setDisable(true);
+//		sigmaNTextField.setDisable(true);
 		sigmaBTextField.setDisable(true);
 		sigmaRefTextField.setDisable(true);
 		sfTextField.setDisable(true);
@@ -138,11 +138,11 @@ public class FrontPageBottomInsetter {
 		mbTextField = MbTextField;
 	}
 
-	public TextField gettauTextField() {
+	public TextField getTauTextField() {
 		return tauTextField;
 	}
 
-	public void settauTextField(TextField TauTextField) {
+	public void setTauTextField(TextField TauTextField) {
 		tauTextField = TauTextField;
 	}
 
@@ -155,7 +155,7 @@ public class FrontPageBottomInsetter {
 	}
 
 	public TextField getSigmaBTextField() {
-		return tauTextField;
+		return sigmaBTextField;
 	}
 
 	public void setSigmaBTextField(TextField SigmaBTextField) {
@@ -167,7 +167,7 @@ public class FrontPageBottomInsetter {
 	}
 
 	public void setSigmaRefTextField(TextField SigmaRefTextField) {
-		tauTextField = SigmaRefTextField;
+		sigmaRefTextField = SigmaRefTextField;
 	}
 
 	public TextField getSFTextField() {

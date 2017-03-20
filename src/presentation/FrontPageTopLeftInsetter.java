@@ -12,6 +12,7 @@ import javafx.scene.layout.StackPane;
 public class FrontPageTopLeftInsetter {
 	TextField horizontalAngle;
 	TextField verticalAngle;
+	TextField areal;
 	WeightHBox weightHBox;
 	ComboBox<String> weightUnit;
 	Canvas triangle;
@@ -30,6 +31,7 @@ public class FrontPageTopLeftInsetter {
 
 		horizontalAngle = new HorizontalAngleTextField();
 		verticalAngle = new VerticalAngleTextField();
+		areal = new ArealTextField();
 		weightHBox = new WeightHBox();
 		
 		//for at få verticalAngle textFeltet på linje med trekanten
@@ -37,6 +39,8 @@ public class FrontPageTopLeftInsetter {
 		verticalGrid.setGridLinesVisible(true);
 		verticalGrid.add(verticalAngle, 0, 1);
 		verticalGrid.setPadding(new Insets(125, 0, 0, 0));
+		
+		verticalGrid.add(areal, 1, 1);
 		
 		beregnerGrid.add(horizontalAngle, 0, 0);
 		beregnerGrid.add(weightHBox, 1, 0);
@@ -61,6 +65,14 @@ public class FrontPageTopLeftInsetter {
 
 	public void setVerticalAngle(TextField verticalAngle) {
 		this.verticalAngle = verticalAngle;
+	}
+	
+	public TextField getAreal() {
+		return areal;
+	}
+
+	public void setAreal(TextField areal) {
+		this.areal = areal;
 	}
 
 	public WeightHBox getWeightValueHBox() {
