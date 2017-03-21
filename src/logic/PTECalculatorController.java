@@ -2,13 +2,16 @@ package logic;
 
 import exceptions.ArealEjDefineretException;
 import exceptions.DimensionerendeKraftEjDefineretException;
+import exceptions.FlydeSpaendingEjDefineretException;
 import exceptions.NegativKgException;
 import exceptions.ForskydningsspaendingEjDefineretException;
 import exceptions.NegativArealException;
 import exceptions.NormalkraftEjDefineretException;
+import exceptions.ReferenceSpaendingEjDefineretException;
 import exceptions.NormalspaendingEjDefineretException;
 import exceptions.TvaerkraftEjDefineretException;
 import exceptions.VinkelEjDefineretException;
+import exceptions.angivBoejningsspaendingEjDefineretException;
 import exceptions.erUnderFejlgraenseException;
 
 public interface PTECalculatorController {
@@ -21,7 +24,7 @@ public interface PTECalculatorController {
 	String getNormalkraftMellemregning() throws NormalkraftEjDefineretException,
 			DimensionerendeKraftEjDefineretException, VinkelEjDefineretException;
 
-	public void angivVaegt(double Kg) throws DimensionerendeKraftEjDefineretException;
+	public void angivVaegt(double vaerdi, Enhed enhed) throws DimensionerendeKraftEjDefineretException;
 
 	public void notifyObservers();
 
@@ -54,6 +57,8 @@ public interface PTECalculatorController {
 			throws TvaerkraftEjDefineretException, DimensionerendeKraftEjDefineretException;
 
 	public void setFnNewton(double fnNewton) throws DimensionerendeKraftEjDefineretException;
+	
+	public void beregnSikkerhedsFaktor() throws ReferenceSpaendingEjDefineretException, FlydeSpaendingEjDefineretException;
 
 	public void angivAreal(double mm2) throws NegativArealException;
 
@@ -74,5 +79,10 @@ public interface PTECalculatorController {
 	double getNormalspaending() throws NormalspaendingEjDefineretException, DimensionerendeKraftEjDefineretException, VinkelEjDefineretException;
 
 	String getNormalspaendingMellemregning() throws NormalspaendingEjDefineretException;
+	
+	public void beregnSigmaRef() throws NormalspaendingEjDefineretException, angivBoejningsspaendingEjDefineretException, ForskydningsspaendingEjDefineretException;
+	public double getSigmaRef() throws ReferenceSpaendingEjDefineretException;
+	public String ReferenceSpaendingGetMellemRegning() throws ReferenceSpaendingEjDefineretException;
+	public void setReferenceSpaending(double sigmaRefNmm2);
 
 }

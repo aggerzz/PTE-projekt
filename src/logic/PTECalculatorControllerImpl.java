@@ -2,13 +2,16 @@ package logic;
 
 import exceptions.ArealEjDefineretException;
 import exceptions.DimensionerendeKraftEjDefineretException;
-import exceptions.NegativKgException;
+import exceptions.FlydeSpaendingEjDefineretException;
 import exceptions.ForskydningsspaendingEjDefineretException;
 import exceptions.NegativArealException;
+import exceptions.NegativKgException;
 import exceptions.NormalkraftEjDefineretException;
 import exceptions.NormalspaendingEjDefineretException;
+import exceptions.ReferenceSpaendingEjDefineretException;
 import exceptions.TvaerkraftEjDefineretException;
 import exceptions.VinkelEjDefineretException;
+import exceptions.angivBoejningsspaendingEjDefineretException;
 import exceptions.erUnderFejlgraenseException;
 
 public class PTECalculatorControllerImpl implements PTECalculatorController {
@@ -20,7 +23,22 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 	private ForskydningsSpaendning tau;
 	private PTEObserver observer;
 	private Normalspaending sigmaN;
+	private FlydeSpaending sigmaTill;
+	private Referencespaending sigmaRef;
 	private Areal a;
+	@Override
+	public void beregnSikkerhedsFaktor() throws ReferenceSpaendingEjDefineretException, FlydeSpaendingEjDefineretException{
+		SikkerhedsFaktor sf = new SikkerhedsFaktorImpl();
+		sf.angivFlydeSpaending(sigmaTill);
+		sf.angivReferencespaending(sigmaRef);
+		try {
+			notifyObservers();
+		} catch (DimensionerendeKraftEjDefineretException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 
 	@Override
 	public void beregnNormalkraft() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException {
@@ -72,10 +90,10 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 	}	
 
 	@Override
-	public void angivVaegt(double kg) throws DimensionerendeKraftEjDefineretException {
+	public void angivVaegt(double vaegt, Enhed enhed) throws DimensionerendeKraftEjDefineretException {
 		fdim = new DimensionerendekraftImpl();
 
-		fdim.setKg(kg);
+		fdim.setVaegt(vaegt,enhed);
 
 		notifyObservers();
 	}
@@ -327,5 +345,65 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 
 		String normalspaendingMellemregning = sigmaN.getMellemregning();
 		return normalspaendingMellemregning;
-	}	
+	}
+
+
+	@Override
+	public void beregnSigmaRef() throws NormalspaendingEjDefineretException,
+			angivBoejningsspaendingEjDefineretException, ForskydningsspaendingEjDefineretException {
+		if (sigmaN == null) {
+			throw new NormalspaendingEjDefineretException();
+		}
+		if (sigmaB == null) {//TODO sigmaB ikke implamenteret (SA)
+			throw new angivBoejningsspaendingEjDefineretException();
+		}
+		if(tau == null){
+			throw new ForskydningsspaendingEjDefineretException();
+		}
+
+		sigmaRef = new ReferencespaendingImpl();
+
+		sigmaRef.angivBoejningsspaending(sigmaB);
+
+		sigmaRef.angivForskydsningsspaending(tau);
+		
+		sigmaRef.angivNormalspaending(sigmaN);
+		
+		notifyObservers();
+	}
+
+
+	@Override
+	public double getSigmaRef() throws ReferenceSpaendingEjDefineretException {
+		if (sigmaRef == null) {
+			throw new ReferenceSpaendingEjDefineretException();
+		}
+
+		double sigmaRefNmm2 = sigmaRef.getSigmaRef();
+
+		return sigmaRefNmm2;
+
+	}
+
+
+	@Override
+	public String ReferenceSpaendingGetMellemRegning() throws ReferenceSpaendingEjDefineretException {
+		if (sigmaRef == null) {
+			throw new ReferenceSpaendingEjDefineretException();
+
+		}
+
+		String referenceSpaendingMellemregning = sigmaRef.GetMellemRegning();
+
+		return referenceSpaendingMellemregning;
+
+	}
+	@Override
+	public void setReferenceSpaending(double sigmaRefNmm2){
+		sigmaRef = new ReferencespaendingImpl();
+		sigmaRef.setSigmaRefNmm2(sigmaRefNmm2);
+		
+		notifyObservers();
+	}
+		
 }

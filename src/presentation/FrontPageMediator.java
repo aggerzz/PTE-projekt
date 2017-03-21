@@ -4,6 +4,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import logic.Enhed;
 import logic.PTEObserver;
 
 public class FrontPageMediator {
@@ -46,7 +47,7 @@ public class FrontPageMediator {
 		return frontPageTopLeft.getWeightValueHBox().getWeightTextField();
 	}
 
-	public ComboBox<String> getWeightUnitComboBox() {
+	public ComboBox<Enhed> getWeightUnitComboBox() {
 		return frontPageTopLeft.getWeightValueHBox().getUnit();
 	}
 
