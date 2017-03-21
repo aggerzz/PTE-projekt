@@ -15,7 +15,7 @@ import observers.AngleObserver;
 
 public class HorizontalAngleTextField extends TextField {
 	public HorizontalAngleTextField() {
-		this.setPromptText("Vandret vinkel");
+		this.setPromptText("Lodret vinkel");
 		this.setMaxSize(150, 20);
 		this.setOnKeyReleased(e -> {
 			try {
