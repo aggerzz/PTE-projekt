@@ -1,15 +1,11 @@
 package presentation;
 
-import com.sun.webkit.dom.WheelEventImpl;
-
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
 
 public class FrontPageTopLeftInsetter {
 	TextField horizontalAngle;
@@ -17,18 +13,20 @@ public class FrontPageTopLeftInsetter {
 	TextField areal;
 	WeightHBox weightHBox;
 	ComboBox<String> weightUnit;
-	Canvas triangle;
 	TriangleDrawer td = new TriangleDrawer();
+	TriangleField trianglePane;
 
 	public GridPane insetLeft() {
-		Canvas canvas = new Canvas(150, 150);
+		Canvas startCanvas = new Canvas(150, 150);
+		Canvas triangleCanvas = td.createTriangle(startCanvas, 40);
 		GridPane beregnerGrid = new GridPane();
 		beregnerGrid.setAlignment(Pos.TOP_LEFT);
 
 		beregnerGrid.setGridLinesVisible(false);
-		StackPane trianglePane = new StackPane();
+		trianglePane = new TriangleField();
 		trianglePane.setPadding(new Insets(20, 20, 20, 20));
-		triangle = td.createTriangle(canvas, 40);
+		trianglePane.setCanvas(triangleCanvas);
+		trianglePane.getChildren().setAll(new NeedMoreInputTriangle());
 
 		horizontalAngle = new HorizontalAngleTextField();
 		verticalAngle = new VerticalAngleTextField();
@@ -45,7 +43,7 @@ public class FrontPageTopLeftInsetter {
 
 		beregnerGrid.add(horizontalAngle, 0, 0);
 		beregnerGrid.add(weightHBox, 1, 0);
-		beregnerGrid.add(triangle, 0, 1, 1, 2);
+		beregnerGrid.add(trianglePane, 0, 1, 1, 2);
 		beregnerGrid.add(verticalGrid, 1, 2);
 		beregnerGrid.setHgap(5);
 		verticalGrid.setAlignment(Pos.BOTTOM_LEFT);
@@ -86,12 +84,12 @@ public class FrontPageTopLeftInsetter {
 		this.weightHBox = weightValue;
 	}
 
-	public Canvas getTriangle() {
-		return triangle;
+	public TriangleField getTriangle() {
+		return trianglePane;
 	}
 
 	public void setTriangle(Canvas triangle) {
-		this.triangle = triangle;
+		trianglePane.getChildren().setAll(triangle);
 	}
 
 }
