@@ -35,10 +35,10 @@ public class NormalkraftImpl implements Normalkraft {
 		
 		if (erMaaltTilLodret) {
 			fnNewton = cos * fdimNewton;
-			mellemRegning = "Fn = cos("+vinkel.getGrader()+") * "+fdimNewton;
+			mellemRegning = "Fn = cos(vinkel) * FDim" + "\n" + fnNewton + " = cos( "  + vinkel.getGrader()+") * "+fdimNewton + "\n";
 		} else {
 			fnNewton = sin * fdimNewton;
-			mellemRegning = "Fn = sin("+vinkel.getGrader()+") * "+fdimNewton;
+			mellemRegning = "Fn = sin(vinkel) * FDim" + "\n" + fnNewton + " = sin( "  + vinkel.getGrader()+") * "+fdimNewton + "\n";
 		}
 		
 		return fnNewton;
@@ -48,7 +48,7 @@ public class NormalkraftImpl implements Normalkraft {
 		this.fnNewton = fnNewton;
 	}
 
-	@Override //TODO Det ser ud til metoden er færdig (SA)
+	@Override //TODO Det ser ud til metoden er fï¿½rdig (SA)
 	public String getMellemregning() {
 		return mellemRegning;
 	}

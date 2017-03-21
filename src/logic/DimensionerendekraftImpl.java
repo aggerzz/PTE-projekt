@@ -15,7 +15,22 @@ public class DimensionerendekraftImpl implements Dimensionerendekraft {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
+	public void setVaegt(double vaegt, Enhed enhed){
+		switch(enhed){
+		case TON:
+			setKg(vaegt/1000);
+			break;
+		case KG:
+			setKg(vaegt);
+			break;
+		case GRAM:
+			setKg(vaegt*1000);
+			break;
+		case NEWTON:
+			setKg(vaegt/tyngdekraft);
+			break;
+		}
+	}
 	public double getNewton() {
 		return kg * tyngdekraft;
 	}
@@ -24,7 +39,7 @@ public class DimensionerendekraftImpl implements Dimensionerendekraft {
 	public void setKg(double kg) {
 		this.kg = kg;
 		newton = kg * tyngdekraft;
-		setMellemRegning("FDim = kg * g +" +"\n" + getNewton() + "=" + getKg() + "*" + tyngdekraft);
+		setMellemRegning("FDim = kg * g " + "\n" + getNewton() + " = " + getKg() + " * " + tyngdekraft + "\n");
 	}
 
 	@Override
