@@ -35,10 +35,10 @@ public class NormalkraftImpl implements Normalkraft {
 		
 		if (erMaaltTilLodret) {
 			fnNewton = cos * fdimNewton;
-			mellemRegning = "Fn = cos(vinkel) * FDim" + "\n" + fnNewton + " = cos( "  + vinkel.getGrader()+") * "+fdimNewton + "\n";
+			mellemRegning = "cos(vinkel)\t	 *\t	FDim\t	=\t	Fn" + "\n" + "cos( "  + vinkel.getGrader()+")\t		 *\t	"+fdimNewton +"\t	=\t	"+ fnNewton + "\n";
 		} else {
 			fnNewton = sin * fdimNewton;
-			mellemRegning = "Fn = sin(vinkel) * FDim" + "\n" + fnNewton + " = sin( "  + vinkel.getGrader()+") * "+fdimNewton + "\n";
+			mellemRegning = "sin(vinkel)\t	 *\t	FDim\t	=\t	Fn" + "\n" + "sin( "  + vinkel.getGrader()+")\t		 *\t	"+fdimNewton +"\t	=\t	"+ fnNewton + "\n";
 		}
 		
 		return fnNewton;
