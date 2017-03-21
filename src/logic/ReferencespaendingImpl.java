@@ -5,6 +5,9 @@ public class ReferencespaendingImpl implements Referencespaending {
 	private double sigmaRef = Double.NaN;
 //	private orveregraense = Double.NaN, nedergraense = Double.NaN;
 	private String sigmaRefMellemRegning;
+	Normalspaending sigmaN = new Normalspaending();
+	Boejningsspaending sigmaB = new Boejningsspaending();
+	ForskydningsSpaendning tau = new ForskydningsSpaendning();
 	
 	@Override
 	public double getSigmaRef() {
