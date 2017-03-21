@@ -23,6 +23,7 @@ public class FrontPage {
 		
 		frontPageMediator.getWeightValueTextField().requestFocus();
 		stage.setScene(frontPage);
+		stage.setResizable(false);
 		stage.show();
 	}
 	public static FrontPageMediator getFrontPageMediator(){
