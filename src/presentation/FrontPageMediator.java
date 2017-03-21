@@ -4,9 +4,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.StackPane;
 import logic.Enhed;
-import logic.PTEObserver;
 
 public class FrontPageMediator {
 	FrontPageTopLeftInsetter frontPageTopLeft;
@@ -52,7 +50,7 @@ public class FrontPageMediator {
 		return frontPageTopLeft.getWeightValueHBox().getUnit();
 	}
 
-	public TriangleField getTriangle() {
+	public Canvas getTriangle() {
 		return frontPageTopLeft.getTriangle();
 	}
 

@@ -3,12 +3,13 @@ package logic;
 import exceptions.ArealEjDefineretException;
 import exceptions.DimensionerendeKraftEjDefineretException;
 import exceptions.FlydeSpaendingEjDefineretException;
-import exceptions.NegativKgException;
 import exceptions.ForskydningsspaendingEjDefineretException;
+import exceptions.LaengdeEjDefineretException;
 import exceptions.NegativArealException;
+import exceptions.NegativKgException;
 import exceptions.NormalkraftEjDefineretException;
-import exceptions.ReferenceSpaendingEjDefineretException;
 import exceptions.NormalspaendingEjDefineretException;
+import exceptions.ReferenceSpaendingEjDefineretException;
 import exceptions.TvaerkraftEjDefineretException;
 import exceptions.VinkelEjDefineretException;
 import exceptions.angivBoejningsspaendingEjDefineretException;
@@ -84,5 +85,6 @@ public interface PTECalculatorController {
 	public double getSigmaRef() throws ReferenceSpaendingEjDefineretException;
 	public String ReferenceSpaendingGetMellemRegning() throws ReferenceSpaendingEjDefineretException;
 	public void setReferenceSpaending(double sigmaRefNmm2);
+	public void beregnBoejningsMoment() throws DimensionerendeKraftEjDefineretException, LaengdeEjDefineretException;
 
 }
