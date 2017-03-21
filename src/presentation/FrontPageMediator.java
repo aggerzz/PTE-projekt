@@ -4,16 +4,31 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import logic.PTEObserver;
+import logic.Enhed;
 
 public class FrontPageMediator {
 	FrontPageTopLeftInsetter frontPageTopLeft;
 	FrontPageBottomInsetter frontPageBottom;
 	PTEObserverImpl pteObs = new PTEObserverImpl(this);
 	
+	
+	
 	public FrontPageMediator(FrontPageTopLeftInsetter frontPageTopLeft, FrontPageBottomInsetter frontPageBottom) {
 		this.frontPageTopLeft = frontPageTopLeft;
 		this.frontPageBottom = frontPageBottom;
+	}
+	public TextField getMBTextField(){
+		return frontPageBottom.getMbTextField();
+	}
+	public TextField getSigmaBTextField(){
+		return frontPageBottom.getSigmaBTextField();
+	}
+	
+	public TextField getSigmaRefTextField(){
+		return frontPageBottom.getSigmaRefTextField();
+	}
+	public TextField getSikkerhedsFaktorTextField(){
+		return frontPageBottom.getSFTextField();
 	}
 	public PTEObserverImpl getObserver(){
 		return pteObs;
@@ -46,11 +61,11 @@ public class FrontPageMediator {
 		return frontPageTopLeft.getWeightValueHBox().getWeightTextField();
 	}
 
-	public ComboBox<String> getWeightUnitComboBox() {
+	public ComboBox<Enhed> getWeightUnitComboBox() {
 		return frontPageTopLeft.getWeightValueHBox().getUnit();
 	}
 
-	public Canvas getTriangle() {
+	public TriangleField getTriangle() {
 		return frontPageTopLeft.getTriangle();
 	}
 

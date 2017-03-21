@@ -6,8 +6,9 @@ import javafx.scene.web.WebView;
 public class NeedMoreInputTriangleDrawer {
 	public WebView drawTriangle(){
 		WebView wv = new WebView();
-		WebEngine we = new WebEngine();
+		WebEngine we = wv.getEngine();
 		we.load(getClass().getResource("/presentation/ManglerInputTrekanten.svg").toExternalForm());
+		
 		return wv;
 	}
 }

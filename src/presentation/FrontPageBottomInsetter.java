@@ -65,9 +65,9 @@ public class FrontPageBottomInsetter {
 		//Disable textfelterne som ikke bliver brugt endnu
 //		tauTextField.setDisable(true);
 //		sigmaNTextField.setDisable(true);
-		sigmaBTextField.setDisable(true);
-		sigmaRefTextField.setDisable(true);
-		sfTextField.setDisable(true);
+//		sigmaBTextField.setDisable(true);
+//		sigmaRefTextField.setDisable(true);
+//		sfTextField.setDisable(true);
 
 		// TODO mangler get og set motoder p�, MB - tau - sigmaN - sigmaB -
 		// sigmaRef - SF

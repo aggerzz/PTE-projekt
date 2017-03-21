@@ -15,12 +15,19 @@ import observers.AngleObserver;
 
 public class VerticalAngleTextField extends TextField{
 	public VerticalAngleTextField () {
-		this.setPromptText("Vertical angle");
+		this.setPromptText("Lodret vinkel");
 		this.setMaxSize(150, 20);
 		
 		this.setOnKeyReleased(e->{
 			try {
+				if(!this.getText().isEmpty())
 				notifyObservers();
+				else{
+					FrontPage.frontPageMediator.getHorizontalAngleText().setDisable(false);
+					FrontPage.frontPageMediator.getHorizontalAngleText().setText("");
+					FrontPage.frontPageMediator.frontPageTopLeft.getTriangle().getChildren().setAll(new NeedMoreInputTriangle());
+					
+				}
 			} catch (DimensionerendeKraftEjDefineretException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

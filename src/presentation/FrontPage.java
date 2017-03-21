@@ -11,7 +11,7 @@ public class FrontPage {
 		BorderPane root = new BorderPane();		
 		Scene frontPage = new Scene(root);
 		
-		stage.setTitle("PTE System");
+		stage.setTitle("PTE Lommeregner");
 				
 		FrontPageTopLeftInsetter fptInsetter = new FrontPageTopLeftInsetter();
 		FrontPageBottomInsetter fpbInsetter = new FrontPageBottomInsetter();
@@ -23,6 +23,7 @@ public class FrontPage {
 		
 		frontPageMediator.getWeightValueTextField().requestFocus();
 		stage.setScene(frontPage);
+		stage.setResizable(false);
 		stage.show();
 	}
 	public static FrontPageMediator getFrontPageMediator(){

@@ -15,7 +15,7 @@ public class TriangleDrawer extends Canvas {
 			vGrad = vGrad - 2 * vGrad;
 		}
 
-		double x2 = 2 * (90 - vGrad);
+		double x2 = 3 * (90 - vGrad);
 		double x1 = 0;
 
 		double vRad = (vGrad / 360) * (2 * Math.PI);
@@ -35,7 +35,7 @@ public class TriangleDrawer extends Canvas {
 
 		gc.setStroke(Color.GREEN);
 		drawLineWithArrow(gc, x2, y2, x2, y1);
-
+		
 		return canvas;
 
 	}

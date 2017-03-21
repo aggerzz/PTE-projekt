@@ -4,10 +4,12 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.stage.Screen;
+import javafx.stage.Stage;
 
 public class FrontPageTopLeftInsetter {
 	TextField horizontalAngle;
@@ -15,37 +17,58 @@ public class FrontPageTopLeftInsetter {
 	TextField areal;
 	WeightHBox weightHBox;
 	ComboBox<String> weightUnit;
-	Canvas triangle;
 	TriangleDrawer td = new TriangleDrawer();
+	TriangleField trianglePane;
 
 	public GridPane insetLeft() {
-		Canvas canvas = new Canvas(150,150);
+		Canvas startCanvas = new Canvas(300, 300);
+		Canvas triangleCanvas = td.createTriangle(startCanvas, 40);
 		GridPane beregnerGrid = new GridPane();
 		beregnerGrid.setAlignment(Pos.TOP_LEFT);
 
-		beregnerGrid.setGridLinesVisible(true);
-
-		StackPane trianglePane = new StackPane();
-		trianglePane.setPadding(new Insets(20, 20, 20, 20));
-		triangle = td.createTriangle(canvas,40);
-
+		trianglePane = new TriangleField();
+		trianglePane.setCanvas(triangleCanvas);
+		trianglePane.getChildren().setAll(new NeedMoreInputTriangle());
+		trianglePane.setPadding(new Insets(10,10,10,10));
+		trianglePane.setPrefWidth(320);
+		trianglePane.setPrefHeight(320);
+		
 		horizontalAngle = new HorizontalAngleTextField();
+		Label vandretLabel = new Label("Vandret vinkel:");
+		VBox vandretVBox = new VBox();
+		vandretVBox.getChildren().addAll(vandretLabel,horizontalAngle);
+		
 		verticalAngle = new VerticalAngleTextField();
-		areal = new ArealTextField();
+		Label lodretLabel = new Label("Lodret vinkel:");
+		VBox lodretVBox = new VBox();
+		lodretVBox.getChildren().addAll(lodretLabel,verticalAngle);
+		
 		weightHBox = new WeightHBox();
+		Label weightLabel = new Label("Vægt:");
+		VBox weightVBox = new VBox();
+		weightVBox.getChildren().addAll(weightLabel,weightHBox);
 		
-		//for at få verticalAngle textFeltet på linje med trekanten
+		areal = new ArealTextField();
+		Label arealLabel = new Label("Areal:");
+		VBox arealVBox = new VBox();
+		arealVBox.getChildren().addAll(arealLabel,areal);
+		
+		
+
+//		if(Double.parseDouble(HorizontalAngleTextField.getText()))
+		
+		// for at få verticalAngle textFeltet på linje med trekanten
 		GridPane verticalGrid = new GridPane();
-		verticalGrid.setGridLinesVisible(true);
-		verticalGrid.add(verticalAngle, 0, 1);
-		verticalGrid.setPadding(new Insets(125, 0, 0, 0));
-		
-		verticalGrid.add(areal, 1, 1);
-		
-		beregnerGrid.add(horizontalAngle, 0, 0);
-		beregnerGrid.add(weightHBox, 1, 0);
-		beregnerGrid.add(triangle, 0, 1,1,2);
+		verticalGrid.add(lodretVBox, 0, 1);
+		verticalGrid.add(arealVBox, 1, 1);
+		verticalGrid.setHgap(5);
+
+		beregnerGrid.add(vandretVBox, 0, 0);
+		beregnerGrid.add(weightVBox, 1, 0);
+		beregnerGrid.add(trianglePane, 0, 1, 1, 2);
 		beregnerGrid.add(verticalGrid, 1, 2);
+		beregnerGrid.setHgap(5);
+		verticalGrid.setAlignment(Pos.BOTTOM_LEFT);
 		
 		return beregnerGrid;
 
@@ -66,7 +89,7 @@ public class FrontPageTopLeftInsetter {
 	public void setVerticalAngle(TextField verticalAngle) {
 		this.verticalAngle = verticalAngle;
 	}
-	
+
 	public TextField getAreal() {
 		return areal;
 	}
@@ -82,12 +105,13 @@ public class FrontPageTopLeftInsetter {
 	public void setWeightValue(WeightHBox weightValue) {
 		this.weightHBox = weightValue;
 	}
-	public Canvas getTriangle() {
-		return triangle;
+
+	public TriangleField getTriangle() {
+		return trianglePane;
 	}
+
 	public void setTriangle(Canvas triangle) {
-		this.triangle = triangle;
+		trianglePane.getChildren().setAll(triangle);
 	}
-	
 
 }
