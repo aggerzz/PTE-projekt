@@ -26,7 +26,12 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 		SikkerhedsFaktor sf = new SikkerhedsFaktorImpl();
 		sf.angivFlydeSpaending(sigmaTill);
 		sf.angivReferenceSpaending(sigmaRef);
-		notifyObservers();
+		try {
+			notifyObservers();
+		} catch (DimensionerendeKraftEjDefineretException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	@Override
 	public void beregnNormalkraft() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException {
