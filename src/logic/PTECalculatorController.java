@@ -6,6 +6,7 @@ import exceptions.NegativKgException;
 import exceptions.ForskydningsspaendingEjDefineretException;
 import exceptions.NegativArealException;
 import exceptions.NormalkraftEjDefineretException;
+import exceptions.NormalspaendingEjDefineretException;
 import exceptions.TvaerkraftEjDefineretException;
 import exceptions.VinkelEjDefineretException;
 import exceptions.erUnderFejlgraenseException;
@@ -47,7 +48,7 @@ public interface PTECalculatorController {
 			throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException,
 			ForskydningsspaendingEjDefineretException, ArealEjDefineretException, TvaerkraftEjDefineretException;
 
-	public double beregnNormalspaending() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException;
+	public void beregnNormalspaending() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException, NormalspaendingEjDefineretException, NormalkraftEjDefineretException, ArealEjDefineretException;
 
 	public void setFtNewton(double ftNewton)
 			throws TvaerkraftEjDefineretException, DimensionerendeKraftEjDefineretException;
@@ -67,5 +68,11 @@ public interface PTECalculatorController {
 	public void setForskydningsspaending(double nMm2);
 
 	public boolean erVaegtNormal() throws NegativKgException;
+
+	void setNormalspaending(double sigmaNmm2);
+
+	double getNormalspaending() throws NormalspaendingEjDefineretException, DimensionerendeKraftEjDefineretException, VinkelEjDefineretException;
+
+	String getNormalspaendingMellemregning() throws NormalspaendingEjDefineretException;
 
 }
