@@ -2,10 +2,12 @@ package logic;
 
 import exceptions.ArealEjDefineretException;
 import exceptions.DimensionerendeKraftEjDefineretException;
+import exceptions.FlydeSpaendingEjDefineretException;
 import exceptions.NegativKgException;
 import exceptions.ForskydningsspaendingEjDefineretException;
 import exceptions.NegativArealException;
 import exceptions.NormalkraftEjDefineretException;
+import exceptions.ReferenceSpaendingEjDefineretException;
 import exceptions.NormalspaendingEjDefineretException;
 import exceptions.TvaerkraftEjDefineretException;
 import exceptions.VinkelEjDefineretException;
@@ -21,7 +23,7 @@ public interface PTECalculatorController {
 	String getNormalkraftMellemregning() throws NormalkraftEjDefineretException,
 			DimensionerendeKraftEjDefineretException, VinkelEjDefineretException;
 
-	public void angivVaegt(double Kg) throws DimensionerendeKraftEjDefineretException;
+	public void angivVaegt(double vaerdi, Enhed enhed) throws DimensionerendeKraftEjDefineretException;
 
 	public void notifyObservers();
 
@@ -54,6 +56,8 @@ public interface PTECalculatorController {
 			throws TvaerkraftEjDefineretException, DimensionerendeKraftEjDefineretException;
 
 	public void setFnNewton(double fnNewton) throws DimensionerendeKraftEjDefineretException;
+	
+	public void beregnSikkerhedsFaktor() throws ReferenceSpaendingEjDefineretException, FlydeSpaendingEjDefineretException;
 
 	public void angivAreal(double mm2) throws NegativArealException;
 
