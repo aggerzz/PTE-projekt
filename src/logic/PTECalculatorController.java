@@ -11,6 +11,7 @@ import exceptions.ReferenceSpaendingEjDefineretException;
 import exceptions.NormalspaendingEjDefineretException;
 import exceptions.TvaerkraftEjDefineretException;
 import exceptions.VinkelEjDefineretException;
+import exceptions.angivBoejningsspaendingEjDefineretException;
 import exceptions.erUnderFejlgraenseException;
 
 public interface PTECalculatorController {
@@ -78,5 +79,10 @@ public interface PTECalculatorController {
 	double getNormalspaending() throws NormalspaendingEjDefineretException, DimensionerendeKraftEjDefineretException, VinkelEjDefineretException;
 
 	String getNormalspaendingMellemregning() throws NormalspaendingEjDefineretException;
+	
+	public void beregnSigmaRef() throws NormalspaendingEjDefineretException, angivBoejningsspaendingEjDefineretException, ForskydningsspaendingEjDefineretException;
+	public double getSigmaRef() throws ReferenceSpaendingEjDefineretException;
+	public String ReferenceSpaendingGetMellemRegning() throws ReferenceSpaendingEjDefineretException;
+	public void setReferenceSpaending(double sigmaRefNmm2);
 
 }

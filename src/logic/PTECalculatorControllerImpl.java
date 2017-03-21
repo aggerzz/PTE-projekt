@@ -11,6 +11,7 @@ import exceptions.NormalspaendingEjDefineretException;
 import exceptions.ReferenceSpaendingEjDefineretException;
 import exceptions.TvaerkraftEjDefineretException;
 import exceptions.VinkelEjDefineretException;
+import exceptions.angivBoejningsspaendingEjDefineretException;
 import exceptions.erUnderFejlgraenseException;
 
 public class PTECalculatorControllerImpl implements PTECalculatorController {
@@ -344,5 +345,65 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 
 		String normalspaendingMellemregning = sigmaN.getMellemregning();
 		return normalspaendingMellemregning;
-	}	
+	}
+
+
+	@Override
+	public void beregnSigmaRef() throws NormalspaendingEjDefineretException,
+			angivBoejningsspaendingEjDefineretException, ForskydningsspaendingEjDefineretException {
+		if (sigmaN == null) {
+			throw new NormalspaendingEjDefineretException();
+		}
+		if (sigmaB == null) {//TODO sigmaB ikke implamenteret (SA)
+			throw new angivBoejningsspaendingEjDefineretException();
+		}
+		if(tau == null){
+			throw new ForskydningsspaendingEjDefineretException();
+		}
+
+		sigmaRef = new ReferencespaendingImpl();
+
+		sigmaRef.angivBoejningsspaending(sigmaB);
+
+		sigmaRef.angivForskydsningsspaending(tau);
+		
+		sigmaRef.angivNormalspaending(sigmaN);
+		
+		notifyObservers();
+	}
+
+
+	@Override
+	public double getSigmaRef() throws ReferenceSpaendingEjDefineretException {
+		if (sigmaRef == null) {
+			throw new ReferenceSpaendingEjDefineretException();
+		}
+
+		double sigmaRefNmm2 = sigmaRef.getSigmaRef();
+
+		return sigmaRefNmm2;
+
+	}
+
+
+	@Override
+	public String ReferenceSpaendingGetMellemRegning() throws ReferenceSpaendingEjDefineretException {
+		if (sigmaRef == null) {
+			throw new ReferenceSpaendingEjDefineretException();
+
+		}
+
+		String referenceSpaendingMellemregning = sigmaRef.GetMellemRegning();
+
+		return referenceSpaendingMellemregning;
+
+	}
+	@Override
+	public void setReferenceSpaending(double sigmaRefNmm2){
+		sigmaRef = new ReferencespaendingImpl();
+		sigmaRef.setSigmaRefNmm2(sigmaRefNmm2);
+		
+		notifyObservers();
+	}
+		
 }
