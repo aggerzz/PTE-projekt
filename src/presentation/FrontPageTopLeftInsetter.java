@@ -34,12 +34,14 @@ public class FrontPageTopLeftInsetter {
 		trianglePane.setPrefHeight(320);
 		
 		horizontalAngle = new HorizontalAngleTextField();
-		Label vandretLabel = new Label("Vandret vinkel:");
+		Label vandretLabel = new Label("Lodret vinkel:");
 		VBox vandretVBox = new VBox();
 		vandretVBox.getChildren().addAll(vandretLabel,horizontalAngle);
 		
+		
+		
 		verticalAngle = new VerticalAngleTextField();
-		Label lodretLabel = new Label("Lodret vinkel:");
+		Label lodretLabel = new Label("Vandret vinkel:");
 		VBox lodretVBox = new VBox();
 		lodretVBox.getChildren().addAll(lodretLabel,verticalAngle);
 		

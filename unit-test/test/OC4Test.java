@@ -56,7 +56,7 @@ public class OC4Test {
 //		assertTrue(fdim.VaegtErIkkeAngivetFejl);
 	}
 	@Test
-	public void test() throws erUnderFejlgraenseException, DimensionerendeKraftEjDefineretException, VinkelEjDefineretException {
+	public void testUdregningAfTvaerkraft() throws erUnderFejlgraenseException, DimensionerendeKraftEjDefineretException, VinkelEjDefineretException {
 		Vinkel vinkel = new VinkelImpl();
 		Dimensionerendekraft fdim = new DimensionerendekraftImpl();
 		Tvaerkraft ft = new TvaerkraftImpl();
