@@ -40,7 +40,8 @@ public class ForskydningsSpaendningImpl implements ForskydningsSpaendning {
 		double ftNewton = ft.getNewton();		
 		double mm2 = a.getMm2();
 		double tau = ftNewton / mm2;
-		setMellemregning("Tau = Ft / A " + "\n" + tau + ftNewton + "/" + mm2 + "\n");	
+		//setMellemregning("Tau = Ft / A " + "\n" + tau + ftNewton + "/" + mm2 + "\n");	
+		setMellemregning("Ft\t	 /\tA\t=\tTau" +"\n" + ftNewton + "\t	/\t	" + mm2  +"\t	 =\t "+ tau +"\n ");	
 		return tau ;		
 	}
 	

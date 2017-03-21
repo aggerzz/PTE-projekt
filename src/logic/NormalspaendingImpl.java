@@ -31,7 +31,7 @@ public class NormalspaendingImpl implements Normalspaending {
 		double fnNewton = fn.getNewton();
 		double mm2 = a.getMm2();
 		sigmaN = fnNewton / mm2;
-		setMellemregning("SigmaN = Fn / A " + "\n" + sigmaN + " = "+ fnNewton + " / " + mm2 + "\n");
+		setMellemregning("Fn\t	 /\t	A " + "\t	=\t	SigmaN" + "\n" + fnNewton + "\t	/\t	" + mm2 +"\t	=\t	" +sigmaN + "\n");
 		return sigmaN;
 	}
 	

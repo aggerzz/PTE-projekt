@@ -37,12 +37,15 @@ public class TvaerkraftImpl implements Tvaerkraft {
 		double cosV = Math.cos(Math.toRadians(grader));
 		if (erMaaltTilLodret==false) {
 			ftNewton = cosV * fdimNewton;
-			mellemregning = "FT = cos(vinkel) * FDim" + "\n" + ftNewton + " = cos(" + grader + ") * " + fdimNewton + "\n"; 
+		//	mellemregning = "FT = cos(vinkel) * FDim" + "\n" + ftNewton + " = cos(" + grader + ") * " + fdimNewton + "\n"; 
+		//	mellemregning = "FT\t	 =\t	 cos(vinkel)\t	 *	 FDim" + "\n" + ftNewton +"\t	"+" = cos(" + grader + ")\t	 * 	" + fdimNewton + "\n";
+			mellemregning = "cos(vinkel)\t	 *\t	FDim\t	=\t	FT	" + "\n" + "  cos(" + grader + ")\t	 *\t	" + fdimNewton + "\t	=\t" + ftNewton + "\n" ; 
 		}
 		
 		else {
 			ftNewton = sinV * fdimNewton;
-			mellemregning = "FT = sin(vinkel) * FDim" + "\n" + ftNewton + " = sin(" + grader + ") * " + fdimNewton + "\n"; 
+		//	mellemregning = "FT = sin(vinkel) * FDim" + "\n" + ftNewton + " = sin(" + grader + ") * " + fdimNewton + "\n";
+			mellemregning = "sin(vinkel) * FDim" +"= FT" + "\n" + ftNewton + " = sin(" + grader + ") * " + fdimNewton + "\n"; 
 
 		}
 		
