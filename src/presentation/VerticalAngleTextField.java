@@ -20,7 +20,14 @@ public class VerticalAngleTextField extends TextField{
 		
 		this.setOnKeyReleased(e->{
 			try {
+				if(!this.getText().isEmpty())
 				notifyObservers();
+				else{
+					FrontPage.frontPageMediator.getHorizontalAngleText().setDisable(false);
+					FrontPage.frontPageMediator.getHorizontalAngleText().setText("");
+					FrontPage.frontPageMediator.frontPageTopLeft.getTriangle().getChildren().setAll(new NeedMoreInputTriangle());
+					
+				}
 			} catch (DimensionerendeKraftEjDefineretException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
