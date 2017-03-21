@@ -11,9 +11,24 @@ public class FrontPageMediator {
 	FrontPageBottomInsetter frontPageBottom;
 	PTEObserverImpl pteObs = new PTEObserverImpl(this);
 	
+	
+	
 	public FrontPageMediator(FrontPageTopLeftInsetter frontPageTopLeft, FrontPageBottomInsetter frontPageBottom) {
 		this.frontPageTopLeft = frontPageTopLeft;
 		this.frontPageBottom = frontPageBottom;
+	}
+	public TextField getMBTextField(){
+		return frontPageBottom.getMbTextField();
+	}
+	public TextField getSigmaBTextField(){
+		return frontPageBottom.getSigmaBTextField();
+	}
+	
+	public TextField getSigmaRefTextField(){
+		return frontPageBottom.getSigmaRefTextField();
+	}
+	public TextField getSikkerhedsFaktorTextField(){
+		return frontPageBottom.getSFTextField();
 	}
 	public PTEObserverImpl getObserver(){
 		return pteObs;
@@ -50,7 +65,7 @@ public class FrontPageMediator {
 		return frontPageTopLeft.getWeightValueHBox().getUnit();
 	}
 
-	public Canvas getTriangle() {
+	public TriangleField getTriangle() {
 		return frontPageTopLeft.getTriangle();
 	}
 
