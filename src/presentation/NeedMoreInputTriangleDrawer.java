@@ -9,8 +9,6 @@ public class NeedMoreInputTriangleDrawer {
 		WebEngine we = wv.getEngine();
 		we.load(getClass().getResource("/presentation/ManglerInputTrekanten.svg").toExternalForm());
 		
-		wv.setPrefSize(150, 150);
-		
 		return wv;
 	}
 }
