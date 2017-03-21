@@ -4,8 +4,10 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
@@ -32,20 +34,37 @@ public class FrontPageTopLeftInsetter {
 		trianglePane.setPrefHeight(320);
 		
 		horizontalAngle = new HorizontalAngleTextField();
+		Label vandretLabel = new Label("Vandret vinkel:");
+		VBox vandretVBox = new VBox();
+		vandretVBox.getChildren().addAll(vandretLabel,horizontalAngle);
+		
 		verticalAngle = new VerticalAngleTextField();
-		areal = new ArealTextField();
+		Label lodretLabel = new Label("Lodret vinkel:");
+		VBox lodretVBox = new VBox();
+		lodretVBox.getChildren().addAll(lodretLabel,verticalAngle);
+		
 		weightHBox = new WeightHBox();
+		Label weightLabel = new Label("Vægt:");
+		VBox weightVBox = new VBox();
+		weightVBox.getChildren().addAll(weightLabel,weightHBox);
+		
+		areal = new ArealTextField();
+		Label arealLabel = new Label("Areal:");
+		VBox arealVBox = new VBox();
+		arealVBox.getChildren().addAll(arealLabel,areal);
+		
+		
 
 //		if(Double.parseDouble(HorizontalAngleTextField.getText()))
 		
 		// for at få verticalAngle textFeltet på linje med trekanten
 		GridPane verticalGrid = new GridPane();
-		verticalGrid.add(verticalAngle, 0, 1);
-		verticalGrid.add(areal, 1, 1);
+		verticalGrid.add(lodretVBox, 0, 1);
+		verticalGrid.add(arealVBox, 1, 1);
 		verticalGrid.setHgap(5);
 
-		beregnerGrid.add(horizontalAngle, 0, 0);
-		beregnerGrid.add(weightHBox, 1, 0);
+		beregnerGrid.add(vandretVBox, 0, 0);
+		beregnerGrid.add(weightVBox, 1, 0);
 		beregnerGrid.add(trianglePane, 0, 1, 1, 2);
 		beregnerGrid.add(verticalGrid, 1, 2);
 		beregnerGrid.setHgap(5);
