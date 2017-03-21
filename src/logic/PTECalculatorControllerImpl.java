@@ -2,8 +2,10 @@ package logic;
 
 import exceptions.ArealEjDefineretException;
 import exceptions.DimensionerendeKraftEjDefineretException;
+import exceptions.FlydeSpaendingEjDefineretException;
 import exceptions.ForskydningsspaendingEjDefineretException;
 import exceptions.NormalkraftEjDefineretException;
+import exceptions.ReferenceSpaendingEjDefineretException;
 import exceptions.TvaerkraftEjDefineretException;
 import exceptions.VinkelEjDefineretException;
 import exceptions.erUnderFejlgraenseException;
@@ -17,7 +19,15 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 	private ForskydningsSpaendning tau;
 	private PTEObserver observer;
 	private Normalspaending sigmaN;
-
+	private FlydeSpaending sigmaTill;
+	private ReferenceSpaending sigmaRef;
+	@Override
+	public void beregnSikkerhedsFaktor() throws ReferenceSpaendingEjDefineretException, FlydeSpaendingEjDefineretException{
+		SikkerhedsFaktor sf = new SikkerhedsFaktorImpl();
+		sf.angivFlydeSpaending(sigmaTill);
+		sf.angivReferenceSpaending(sigmaRef);
+		notifyObservers();
+	}
 	@Override
 	public void beregnNormalkraft() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException {
 
@@ -70,10 +80,10 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 	}
 
 	@Override
-	public void angivVaegt(double kg) throws DimensionerendeKraftEjDefineretException {
+	public void angivVaegt(double vaegt, Enhed enhed) throws DimensionerendeKraftEjDefineretException {
 		fdim = new DimensionerendekraftImpl();
 
-		fdim.setKg(kg);
+		fdim.setVaegt(vaegt,enhed);
 
 		notifyObservers();
 	}
