@@ -29,6 +29,10 @@ public class FrontPageMediator {
 	public TextField getTauTextField() {
 		return frontPageBottom.getTauTextField();
 	}
+	
+	public TextField getSigmaNTextField() {
+		return frontPageBottom.getSigmaNTextField();
+	}
 
 	public TextField getVerticalAngleText() {
 		return frontPageTopLeft.getVerticalAngle();

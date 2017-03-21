@@ -24,7 +24,7 @@ public class DimensionerendekraftImpl implements Dimensionerendekraft {
 	public void setKg(double kg) {
 		this.kg = kg;
 		newton = kg * tyngdekraft;
-		setMellemRegning("FDim = kg * g +" +"\n" + getNewton() + "=" + getKg() + "*" + tyngdekraft);
+		setMellemRegning("FDim = kg * g " + "\n" + getNewton() + " = " + getKg() + " * " + tyngdekraft + "\n");
 	}
 
 	@Override

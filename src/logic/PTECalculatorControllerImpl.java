@@ -6,6 +6,7 @@ import exceptions.NegativKgException;
 import exceptions.ForskydningsspaendingEjDefineretException;
 import exceptions.NegativArealException;
 import exceptions.NormalkraftEjDefineretException;
+import exceptions.NormalspaendingEjDefineretException;
 import exceptions.TvaerkraftEjDefineretException;
 import exceptions.VinkelEjDefineretException;
 import exceptions.erUnderFejlgraenseException;
@@ -95,12 +96,7 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 		this.a.setMm2(mm2);
 
 		notifyObservers();
-	}	
-	
-	@Override
-	public double beregnNormalspaending() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException{
-		return sigmaN.beregnNormalspaending();
-	}
+	}		
 
 	@Override
 	public void notifyObservers() {
@@ -176,18 +172,18 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 		this.vinkel.setGrader(vinkel);
 		this.vinkel.setMaaltTilLodret(MaaltTilLodret);
 		
-		try {
-			beregnTvaerkraft();
-		} catch (DimensionerendeKraftEjDefineretException | VinkelEjDefineretException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			beregnNormalkraft();
-		} catch (DimensionerendeKraftEjDefineretException | VinkelEjDefineretException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try {
+//			beregnTvaerkraft();
+//		} catch (DimensionerendeKraftEjDefineretException | VinkelEjDefineretException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		try {
+//			beregnNormalkraft();
+//		} catch (DimensionerendeKraftEjDefineretException | VinkelEjDefineretException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		
 		notifyObservers();
 	}
@@ -245,7 +241,6 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 		if (a == null) {
 			throw new ArealEjDefineretException();
 		}	
-		System.out.println("Opret tau");
 		tau = new ForskydningsSpaendningImpl();				
 		tau.angivTvaerkraft(ft);
 		tau.angivAreal(a);
@@ -256,18 +251,14 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 	
 	@Override
 	public double getForskydningsspaending() throws ForskydningsspaendingEjDefineretException, ArealEjDefineretException, DimensionerendeKraftEjDefineretException, VinkelEjDefineretException, TvaerkraftEjDefineretException {
-//		System.out.println("getForskydningsspaending()");
-		if (tau == null) {
-			System.out.println("getForskydningsspaending()");
+
+		if (tau == null) {			
 			throw new ForskydningsspaendingEjDefineretException();
 
-		}
-		System.out.println(tau.getNmm2());
+		}		
 		double tauMm2 = tau.getNmm2();
-		System.out.println("Tau = " + tauMm2);
-
-		return tauMm2;
 		
+		return tauMm2;		
 	}
 	
 	@Override
@@ -292,5 +283,49 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 		notifyObservers();
 	}
 	
+	@Override
+	public void beregnNormalspaending() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException, NormalspaendingEjDefineretException, NormalkraftEjDefineretException, ArealEjDefineretException  {
+		if(fn == null){
+			throw new NormalkraftEjDefineretException();
+		}
+		if(a == null){
+			throw new ArealEjDefineretException();
+		}
+		sigmaN = new NormalspaendingImpl();
+		sigmaN.angivNormalkraft(fn);
+		sigmaN.angivAreal(a);
+		
+		notifyObservers();		
+	}
 	
+	@Override
+	public void setNormalspaending(double sigmaNmm2){
+		sigmaN = new NormalspaendingImpl();
+		sigmaN.setSigmaNmm2(sigmaNmm2);
+		
+		notifyObservers();
+	}
+	
+	@Override
+	public double getNormalspaending() throws NormalspaendingEjDefineretException, DimensionerendeKraftEjDefineretException, VinkelEjDefineretException {
+
+		if (sigmaN == null) {			
+			throw new NormalspaendingEjDefineretException();
+
+		}		
+		double sigmaNmm2 = sigmaN.getSigmaNmm2();
+		
+		return sigmaNmm2;		
+	}
+	
+	@Override
+	public String getNormalspaendingMellemregning() throws NormalspaendingEjDefineretException {
+
+		if (sigmaN == null) {
+			throw new NormalspaendingEjDefineretException();
+		}
+
+		String normalspaendingMellemregning = sigmaN.getMellemregning();
+		return normalspaendingMellemregning;
+	}	
 }
