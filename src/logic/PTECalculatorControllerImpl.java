@@ -4,6 +4,7 @@ import exceptions.ArealEjDefineretException;
 import exceptions.DimensionerendeKraftEjDefineretException;
 import exceptions.FlydeSpaendingEjDefineretException;
 import exceptions.ForskydningsspaendingEjDefineretException;
+import exceptions.LaengdeEjDefineretException;
 import exceptions.NegativArealException;
 import exceptions.NegativKgException;
 import exceptions.NormalkraftEjDefineretException;
@@ -26,19 +27,38 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 	private FlydeSpaending sigmaTill;
 	private Referencespaending sigmaRef;
 	private Areal a;
+	private SikkerhedsFaktor sf;
+	private LaengdeImpl l2;
+	private BoejningsMoment boejning;
 	@Override
 	public void beregnSikkerhedsFaktor() throws ReferenceSpaendingEjDefineretException, FlydeSpaendingEjDefineretException{
-		SikkerhedsFaktor sf = new SikkerhedsFaktorImpl();
+		sf = new SikkerhedsFaktorImpl();
+		if(sigmaTill == null){
+			throw new FlydeSpaendingEjDefineretException();
+		}
+		if(sigmaRef == null){
+			throw new ReferenceSpaendingEjDefineretException();
+		}
+		
 		sf.angivFlydeSpaending(sigmaTill);
 		sf.angivReferencespaending(sigmaRef);
-		try {
-			notifyObservers();
-		} catch (DimensionerendeKraftEjDefineretException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		notifyObservers();
+		
 	}
-	
+	@Override
+	public void beregnBoejningsMoment() throws DimensionerendeKraftEjDefineretException, LaengdeEjDefineretException {
+		if(fdim==null){
+			throw new DimensionerendeKraftEjDefineretException();
+		}
+		if(l2 == null){
+			throw new LaengdeEjDefineretException();
+		}
+		boejning = new BoejningsMomentImpl();
+		boejning.angivDimensionerendeKraft(fdim);
+		boejning.angivLaengde(l2);
+		
+		notifyObservers();
+	}
 
 	@Override
 	public void beregnNormalkraft() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException {
