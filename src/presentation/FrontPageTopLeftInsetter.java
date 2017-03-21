@@ -6,6 +6,8 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Screen;
+import javafx.stage.Stage;
 
 public class FrontPageTopLeftInsetter {
 	TextField horizontalAngle;
@@ -17,17 +19,18 @@ public class FrontPageTopLeftInsetter {
 	TriangleField trianglePane;
 
 	public GridPane insetLeft() {
-		Canvas startCanvas = new Canvas(150, 150);
+		Canvas startCanvas = new Canvas(300, 300);
 		Canvas triangleCanvas = td.createTriangle(startCanvas, 40);
 		GridPane beregnerGrid = new GridPane();
 		beregnerGrid.setAlignment(Pos.TOP_LEFT);
 
-		beregnerGrid.setGridLinesVisible(false);
 		trianglePane = new TriangleField();
-		trianglePane.setPadding(new Insets(20, 20, 20, 20));
 		trianglePane.setCanvas(triangleCanvas);
 		trianglePane.getChildren().setAll(new NeedMoreInputTriangle());
-
+		trianglePane.setPadding(new Insets(10,10,10,10));
+		trianglePane.setPrefWidth(320);
+		trianglePane.setPrefHeight(320);
+		
 		horizontalAngle = new HorizontalAngleTextField();
 		verticalAngle = new VerticalAngleTextField();
 		areal = new ArealTextField();
@@ -47,7 +50,7 @@ public class FrontPageTopLeftInsetter {
 		beregnerGrid.add(verticalGrid, 1, 2);
 		beregnerGrid.setHgap(5);
 		verticalGrid.setAlignment(Pos.BOTTOM_LEFT);
-
+		
 		return beregnerGrid;
 
 	}
