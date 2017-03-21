@@ -3,6 +3,8 @@ package presentation;
 import exceptions.ArealEjDefineretException;
 import exceptions.DimensionerendeKraftEjDefineretException;
 import exceptions.ForskydningsspaendingEjDefineretException;
+import exceptions.NormalkraftEjDefineretException;
+import exceptions.NormalspaendingEjDefineretException;
 import exceptions.TvaerkraftEjDefineretException;
 import exceptions.VinkelEjDefineretException;
 import exceptions.erUnderFejlgraenseException;
@@ -55,6 +57,12 @@ public class HorizontalAngleTextField extends TextField {
 				| ForskydningsspaendingEjDefineretException | ArealEjDefineretException
 				| TvaerkraftEjDefineretException e1) {
 			// Gør ingen ting
+		}
+		
+		try {
+			FrontPage.frontPageMediator.getObserver().getPteCalc().beregnNormalspaending();
+		} catch (NormalkraftEjDefineretException | DimensionerendeKraftEjDefineretException | VinkelEjDefineretException | NormalspaendingEjDefineretException | ArealEjDefineretException e1) {
+			// gør ingen ting
 		}
 	}
 }

@@ -6,6 +6,8 @@ import java.util.List;
 import exceptions.ArealEjDefineretException;
 import exceptions.DimensionerendeKraftEjDefineretException;
 import exceptions.ForskydningsspaendingEjDefineretException;
+import exceptions.NormalkraftEjDefineretException;
+import exceptions.NormalspaendingEjDefineretException;
 import exceptions.TvaerkraftEjDefineretException;
 import exceptions.VinkelEjDefineretException;
 import javafx.collections.FXCollections;
@@ -24,6 +26,7 @@ public class WeightHBox extends HBox {
 
 		weightTextField = new TextField();
 		weightTextField.setPromptText("Insert weight");
+		weightTextField.setPrefWidth(238);
 
 		unit = new ComboBox<String>(FXCollections.observableArrayList(insetUnitOptions()));
 		unit.setValue("Kg");
@@ -52,6 +55,7 @@ public class WeightHBox extends HBox {
 			} catch (DimensionerendeKraftEjDefineretException | VinkelEjDefineretException e2) {
 				// Gør ingen ting
 			}
+			
 			try {
 				FrontPage.frontPageMediator.getObserver().getPteCalc().beregnTvaerkraft();
 			} catch (DimensionerendeKraftEjDefineretException | VinkelEjDefineretException e2) {
@@ -64,6 +68,12 @@ public class WeightHBox extends HBox {
 					| ForskydningsspaendingEjDefineretException | ArealEjDefineretException
 					| TvaerkraftEjDefineretException e1) {
 				// Gør ingen ting
+			}
+			
+			try {
+				FrontPage.frontPageMediator.getObserver().getPteCalc().beregnNormalspaending();
+			} catch (NormalkraftEjDefineretException | DimensionerendeKraftEjDefineretException | VinkelEjDefineretException | NormalspaendingEjDefineretException | ArealEjDefineretException e1) {
+				// gør ingen ting
 			}
 		});
 	}
