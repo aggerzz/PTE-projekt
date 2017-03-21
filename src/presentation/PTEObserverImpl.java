@@ -31,7 +31,8 @@ public class PTEObserverImpl implements PTEObserver {
 			String fDimText = formatter.format(fDim); //TODO formater til 3 decimaler
 			frontPageMediator.getFdimTextField().setText(fDimText );
 			String fDimMellemregning = pteCalc.getDimensionerendekraftMellemregning();
-			frontPageMediator.getMellemRegninger().appendText(fDimMellemregning);
+			tilfoejMellemregning(fDimMellemregning);
+
 		} catch (DimensionerendeKraftEjDefineretException e1) {
 			frontPageMediator.getFdimTextField().clear();
 		}
@@ -41,7 +42,8 @@ public class PTEObserverImpl implements PTEObserver {
 			String tvaerkraftText = formatter.format(tvaerkraft);
 			frontPageMediator.getFtTextField().setText(tvaerkraftText);
 			String tvaerkraftMellemregning = pteCalc.getTvaerkraftMellemregning();
-			frontPageMediator.getMellemRegninger().appendText(tvaerkraftMellemregning);
+			tilfoejMellemregning(tvaerkraftMellemregning);
+
 		} catch (TvaerkraftEjDefineretException | DimensionerendeKraftEjDefineretException
 				| VinkelEjDefineretException e1) {
 			frontPageMediator.getFtTextField().clear();
@@ -52,7 +54,8 @@ public class PTEObserverImpl implements PTEObserver {
 			String normalkraftText = formatter.format(normalkraft);
 			frontPageMediator.getFnTextField().setText(normalkraftText);
 			String normalkraftMellemregning = pteCalc.getNormalkraftMellemregning();
-			frontPageMediator.getMellemRegninger().appendText(normalkraftMellemregning);
+			tilfoejMellemregning(normalkraftMellemregning);
+
 		} catch (NormalkraftEjDefineretException | DimensionerendeKraftEjDefineretException
 				| VinkelEjDefineretException e1) {
 			frontPageMediator.getFnTextField().clear();
@@ -75,7 +78,7 @@ public class PTEObserverImpl implements PTEObserver {
 			
 			frontPageMediator.getTauTextField().setText(forskydningsspaendingText);
 			String forskydningsspaendingMellemregning = pteCalc.getForskydningsspaendingMellemregning();
-			frontPageMediator.getMellemRegninger().appendText(forskydningsspaendingMellemregning);
+			tilfoejMellemregning(forskydningsspaendingMellemregning);
 		} catch (ForskydningsspaendingEjDefineretException | TvaerkraftEjDefineretException | ArealEjDefineretException| DimensionerendeKraftEjDefineretException
 				| VinkelEjDefineretException  e1) {
 			frontPageMediator.getTauTextField().clear();
@@ -88,14 +91,23 @@ public class PTEObserverImpl implements PTEObserver {
 			
 			frontPageMediator.getSigmaNTextField().setText(normalspaendingText);
 			String normalspaendingMellemregning = pteCalc.getNormalspaendingMellemregning();
-			frontPageMediator.getMellemRegninger().appendText(normalspaendingMellemregning);
+			tilfoejMellemregning(normalspaendingMellemregning);
+
+			
 		} catch (NormalspaendingEjDefineretException | DimensionerendeKraftEjDefineretException
 				| VinkelEjDefineretException  e1) {
 			frontPageMediator.getSigmaNTextField().clear();			
 		}				
 	}		
+	private void tilfoejMellemregning(String mellemregning) {
+		frontPageMediator.getMellemRegninger().appendText(mellemregning + "\n");
+
+	}
+	
+	
 
 	public PTECalculatorController getPteCalc() {
+		
 		return pteCalc;
 	}
 }
