@@ -25,7 +25,7 @@ public class WeightHBox extends HBox {
 	public WeightHBox() {
 
 		weightTextField = new TextField();
-		weightTextField.setPromptText("Insert weight");
+		weightTextField.setPromptText("Indsæt vægt");
 		weightTextField.setPrefWidth(238);
 
 		unit = new ComboBox<String>(FXCollections.observableArrayList(insetUnitOptions()));
