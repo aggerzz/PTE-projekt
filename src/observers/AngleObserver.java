@@ -25,7 +25,7 @@ public class AngleObserver {
 					otherField.setText(Double.toString(90 - verticalAngle));
 					otherField.setDisable(true);
 					
-					frontPageMediator.setTriangle(new TriangleDrawer().createTriangle(frontPageMediator.getTriangle(), verticalAngle));
+					frontPageMediator.setTriangle(new TriangleDrawer().createTriangle(frontPageMediator.getTriangle().getCanvas(), verticalAngle));
 					
 				} else {
 					otherField.setDisable(false);
@@ -43,7 +43,7 @@ public class AngleObserver {
 					otherField.setDisable(true);
 					
 					
-					frontPageMediator.setTriangle(new TriangleDrawer().createTriangle(frontPageMediator.getTriangle(), verticalAngle));
+					frontPageMediator.setTriangle(new TriangleDrawer().createTriangle(frontPageMediator.getTriangle().getCanvas(), verticalAngle));
 					
 				}
 				else{
