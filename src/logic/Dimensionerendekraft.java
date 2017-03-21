@@ -10,5 +10,6 @@ public interface Dimensionerendekraft {
 	public static final double tyngdekraft = 9.816;
 	public double setNewton(double newton);
 	public void setVaegt(double vaegt, Enhed enhed);
+	public boolean erVaegtNormal();
 	
 }

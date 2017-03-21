@@ -9,6 +9,7 @@ public class ForskydningsSpaendningImpl implements ForskydningsSpaendning {
 	private Areal a ;
 	private Tvaerkraft ft ;
 	private String mellemregning;	
+	private double tau;
 	
 	private void setMellemregning(String mellemregning){
 		this.mellemregning = mellemregning;
@@ -33,13 +34,17 @@ public class ForskydningsSpaendningImpl implements ForskydningsSpaendning {
 	
 	public double getNmm2() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException, ForskydningsspaendingEjDefineretException, ArealEjDefineretException{
 		if(ft == null || a == null) {
-			throw new ForskydningsspaendingEjDefineretException();
+			throw new ForskydningsspaendingEjDefineretException();			
 		}		
 		
-		double ftNewton = ft.getNewton();
-		
+		double ftNewton = ft.getNewton();		
 		double mm2 = a.getMm2();
 		double tau = ftNewton / mm2;
-		setMellemregning("Tau = Ft / A = " + "\n" + ftNewton / mm2);		return tau ;		
+		setMellemregning("Tau = Ft / A " + "\n" + tau + ftNewton + "/" + mm2 + "\n");	
+		return tau ;		
+	}
+	
+	public void setNmm2(double nMm2) {
+		this.tau = nMm2;
 	}
 }

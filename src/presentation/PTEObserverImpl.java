@@ -1,12 +1,11 @@
 package presentation;
 
-
-
 import java.text.DecimalFormat;
-import java.text.NumberFormat;
-
+import exceptions.ArealEjDefineretException;
 import exceptions.DimensionerendeKraftEjDefineretException;
+import exceptions.ForskydningsspaendingEjDefineretException;
 import exceptions.NormalkraftEjDefineretException;
+import exceptions.NormalspaendingEjDefineretException;
 import exceptions.TvaerkraftEjDefineretException;
 import exceptions.VinkelEjDefineretException;
 import logic.PTECalculatorController;
@@ -48,7 +47,7 @@ public class PTEObserverImpl implements PTEObserver {
 			frontPageMediator.getFtTextField().clear();
 		}
 		
-		try {
+		try {			
 			double normalkraft = pteCalc.getNormalkraft();
 			String normalkraftText = formatter.format(normalkraft);
 			frontPageMediator.getFnTextField().setText(normalkraftText);
@@ -58,10 +57,45 @@ public class PTEObserverImpl implements PTEObserver {
 				| VinkelEjDefineretException e1) {
 			frontPageMediator.getFnTextField().clear();
 		}
+		
+//		try {
+//			double areal = pteCalc.getAreal();
+//			String arealText = formatter.format(areal); //TODO formater til 3 decimaler
+//			frontPageMediator.getArealText().setText(arealText );
+//
+//			
+//		} catch (ArealEjDefineretException e1) {
+//			frontPageMediator.getArealText().clear();
+//			
+//		}		
+		 
+		try {
+			double forskydningsspaending = pteCalc.getForskydningsspaending();
+			String forskydningsspaendingText = formatter.format(forskydningsspaending);
+			
+			frontPageMediator.getTauTextField().setText(forskydningsspaendingText);
+			String forskydningsspaendingMellemregning = pteCalc.getForskydningsspaendingMellemregning();
+			frontPageMediator.getMellemRegninger().appendText(forskydningsspaendingMellemregning);
+		} catch (ForskydningsspaendingEjDefineretException | TvaerkraftEjDefineretException | ArealEjDefineretException| DimensionerendeKraftEjDefineretException
+				| VinkelEjDefineretException  e1) {
+			frontPageMediator.getTauTextField().clear();
+			
+		}	
+		
+		try {
+			double normalspaending = pteCalc.getNormalspaending();
+			String normalspaendingText = formatter.format(normalspaending);
+			
+			frontPageMediator.getSigmaNTextField().setText(normalspaendingText);
+			String normalspaendingMellemregning = pteCalc.getNormalspaendingMellemregning();
+			frontPageMediator.getMellemRegninger().appendText(normalspaendingMellemregning);
+		} catch (NormalspaendingEjDefineretException | DimensionerendeKraftEjDefineretException
+				| VinkelEjDefineretException  e1) {
+			frontPageMediator.getSigmaNTextField().clear();			
+		}				
 	}		
 
 	public PTECalculatorController getPteCalc() {
 		return pteCalc;
 	}
-
 }

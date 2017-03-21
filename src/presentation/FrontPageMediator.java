@@ -25,6 +25,14 @@ public class FrontPageMediator {
 	public TextField getFnTextField() {
 		return frontPageBottom.getFnTextField();
 	}
+	
+	public TextField getTauTextField() {
+		return frontPageBottom.getTauTextField();
+	}
+	
+	public TextField getSigmaNTextField() {
+		return frontPageBottom.getSigmaNTextField();
+	}
 
 	public TextField getVerticalAngleText() {
 		return frontPageTopLeft.getVerticalAngle();
@@ -53,6 +61,10 @@ public class FrontPageMediator {
 		return frontPageBottom.getMellemRegninger();
 	}
 	
+	public TextField getArealText() {
+		return frontPageTopLeft.getAreal();
+	}
+	
 	public void setTriangle(Canvas triangle) {
 		frontPageTopLeft.setTriangle(triangle);
 	}
@@ -63,6 +75,6 @@ public class FrontPageMediator {
 
 	public void setVerticalAngleText(TextField tf) {
 		frontPageTopLeft.setVerticalAngle(tf);
-	}
+	}	
 
 }

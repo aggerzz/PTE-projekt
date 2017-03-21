@@ -8,9 +8,11 @@ public class FrontPage {
 	public static FrontPageMediator frontPageMediator; 
 
 	public void start(Stage stage) {
-		BorderPane root = new BorderPane();
+		BorderPane root = new BorderPane();		
 		Scene frontPage = new Scene(root);
 		
+		stage.setTitle("PTE Lommeregner");
+				
 		FrontPageTopLeftInsetter fptInsetter = new FrontPageTopLeftInsetter();
 		FrontPageBottomInsetter fpbInsetter = new FrontPageBottomInsetter();
 		
