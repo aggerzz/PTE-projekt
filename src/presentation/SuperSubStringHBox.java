@@ -11,14 +11,13 @@ public class SuperSubStringHBox {
 		HBox hbox = new HBox();
 		Label labelFirst = new Label();
 		Label labelSecond = new Label();
-		Label labelColon = new Label(":");
 		
 		labelFirst.setText(firstString);
 		labelSecond.setText(secondString);
 		labelSecond.setFont(new Font("Areal", 7));
 
 		hbox.setAlignment(Pos.TOP_LEFT);
-		hbox.getChildren().addAll(labelFirst, labelSecond, labelColon);
+		hbox.getChildren().addAll(labelFirst, labelSecond);
 
 		return hbox;
 	}
