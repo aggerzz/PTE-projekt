@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.junit.internal.runners.statements.Fail;
 
 import exceptions.DimensionerendeKraftEjDefineretException;
+import exceptions.ErOverFejlGraenseException;
 import exceptions.VinkelEjDefineretException;
 import exceptions.erUnderFejlgraenseException;
 import logic.Dimensionerendekraft;
@@ -20,7 +21,7 @@ import logic.VinkelImpl;
 public class OC3Test {
 	
 	@Test//(expected=erUnderFejlgraenseException.class)
-	public void test0GraderGiverAdvarsel() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException, erUnderFejlgraenseException {
+	public void test0GraderGiverAdvarsel() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException, erUnderFejlgraenseException, ErOverFejlGraenseException {
 		Normalkraft fn = new NormalkraftImpl();
 		Vinkel vinkel = new VinkelImpl();
 		Dimensionerendekraft fdim = new DimensionerendekraftImpl();
@@ -36,7 +37,7 @@ public class OC3Test {
 	}
 	
 	@Test(expected=erUnderFejlgraenseException.class)
-	public void testNegativVinkelGrader() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException, erUnderFejlgraenseException{
+	public void testNegativVinkelGrader() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException, erUnderFejlgraenseException, ErOverFejlGraenseException{
 		Normalkraft fn = new NormalkraftImpl();
 		Vinkel vinkel = new VinkelImpl();
 		Dimensionerendekraft fdim = new DimensionerendekraftImpl();
@@ -59,7 +60,7 @@ public class OC3Test {
 	}
 	
 	@Test
-	public void testBeregningAfNormalkraftKorrekt() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException, erUnderFejlgraenseException{
+	public void testBeregningAfNormalkraftKorrekt() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException, erUnderFejlgraenseException, ErOverFejlGraenseException{
 		Normalkraft fn = new NormalkraftImpl();
 		Vinkel vinkel = new VinkelImpl();
 		Dimensionerendekraft fdim = new DimensionerendekraftImpl();
@@ -74,7 +75,7 @@ public class OC3Test {
 	}
 
 	@Test// 
-	public void test90GraderGiverAdvarsel() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException, erUnderFejlgraenseException{
+	public void test90GraderGiverAdvarsel() throws DimensionerendeKraftEjDefineretException, ErOverFejlGraenseException, VinkelEjDefineretException, erUnderFejlgraenseException{
 		Normalkraft fn = new NormalkraftImpl();
 		Vinkel vinkel = new VinkelImpl();
 		Dimensionerendekraft fdim = new DimensionerendekraftImpl();
@@ -92,7 +93,7 @@ public class OC3Test {
 	}
 	
 	@Test// (expected=erUnderFejlgraenseException.class)
-	public void testBogstavSomVinkelGrader() throws erUnderFejlgraenseException{
+	public void testBogstavSomVinkelGrader() throws erUnderFejlgraenseException, ErOverFejlGraenseException{
 		Normalkraft fn = new NormalkraftImpl();
 		Vinkel vinkel = new VinkelImpl();
 		Dimensionerendekraft fdim = new DimensionerendekraftImpl();
@@ -105,8 +106,8 @@ public class OC3Test {
 		fail("fejlInput ej lavet");
 	}
 	
-	@Test
-	public void testVinkelOverMaxgraense() throws erUnderFejlgraenseException{
+	@Test (expected = ErOverFejlGraenseException.class)
+	public void testVinkelOverMaxgraense() throws erUnderFejlgraenseException, ErOverFejlGraenseException{
 		Normalkraft fn = new NormalkraftImpl();
 		Vinkel vinkel = new VinkelImpl();
 		Dimensionerendekraft fdim = new DimensionerendekraftImpl();
@@ -117,10 +118,10 @@ public class OC3Test {
 		
 		
 //		assertTrue(vinkel.Overmaximalgraense);
-		fail("overMaximalgrænse ej lavet");
+		fail("ErOverFejlGraenseException ej lavet");
 	}
 	@Test
-	public void testMaaltTilLodretkorrekt() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException, erUnderFejlgraenseException{
+	public void testMaaltTilLodretkorrekt() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException, erUnderFejlgraenseException, ErOverFejlGraenseException{
 		Normalkraft fn = new NormalkraftImpl();
 		Vinkel vinkel = new VinkelImpl();
 		Dimensionerendekraft fdim = new DimensionerendekraftImpl();
@@ -136,7 +137,7 @@ public class OC3Test {
 	}
 	
 	@Test
-	public void test45GraderSammenligningTilTvaerkraft() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException, erUnderFejlgraenseException{
+	public void test45GraderSammenligningTilTvaerkraft() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException, erUnderFejlgraenseException, ErOverFejlGraenseException{
 		Normalkraft fn = new NormalkraftImpl();
 		Tvaerkraft ft = new TvaerkraftImpl();
 		Vinkel vinkel = new VinkelImpl();
@@ -153,7 +154,7 @@ public class OC3Test {
 		
 	}
 	@Test //(expected=erUnderFejlgraenseException.class)
-	public void testvaegtSatTil0Kg() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException, erUnderFejlgraenseException{
+	public void testvaegtSatTil0Kg() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException, erUnderFejlgraenseException, ErOverFejlGraenseException{
 		Normalkraft fn = new NormalkraftImpl();
 		Vinkel vinkel = new VinkelImpl();
 		Dimensionerendekraft fdim = new DimensionerendekraftImpl();
