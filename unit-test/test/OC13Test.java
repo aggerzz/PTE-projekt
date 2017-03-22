@@ -8,6 +8,7 @@ import org.junit.Test;
 import exceptions.BoejningsMomentEjDefineretException;
 import exceptions.DimensionerendeKraftEjDefineretException;
 import exceptions.LaengdeEjDefineretException;
+import exceptions.NegativKgException;
 import exceptions.erUnderFejlgraenseException;
 import logic.BoejningsMoment;
 import logic.BoejningsMomentImpl;
@@ -23,7 +24,7 @@ public class OC13Test {
 
 	@Test
 	public void testkorrektudregningAfBoejningsMoment() throws DimensionerendeKraftEjDefineretException,
-			erUnderFejlgraenseException, LaengdeEjDefineretException, BoejningsMomentEjDefineretException {
+			erUnderFejlgraenseException, LaengdeEjDefineretException, BoejningsMomentEjDefineretException, NegativKgException {
 		PTECalculatorController calc = new PTECalculatorControllerImpl();
 
 		calc.angivLaengde(1400);
@@ -46,7 +47,7 @@ public class OC13Test {
 
 	@Test(expected = LaengdeEjDefineretException.class)
 	public void testLaengdeNulltest()
-			throws DimensionerendeKraftEjDefineretException, erUnderFejlgraenseException, LaengdeEjDefineretException {
+			throws DimensionerendeKraftEjDefineretException, erUnderFejlgraenseException, LaengdeEjDefineretException, NegativKgException {
 		PTECalculatorController calc = new PTECalculatorControllerImpl();
 
 		calc.angivVaegt(10, Enhed.KG);

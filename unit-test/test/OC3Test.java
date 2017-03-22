@@ -27,14 +27,14 @@ public class OC3Test {
 
 	
 	@Test(expected=erUnderFejlgraenseException.class)
-	public void testNegativVinkelGrader() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException, erUnderFejlgraenseException, ErOverFejlGraenseException{
+	public void testNegativVinkelGrader() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException, erUnderFejlgraenseException, ErOverFejlGraenseException, NegativKgException{
 		Normalkraft fn = new NormalkraftImpl();
 		Vinkel vinkel = new VinkelImpl();
 		Dimensionerendekraft fdim = new DimensionerendekraftImpl();
 		boolean godNewton = false;
 		vinkel.setGrader(-1);
 		vinkel.setMaaltTilLodret(false);
-		fdim.setKg(100);
+		fdim.setVaegt(100, Enhed.KG);;
 		double newton = fn.getNewton();
 		System.out.println(newton);
 		if(0<=newton){
@@ -50,14 +50,14 @@ public class OC3Test {
 	}
 	
 	@Test
-	public void testBeregningAfNormalkraftKorrekt() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException, erUnderFejlgraenseException, ErOverFejlGraenseException{
+	public void testBeregningAfNormalkraftKorrekt() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException, erUnderFejlgraenseException, ErOverFejlGraenseException, NegativKgException{
 		Normalkraft fn = new NormalkraftImpl();
 		Vinkel vinkel = new VinkelImpl();
 		Dimensionerendekraft fdim = new DimensionerendekraftImpl();
 		
 		vinkel.setGrader(1);
 		vinkel.setMaaltTilLodret(false);
-		fdim.setKg(100);
+		fdim.setVaegt(100, Enhed.KG);
 		fn.angivDimensionerendekraft(fdim);
 		fn.angivVinkel(vinkel);
 		assertEquals(17.131, fn.getNewton(), 0.001);
@@ -77,14 +77,14 @@ public class OC3Test {
 		fail("ErOverFejlGraenseException ej lavet");
 	}
 	@Test
-	public void testMaaltTilLodretkorrekt() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException, erUnderFejlgraenseException, ErOverFejlGraenseException{
+	public void testMaaltTilLodretkorrekt() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException, erUnderFejlgraenseException, ErOverFejlGraenseException, NegativKgException{
 		Normalkraft fn = new NormalkraftImpl();
 		Vinkel vinkel = new VinkelImpl();
 		Dimensionerendekraft fdim = new DimensionerendekraftImpl();
 		
 		vinkel.setGrader(1);
 		vinkel.setMaaltTilLodret(true);
-		fdim.setKg(100);
+		fdim.setVaegt(100, Enhed.KG);
 		fn.angivDimensionerendekraft(fdim);
 		fn.angivVinkel(vinkel);
 		double newton =fn.getNewton();
@@ -93,7 +93,7 @@ public class OC3Test {
 	}
 	
 	@Test
-	public void test45GraderSammenligningTilTvaerkraft() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException, erUnderFejlgraenseException, ErOverFejlGraenseException{
+	public void test45GraderSammenligningTilTvaerkraft() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException, erUnderFejlgraenseException, ErOverFejlGraenseException, NegativKgException{
 		Normalkraft fn = new NormalkraftImpl();
 		Tvaerkraft ft = new TvaerkraftImpl();
 		Vinkel vinkel = new VinkelImpl();
@@ -101,7 +101,7 @@ public class OC3Test {
 		
 		vinkel.setGrader(45);
 		vinkel.setMaaltTilLodret(false);
-		fdim.setKg(100);
+		fdim.setVaegt(100, Enhed.KG);
 		fn.angivDimensionerendekraft(fdim);
 		fn.angivVinkel(vinkel);
 		ft.angivDimensionerendekraft(fdim);

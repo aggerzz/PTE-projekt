@@ -145,12 +145,11 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 	}	
 
 	@Override
-	public void angivVaegt(double vaegt, Enhed enhed) throws DimensionerendeKraftEjDefineretException, erUnderFejlgraenseException {
+	public void angivVaegt(double vaegt, Enhed enhed) throws  NegativKgException {
 		fdim = new DimensionerendekraftImpl();
 
 		fdim.setVaegt(vaegt,enhed);
-		if(!fdim.erVaegtNormal())
-			throw new erUnderFejlgraenseException();
+
 		notifyObservers();
 	}
 	
@@ -303,10 +302,11 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 	}
 
 	@Override
-	public boolean erVaegtNormal() throws NegativKgException {
-		fdim = new DimensionerendekraftImpl();
+	public boolean erVaegtNormal() throws DimensionerendeKraftEjDefineretException {
+		if (fdim == null)
+				throw new DimensionerendeKraftEjDefineretException();
+		return fdim.erVaegtNormal();
 		
-		return false;
 	}
 	
 	@Override
