@@ -2,9 +2,6 @@ package presentation;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import com.sun.org.apache.xml.internal.security.encryption.Reference;
-
 import exceptions.DimensionerendeKraftEjDefineretException;
 import javafx.collections.FXCollections;
 import javafx.scene.control.ComboBox;
