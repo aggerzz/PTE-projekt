@@ -16,9 +16,12 @@ public class ArealTextField extends TextField {
 		this.setMaxSize(150, 20);
 		this.setOnKeyReleased(e -> {
 			try {
-				//notifyObservers();
+				// notifyObservers();
+				
+				setStyle("-fx-control-inner-background: #ffffff;");
 				FrontPage.frontPageMediator.getObserver().getPteCalc().angivAreal(Double.parseDouble(this.getText()));
-			} catch (NegativArealException e1) {				
+			} catch (NegativArealException e1) {
+				setStyle("-fx-control-inner-background: #f92525;");
 				e1.printStackTrace();
 			}
 			try {
@@ -28,12 +31,13 @@ public class ArealTextField extends TextField {
 					| TvaerkraftEjDefineretException e1) {
 				// gør ingen ting
 			}
-			
+
 			try {
 				FrontPage.frontPageMediator.getObserver().getPteCalc().beregnNormalspaending();
-			} catch (NormalkraftEjDefineretException | DimensionerendeKraftEjDefineretException | VinkelEjDefineretException | NormalspaendingEjDefineretException | ArealEjDefineretException e1) {
+			} catch (NormalkraftEjDefineretException | DimensionerendeKraftEjDefineretException
+					| VinkelEjDefineretException | NormalspaendingEjDefineretException | ArealEjDefineretException e1) {
 				// gør ingen ting
-			}			
+			}
 		});
 	}
 }

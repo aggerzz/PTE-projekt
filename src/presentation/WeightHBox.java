@@ -80,7 +80,4 @@ public class WeightHBox extends HBox {
             // hvis unormal ændre baggrund til gul
         }
 		}
-
-	
-
 }
