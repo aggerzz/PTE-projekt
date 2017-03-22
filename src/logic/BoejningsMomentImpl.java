@@ -2,7 +2,7 @@ package logic;
 
 public class BoejningsMomentImpl implements BoejningsMoment {
 	Dimensionerendekraft fdim;
-	LaengdeImpl l2;
+	Laengde l2 ;
 	String mellemRegning = "";
 	@Override
 	public void angivDimensionerendeKraft(Dimensionerendekraft fdim) {
@@ -10,8 +10,8 @@ public class BoejningsMomentImpl implements BoejningsMoment {
 	}
 
 	@Override
-	public void angivLaengde(Laengde L2) {
-		this.l2=L2;
+	public void angivLaengde(Laengde l2) {
+		this.l2 = l2;
 	}
 
 	@Override
