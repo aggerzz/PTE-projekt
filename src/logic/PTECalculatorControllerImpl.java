@@ -47,8 +47,15 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 	}
 	
 	@Override
-	public double getBoejningsMoment() throws BoejningsMomentEjDefineretException{
-		return boejning.getBoejningsMoment();
+	public double getBoejningsMoment() throws BoejningsMomentEjDefineretException, LaengdeEjDefineretException, DimensionerendeKraftEjDefineretException{
+		try {
+			return boejning.getBoejningsMoment();
+		} catch (LaengdeEjDefineretException e) {
+			throw new LaengdeEjDefineretException();
+		}catch(DimensionerendeKraftEjDefineretException e){
+			throw new DimensionerendeKraftEjDefineretException();
+		}
+		
 	}
 	
 	@Override
