@@ -82,8 +82,8 @@ public class WeightHBox extends HBox {
 				if (!FrontPage.frontPageMediator.getObserver().getPteCalc().erVaegtNormal())
 					setStyle("-fx-control-inner-background: #ffee6d;");
 			}
-		} catch (NumberFormatException | DimensionerendeKraftEjDefineretException | erUnderFejlgraenseException e) {
-			e.printStackTrace();
+		} catch (NumberFormatException | DimensionerendeKraftEjDefineretException e) {
+//			e.printStackTrace();
 
 			setStyle("-fx-control-inner-background: #f92525;");
 		} catch (NegativKgException e) {
