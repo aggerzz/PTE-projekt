@@ -1,6 +1,7 @@
 package logic;
 
 import exceptions.ArealEjDefineretException;
+import exceptions.BoejningsMomentEjDefineretException;
 import exceptions.DimensionerendeKraftEjDefineretException;
 import exceptions.FlydeSpaendingEjDefineretException;
 import exceptions.ForskydningsspaendingEjDefineretException;
@@ -30,6 +31,16 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 	private SikkerhedsFaktor sf;
 	private LaengdeImpl l2;
 	private BoejningsMoment boejning;
+	
+	public void exportToPdf(){
+		new PdfExporter().exportToPdf();
+	}
+	
+	@Override
+	public double getBoejningsMoment() throws BoejningsMomentEjDefineretException{
+		return boejning.getBoejningsMoment();
+	}
+	
 	@Override
 	public void beregnSikkerhedsFaktor() throws ReferenceSpaendingEjDefineretException, FlydeSpaendingEjDefineretException{
 		sf = new SikkerhedsFaktorImpl();

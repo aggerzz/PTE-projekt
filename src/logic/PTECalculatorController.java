@@ -1,6 +1,7 @@
 package logic;
 
 import exceptions.ArealEjDefineretException;
+import exceptions.BoejningsMomentEjDefineretException;
 import exceptions.DimensionerendeKraftEjDefineretException;
 import exceptions.FlydeSpaendingEjDefineretException;
 import exceptions.ForskydningsspaendingEjDefineretException;
@@ -86,5 +87,6 @@ public interface PTECalculatorController {
 	public String ReferenceSpaendingGetMellemRegning() throws ReferenceSpaendingEjDefineretException;
 	public void setReferenceSpaending(double sigmaRefNmm2);
 	public void beregnBoejningsMoment() throws DimensionerendeKraftEjDefineretException, LaengdeEjDefineretException;
-
+	public double getBoejningsMoment() throws BoejningsMomentEjDefineretException;
+	public void exportToPdf();
 }
