@@ -1,6 +1,7 @@
 package logic;
 
 import exceptions.ArealEjDefineretException;
+import exceptions.BoejningsMomentEjDefineretException;
 import exceptions.DimensionerendeKraftEjDefineretException;
 import exceptions.FlydeSpaendingEjDefineretException;
 import exceptions.ForskydningsspaendingEjDefineretException;
@@ -10,6 +11,7 @@ import exceptions.NegativKgException;
 import exceptions.NormalkraftEjDefineretException;
 import exceptions.NormalspaendingEjDefineretException;
 import exceptions.ReferenceSpaendingEjDefineretException;
+import exceptions.SikkerhedsFaktorEjDefineretException;
 import exceptions.TvaerkraftEjDefineretException;
 import exceptions.VinkelEjDefineretException;
 import exceptions.angivBoejningsspaendingEjDefineretException;
@@ -86,5 +88,11 @@ public interface PTECalculatorController {
 	public String ReferenceSpaendingGetMellemRegning() throws ReferenceSpaendingEjDefineretException;
 	public void setReferenceSpaending(double sigmaRefNmm2);
 	public void beregnBoejningsMoment() throws DimensionerendeKraftEjDefineretException, LaengdeEjDefineretException;
-
+	public double getBoejningsMoment() throws BoejningsMomentEjDefineretException;
+	public void exportToPdf();
+	
+	public double getSikkerhedsfaktor()throws SikkerhedsFaktorEjDefineretException ;
+	
+	public String getSikkerhedsfaktorMellemregning() throws SikkerhedsFaktorEjDefineretException, ReferenceSpaendingEjDefineretException, FlydeSpaendingEjDefineretException;
+	
 }

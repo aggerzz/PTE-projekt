@@ -1,6 +1,7 @@
 package logic;
 
 import exceptions.ArealEjDefineretException;
+import exceptions.BoejningsMomentEjDefineretException;
 import exceptions.DimensionerendeKraftEjDefineretException;
 import exceptions.FlydeSpaendingEjDefineretException;
 import exceptions.ForskydningsspaendingEjDefineretException;
@@ -10,6 +11,7 @@ import exceptions.NegativKgException;
 import exceptions.NormalkraftEjDefineretException;
 import exceptions.NormalspaendingEjDefineretException;
 import exceptions.ReferenceSpaendingEjDefineretException;
+import exceptions.SikkerhedsFaktorEjDefineretException;
 import exceptions.TvaerkraftEjDefineretException;
 import exceptions.VinkelEjDefineretException;
 import exceptions.angivBoejningsspaendingEjDefineretException;
@@ -30,6 +32,16 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 	private SikkerhedsFaktor sf;
 	private LaengdeImpl l2;
 	private BoejningsMoment boejning;
+	
+	public void exportToPdf(){
+		new PdfExporter().exportToPdf();
+	}
+	
+	@Override
+	public double getBoejningsMoment() throws BoejningsMomentEjDefineretException{
+		return boejning.getBoejningsMoment();
+	}
+	
 	@Override
 	public void beregnSikkerhedsFaktor() throws ReferenceSpaendingEjDefineretException, FlydeSpaendingEjDefineretException{
 		sf = new SikkerhedsFaktorImpl();
@@ -424,6 +436,23 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 		sigmaRef.setSigmaRefNmm2(sigmaRefNmm2);
 		
 		notifyObservers();
+	}
+
+	@Override
+	public double getSikkerhedsfaktor() throws SikkerhedsFaktorEjDefineretException  {
+		if(sf == null)
+			throw new SikkerhedsFaktorEjDefineretException();
+		double sfvaerdi = sf.getSikkerhedsFaktor();
+		return sfvaerdi;
+	}
+
+	@Override
+	public String getSikkerhedsfaktorMellemregning() throws SikkerhedsFaktorEjDefineretException, ReferenceSpaendingEjDefineretException, FlydeSpaendingEjDefineretException {
+		if(sf == null)
+			throw new SikkerhedsFaktorEjDefineretException();
+		
+		String sfMellemregning = sf.getSikkerhedsFaktorMellemRegning();
+		return sfMellemregning;
 	}
 		
 }
