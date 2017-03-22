@@ -66,6 +66,13 @@ public class WeightHBox extends HBox {
 			try {
 				// sæt normalbaggrundsfarve
 				if (!weightTextField.getText().isEmpty() && !weightTextField.getText().contains("-")) {
+					char sidsteBogstav = weightTextField.getText().charAt(weightTextField.getLength()-1);
+					if(!(sidsteBogstav >= '0' && sidsteBogstav <= '9' || sidsteBogstav == ',' || sidsteBogstav == '.' )){										
+						String tekst = weightTextField.getText().substring(0, weightTextField.getText().length()-1 );
+						System.out.println(tekst);
+						weightTextField.setText(tekst);
+						weightTextField.positionCaret(100);
+					}				
 					FrontPage.frontPageMediator.getObserver().getPteCalc()
 							.angivVaegt(Double.parseDouble(weightTextField.getText()), unit.getValue());
 				}
