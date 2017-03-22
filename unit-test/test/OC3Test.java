@@ -109,21 +109,12 @@ public class OC3Test {
 		assertEquals(ft.getNewton() , fn.getNewton(), 0.001);
 		
 	}
-	@Test //(expected=erUnderFejlgraenseException.class)
+	@Test (expected=erUnderFejlgraenseException.class)
 	public void testvaegtSatTil0Kg() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException, erUnderFejlgraenseException, ErOverFejlGraenseException, NegativKgException{
-		Normalkraft fn = new NormalkraftImpl();
-		Vinkel vinkel = new VinkelImpl();
-		Dimensionerendekraft fdim = new DimensionerendekraftImpl();
 		PTECalculatorController calc = new PTECalculatorControllerImpl();
 		
-		vinkel.setGrader(45);
-		vinkel.setMaaltTilLodret(false);
-		fdim.setVaegt(0, Enhed.KG);
-		fn.angivDimensionerendekraft(fdim);
-		fn.angivVinkel(vinkel);
+		calc.angivVaegt(0, Enhed.KG);
 		
-		assertEquals(0, fn.getNewton(), 0.001);
-		assertTrue(calc.erVaegtNormal());
 		fail("vægtUnderNormalgrænse ej lavet");
 	}
 	
