@@ -12,6 +12,7 @@ public class FrontPageTopRightInsetter {
 	TextField areal, inertimoment, halvhoejde;
 
 	public GridPane insetRight() {
+		SuperSubStringHBox superSubStringHBox = new SuperSubStringHBox();
 
 		GridPane gridRight = new GridPane();
 		gridRight.setAlignment(Pos.TOP_LEFT);
@@ -20,20 +21,20 @@ public class FrontPageTopRightInsetter {
 		// Areal
 		Label arealLabel = new Label("Areal:");
 		areal = new ArealTextField();
-		Label mm2Label = new Label("mm2");
+		HBox mm2LabelHBox = superSubStringHBox.generateSuperHBox("mm", "2");
 		HBox arealHBox = new HBox();
 		arealHBox.setSpacing(2);
 		arealHBox.setAlignment(Pos.BOTTOM_LEFT);
-		arealHBox.getChildren().addAll(areal, mm2Label);
-
+		arealHBox.getChildren().addAll(areal, mm2LabelHBox);
+		
 		// Inertimoment
 		Label inertimomentLabel = new Label("I:");
 		inertimoment = new InertimomentTextField();
-		Label mm4Label = new Label("mm4");
+		HBox mm4LabelHBox = superSubStringHBox.generateSuperHBox("mm", "4");
 		HBox inertimomentHBox = new HBox();
 		inertimomentHBox.setSpacing(2);
 		inertimomentHBox.setAlignment(Pos.BOTTOM_LEFT);
-		inertimomentHBox.getChildren().addAll(inertimoment, mm4Label);
+		inertimomentHBox.getChildren().addAll(inertimoment, mm4LabelHBox);
 
 		// Halvhoejde (e)
 		Label halvhoejdeLabel = new Label("e:");
