@@ -1,4 +1,4 @@
-package test;
+package logic;
 
 import static org.junit.Assert.assertEquals;
 
@@ -7,6 +7,7 @@ import org.junit.Test;
 import exceptions.DimensionerendeKraftEjDefineretException;
 import exceptions.ErOverFejlGraenseException;
 import exceptions.NegativArealException;
+import exceptions.NegativKgException;
 import exceptions.NormalkraftEjDefineretException;
 import exceptions.NormalspaendingEjDefineretException;
 import exceptions.VinkelEjDefineretException;
@@ -15,6 +16,7 @@ import logic.Areal;
 import logic.ArealImpl;
 import logic.Dimensionerendekraft;
 import logic.DimensionerendekraftImpl;
+import logic.Enhed;
 import logic.Normalkraft;
 import logic.NormalkraftImpl;
 import logic.Normalspaending;
@@ -30,7 +32,7 @@ public class BeregnSigmaN {
 	Dimensionerendekraft fdim;
 
 	@Test
-	public void testSigmaN() {
+	public void testSigmaN() throws NegativKgException {
 		sigmaN = new NormalspaendingImpl();
 		a = new ArealImpl();
 		fn = new NormalkraftImpl();
@@ -43,7 +45,7 @@ public class BeregnSigmaN {
 	}
 
 	public void setVaerdier(Areal a, double Mm2, Vinkel vinkel, double grader, boolean maaltTilLodret,
-			Dimensionerendekraft fdim, double kg, Normalkraft fn) {
+			Dimensionerendekraft fdim, double kg, Normalkraft fn) throws NegativKgException {
 		try {
 			a.setMm2(Mm2);
 		} catch (NegativArealException e1) {
@@ -61,7 +63,7 @@ public class BeregnSigmaN {
 		} catch (VinkelEjDefineretException e) {
 			e.printStackTrace();
 		}
-		fdim.setKg(kg);
+		fdim.setVaegt(kg, Enhed.KG);
 		try {
 			fn.angivDimensionerendekraft(fdim);
 		} catch (DimensionerendeKraftEjDefineretException e) {

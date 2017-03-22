@@ -30,7 +30,7 @@ public interface PTECalculatorController {
 	String getNormalkraftMellemregning() throws NormalkraftEjDefineretException,
 			DimensionerendeKraftEjDefineretException, VinkelEjDefineretException;
 
-	public void angivVaegt(double vaerdi, Enhed enhed) throws DimensionerendeKraftEjDefineretException, erUnderFejlgraenseException;
+	public void angivVaegt(double vaerdi, Enhed enhed) throws NegativKgException;
 
 	public void notifyObservers();
 
@@ -78,7 +78,7 @@ public interface PTECalculatorController {
 
 	public void setForskydningsspaending(double nMm2);
 
-	public boolean erVaegtNormal() throws NegativKgException;
+	public boolean erVaegtNormal() throws DimensionerendeKraftEjDefineretException;
 
 	void setNormalspaending(double sigmaNmm2);
 

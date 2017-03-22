@@ -114,10 +114,7 @@ public class OC4Test {
 			return newton;
 		}
 
-		@Override
-		public void setKg(double kg) {
-			this.kg = kg;
-		}
+
 
 		@Override
 		public double getKg() {
