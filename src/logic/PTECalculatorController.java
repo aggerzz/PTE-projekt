@@ -2,9 +2,12 @@ package logic;
 
 import exceptions.ArealEjDefineretException;
 import exceptions.BoejningsMomentEjDefineretException;
+import exceptions.BoejningsspaendingEjDefineretException;
 import exceptions.DimensionerendeKraftEjDefineretException;
 import exceptions.FlydeSpaendingEjDefineretException;
 import exceptions.ForskydningsspaendingEjDefineretException;
+import exceptions.HalvProfilhoejdeEjDefineretException;
+import exceptions.InertimomentEjDefineretException;
 import exceptions.LaengdeEjDefineretException;
 import exceptions.NegativArealException;
 import exceptions.NegativKgException;
@@ -95,4 +98,7 @@ public interface PTECalculatorController {
 	
 	public String getSikkerhedsfaktorMellemregning() throws SikkerhedsFaktorEjDefineretException, ReferenceSpaendingEjDefineretException, FlydeSpaendingEjDefineretException;
 	
+	public void beregnBoejningsSpaending() throws BoejningsMomentEjDefineretException, BoejningsspaendingEjDefineretException, HalvProfilhoejdeEjDefineretException, InertimomentEjDefineretException;
+	public double getBoejningsspaending() throws BoejningsspaendingEjDefineretException;
+	public String getBoejningsspaendingMellemregning() throws BoejningsspaendingEjDefineretException;
 }
