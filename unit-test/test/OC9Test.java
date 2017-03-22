@@ -1,62 +1,113 @@
 package test;
 
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import exceptions.FlydeSpaendingEjDefineretException;
+import exceptions.ForskydningsspaendingEjDefineretException;
+import exceptions.NormalspaendingEjDefineretException;
+import exceptions.ReferenceSpaendingEjDefineretException;
+import exceptions.SikkerhedsFaktorEjDefineretException;
+import exceptions.angivBoejningsspaendingEjDefineretException;
+import logic.Boejningsspaending;
+import logic.FlydeSpaending;
+import logic.FlydeSpaendingImpl;
+import logic.ForskydningsSpaendning;
+import logic.Normalspaending;
+import logic.PTECalculatorController;
+import logic.PTECalculatorControllerImpl;
 import logic.Referencespaending;
 import logic.ReferencespaendingImpl;
+import logic.SikkerhedsFaktor;
+import logic.SikkerhedsFaktorImpl;
 
 public class OC9Test {
 
-	@Test(expected = ReferencespaendingEjDefineretException.class)
-	public void Referencespaendingtest() throws ReferencespaendingEjDefineretException {
+	@Test(expected = ReferenceSpaendingEjDefineretException.class)
+	public void Referencespaendingtest() throws ReferenceSpaendingEjDefineretException, FlydeSpaendingEjDefineretException {
+		PTECalculatorController calc = new PTECalculatorControllerImpl();
+		
+		calc.getSigmaRef();
 		Referencespaending ref = new ReferencespaendingImpl();
-		Flydespaending fly = new FlydespaendingImpl();
-		Sikkerhedsfaktor sk = new SikkerhedsfaktorImpl();
 
-		fly.setNmm2(0.675);
-
+		
 		fail("ReferencespaendingEjDefineretException ej kastet");
 	}
 
-	@Test(expected = FlydespaendingEjDefineretException.class)
-	public void Flydespaendingtest() throws FlydespaendingEjDefineretException {
-		Referencespaending ref = new ReferencespaendingImpl();
-		Flydespaending fly = new FlydespaendingImpl();
-		Sikkerhedsfaktor sk = new SikkerhedsfaktorImpl();
+	@Test(expected = FlydeSpaendingEjDefineretException.class)
+	public void FlydespaendingNullText() throws FlydeSpaendingEjDefineretException {
+		PTECalculatorController calc = new PTECalculatorControllerImpl();
+				
+				calc.getFlydeSpaending();
 
-		ref.setNmm2(40);
 
 		fail("FlydespaendingEjDefineretException ej kastet");
 	}
 
 	@Test
-	public void Sikkerhedsfaktortest()
-			throws ReferencespaendingEjDefineretException, FlydespaendingEjDefineretException {
-		Referencespaending ref = new ReferencespaendingImpl();
-		Flydespaending fly = new FlydespaendingImpl();
-		Sikkerhedsfaktor sk = new SikkerhedsfaktorImpl();
+	public void Sikkerhedsfaktortest() throws ReferenceSpaendingEjDefineretException, FlydeSpaendingEjDefineretException, SikkerhedsFaktorEjDefineretException {
+		ReferencespaendingMock ref = new ReferencespaendingMock();
+		FlydeSpaending fly = new FlydeSpaendingImpl();
+		SikkerhedsFaktor sk = new SikkerhedsFaktorImpl();
 
-		fly.setNmm2(0.675);
-		ref.setNmm2(40);
+		fly.angivFlydeSpaending(0.675);
+		ref.getSigmaRef();
+		sk.angivFlydeSpaending(fly);
+		sk.angivReferencespaending(ref);
+		double sf = sk.getSikkerhedsFaktor();
 
-		assertEquals(2.001, sk.getvaerdi(), 0.001);
+		assertEquals(2.001, sf, 0.001);
 
 	}
 
-	@Test
-	public void SikkerhedsfaktorMedMellemregningtest()
-			throws ReferencespaendingEjDefineretException, FlydespaendingEjDefineretException {
-		Referencespaending ref = new ReferencespaendingImpl();
-		Flydespaending fly = new FlydespaendingImpl();
-		Sikkerhedsfaktor sk = new SikkerhedsfaktorImpl();
 
-		fly.setNmm2(0.675);
-		ref.setNmm2(40);
+	
+	
+	
+	
+	
+	
+	
+	private class ReferencespaendingMock implements Referencespaending{
 
-		assertEquals(2.001, sk.getvaerdi(), 0.001);
-		assertEquals("sf = fly / ref " + "\n" + "0.675/40 = 2.001", sk.getMellemregning());
+		@Override
+		public double getSigmaRef() {
+			// TODO Auto-generated method stub
+			return 40;
+		}
 
+		@Override
+		public String GetMellemRegning() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public void angivNormalspaending(Normalspaending sigmaN) throws NormalspaendingEjDefineretException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void angivBoejningsspaending(Boejningsspaending sigmaB)
+				throws angivBoejningsspaendingEjDefineretException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void angivForskydsningsspaending(ForskydningsSpaendning tau)
+				throws ForskydningsspaendingEjDefineretException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void setSigmaRefNmm2(double sigmaRefNmm2) {
+			// TODO Auto-generated method stub
+			
+		}
+		
 	}
 }
