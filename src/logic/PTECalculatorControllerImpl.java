@@ -8,6 +8,7 @@ import exceptions.ArealEjDefineretException;
 import exceptions.BoejningsMomentEjDefineretException;
 import exceptions.BoejningsspaendingEjDefineretException;
 import exceptions.DimensionerendeKraftEjDefineretException;
+import exceptions.ErOverFejlGraenseException;
 import exceptions.FlydeSpaendingEjDefineretException;
 import exceptions.ForskydningsspaendingEjDefineretException;
 import exceptions.HalvProfilhoejdeEjDefineretException;
@@ -245,7 +246,11 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 			this.vinkel = new VinkelImpl();
 		}
 		
-		this.vinkel.setGrader(vinkel);
+		try {
+			this.vinkel.setGrader(vinkel);
+		} catch (ErOverFejlGraenseException e) {
+			e.printStackTrace();
+		}
 		this.vinkel.setMaaltTilLodret(MaaltTilLodret);
 		
 //		try {
@@ -369,7 +374,11 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 		}
 		sigmaN = new NormalspaendingImpl();
 		sigmaN.angivNormalkraft(fn);
-		sigmaN.angivAreal(a);
+		try {
+			sigmaN.angivAreal(a);
+		} catch (NegativArealException e) {
+			e.printStackTrace();
+		}
 		
 		notifyObservers();		
 	}

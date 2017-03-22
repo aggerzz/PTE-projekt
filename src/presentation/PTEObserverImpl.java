@@ -2,6 +2,7 @@ package presentation;
 
 import java.text.DecimalFormat;
 import exceptions.ArealEjDefineretException;
+import exceptions.BoejningsspaendingEjDefineretException;
 import exceptions.DimensionerendeKraftEjDefineretException;
 import exceptions.ForskydningsspaendingEjDefineretException;
 import exceptions.NormalkraftEjDefineretException;
@@ -97,7 +98,20 @@ public class PTEObserverImpl implements PTEObserver {
 		} catch (NormalspaendingEjDefineretException | DimensionerendeKraftEjDefineretException
 				| VinkelEjDefineretException  e1) {
 			frontPageMediator.getSigmaNTextField().clear();			
-		}				
+		}
+			double boejningsSpaending;
+			try {
+				boejningsSpaending = pteCalc.getBoejningsspaending();
+			
+			String boejningsSpaendingText = formatter.format(boejningsSpaending);
+			
+			frontPageMediator.getSigmaBTextField().setText(boejningsSpaendingText);
+			String boejningsSpaendingMellemRegninger = pteCalc.getBoejningsspaendingMellemregning();
+			tilfoejMellemregning(boejningsSpaendingMellemRegninger);
+			} catch (BoejningsspaendingEjDefineretException e) {
+				frontPageMediator.getSigmaBTextField().clear();
+			}
+		
 	}		
 	private void tilfoejMellemregning(String mellemregning) {
 		frontPageMediator.getMellemRegninger().appendText(mellemregning + "\n");

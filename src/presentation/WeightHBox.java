@@ -2,7 +2,9 @@ package presentation;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import exceptions.DimensionerendeKraftEjDefineretException;
+import exceptions.erUnderFejlgraenseException;
 import javafx.collections.FXCollections;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
@@ -59,14 +61,16 @@ public class WeightHBox extends HBox {
 
 	public void refresh() {
 
-		try {
-			if (!weightTextField.getText().isEmpty() && !weightTextField.getText().contains("-")) {
+		if (!weightTextField.getText().isEmpty() && !weightTextField.getText().contains("-")) {
+			try {
 				FrontPage.frontPageMediator.getObserver().getPteCalc()
 						.angivVaegt(Double.parseDouble(weightTextField.getText()), unit.getValue());
+			} catch (NumberFormatException | DimensionerendeKraftEjDefineretException | erUnderFejlgraenseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-		} catch (DimensionerendeKraftEjDefineretException e1) {
-			e1.printStackTrace();
 		}
+
 	}
 
 }
