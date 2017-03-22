@@ -33,11 +33,9 @@ public class BoejningsspaendingImpl implements Boejningsspaending {
 	@Override
 	public void angivHalvProfilhoejde(HalvProfilhoejde e) throws HalvProfilhoejdeEjDefineretException {
 		if (e == null)
-			this.e = e;
-
-		else
 			throw new HalvProfilhoejdeEjDefineretException();
-
+		else
+			this.e = e;
 	}
 
 	@Override
