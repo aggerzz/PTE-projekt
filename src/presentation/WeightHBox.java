@@ -61,28 +61,26 @@ public class WeightHBox extends HBox {
 
 	public void refresh() {
 
-		if (!weightTextField.getText().isEmpty() && !weightTextField.getText().contains("-")) {
-
-			try {
-				// sæt normalbaggrundsfarve
-				if (!weightTextField.getText().isEmpty() && !weightTextField.getText().contains("-")) {
-					char sidsteBogstav = weightTextField.getText().charAt(weightTextField.getLength()-1);
-					if(!(sidsteBogstav >= '0' && sidsteBogstav <= '9' || sidsteBogstav == ',' || sidsteBogstav == '.' )){										
-						String tekst = weightTextField.getText().substring(0, weightTextField.getText().length()-1 );
-						System.out.println(tekst);
-						weightTextField.setText(tekst);
-						weightTextField.positionCaret(100);
-					}				
-					FrontPage.frontPageMediator.getObserver().getPteCalc()
-							.angivVaegt(Double.parseDouble(weightTextField.getText()), unit.getValue());
-				}
-			} catch (NumberFormatException | DimensionerendeKraftEjDefineretException | erUnderFejlgraenseException e) {
-				e.printStackTrace();
-				// Tjek om vægten er normal
-				// hvis unormal ændre baggrund til gul
-			}
+		try {
+            // sæt normalbaggrundsfarve
+            if (weightTextField.getLength() > 0){
+                char sidsteBogstav = weightTextField.getText().charAt(weightTextField.getLength()-1);
+                if(!(sidsteBogstav >= '0' && sidsteBogstav <= '9' || sidsteBogstav == ',' || sidsteBogstav == '.' )){                                      
+                    String tekst = weightTextField.getText().substring(0, weightTextField.getText().length()-1 );                    
+                    weightTextField.setText(tekst);
+                    weightTextField.positionCaret(100);
+                } else {
+                FrontPage.frontPageMediator.getObserver().getPteCalc()
+                        .angivVaegt(Double.parseDouble(weightTextField.getText()), unit.getValue());
+                }
+            }
+        } catch (NumberFormatException | DimensionerendeKraftEjDefineretException | erUnderFejlgraenseException e) {
+            e.printStackTrace();
+            // Tjek om vægten er normal
+            // hvis unormal ændre baggrund til gul
+        }
 		}
 
-	}
+	
 
 }
