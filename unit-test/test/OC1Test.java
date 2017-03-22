@@ -28,7 +28,7 @@ public class OC1Test {
 		
 	}
 	@Test
-	public void test3Angiv1Kg()  {
+	public void test3Angiv1Kg() throws NegativKgException  {
 		Dimensionerendekraft fdim = new DimensionerendekraftImpl();
 		fdim.setVaegt(1, Enhed.KG);
 		
@@ -37,7 +37,7 @@ public class OC1Test {
 		
 	}
 	@Test
-	public void test4Angiv1Gram()  {
+	public void test4Angiv1Gram() throws NegativKgException  {
 		Dimensionerendekraft fdim = new DimensionerendekraftImpl();
 		fdim.setVaegt(1, Enhed.GRAM);
 		
@@ -46,7 +46,7 @@ public class OC1Test {
 		
 	}
 	@Test
-	public void test5Angiv1Ton()  {
+	public void test5Angiv1Ton() throws NegativKgException  {
 		Dimensionerendekraft fdim = new DimensionerendekraftImpl();
 		fdim.setVaegt(1, Enhed.TON);
 		

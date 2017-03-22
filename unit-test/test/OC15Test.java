@@ -6,8 +6,10 @@ import org.junit.Test;
 
 import exceptions.BoejningsMomentEjDefineretException;
 import exceptions.BoejningsspaendingEjDefineretException;
+import exceptions.DimensionerendeKraftEjDefineretException;
 import exceptions.HalvProfilhoejdeEjDefineretException;
 import exceptions.InertimomentEjDefineretException;
+import exceptions.LaengdeEjDefineretException;
 import exceptions.NegativHalvProfilhoejdeException;
 import exceptions.NegativInertimomentException;
 import logic.BoejningsMoment;
@@ -19,6 +21,8 @@ import logic.HalvProfilhoejdeImpl;
 import logic.Inertimoment;
 import logic.InertimomentImpl;
 import logic.Laengde;
+import logic.PTECalculatorController;
+import logic.PTECalculatorControllerImpl;
 
 public class OC15Test {
 
@@ -55,26 +59,20 @@ public class OC15Test {
 		sigmaB.angivBoejningsmoment(mb);
 		sigmaB.angivInertimoment(i);
 		sigmaB.angivHalvProfilhoejde(e);
+		sigmaB.beregnBoejningsspaending();
 		
 
 		assertEquals(1, sigmaB.getBoejningsspaending(), 0.001);
-		assertEquals("sigmaB = mb*e/i" + "\n" + " 1 = 0.5*20/10", sigmaB.getBoejningsspaendingMellemregning());
+		assertEquals("sigmaB = mb * e / I" + "\n" + "1.0 = 0.5 * 20.0 / 10.0", sigmaB.getBoejningsspaendingMellemregning());
 
 	}
 
 	@Test (expected = BoejningsMomentEjDefineretException.class)
-	public void BoejningsMomentEjDefineretExceptiontest() throws BoejningsMomentEjDefineretException, NegativInertimomentException, NegativHalvProfilhoejdeException, InertimomentEjDefineretException, HalvProfilhoejdeEjDefineretException, BoejningsspaendingEjDefineretException {
-		Boejningsspaending sigmaB = new BoejningsspaendingImpl();
-		Inertimoment i = new InertimomentImpl();
-		HalvProfilhoejde e = new HalvProfilhoejdeImpl();
-
-		i.setMm4(40);
-		e.setMm(15);
+	public void BoejningsMomentEjDefineretExceptiontest() throws BoejningsMomentEjDefineretException, DimensionerendeKraftEjDefineretException, LaengdeEjDefineretException {
+		PTECalculatorController calc = new PTECalculatorControllerImpl();
 		
-		sigmaB.angivInertimoment(i);
-		sigmaB.angivHalvProfilhoejde(e);
+		calc.getBoejningsMoment();
 		
-		sigmaB.getBoejningsspaending();
 		fail("BoejningsMomentEjDefineretException ej kastet");
 
 	}
