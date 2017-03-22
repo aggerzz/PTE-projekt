@@ -1,8 +1,11 @@
 package logic;
 
+import exceptions.DimensionerendeKraftEjDefineretException;
+import exceptions.LaengdeEjDefineretException;
+
 public interface BoejningsMoment {
-	public void angivDimensionerendeKraft(Dimensionerendekraft fdim);
-	public void angivLaengde(Laengde L2);
+	public void angivDimensionerendeKraft(Dimensionerendekraft fdim) throws DimensionerendeKraftEjDefineretException;
+	public void angivLaengde(LaengdeImpl L2) throws LaengdeEjDefineretException;
 	public void beregnBoejningsMoment();
-	public double getBoejningsMoment();
+	public double getBoejningsMoment() throws LaengdeEjDefineretException, DimensionerendeKraftEjDefineretException;
 }

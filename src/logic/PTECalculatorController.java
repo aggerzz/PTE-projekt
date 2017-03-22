@@ -91,7 +91,7 @@ public interface PTECalculatorController {
 	public String ReferenceSpaendingGetMellemRegning() throws ReferenceSpaendingEjDefineretException;
 	public void setReferenceSpaending(double sigmaRefNmm2);
 	public void beregnBoejningsMoment() throws DimensionerendeKraftEjDefineretException, LaengdeEjDefineretException;
-	public double getBoejningsMoment() throws BoejningsMomentEjDefineretException;
+	public double getBoejningsMoment() throws BoejningsMomentEjDefineretException,DimensionerendeKraftEjDefineretException,LaengdeEjDefineretException;
 	public void exportToPdf();
 	
 	public double getSikkerhedsfaktor()throws SikkerhedsFaktorEjDefineretException ;
