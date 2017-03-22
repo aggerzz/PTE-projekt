@@ -18,7 +18,8 @@ public class BoejningsMomentImpl implements BoejningsMoment {
 	}
 
 	@Override
-	public void angivLaengde(Laengde L2) throws LaengdeEjDefineretException {
+
+  public void angivLaengde(Laengde L2) throws LaengdeEjDefineretException {
 		if (L2 != null) {
 			this.l2 = L2;
 		} else {
