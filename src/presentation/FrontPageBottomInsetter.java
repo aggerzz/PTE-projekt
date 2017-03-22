@@ -53,7 +53,7 @@ public class FrontPageBottomInsetter {
 		mbTextField.setEditable(false);
 		mbEnhedLabel = new Label("N/mm");
 
-		Label tauLabel = new Label("Tau: ");
+		Label tauLabel = new Label("\u03C4: ");
 		tauTextField = new TextField();
 		tauTextField.setPromptText("Tau");
 		tauTextField.setEditable(false);	
