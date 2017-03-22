@@ -51,13 +51,13 @@ public class OC9Test {
 		FlydeSpaending fly = new FlydeSpaendingImpl();
 		SikkerhedsFaktor sk = new SikkerhedsFaktorImpl();
 
-		fly.angivFlydeSpaending(0.675);
+		fly.angivFlydeSpaending(355);
 		ref.getSigmaRef();
 		sk.angivFlydeSpaending(fly);
 		sk.angivReferencespaending(ref);
 		double sf = sk.getSikkerhedsFaktor();
 
-		assertEquals(2.001, sf, 0.001);
+		assertEquals(2.683302, sf, 0.001);
 
 	}
 
@@ -74,7 +74,7 @@ public class OC9Test {
 		@Override
 		public double getSigmaRef() {
 			// TODO Auto-generated method stub
-			return 40;
+			return 132.2997;
 		}
 
 		@Override
