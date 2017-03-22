@@ -1,46 +1,46 @@
 package test;
 
-import static org.junit.Assert.*;
-
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 import org.junit.Test;
-
-import exceptions.HalvProfilhoejdeEjDefineretException;
 import exceptions.NegativHalvProfilhoejdeException;
 import logic.HalvProfilhoejde;
 import logic.HalvProfilhoejdeImpl;
 
 public class HalvProfilhoejdeTest {
 
-	@Test
-	public void setHalvProfilhoejdeTest()
-			throws NegativHalvProfilhoejdeException, HalvProfilhoejdeEjDefineretException {
+	@Test(expected = NegativHalvProfilhoejdeException.class)
+	public void testHalvProfilHoejdeNaN() throws NegativHalvProfilhoejdeException {
+		HalvProfilhoejde halvProfilHoejde = new HalvProfilhoejdeImpl();
 
-		HalvProfilhoejde e = new HalvProfilhoejdeImpl();
+		halvProfilHoejde.setMm(Double.NaN);
 
-		e.setMm(10);
-
-		assertEquals(10, e.getHalvProfilhoejde(), 0.001);
-	}
-
-	@Test
-	public void HalvProfilhoejdeEjDefineret() {
-		
-		HalvProfilhoejde e = new HalvProfilhoejdeImpl();
-
-		double mm = e.getHalvProfilhoejde();
-
-		assertTrue(Double.isNaN(mm));
+		fail("NegativHalvProfilhoejdeException Ej Lavet");
 	}
 
 	@Test(expected = NegativHalvProfilhoejdeException.class)
-	public void NegativHalvProfilhoejdeGiverException() throws NegativHalvProfilhoejdeException {
-		
-		HalvProfilhoejde e = new HalvProfilhoejdeImpl();
-		
-		e.setMm(-2);
+	public void testHalvProfilHoejdeNegativ() throws NegativHalvProfilhoejdeException {
+		HalvProfilhoejde halvProfilHoejde = new HalvProfilhoejdeImpl();
 
-		fail("NegativHalvProfilhoejdeException ej kastet");
+		halvProfilHoejde.setMm(-10);
 
+		fail("NegativHalvProfilhoejdeException Ej Lavet");
 	}
 
+	@Test
+	public void testHalvProfilHoejdeKorrekt() throws NegativHalvProfilhoejdeException {
+		HalvProfilhoejde halvProfilHoejde = new HalvProfilhoejdeImpl();
+
+		halvProfilHoejde.setMm(20.45);
+
+		assertEquals(20.45, halvProfilHoejde.getHalvProfilhoejde(), 0.01);
+	}
+	
+	@Test(expected = NegativHalvProfilhoejdeException.class)
+	public void testHalvProfilHoejdeGetErNaN() throws NegativHalvProfilhoejdeException {
+		HalvProfilhoejde halvProfilHoejde = new HalvProfilhoejdeImpl();
+		
+//		System.out.println(halvProfilHoejde.getHalvProfilhoejde());
+		assertEquals(Double.NaN, halvProfilHoejde.getHalvProfilhoejde(), 0.001);
+	}
 }
