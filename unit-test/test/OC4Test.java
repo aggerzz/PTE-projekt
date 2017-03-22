@@ -10,6 +10,9 @@ import exceptions.VinkelErNaNException;
 import exceptions.erUnderFejlgraenseException;
 import logic.Dimensionerendekraft;
 import logic.DimensionerendekraftImpl;
+import logic.Enhed;
+import logic.PTECalculatorController;
+import logic.PTECalculatorControllerImpl;
 import logic.Tvaerkraft;
 import logic.TvaerkraftImpl;
 import logic.Vinkel;
@@ -20,17 +23,18 @@ public class OC4Test {
 
 	@Test
 	public void testKorrektUdregningAfTvaersKraft() throws erUnderFejlgraenseException, DimensionerendeKraftEjDefineretException, VinkelEjDefineretException {
-		Vinkel vinkel = new VinkelImpl();
-		Dimensionerendekraft fdim = new DimensionerendekraftImpl();
+		VinkelMock vinkelMock = new VinkelMock();
+		DimensionerendekraftMock fdimMock = new DimensionerendekraftMock();
 		Tvaerkraft ft = new TvaerkraftImpl();
 		
-		vinkel.setGrader(55);
-		vinkel.setMaaltTilLodret(true);
-		fdim.setKg(500);
-		ft.angivDimensionerendekraft(fdim);
-		ft.angivVinkel(vinkel);
+		vinkelMock.setGrader(55);
+		vinkelMock.setMaaltTilLodret(true);
+		double newton = 500;
+		fdimMock.setNewton(newton);
+		ft.angivDimensionerendekraft(fdimMock);
+		ft.angivVinkel(vinkelMock);
 		
-		assertEquals(409.58,ft.getNewton(), 0.001);
+		assertEquals(409.576,ft.getNewton(), 0.001);
 	}
 	@Test// (expected = VinkelErNaNException.class)
 	public void testVinkelErNaN() throws erUnderFejlgraenseException {
@@ -42,31 +46,113 @@ public class OC4Test {
 		fail("VinkelErNaNException Ej Lavet");
 //		assertTrue(vinkel.VinkelErNullFejl);
 	}
-	@Test
-	public void testFdimErNullFejl() throws erUnderFejlgraenseException {
-		Vinkel vinkel = new VinkelImpl();
-		Dimensionerendekraft fdim = new DimensionerendekraftImpl();
-		Tvaerkraft ft = new TvaerkraftImpl();
-		
-		vinkel.setGrader(25);
-		vinkel.setMaaltTilLodret(false);
-		fdim.setNewton(0);
+	@Test ( expected = DimensionerendeKraftEjDefineretException.class)
+	public void testFdimErNullFejl() throws DimensionerendeKraftEjDefineretException {
+		PTECalculatorController calc = new PTECalculatorControllerImpl();
+		calc.getDimensionerendekraft();
 		
 		fail("VaegtErIkkeAngivetFejl Exception Ej Lavet");
-//		assertTrue(fdim.VaegtErIkkeAngivetFejl);
 	}
 	@Test
 	public void testUdregningAfTvaerkraft() throws erUnderFejlgraenseException, DimensionerendeKraftEjDefineretException, VinkelEjDefineretException {
-		Vinkel vinkel = new VinkelImpl();
-		Dimensionerendekraft fdim = new DimensionerendekraftImpl();
+		Vinkel vinkelMock = new VinkelMock();
+		Dimensionerendekraft fdimMock = new DimensionerendekraftMock();
 		Tvaerkraft ft = new TvaerkraftImpl();
 		
-		vinkel.setGrader(60);
-		vinkel.setMaaltTilLodret(false);
-		fdim.setNewton(800);
-		ft.angivDimensionerendekraft(fdim);
-		ft.angivVinkel(vinkel);
+		vinkelMock.setGrader(60);
+		vinkelMock.setMaaltTilLodret(false);
+		fdimMock.setNewton(800);
+		ft.angivDimensionerendekraft(fdimMock);
+		ft.angivVinkel(vinkelMock);
 		
 		assertEquals(400.00 ,ft.getNewton(),0.001);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	private class VinkelMock implements Vinkel{
+		double grader;
+		boolean maaltTilLodret;
+		@Override
+		public double getGrader() {
+			return grader;
+		}
+
+		@Override
+		public void setGrader(double grader) throws erUnderFejlgraenseException {
+			this.grader = grader;
+		}
+
+		@Override
+		public boolean getMaaltTilLodret() {
+			return maaltTilLodret;
+		}
+
+		@Override
+		public void setMaaltTilLodret(boolean erMaaltTilLodret) {
+			this.maaltTilLodret = erMaaltTilLodret;
+		}
+		
+	}
+	private class DimensionerendekraftMock implements Dimensionerendekraft{
+		double kg;
+		double newton;
+		@Override
+		public double getNewton() {
+			return newton;
+		}
+
+		@Override
+		public void setKg(double kg) {
+			this.kg = kg;
+		}
+
+		@Override
+		public double getKg() {
+			return kg;
+		}
+
+		@Override
+		public void setMellemRegning(String mellemRegning) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public String getMellemRegning() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public double setNewton(double newton) {
+			this.newton = newton;
+			return 0;
+		}
+
+		@Override
+		public void setVaegt(double vaegt, Enhed enhed) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public boolean erVaegtNormal() {
+			// TODO Auto-generated method stub
+			return false;
+		}
+		
 	}
 }
