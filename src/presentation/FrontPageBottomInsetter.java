@@ -1,6 +1,7 @@
 package presentation;
 
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -32,30 +33,35 @@ public class FrontPageBottomInsetter {
 		HBox fdimHBox = superSubStringHBox.generateSubHBox("F", "Dim");
 		fdimTextField = new TextField();
 		fdimTextField.setPromptText("Fdim");
+		fdimTextField.setAlignment(Pos.CENTER_RIGHT);
 		fdimTextField.setEditable(false);
 		fdimEnhedLabel = new Label("N");
 		
 		HBox ftHBox = superSubStringHBox.generateSubHBox("F", "T");
 		ftTextField = new TextField();
 		ftTextField.setPromptText("Ft");
+		ftTextField.setAlignment(Pos.CENTER_RIGHT);
 		ftTextField.setEditable(false);
 		ftEnhedLabel = new Label("N");
 
 		HBox fnHBox = superSubStringHBox.generateSubHBox("F", "N");
 		fnTextField = new TextField();
 		fnTextField.setPromptText("Fn");
+		fnTextField.setAlignment(Pos.CENTER_RIGHT);
 		fnTextField.setEditable(false);
 		fnEnhedLabel = new Label("N");
 
 		Label mbLabel = new Label("MB: ");
 		mbTextField = new TextField();
 		mbTextField.setPromptText("MB");
+		mbTextField.setAlignment(Pos.CENTER_RIGHT);
 		mbTextField.setEditable(false);
 		mbEnhedLabel = new Label("N/mm");
 
 		Label tauLabel = new Label("\u03C4: ");
 		tauTextField = new TextField();
 		tauTextField.setPromptText("Tau");
+		tauTextField.setAlignment(Pos.CENTER_RIGHT);
 		tauTextField.setEditable(false);	
 		HBox tauEnhedLabel = superSubStringHBox.generateSuperHBox("N/mm", "2");
 		
@@ -63,24 +69,28 @@ public class FrontPageBottomInsetter {
 		HBox sigmaNHBox = superSubStringHBox.generateSubHBox("\u03C3", "N");
 		sigmaNTextField = new TextField();
 		sigmaNTextField.setPromptText("sigmaN");
+		sigmaNTextField.setAlignment(Pos.CENTER_RIGHT);
 		sigmaNTextField.setEditable(false);
 		HBox sigmaNEnhedLabel = superSubStringHBox.generateSuperHBox("N/mm", "2");
 
 		HBox sigmaBHBox = superSubStringHBox.generateSubHBox("\u03C3", "B");
 		sigmaBTextField = new TextField();
 		sigmaBTextField.setPromptText("sigmaB");
+		sigmaBTextField.setAlignment(Pos.CENTER_RIGHT);
 		sigmaBTextField.setEditable(false);
 		HBox sigmaBEnhedLabel = superSubStringHBox.generateSuperHBox("N/mm", "2");
 
 		HBox sigmaRefHBox = superSubStringHBox.generateSubHBox("\u03C3", "Ref");
 		sigmaRefTextField = new TextField();
 		sigmaRefTextField.setPromptText("sigmaRef");
+		sigmaRefTextField.setAlignment(Pos.CENTER_RIGHT);
 		sigmaRefTextField.setEditable(false);
 		HBox sigmaRefEnhedLabel = superSubStringHBox.generateSuperHBox("N/mm", "2");
 
 		Label sfLabel = new Label("SF: ");
 		sfTextField = new TextField();
 		sfTextField.setPromptText("SF");
+		sfTextField.setAlignment(Pos.CENTER_RIGHT);
 		sfTextField.setEditable(false);
 		
 		// TODO mangler get og set motoder p�, MB - tau - sigmaN - sigmaB -
