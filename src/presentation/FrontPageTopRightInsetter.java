@@ -52,22 +52,29 @@ public class FrontPageTopRightInsetter {
 				halvhoejdeHBox);
 		gridRight.add(samlingAfHBox, 0, 0);
 
+		// Knapperne
+		Button beregnKnap = new Button("Beregn");
+		beregnKnap.setMinSize(150, 28);
+		beregnKnap.setOnAction(e -> {
+			// TODO mangler kommandoen til at opdatere siden til udregning (MN)
+		});
 		GridPane gridmini = new GridPane();
 		VBox knapperVBox = new VBox();
 		Button sletAltKnap = new Button("Slet Alt");
-		sletAltKnap.setMinSize(150, 22);
+		sletAltKnap.setMinSize(150, 28);
 		sletAltKnap.setOnAction(e -> {
-			// mangler en funktion som sletter indhold i input/outputfelter (MN)
+			// TODO mangler en funktion som sletter indhold i input/outputfelter (MN)
 		});
 		Button exporterTilPdfKnap = new Button("Exporter til pdf");
-		exporterTilPdfKnap.setMinSize(150, 22);
+		exporterTilPdfKnap.setMinSize(150, 28);
 		exporterTilPdfKnap.setOnAction(e -> {
-			//mangler forbindelse til funktionen exporterPDF (MN)
+			// TODO mangler forbindelse til funktionen exporterPDF (MN)
 		});
-		knapperVBox.getChildren().addAll(sletAltKnap, exporterTilPdfKnap);
+
+		knapperVBox.getChildren().addAll(beregnKnap, sletAltKnap, exporterTilPdfKnap);
 		gridmini.add(knapperVBox, 0, 0);
 		gridmini.setPadding(new Insets(30, 0, 0, 0));
-		
+
 		gridRight.add(gridmini, 0, 1);
 		return gridRight;
 	}
