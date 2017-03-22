@@ -64,7 +64,7 @@ public class WeightHBox extends HBox {
 		if (!weightTextField.getText().isEmpty() && !weightTextField.getText().contains("-")) {
 
 			try {
-				// sæt normalbaggrundsfarve
+				// TODO sæt normalbaggrundsfarve
 				if (!weightTextField.getText().isEmpty() && !weightTextField.getText().contains("-")) {
 					char sidsteBogstav = weightTextField.getText().charAt(weightTextField.getLength()-1);
 					if(!(sidsteBogstav >= '0' && sidsteBogstav <= '9' || sidsteBogstav == ',' || sidsteBogstav == '.' )){										
@@ -78,8 +78,8 @@ public class WeightHBox extends HBox {
 				}
 			} catch (NumberFormatException | DimensionerendeKraftEjDefineretException | erUnderFejlgraenseException e) {
 				e.printStackTrace();
-				// Tjek om vægten er normal
-				// hvis unormal ændre baggrund til gul
+				// TODO Tjek om vægten er normal
+				// TODO hvis unormal ændre baggrund til gul
 			}
 		}
 
