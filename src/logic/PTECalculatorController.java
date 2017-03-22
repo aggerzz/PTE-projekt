@@ -11,6 +11,7 @@ import exceptions.NegativKgException;
 import exceptions.NormalkraftEjDefineretException;
 import exceptions.NormalspaendingEjDefineretException;
 import exceptions.ReferenceSpaendingEjDefineretException;
+import exceptions.SikkerhedsFaktorEjDefineretException;
 import exceptions.TvaerkraftEjDefineretException;
 import exceptions.VinkelEjDefineretException;
 import exceptions.angivBoejningsspaendingEjDefineretException;
@@ -89,4 +90,9 @@ public interface PTECalculatorController {
 	public void beregnBoejningsMoment() throws DimensionerendeKraftEjDefineretException, LaengdeEjDefineretException;
 	public double getBoejningsMoment() throws BoejningsMomentEjDefineretException;
 	public void exportToPdf();
+	
+	public double getSikkerhedsfaktor()throws SikkerhedsFaktorEjDefineretException ;
+	
+	public String getSikkerhedsfaktorMellemregning() throws SikkerhedsFaktorEjDefineretException, ReferenceSpaendingEjDefineretException, FlydeSpaendingEjDefineretException;
+	
 }
