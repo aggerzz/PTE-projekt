@@ -3,12 +3,6 @@ package logic;
 import java.text.DecimalFormat;
 
 public class DimensionerendekraftImpl implements Dimensionerendekraft {
-
-
-
-	
-	
-	
 	private double kg;
 	private double newton;
 	private String mellemRegning;
@@ -37,22 +31,14 @@ public class DimensionerendekraftImpl implements Dimensionerendekraft {
 		}
 	}
 	public double getNewton() {
-		
 		return kg * tyngdekraft;
 	}
-	
-
-
-	
 	@Override
 	public void setKg(double kg) {
-		
-		
 		this.kg = kg;
 		newton = kg * tyngdekraft;
 		//setMellemRegning("FDim = kg * g " + "\n" + getNewton() + " = " + getKg() + " * " + tyngdekraft + "\n");
 		setMellemRegning("kg\t	*\tg\t=\tFDim "  + "\n"  + getKg() + "\t	*	" + tyngdekraft + " =\t" + getNewton() + "\n");
-
 	}
 
 	@Override

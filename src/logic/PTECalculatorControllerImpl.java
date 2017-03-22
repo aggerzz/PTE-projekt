@@ -1,10 +1,17 @@
 package logic;
 
+import java.io.IOException;
+
+import com.itextpdf.text.DocumentException;
+
 import exceptions.ArealEjDefineretException;
 import exceptions.BoejningsMomentEjDefineretException;
+import exceptions.BoejningsspaendingEjDefineretException;
 import exceptions.DimensionerendeKraftEjDefineretException;
 import exceptions.FlydeSpaendingEjDefineretException;
 import exceptions.ForskydningsspaendingEjDefineretException;
+import exceptions.HalvProfilhoejdeEjDefineretException;
+import exceptions.InertimomentEjDefineretException;
 import exceptions.LaengdeEjDefineretException;
 import exceptions.NegativArealException;
 import exceptions.NegativKgException;
@@ -32,14 +39,29 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 	private SikkerhedsFaktor sf;
 	private LaengdeImpl l2;
 	private BoejningsMoment boejning;
+	private Inertimoment i;
+	private HalvProfilhoejde e;
+	private Boejningsspaending sigmaB;
 	
 	public void exportToPdf(){
-		new PdfExporter().exportToPdf();
+		try {
+			new PdfExporter().exportToPdf();
+		} catch (DocumentException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	@Override
-	public double getBoejningsMoment() throws BoejningsMomentEjDefineretException{
-		return boejning.getBoejningsMoment();
+	public double getBoejningsMoment() throws BoejningsMomentEjDefineretException, LaengdeEjDefineretException, DimensionerendeKraftEjDefineretException{
+		try {
+			return boejning.getBoejningsMoment();
+		} catch (LaengdeEjDefineretException e) {
+			throw new LaengdeEjDefineretException();
+		}catch(DimensionerendeKraftEjDefineretException e){
+			throw new DimensionerendeKraftEjDefineretException();
+		}
+		
 	}
 	
 	@Override
@@ -455,5 +477,52 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 		String sfMellemregning = sf.getSikkerhedsFaktorMellemRegning();
 		return sfMellemregning;
 	}
+	
+	@Override
+	public void beregnBoejningsSpaending()
+			throws BoejningsMomentEjDefineretException, BoejningsspaendingEjDefineretException,
+			HalvProfilhoejdeEjDefineretException, InertimomentEjDefineretException {
+		if (i == null) {
+			throw new InertimomentEjDefineretException();
+		}
+		if (e == null) {
+			throw new HalvProfilhoejdeEjDefineretException();
+		}
+		if (boejning == null) {
+			throw new BoejningsMomentEjDefineretException();
+		}
+
+		sigmaB = new BoejningsspaendingImpl();
+		sigmaB.angivBoejningsmoment(boejning);
+		sigmaB.angivInertimoment(i);
+		sigmaB.angivHalvProfilhoejde(e);
+
+		notifyObservers();
+
+	}
+
+	@Override
+	public double getBoejningsspaending() throws BoejningsspaendingEjDefineretException {
+		if (sigmaB == null)
+			throw new BoejningsspaendingEjDefineretException();
 		
+		double sigmaBNmm2 = sigmaB.getBoejningsspaending();
+	
+		
+		return sigmaBNmm2;
+	}
+
+	@Override
+	public String getBoejningsspaendingMellemregning() throws BoejningsspaendingEjDefineretException {
+		if (sigmaB == null)
+			throw new BoejningsspaendingEjDefineretException();
+		
+		String sigmaBMellemregning = sigmaB.getBoejningsspaendingMellemregning();
+		return sigmaBMellemregning;
+	}
+
 }
+
+
+		
+
