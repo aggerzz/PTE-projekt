@@ -532,14 +532,16 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 		String sigmaBMellemregning = sigmaB.getBoejningsspaendingMellemregning();
 		return sigmaBMellemregning;
 	}
-	public void angivLaengde(Laengde l2) throws LaengdeEjDefineretException{
+
+	@Override
+	public void angivLaengde(double l2) throws LaengdeEjDefineretException{
+			if (this.l2 == null) {
+				this.l2 = new LaengdeImpl();
+			}
+			this.l2.angivLaengde(l2);
+
+			notifyObservers();
 		
-		if(l2!=null){
-			this.l2=l2;
-		}
-		else{
-			throw new LaengdeEjDefineretException();
-		}
 	}
 
 }
