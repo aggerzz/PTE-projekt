@@ -45,10 +45,14 @@ public class BoejningsspaendingImpl implements Boejningsspaending {
 	@Override
 	public void beregnBoejningsspaending() throws BoejningsMomentEjDefineretException, InertimomentEjDefineretException,
 			HalvProfilhoejdeEjDefineretException {
+		try{
 		double boejningsSpaending = boejning.getBoejningsMoment() * e.getHalvProfilhoejde() / i.getInertimoment();
 		boejningsSpaendingMellemregning = "Mb * e / l" + "\n" + boejningsSpaending + " = "
 				+ boejning.getBoejningsMoment() + "*" + e.getHalvProfilhoejde() + "/" + i.getInertimoment();
-
+		}
+		catch(DimensionerendeKraftEjDefineretException | LaengdeEjDefineretException e1){
+			e1.printStackTrace();
+		}
 	}
 
 	@Override

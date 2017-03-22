@@ -2,7 +2,9 @@ package presentation;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import exceptions.DimensionerendeKraftEjDefineretException;
+import exceptions.erUnderFejlgraenseException;
 import javafx.collections.FXCollections;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
@@ -59,17 +61,21 @@ public class WeightHBox extends HBox {
 
 	public void refresh() {
 
-		try {
-			//sæt normalbaggrundsfarve
-			if (!weightTextField.getText().isEmpty() && !weightTextField.getText().contains("-")) {
-				FrontPage.frontPageMediator.getObserver().getPteCalc()
-						.angivVaegt(Double.parseDouble(weightTextField.getText()), unit.getValue());
-				//Tjek om vægten er normal
-				//hvis unormal ændre baggrund til gul
+		if (!weightTextField.getText().isEmpty() && !weightTextField.getText().contains("-")) {
+
+			try {
+				// sæt normalbaggrundsfarve
+				if (!weightTextField.getText().isEmpty() && !weightTextField.getText().contains("-")) {
+					FrontPage.frontPageMediator.getObserver().getPteCalc()
+							.angivVaegt(Double.parseDouble(weightTextField.getText()), unit.getValue());
+				}
+			} catch (NumberFormatException | DimensionerendeKraftEjDefineretException | erUnderFejlgraenseException e) {
+				e.printStackTrace();
+				// Tjek om vægten er normal
+				// hvis unormal ændre baggrund til gul
 			}
-		} catch (DimensionerendeKraftEjDefineretException e1) {
-			e1.printStackTrace();
 		}
+
 	}
 
 }
