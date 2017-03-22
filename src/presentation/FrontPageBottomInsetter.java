@@ -17,9 +17,8 @@ public class FrontPageBottomInsetter {
 	private TextField sigmaBTextField;
 	private TextField sigmaRefTextField;
 	private TextField sfTextField;
-	private Label fdimEnhedLabel, ftEnhedLabel, fnEnhedLabel, mbEnhedLabel,
-					tauEnhedLabel, sigmaNEnhedLabel, sigmaBEnhedLabel, sigmaRefEnhedLabel,
-					sfEnhedLabel;
+	private Label fdimEnhedLabel, ftEnhedLabel, fnEnhedLabel, mbEnhedLabel;
+					
 	private TextArea mellemRegninger;
 
 	public GridPane insetButtom() {
@@ -33,46 +32,56 @@ public class FrontPageBottomInsetter {
 		HBox fdimHBox = superSubStringHBox.generateSubHBox("F", "Dim");
 		fdimTextField = new TextField();
 		fdimTextField.setPromptText("Fdim");
+		fdimTextField.setEditable(false);
 		fdimEnhedLabel = new Label("N");
 		
 		HBox ftHBox = superSubStringHBox.generateSubHBox("F", "T");
 		ftTextField = new TextField();
 		ftTextField.setPromptText("Ft");
+		ftTextField.setEditable(false);
 		ftEnhedLabel = new Label("N");
 
 		HBox fnHBox = superSubStringHBox.generateSubHBox("F", "N");
 		fnTextField = new TextField();
 		fnTextField.setPromptText("Fn");
+		fnTextField.setEditable(false);
 		fnEnhedLabel = new Label("N");
 
 		Label mbLabel = new Label("MB: ");
 		mbTextField = new TextField();
 		mbTextField.setPromptText("MB");
+		mbTextField.setEditable(false);
 		mbEnhedLabel = new Label("N/mm");
 
 		Label tauLabel = new Label("Tau: ");
 		tauTextField = new TextField();
 		tauTextField.setPromptText("Tau");
-		tauEnhedLabel = new Label("N/mm2");
+		tauTextField.setEditable(false);	
+		HBox tauEnhedLabel = superSubStringHBox.generateSuperHBox("N/mm", "2");
+		
 
 		HBox sigmaNHBox = superSubStringHBox.generateSubHBox("\u03C3", "N");
 		sigmaNTextField = new TextField();
 		sigmaNTextField.setPromptText("sigmaN");
-		sigmaNEnhedLabel = new Label("N/mm2");
+		sigmaNTextField.setEditable(false);
+		HBox sigmaNEnhedLabel = superSubStringHBox.generateSuperHBox("N/mm", "2");
 
 		HBox sigmaBHBox = superSubStringHBox.generateSubHBox("\u03C3", "B");
 		sigmaBTextField = new TextField();
 		sigmaBTextField.setPromptText("sigmaB");
-		sigmaBEnhedLabel = new Label("N/mm2");
+		sigmaBTextField.setEditable(false);
+		HBox sigmaBEnhedLabel = superSubStringHBox.generateSuperHBox("N/mm", "2");
 
 		HBox sigmaRefHBox = superSubStringHBox.generateSubHBox("\u03C3", "Ref");
 		sigmaRefTextField = new TextField();
 		sigmaRefTextField.setPromptText("sigmaRef");
-		sigmaRefEnhedLabel = new Label("N/mm2");
+		sigmaRefTextField.setEditable(false);
+		HBox sigmaRefEnhedLabel = superSubStringHBox.generateSuperHBox("N/mm", "2");
 
 		Label sfLabel = new Label("SF: ");
 		sfTextField = new TextField();
 		sfTextField.setPromptText("SF");
+		sfTextField.setEditable(false);
 		
 		//Disable textfelterne som ikke bliver brugt endnu
 //		tauTextField.setDisable(true);
@@ -111,7 +120,6 @@ public class FrontPageBottomInsetter {
 		buttomGrid.add(sigmaNEnhedLabel, 2, 5);
 		buttomGrid.add(sigmaBEnhedLabel, 2, 6);
 		buttomGrid.add(sigmaRefEnhedLabel, 2, 7);
-//		buttomGrid.add(tauEnhedLabel, 2, 7);
 
 		buttomGrid.add(mellemRegninger, 3, 0, 4, 10);
 
