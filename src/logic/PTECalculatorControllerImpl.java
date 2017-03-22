@@ -15,6 +15,7 @@ import exceptions.NegativKgException;
 import exceptions.NormalkraftEjDefineretException;
 import exceptions.NormalspaendingEjDefineretException;
 import exceptions.ReferenceSpaendingEjDefineretException;
+import exceptions.SikkerhedsFaktorEjDefineretException;
 import exceptions.TvaerkraftEjDefineretException;
 import exceptions.VinkelEjDefineretException;
 import exceptions.angivBoejningsspaendingEjDefineretException;
@@ -444,6 +445,23 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 		sigmaRef.setSigmaRefNmm2(sigmaRefNmm2);
 		
 		notifyObservers();
+	}
+
+	@Override
+	public double getSikkerhedsfaktor() throws SikkerhedsFaktorEjDefineretException  {
+		if(sf == null)
+			throw new SikkerhedsFaktorEjDefineretException();
+		double sfvaerdi = sf.getSikkerhedsFaktor();
+		return sfvaerdi;
+	}
+
+	@Override
+	public String getSikkerhedsfaktorMellemregning() throws SikkerhedsFaktorEjDefineretException, ReferenceSpaendingEjDefineretException, FlydeSpaendingEjDefineretException {
+		if(sf == null)
+			throw new SikkerhedsFaktorEjDefineretException();
+		
+		String sfMellemregning = sf.getSikkerhedsFaktorMellemRegning();
+		return sfMellemregning;
 	}
 		
 }
