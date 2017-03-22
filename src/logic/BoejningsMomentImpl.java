@@ -45,4 +45,9 @@ public class BoejningsMomentImpl implements BoejningsMoment {
 		return fdim.getNewton() * l2.getLaengde();
 	}
 
+	@Override
+	public String getBoejningsMomentMellemRegning() {
+		return mellemRegning;
+	}
+
 }
