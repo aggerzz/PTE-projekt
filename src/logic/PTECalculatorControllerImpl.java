@@ -37,7 +37,7 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 	private Referencespaending sigmaRef;
 	private Areal a;
 	private SikkerhedsFaktor sf;
-	private LaengdeImpl l2;
+	private Laengde l2;
 	private BoejningsMoment boejning;
 	private Inertimoment i;
 	private HalvProfilhoejde e;
@@ -84,7 +84,10 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 		if(fdim==null){
 			throw new DimensionerendeKraftEjDefineretException();
 		}
-		if(l2 == null){
+		if(l2 != null){
+			l2 = new LaengdeImpl();
+		}
+		else{
 			throw new LaengdeEjDefineretException();
 		}
 		boejning = new BoejningsMomentImpl();
@@ -519,6 +522,15 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 		
 		String sigmaBMellemregning = sigmaB.getBoejningsspaendingMellemregning();
 		return sigmaBMellemregning;
+	}
+	public void angivLaengde(Laengde l2) throws LaengdeEjDefineretException{
+		
+		if(l2!=null){
+			this.l2=l2;
+		}
+		else{
+			throw new LaengdeEjDefineretException();
+		}
 	}
 
 }
