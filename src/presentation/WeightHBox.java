@@ -60,12 +60,14 @@ public class WeightHBox extends HBox {
 	public void refresh() {
 
 		try {
+			//sæt normalbaggrundsfarve
 			if (!weightTextField.getText().isEmpty() && !weightTextField.getText().contains("-")) {
 				FrontPage.frontPageMediator.getObserver().getPteCalc()
 						.angivVaegt(Double.parseDouble(weightTextField.getText()), unit.getValue());
+				//Tjek om vægten er normal
+				//hvis unormal ændre baggrund til gul
 			}
 		} catch (DimensionerendeKraftEjDefineretException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 	}

@@ -3,7 +3,7 @@ package logic;
 import exceptions.NegativInertimomentException;
 
 public class InertimomentImpl implements Inertimoment {
-	private double mm4;
+	private double mm4 = Double.NaN;
 
 	@Override
 	public double getInertimoment() {
