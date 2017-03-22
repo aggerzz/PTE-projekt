@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import exceptions.DimensionerendeKraftEjDefineretException;
+import exceptions.ErOverFejlGraenseException;
 import exceptions.NegativArealException;
 import exceptions.NormalkraftEjDefineretException;
 import exceptions.NormalspaendingEjDefineretException;
@@ -48,11 +49,12 @@ public class BeregnSigmaN {
 		} catch (NegativArealException e1) {
 			e1.printStackTrace();
 		}
-		try {
-			vinkel.setGrader(grader);
-		} catch (erUnderFejlgraenseException e) {
-			e.printStackTrace();
-		}
+			try {
+				vinkel.setGrader(grader);
+			} catch (erUnderFejlgraenseException | ErOverFejlGraenseException e1) {
+				e1.printStackTrace();
+			}
+		
 		vinkel.setMaaltTilLodret(maaltTilLodret);
 		try {
 			fn.angivVinkel(vinkel);
