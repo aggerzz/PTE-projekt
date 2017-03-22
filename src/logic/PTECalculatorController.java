@@ -104,4 +104,5 @@ public interface PTECalculatorController {
 	public void angivLaengde(double l2) throws LaengdeEjDefineretException;
 	
 	public double getFlydeSpaending() throws FlydeSpaendingEjDefineretException;
+	public String getBoejningsMomentMellemRegning() throws BoejningsMomentEjDefineretException;
 }

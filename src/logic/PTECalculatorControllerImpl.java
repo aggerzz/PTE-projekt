@@ -550,6 +550,17 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 		return sigmaTill.getFlydeSpaending();	
 	}
 
+	@Override
+	public String getBoejningsMomentMellemRegning() throws BoejningsMomentEjDefineretException {
+		if (boejning == null) {
+			throw new BoejningsMomentEjDefineretException();
+
+		}
+
+		String BoejningsMomentMellemRegning = boejning.getBoejningsMomentMellemRegning();
+		return BoejningsMomentMellemRegning;
+	}
+
 }
 
 
