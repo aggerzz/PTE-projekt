@@ -20,9 +20,18 @@ public class VerticalAngleTextField extends TextField{
 		
 		this.setOnKeyReleased(e->{
 			try {
-				if(!this.getText().isEmpty())
-				notifyObservers();
+				if(!this.getText().isEmpty()){					
+					char sidsteBogstav = this.getText().charAt(this.getLength()-1);
+					if(!(sidsteBogstav >= '0' && sidsteBogstav <= '9' || sidsteBogstav == ',' || sidsteBogstav == '.' )){										
+						String tekst = this.getText().substring(0, this.getText().length()-1 );
+						System.out.println(tekst);
+						this.setText(tekst);
+						this.positionCaret(100);
+					}				
+					notifyObservers();
+				}
 				else{
+					
 					FrontPage.frontPageMediator.getHorizontalAngleText().setDisable(false);
 					FrontPage.frontPageMediator.getHorizontalAngleText().setText("");
 					FrontPage.frontPageMediator.frontPageTopLeft.getTriangle().getChildren().setAll(new NeedMoreInputTriangle());

@@ -19,8 +19,16 @@ public class HorizontalAngleTextField extends TextField {
 		this.setMaxSize(150, 20);
 		this.setOnKeyReleased(e -> {
 			try {
-				if(!this.getText().isEmpty())
+				if(!this.getText().isEmpty()){
+				char sidsteBogstav = this.getText().charAt(this.getLength()-1);
+				if(!(sidsteBogstav >= '0' && sidsteBogstav <= '9' || sidsteBogstav == ',' || sidsteBogstav == '.' )){										
+					String tekst = this.getText().substring(0, this.getText().length()-1 );
+					System.out.println(tekst);
+					this.setText(tekst);
+					this.positionCaret(100);
+					}					
 				notifyObservers();
+				}
 				else{
 					FrontPage.frontPageMediator.getVerticalAngleText().setDisable(false);
 					FrontPage.frontPageMediator.getVerticalAngleText().setText("");
