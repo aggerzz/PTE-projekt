@@ -122,11 +122,12 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 	}	
 
 	@Override
-	public void angivVaegt(double vaegt, Enhed enhed) throws DimensionerendeKraftEjDefineretException {
+	public void angivVaegt(double vaegt, Enhed enhed) throws DimensionerendeKraftEjDefineretException, erUnderFejlgraenseException {
 		fdim = new DimensionerendekraftImpl();
 
 		fdim.setVaegt(vaegt,enhed);
-
+		if(!fdim.erVaegtNormal())
+			throw new erUnderFejlgraenseException();
 		notifyObservers();
 	}
 	
