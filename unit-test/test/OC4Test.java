@@ -36,14 +36,13 @@ public class OC4Test {
 		
 		assertEquals(409.576,ft.getNewton(), 0.001);
 	}
-	@Test// (expected = VinkelErNaNException.class)
+	@Test (expected = erUnderFejlgraenseException.class)
 	public void testVinkelErNaN() throws erUnderFejlgraenseException {
 		Vinkel vinkel = new VinkelImpl();
 
 		vinkel.setGrader(Double.NaN);
 
-		
-		fail("VinkelErNaNException Ej Lavet");
+		fail("erUnderFejlgraenseException Ej Lavet");
 //		assertTrue(vinkel.VinkelErNullFejl);
 	}
 	@Test ( expected = DimensionerendeKraftEjDefineretException.class)
