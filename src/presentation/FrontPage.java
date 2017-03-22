@@ -1,5 +1,6 @@
 package presentation;
 
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
@@ -15,9 +16,12 @@ public class FrontPage {
 				
 		FrontPageTopLeftInsetter fptInsetter = new FrontPageTopLeftInsetter();
 		FrontPageBottomInsetter fpbInsetter = new FrontPageBottomInsetter();
+		FrontPageTopRightInsetter fptrInsetter = new FrontPageTopRightInsetter();
 		
+		root.setPadding(new Insets (10,20,10,20));
 		root.setLeft(fptInsetter.insetLeft());
 		root.setBottom(fpbInsetter.insetButtom());
+		root.setRight(fptrInsetter.insetRight());
 		
 		frontPageMediator = new FrontPageMediator(fptInsetter,fpbInsetter);
 		
