@@ -9,6 +9,7 @@ import logic.Enhed;
 public class FrontPageMediator {
 	FrontPageTopLeftInsetter frontPageTopLeft;
 	FrontPageBottomInsetter frontPageBottom;
+	FrontPageTopRightInsetter frontPageTopRight;
 	PTEObserverImpl pteObs = new PTEObserverImpl(this);
 	
 	
@@ -90,6 +91,12 @@ public class FrontPageMediator {
 
 	public void setVerticalAngleText(TextField tf) {
 		frontPageTopLeft.setVerticalAngle(tf);
-	}	
+	}
+	public TextField getLaengdeTextField(){
+		return frontPageTopRight.inertimoment;
+	}
+	public TextField getHalvHoejdeTextField(){
+		return frontPageTopRight.halvhoejde;
+	}
 
 }
