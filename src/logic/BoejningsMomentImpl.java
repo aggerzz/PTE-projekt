@@ -10,7 +10,7 @@ public class BoejningsMomentImpl implements BoejningsMoment {
 	}
 
 	@Override
-	public void angivLaengde(LaengdeImpl L2) {
+	public void angivLaengde(Laengde L2) {
 		this.l2=L2;
 	}
 
