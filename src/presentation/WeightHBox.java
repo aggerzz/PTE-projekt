@@ -15,6 +15,7 @@ import logic.Enhed;
 public class WeightHBox extends HBox {
 	TextField weightTextField;
 	ComboBox<Enhed> unit;
+	private KommaKontrol kommaKontrol = new KommaKontrol();
 
 	public WeightHBox() {
 
@@ -72,6 +73,9 @@ public class WeightHBox extends HBox {
 					weightTextField.setText(tekst);
 					weightTextField.positionCaret(100);
 				} else {
+					int cursorPos = weightTextField.getCaretPosition();
+					weightTextField.setText(kommaKontrol.kontrol(weightTextField.getText(), weightTextField));
+					weightTextField.positionCaret(cursorPos);
 					FrontPage.frontPageMediator.getObserver().getPteCalc()
 							.angivVaegt(Double.parseDouble(weightTextField.getText()), unit.getValue());
 				}
