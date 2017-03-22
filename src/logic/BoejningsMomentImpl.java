@@ -5,7 +5,7 @@ import exceptions.LaengdeEjDefineretException;
 
 public class BoejningsMomentImpl implements BoejningsMoment {
 	Dimensionerendekraft fdim;
-	LaengdeImpl l2;
+	Laengde l2;
 	String mellemRegning = "";
 
 	@Override
@@ -18,7 +18,7 @@ public class BoejningsMomentImpl implements BoejningsMoment {
 	}
 
 	@Override
-	public void angivLaengde(LaengdeImpl L2) throws LaengdeEjDefineretException {
+	public void angivLaengde(Laengde L2) throws LaengdeEjDefineretException {
 		if (L2 != null) {
 			this.l2 = L2;
 		} else {

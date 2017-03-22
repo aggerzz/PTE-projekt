@@ -2,8 +2,10 @@ package logic;
 
 import exceptions.BoejningsMomentEjDefineretException;
 import exceptions.BoejningsspaendingEjDefineretException;
+import exceptions.DimensionerendeKraftEjDefineretException;
 import exceptions.HalvProfilhoejdeEjDefineretException;
 import exceptions.InertimomentEjDefineretException;
+import exceptions.LaengdeEjDefineretException;
 
 public class BoejningsspaendingImpl implements Boejningsspaending {
 	BoejningsMoment boejning;
@@ -51,7 +53,18 @@ public class BoejningsspaendingImpl implements Boejningsspaending {
 
 	@Override
 	public double getBoejningsspaending() throws BoejningsspaendingEjDefineretException {
-		return boejning.getBoejningsMoment() * e.getHalvProfilhoejde() / i.getInertimoment();
+		double bm;
+		double inertiMoment;
+		double halvProfilHoejde;
+		try {
+			bm = boejning.getBoejningsMoment();
+			inertiMoment = i.getInertimoment();
+			halvProfilHoejde = e.getHalvProfilhoejde();
+			return bm * halvProfilHoejde / inertiMoment;
+		} catch (LaengdeEjDefineretException | DimensionerendeKraftEjDefineretException e1) {
+			e1.printStackTrace();
+		}
+		return Double.NaN;
 	}
 
 	@Override

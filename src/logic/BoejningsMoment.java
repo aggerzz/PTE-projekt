@@ -5,7 +5,7 @@ import exceptions.LaengdeEjDefineretException;
 
 public interface BoejningsMoment {
 	public void angivDimensionerendeKraft(Dimensionerendekraft fdim) throws DimensionerendeKraftEjDefineretException;
-	public void angivLaengde(LaengdeImpl L2) throws LaengdeEjDefineretException;
+	public void angivLaengde(Laengde L2) throws LaengdeEjDefineretException;
 	public void beregnBoejningsMoment();
 	public double getBoejningsMoment() throws LaengdeEjDefineretException, DimensionerendeKraftEjDefineretException;
 }

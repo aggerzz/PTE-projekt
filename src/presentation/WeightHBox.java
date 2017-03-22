@@ -65,7 +65,6 @@ public class WeightHBox extends HBox {
 						.angivVaegt(Double.parseDouble(weightTextField.getText()), unit.getValue());
 			}
 		} catch (DimensionerendeKraftEjDefineretException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 	}
