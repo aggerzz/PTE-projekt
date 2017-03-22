@@ -15,6 +15,7 @@ import observers.AngleObserver;
 
 public class VerticalAngleTextField extends TextField{
 	public VerticalAngleTextField () {
+		KommaKontrol kommaKontrol = new KommaKontrol();
 		this.setPromptText("Vandret vinkel");
 		this.setMaxSize(150, 20);
 		
@@ -27,6 +28,9 @@ public class VerticalAngleTextField extends TextField{
 						this.setText(tekst);
 						this.positionCaret(100);
 					}else{
+						int cursorPos = this.getCaretPosition();
+						this.setText(kommaKontrol.kontrol(this.getText(),this));
+						this.positionCaret(cursorPos);
 						notifyObservers();}
 				}
 				else{					

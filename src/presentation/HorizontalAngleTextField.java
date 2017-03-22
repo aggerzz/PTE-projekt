@@ -9,12 +9,14 @@ import exceptions.TvaerkraftEjDefineretException;
 import exceptions.VinkelEjDefineretException;
 import exceptions.erUnderFejlgraenseException;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import logic.PTECalculatorController;
 import logic.PTECalculatorControllerImpl;
 import observers.AngleObserver;
 
 public class HorizontalAngleTextField extends TextField {
 	public HorizontalAngleTextField() {
+		KommaKontrol kommaKontrol = new KommaKontrol();
 		this.setPromptText("Lodret vinkel");
 		this.setMaxSize(150, 20);
 		this.setOnKeyReleased(e -> {
@@ -27,10 +29,12 @@ public class HorizontalAngleTextField extends TextField {
 						this.setText(tekst);
 						this.positionCaret(100);
 					}else {
+						int cursorPos = this.getCaretPosition();
+						this.setText(kommaKontrol.kontrol(this.getText(),this));
+						this.positionCaret(cursorPos);
 						notifyObservers();
 					}
-				} else {
-					
+				} else {					
 					FrontPage.frontPageMediator.getVerticalAngleText().setDisable(false);
 					FrontPage.frontPageMediator.getVerticalAngleText().setText("");
 					FrontPage.frontPageMediator.frontPageTopLeft.getTriangle().getChildren()
