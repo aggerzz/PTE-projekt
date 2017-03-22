@@ -45,8 +45,8 @@ public class BoejningsspaendingImpl implements Boejningsspaending {
 			HalvProfilhoejdeEjDefineretException {
 		try{
 		double boejningsSpaending = boejning.getBoejningsMoment() * e.getHalvProfilhoejde() / i.getInertimoment();
-		boejningsSpaendingMellemregning = "Mb * e / l" + "\n" + boejningsSpaending + " = "
-				+ boejning.getBoejningsMoment() + "*" + e.getHalvProfilhoejde() + "/" + i.getInertimoment();
+		boejningsSpaendingMellemregning = "sigmaB = mb * e / I" + "\n" + boejningsSpaending + " = "
+				+ boejning.getBoejningsMoment() + " * " + e.getHalvProfilhoejde() + " / " + i.getInertimoment();
 		}
 		catch(DimensionerendeKraftEjDefineretException | LaengdeEjDefineretException e1){
 			e1.printStackTrace();

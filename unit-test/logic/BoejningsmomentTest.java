@@ -27,7 +27,7 @@ public class BoejningsmomentTest {
 		@Override
 		public double getLaengde() {
 			// TODO Auto-generated method stub
-			return 50;
+			return 1400;
 		}
 
 	}
@@ -36,12 +36,10 @@ public class BoejningsmomentTest {
 		@Override
 		public double getNewton() {
 
-			return 50;
+			return 4858.92;
 		}
 
-		@Override
-		public void setKg(double kg) {
-		}
+	
 
 		@Override
 		public double getKg() {
@@ -76,8 +74,8 @@ public class BoejningsmomentTest {
 	@Test
 	public void testBoejningsmomentForPositivDimensionerendeKraftOgPositivLaengde() throws LaengdeEjDefineretException, DimensionerendeKraftEjDefineretException {
 		BoejningsMoment bm = new BoejningsMomentImpl();
-		Laengde l2 = new LaengdeMock();
-		Dimensionerendekraft fdim = new DimensionerendekraftMock(); 
+		LaengdeMock l2 = new LaengdeMock();
+		DimensionerendekraftMock fdim = new DimensionerendekraftMock(); 
 		
 		
 		
@@ -86,7 +84,7 @@ public class BoejningsmomentTest {
 		
 		
 		double bmINmm =  bm.getBoejningsMoment();
-		assertEquals(5, bmINmm , 0.001);
+		assertEquals(6802488, bmINmm , 0.001);
 		
 	}
 	@Test (expected = DimensionerendeKraftEjDefineretException.class)

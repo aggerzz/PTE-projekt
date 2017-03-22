@@ -30,7 +30,6 @@ public class OC13Test {
 		calc.angivLaengde(1400);
 		calc.angivVaegt(495, Enhed.KG);
 		calc.beregnBoejningsMoment();
-
 		assertEquals(6802488, calc.getBoejningsMoment(), 0.001);
 
 	}

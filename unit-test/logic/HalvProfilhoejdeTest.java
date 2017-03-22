@@ -36,10 +36,9 @@ public class HalvProfilhoejdeTest {
 		assertEquals(20.45, halvProfilHoejde.getHalvProfilhoejde(), 0.01);
 	}
 	
-	@Test(expected = NegativHalvProfilhoejdeException.class)
+	@Test
 	public void testHalvProfilHoejdeGetErNaN() throws NegativHalvProfilhoejdeException {
 		HalvProfilhoejde halvProfilHoejde = new HalvProfilhoejdeImpl();
-		
 //		System.out.println(halvProfilHoejde.getHalvProfilhoejde());
 		assertEquals(Double.NaN, halvProfilHoejde.getHalvProfilhoejde(), 0.001);
 	}

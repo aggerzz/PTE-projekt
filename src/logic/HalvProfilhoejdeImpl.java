@@ -3,7 +3,7 @@ package logic;
 import exceptions.NegativHalvProfilhoejdeException;
 
 public class HalvProfilhoejdeImpl implements HalvProfilhoejde {
-	private double mm;
+	private double mm = Double.NaN;
 
 	@Override
 	public double getHalvProfilhoejde() {

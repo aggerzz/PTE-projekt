@@ -109,7 +109,7 @@ public class OC3Test {
 		assertEquals(ft.getNewton() , fn.getNewton(), 0.001);
 		
 	}
-	@Test (expected=erUnderFejlgraenseException.class)
+	@Test (expected=NegativKgException.class)
 	public void testvaegtSatTil0Kg() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException, erUnderFejlgraenseException, ErOverFejlGraenseException, NegativKgException{
 		PTECalculatorController calc = new PTECalculatorControllerImpl();
 		
