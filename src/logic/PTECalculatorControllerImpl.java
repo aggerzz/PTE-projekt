@@ -55,13 +55,11 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 	
 	@Override
 	public double getBoejningsMoment() throws BoejningsMomentEjDefineretException, LaengdeEjDefineretException, DimensionerendeKraftEjDefineretException{
-		try {
-			return boejning.getBoejningsMoment();
-		} catch (LaengdeEjDefineretException e) {
-			throw new LaengdeEjDefineretException();
-		}catch(DimensionerendeKraftEjDefineretException e){
-			throw new DimensionerendeKraftEjDefineretException();
+		if ( boejning == null){
+			throw new BoejningsMomentEjDefineretException();
 		}
+		
+		return boejning.getBoejningsMoment();
 		
 	}
 	
@@ -82,17 +80,16 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 	}
 	@Override
 	public void beregnBoejningsMoment() throws DimensionerendeKraftEjDefineretException, LaengdeEjDefineretException {
-		if(fdim==null){
+		if(fdim == null){
 			throw new DimensionerendeKraftEjDefineretException();
 		}
-		if(l2 != null){
-			l2 = new LaengdeImpl();
-		}
-		else{
+		if(l2 == null){
 			throw new LaengdeEjDefineretException();
 		}
 		boejning = new BoejningsMomentImpl();
+		
 		boejning.angivDimensionerendeKraft(fdim);
+		
 		boejning.angivLaengde(l2);
 		
 		notifyObservers();
