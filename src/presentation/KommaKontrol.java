@@ -3,23 +3,26 @@ package presentation;
 import javafx.scene.control.TextField;
 
 public class KommaKontrol {
+	private int cursorPos;
+	
 	public String kontrol(String s, TextField tf) {
+		cursorPos = tf.getCaretPosition();
+		
 		if (s.contains(",")) {
 			s = s.replaceAll(",", ".");
 		}
 		if (s.indexOf(".") != s.lastIndexOf(".")) {
 			s = sletPunktumAtCursorPosition(s,tf);
-			tf.selectPositionCaret(tf.getCaretPosition());
-
+			
+			cursorPos = cursorPos - 1;
+			
 		}
 		return s;
 	}
 
-	private String sletPunktummer(String s) {
-		String s1 = s.substring(0, s.indexOf("."));
-		String s2 = s.substring(s.indexOf("."), s.lastIndexOf("."));
-		String s3 = s.substring(s.lastIndexOf("."), s.length());
-		return s = s1 + s3;
+	public int getCursorPos() {
+	
+		return cursorPos;
 	}
 
 	private String sletPunktumAtCursorPosition(String s, TextField tf) {

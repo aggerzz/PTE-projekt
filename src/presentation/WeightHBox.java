@@ -75,9 +75,9 @@ public class WeightHBox extends HBox {
 					weightTextField.setText(tekst);
 					weightTextField.positionCaret(100);
 				} else {
-					int cursorPos = weightTextField.getCaretPosition();
+//					int cursorPos = weightTextField.getCaretPosition();
 					weightTextField.setText(kommaKontrol.kontrol(weightTextField.getText(), weightTextField));
-					weightTextField.positionCaret(cursorPos);
+					weightTextField.positionCaret(kommaKontrol.getCursorPos());
 					FrontPage.frontPageMediator.getObserver().getPteCalc()
 							.angivVaegt(Double.parseDouble(weightTextField.getText()), unit.getValue());
 				}
