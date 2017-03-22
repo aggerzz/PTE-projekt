@@ -1,13 +1,24 @@
 package presentation;
 
+import java.awt.Color;
+import java.awt.Paint;
+import java.io.IOException;
+
+import com.itextpdf.text.DocumentException;
+
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.Path;
+import logic.PdfExporter;
+
+
 
 public class FrontPageTopLeftInsetter {
 	TextField horizontalAngle;
@@ -23,7 +34,7 @@ public class FrontPageTopLeftInsetter {
 		Canvas triangleCanvas = td.createTriangle(startCanvas, 40);
 		GridPane beregnerGrid = new GridPane();
 		beregnerGrid.setAlignment(Pos.TOP_LEFT);
-
+		
 		trianglePane = new TriangleField();
 		trianglePane.setCanvas(triangleCanvas);
 		trianglePane.getChildren().setAll(new NeedMoreInputTriangle());
@@ -101,6 +112,7 @@ public class FrontPageTopLeftInsetter {
 	}
 
 	public void setTriangle(Canvas triangle) {
+		trianglePane.setCanvas(triangle);
 		trianglePane.getChildren().setAll(triangle);
 	}
 
