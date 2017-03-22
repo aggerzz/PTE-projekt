@@ -1,5 +1,9 @@
 package logic;
 
+import java.io.IOException;
+
+import com.itextpdf.text.DocumentException;
+
 import exceptions.ArealEjDefineretException;
 import exceptions.BoejningsMomentEjDefineretException;
 import exceptions.DimensionerendeKraftEjDefineretException;
@@ -33,7 +37,12 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 	private BoejningsMoment boejning;
 	
 	public void exportToPdf(){
-		new PdfExporter().exportToPdf();
+		try {
+			new PdfExporter().exportToPdf();
+		} catch (DocumentException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	@Override
