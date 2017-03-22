@@ -8,8 +8,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Screen;
-import javafx.stage.Stage;
 
 public class FrontPageTopLeftInsetter {
 	TextField horizontalAngle;
@@ -38,8 +36,6 @@ public class FrontPageTopLeftInsetter {
 		VBox vandretVBox = new VBox();
 		vandretVBox.getChildren().addAll(vandretLabel,horizontalAngle);
 		
-		
-		
 		verticalAngle = new VerticalAngleTextField();
 		Label lodretLabel = new Label("Vandret vinkel:");
 		VBox lodretVBox = new VBox();
@@ -48,21 +44,13 @@ public class FrontPageTopLeftInsetter {
 		weightHBox = new WeightHBox();
 		Label weightLabel = new Label("Vægt:");
 		VBox weightVBox = new VBox();
-		weightVBox.getChildren().addAll(weightLabel,weightHBox);
-		
-		areal = new ArealTextField();
-		Label arealLabel = new Label("Areal:");
-		VBox arealVBox = new VBox();
-		arealVBox.getChildren().addAll(arealLabel,areal);
-		
-		
+		weightVBox.getChildren().addAll(weightLabel,weightHBox);		
 
 //		if(Double.parseDouble(HorizontalAngleTextField.getText()))
 		
 		// for at få verticalAngle textFeltet på linje med trekanten
 		GridPane verticalGrid = new GridPane();
 		verticalGrid.add(lodretVBox, 0, 1);
-		verticalGrid.add(arealVBox, 1, 1);
 		verticalGrid.setHgap(5);
 
 		beregnerGrid.add(vandretVBox, 0, 0);
