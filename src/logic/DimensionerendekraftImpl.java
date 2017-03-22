@@ -6,8 +6,8 @@ public class DimensionerendekraftImpl implements Dimensionerendekraft {
 	private double kg;
 	private double newton;
 	private String mellemRegning;
-	private double oevreGraense;
-	private double nedreGraense;
+	private double oevreGraense = 100000;
+	private double nedreGraense = 0;
 
 	@Override
 	public double setNewton(double newton) {
@@ -58,7 +58,6 @@ public class DimensionerendekraftImpl implements Dimensionerendekraft {
 
 	@Override
 	public boolean erVaegtNormal() {
-		if(nedreGraense<=kg && kg<=oevreGraense);
-		return true;
+		return(nedreGraense<kg && kg<=oevreGraense);
 	}
 }

@@ -15,7 +15,6 @@ public class TestKommarKontrol {
 		assertEquals("1.001",kontrol.kontrol("1,001"));
 		assertEquals("1.001",kontrol.kontrol("1,,,,,,,,,,,,001"));
 		
-		
 	}
 
 }

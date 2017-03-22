@@ -12,8 +12,7 @@ public class BoejningsMomentImpl implements BoejningsMoment {
 	public void angivDimensionerendeKraft(Dimensionerendekraft fdim) throws DimensionerendeKraftEjDefineretException {
 		if (fdim != null) {
 			this.fdim = fdim;
-		}
-		else{
+		} else {
 			throw new DimensionerendeKraftEjDefineretException();
 		}
 	}
@@ -22,8 +21,7 @@ public class BoejningsMomentImpl implements BoejningsMoment {
 	public void angivLaengde(LaengdeImpl L2) throws LaengdeEjDefineretException {
 		if (L2 != null) {
 			this.l2 = L2;
-		}
-		else{
+		} else {
 			throw new LaengdeEjDefineretException();
 		}
 	}
@@ -42,10 +40,10 @@ public class BoejningsMomentImpl implements BoejningsMoment {
 		if (l2 == null) {
 			throw new LaengdeEjDefineretException();
 
-		} else if (fdim!=null && l2 != null) {
+		} else if (fdim != null && l2 != null) {
 			return fdim.getNewton() / l2.getLaengde();
-		}
-		else return Double.NaN;
+		} else
+			return Double.NaN;
 	}
 
 }
