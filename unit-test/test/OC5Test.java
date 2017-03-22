@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import exceptions.ArealEjDefineretException;
 import exceptions.DimensionerendeKraftEjDefineretException;
+import exceptions.ErOverFejlGraenseException;
 import exceptions.NegativArealException;
 import exceptions.NormalkraftEjDefineretException;
 import exceptions.NormalspaendingEjDefineretException;
@@ -29,7 +30,12 @@ public class OC5Test {
 		Areal a = new ArealImpl();
 		Vinkel vinkel = new VinkelImpl();
 		
-		vinkel.setGrader(1);
+		try {
+			vinkel.setGrader(1);
+		} catch (ErOverFejlGraenseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		vinkel.setMaaltTilLodret(false);
 		fn.setFnNewton(100);
 		a.setMm2(50);
@@ -43,7 +49,12 @@ public class OC5Test {
 		Normalkraft fn = new NormalkraftImpl();
 		Vinkel vinkel = new VinkelImpl();
 		
-		vinkel.setGrader(1);
+		try {
+			vinkel.setGrader(1);
+		} catch (ErOverFejlGraenseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		vinkel.setMaaltTilLodret(false);
 		fn.setFnNewton(100);
 		
@@ -55,7 +66,12 @@ public class OC5Test {
 		Areal a = new ArealImpl();
 		Vinkel vinkel = new VinkelImpl();
 		
-		vinkel.setGrader(1);
+		try {
+			vinkel.setGrader(1);
+		} catch (ErOverFejlGraenseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		vinkel.setMaaltTilLodret(false);
 		a.setMm2(50);
 		
