@@ -8,6 +8,7 @@ import exceptions.NormalspaendingEjDefineretException;
 import exceptions.TvaerkraftEjDefineretException;
 import exceptions.VinkelEjDefineretException;
 import exceptions.erUnderFejlgraenseException;
+import javafx.geometry.Pos;
 import javafx.scene.control.TextField;
 import logic.PTECalculatorController;
 import logic.PTECalculatorControllerImpl;
@@ -31,9 +32,11 @@ public class VerticalAngleTextField extends TextField{
 						int cursorPos = this.getCaretPosition();
 						this.setText(kommaKontrol.kontrol(this.getText(),this));
 						this.positionCaret(cursorPos);
+						this.setAlignment(Pos.CENTER_RIGHT);
 						notifyObservers();}
 				}
-				else{					
+				else{
+					this.setAlignment(Pos.CENTER_LEFT);
 					FrontPage.frontPageMediator.getHorizontalAngleText().setDisable(false);
 					FrontPage.frontPageMediator.getHorizontalAngleText().setText("");
 					FrontPage.frontPageMediator.frontPageTopLeft.getTriangle().getChildren().setAll(new NeedMoreInputTriangle());
