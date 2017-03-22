@@ -51,6 +51,7 @@ public class FrontPageTopLeftInsetter {
 		vandretVBox.getChildren().addAll(vandretLabel,vandretHBox);
 		
 		verticalAngle = new VerticalAngleTextField();
+		verticalAngle.setAlignment(Pos.CENTER_RIGHT);
 		Label lodretEnhedLabel = new Label("°");
 		HBox lodretHBox = new HBox();
 		lodretHBox.getChildren().addAll(verticalAngle, lodretEnhedLabel);

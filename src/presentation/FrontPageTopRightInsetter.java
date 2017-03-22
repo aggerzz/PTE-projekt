@@ -23,6 +23,9 @@ public class FrontPageTopRightInsetter {
 		// Areal
 		Label arealLabel = new Label("Areal:");
 		areal = new ArealTextField();
+		if(areal.getText().length()>0){
+			areal.setAlignment(Pos.CENTER_RIGHT);
+		}
 		HBox mm2LabelHBox = superSubStringHBox.generateSuperHBox("mm", "2");
 		HBox arealHBox = new HBox();
 		arealHBox.setSpacing(2);
