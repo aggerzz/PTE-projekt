@@ -7,6 +7,7 @@ import exceptions.DimensionerendeKraftEjDefineretException;
 import exceptions.NegativKgException;
 import exceptions.erUnderFejlgraenseException;
 import javafx.collections.FXCollections;
+import javafx.geometry.Pos;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
@@ -21,6 +22,7 @@ public class WeightHBox extends HBox {
 
 		weightTextField = new TextField();
 		weightTextField.setPromptText("Indsæt vægt");
+		weightTextField.setAlignment(Pos.CENTER_RIGHT);
 
 		unit = new ComboBox<Enhed>(FXCollections.observableArrayList(insetUnitOptions()));
 		unit.setValue(Enhed.KG);
