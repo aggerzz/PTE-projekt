@@ -541,6 +541,15 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 		
 	}
 
+	@Override
+	public double getFlydeSpaending() throws FlydeSpaendingEjDefineretException {
+		if ( sigmaTill == null){
+			throw new FlydeSpaendingEjDefineretException();
+		}
+		
+		return sigmaTill.getFlydeSpaending();	
+	}
+
 }
 
 
