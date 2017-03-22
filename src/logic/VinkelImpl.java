@@ -37,7 +37,7 @@ public class VinkelImpl implements Vinkel {
 
 	@Override
 	public void setGrader(double grader)throws erUnderFejlgraenseException {
-		if (grader<0) 
+		if (grader<0 || Double.isNaN(grader)) 
 			throw new erUnderFejlgraenseException();
 //		else if (0<this.grader && this.grader>90) 
 			this.grader = grader;
