@@ -36,22 +36,12 @@ public class LaengdeTextField extends TextField {
 					FrontPage.frontPageMediator.getObserver().getPteCalc()
 							.angivLaengde(Double.parseDouble(this.getText()));
 					FrontPage.frontPageMediator.getObserver().getPteCalc().beregnBoejningsMoment();
-					FrontPage.frontPageMediator.getObserver().getPteCalc().beregnSigmaRef();
 				}
 			}
 		}catch (NumberFormatException | DimensionerendeKraftEjDefineretException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		} catch (LaengdeEjDefineretException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (NormalspaendingEjDefineretException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (angivBoejningsspaendingEjDefineretException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (ForskydningsspaendingEjDefineretException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		} 
