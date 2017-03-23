@@ -30,7 +30,7 @@ public interface PTECalculatorController {
 	String getNormalkraftMellemregning() throws NormalkraftEjDefineretException,
 			DimensionerendeKraftEjDefineretException, VinkelEjDefineretException;
 
-	public void angivVaegt(double vaerdi, Enhed enhed) throws DimensionerendeKraftEjDefineretException, erUnderFejlgraenseException;
+	public void angivVaegt(double vaerdi, Enhed enhed) throws NegativKgException;
 
 	public void notifyObservers();
 
@@ -78,7 +78,7 @@ public interface PTECalculatorController {
 
 	public void setForskydningsspaending(double nMm2);
 
-	public boolean erVaegtNormal() throws NegativKgException;
+	public boolean erVaegtNormal() throws DimensionerendeKraftEjDefineretException;
 
 	void setNormalspaending(double sigmaNmm2);
 
@@ -101,4 +101,8 @@ public interface PTECalculatorController {
 	public void beregnBoejningsSpaending() throws BoejningsMomentEjDefineretException, BoejningsspaendingEjDefineretException, HalvProfilhoejdeEjDefineretException, InertimomentEjDefineretException;
 	public double getBoejningsspaending() throws BoejningsspaendingEjDefineretException;
 	public String getBoejningsspaendingMellemregning() throws BoejningsspaendingEjDefineretException;
+	public void angivLaengde(double l2) throws LaengdeEjDefineretException;
+	public double getLaengde() throws LaengdeEjDefineretException;
+	public double getFlydeSpaending() throws FlydeSpaendingEjDefineretException;
+	public String getBoejningsMomentMellemRegning() throws BoejningsMomentEjDefineretException;
 }

@@ -35,20 +35,22 @@ public class BoejningsspaendingImpl implements Boejningsspaending {
 	@Override
 	public void angivHalvProfilhoejde(HalvProfilhoejde e) throws HalvProfilhoejdeEjDefineretException {
 		if (e == null)
-			this.e = e;
-
-		else
 			throw new HalvProfilhoejdeEjDefineretException();
-
+		else
+			this.e = e;
 	}
 
 	@Override
 	public void beregnBoejningsspaending() throws BoejningsMomentEjDefineretException, InertimomentEjDefineretException,
 			HalvProfilhoejdeEjDefineretException {
+		try{
 		double boejningsSpaending = boejning.getBoejningsMoment() * e.getHalvProfilhoejde() / i.getInertimoment();
-		boejningsSpaendingMellemregning = "Mb * e / l" + "\n" + boejningsSpaending + " = "
-				+ boejning.getBoejningsMoment() + "*" + e.getHalvProfilhoejde() + "/" + i.getInertimoment();
-
+		boejningsSpaendingMellemregning = "sigmaB = mb * e / I" + "\n" + boejningsSpaending + " = "
+				+ boejning.getBoejningsMoment() + " * " + e.getHalvProfilhoejde() + " / " + i.getInertimoment();
+		}
+		catch(DimensionerendeKraftEjDefineretException | LaengdeEjDefineretException e1){
+			e1.printStackTrace();
+		}
 	}
 
 	@Override

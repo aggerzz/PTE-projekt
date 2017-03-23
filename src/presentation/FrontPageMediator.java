@@ -9,13 +9,15 @@ import logic.Enhed;
 public class FrontPageMediator {
 	FrontPageTopLeftInsetter frontPageTopLeft;
 	FrontPageBottomInsetter frontPageBottom;
+	FrontPageTopRightInsetter frontPageTopRight;
 	PTEObserverImpl pteObs = new PTEObserverImpl(this);
 	
 	
 	
-	public FrontPageMediator(FrontPageTopLeftInsetter frontPageTopLeft, FrontPageBottomInsetter frontPageBottom) {
+	public FrontPageMediator(FrontPageTopLeftInsetter frontPageTopLeft, FrontPageBottomInsetter frontPageBottom, FrontPageTopRightInsetter frontPageTopRight) {
 		this.frontPageTopLeft = frontPageTopLeft;
 		this.frontPageBottom = frontPageBottom;
+		this.frontPageTopRight = frontPageTopRight;
 	}
 	public TextField getMBTextField(){
 		return frontPageBottom.getMbTextField();
@@ -77,7 +79,7 @@ public class FrontPageMediator {
 	}
 	
 	public TextField getArealText() {
-		return frontPageTopLeft.getAreal();
+		return frontPageTopRight.areal;
 	}
 	
 	public void setTriangle(Canvas triangle) {
@@ -90,6 +92,12 @@ public class FrontPageMediator {
 
 	public void setVerticalAngleText(TextField tf) {
 		frontPageTopLeft.setVerticalAngle(tf);
-	}	
+	}
+	public TextField getLaengdeTextField(){
+		return frontPageTopRight.inertimoment;
+	}
+	public TextField getHalvHoejdeTextField(){
+		return frontPageTopRight.halvhoejde;
+	}
 
 }

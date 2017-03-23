@@ -14,11 +14,10 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Path;
 import logic.PdfExporter;
-
-
 
 public class FrontPageTopLeftInsetter {
 	TextField horizontalAngle;
@@ -43,16 +42,24 @@ public class FrontPageTopLeftInsetter {
 		trianglePane.setPrefHeight(320);
 		
 		horizontalAngle = new HorizontalAngleTextField();
+		horizontalAngle.setAlignment(Pos.CENTER_RIGHT);
+		Label vandretEnhedLabel = new Label("°");
+		HBox vandretHBox = new HBox();
+		vandretHBox.getChildren().addAll(horizontalAngle, vandretEnhedLabel);
 		Label vandretLabel = new Label("Lodret vinkel:");
 		VBox vandretVBox = new VBox();
-		vandretVBox.getChildren().addAll(vandretLabel,horizontalAngle);
+		vandretVBox.getChildren().addAll(vandretLabel,vandretHBox);
 		
 		verticalAngle = new VerticalAngleTextField();
+		verticalAngle.setAlignment(Pos.CENTER_RIGHT);
+		Label lodretEnhedLabel = new Label("°");
+		HBox lodretHBox = new HBox();
+		lodretHBox.getChildren().addAll(verticalAngle, lodretEnhedLabel);
 		Label lodretLabel = new Label("Vandret vinkel:");
 		VBox lodretVBox = new VBox();
-		lodretVBox.getChildren().addAll(lodretLabel,verticalAngle);
+		lodretVBox.getChildren().addAll(lodretLabel,lodretHBox);
 		
-		weightHBox = new WeightHBox();
+		weightHBox = new WeightHBox();		
 		Label weightLabel = new Label("Vægt:");
 		VBox weightVBox = new VBox();
 		weightVBox.getChildren().addAll(weightLabel,weightHBox);		

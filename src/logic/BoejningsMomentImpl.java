@@ -19,7 +19,7 @@ public class BoejningsMomentImpl implements BoejningsMoment {
 
 	@Override
 
-  public void angivLaengde(Laengde L2) throws LaengdeEjDefineretException {
+	public void angivLaengde(Laengde L2) throws LaengdeEjDefineretException {
 		if (L2 != null) {
 			this.l2 = L2;
 		} else {
@@ -40,11 +40,14 @@ public class BoejningsMomentImpl implements BoejningsMoment {
 		}
 		if (l2 == null) {
 			throw new LaengdeEjDefineretException();
+		}
 
-		} else if (fdim != null && l2 != null) {
-			return fdim.getNewton() / l2.getLaengde();
-		} else
-			return Double.NaN;
+		return fdim.getNewton() * l2.getLaengde();
+	}
+
+	@Override
+	public String getBoejningsMomentMellemRegning() {
+		return mellemRegning;
 	}
 
 }

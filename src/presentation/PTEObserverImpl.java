@@ -2,10 +2,17 @@ package presentation;
 
 import java.text.DecimalFormat;
 import exceptions.ArealEjDefineretException;
+import exceptions.BoejningsMomentEjDefineretException;
+import exceptions.BoejningsspaendingEjDefineretException;
 import exceptions.DimensionerendeKraftEjDefineretException;
+import exceptions.FDimEjDefineret;
+import exceptions.FlydeSpaendingEjDefineretException;
 import exceptions.ForskydningsspaendingEjDefineretException;
+import exceptions.LaengdeEjDefineretException;
 import exceptions.NormalkraftEjDefineretException;
 import exceptions.NormalspaendingEjDefineretException;
+import exceptions.ReferenceSpaendingEjDefineretException;
+import exceptions.SikkerhedsFaktorEjDefineretException;
 import exceptions.TvaerkraftEjDefineretException;
 import exceptions.VinkelEjDefineretException;
 import logic.PTECalculatorController;
@@ -24,7 +31,7 @@ public class PTEObserverImpl implements PTEObserver {
 
 	public void update() {
 		frontPageMediator.getMellemRegninger().clear();
-		   DecimalFormat formatter = new DecimalFormat("##.000");
+		   DecimalFormat formatter = new DecimalFormat("#0.000");
 		    
 		try {
 			double fDim = pteCalc.getDimensionerendekraft();
@@ -60,17 +67,6 @@ public class PTEObserverImpl implements PTEObserver {
 				| VinkelEjDefineretException e1) {
 			frontPageMediator.getFnTextField().clear();
 		}
-		
-//		try {
-//			double areal = pteCalc.getAreal();
-//			String arealText = formatter.format(areal); //TODO formater til 3 decimaler
-//			frontPageMediator.getArealText().setText(arealText );
-//
-//			
-//		} catch (ArealEjDefineretException e1) {
-//			frontPageMediator.getArealText().clear();
-//			
-//		}		
 		 
 		try {
 			double forskydningsspaending = pteCalc.getForskydningsspaending();
@@ -88,16 +84,61 @@ public class PTEObserverImpl implements PTEObserver {
 		try {
 			double normalspaending = pteCalc.getNormalspaending();
 			String normalspaendingText = formatter.format(normalspaending);
-			
+
 			frontPageMediator.getSigmaNTextField().setText(normalspaendingText);
 			String normalspaendingMellemregning = pteCalc.getNormalspaendingMellemregning();
 			tilfoejMellemregning(normalspaendingMellemregning);
 
-			
 		} catch (NormalspaendingEjDefineretException | DimensionerendeKraftEjDefineretException
-				| VinkelEjDefineretException  e1) {
+				| VinkelEjDefineretException e1) {
 			frontPageMediator.getSigmaNTextField().clear();			
-		}				
+		}
+			double boejningsSpaending;
+			try {
+				boejningsSpaending = pteCalc.getBoejningsspaending();
+			
+			String boejningsSpaendingText = formatter.format(boejningsSpaending);
+			
+			frontPageMediator.getSigmaBTextField().setText(boejningsSpaendingText);
+			String boejningsSpaendingMellemRegninger = pteCalc.getBoejningsspaendingMellemregning();
+			tilfoejMellemregning(boejningsSpaendingMellemRegninger);
+			} catch (BoejningsspaendingEjDefineretException e) {
+				frontPageMediator.getSigmaBTextField().clear();
+			}
+			
+			try {
+				double boejningsmoment = pteCalc.getBoejningsMoment();
+				String boejningsmomentText = formatter.format(boejningsmoment);
+				
+				frontPageMediator.getMBTextField().setText(boejningsmomentText);
+				String boejningsmomentMellemRegninger = pteCalc.getBoejningsMomentMellemRegning();
+				tilfoejMellemregning(boejningsmomentMellemRegninger);
+
+			} catch (BoejningsMomentEjDefineretException | DimensionerendeKraftEjDefineretException |LaengdeEjDefineretException e1) {
+				frontPageMediator.getMBTextField().clear();			
+			}
+			try {
+				double referencespaending = pteCalc.getSigmaRef();
+				String referencespaendingText = formatter.format(referencespaending);
+
+				frontPageMediator.getSigmaRefTextField().setText(referencespaendingText);
+				String referenceSpaendingMellemRegning = pteCalc.ReferenceSpaendingGetMellemRegning();
+				tilfoejMellemregning(referenceSpaendingMellemRegning);
+
+			} catch (ReferenceSpaendingEjDefineretException e1) {
+				frontPageMediator.getSigmaRefTextField().clear();			
+			}
+			try {
+				double sikkerhedsfaktor = pteCalc.getSikkerhedsfaktor();
+				String sikkerhedsfaktorText= formatter.format(sikkerhedsfaktor);
+
+				frontPageMediator.getSikkerhedsFaktorTextField().setText(sikkerhedsfaktorText);
+				String sikkerhedsfaktorMellemRegning = pteCalc.getSikkerhedsfaktorMellemregning();
+				tilfoejMellemregning(sikkerhedsfaktorMellemRegning);
+
+			} catch (SikkerhedsFaktorEjDefineretException | ReferenceSpaendingEjDefineretException | FlydeSpaendingEjDefineretException e1) {
+				frontPageMediator.getSikkerhedsFaktorTextField().clear();			
+			}
 	}		
 	private void tilfoejMellemregning(String mellemregning) {
 		frontPageMediator.getMellemRegninger().appendText(mellemregning + "\n");

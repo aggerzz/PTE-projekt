@@ -2,8 +2,12 @@ package presentation;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import exceptions.DimensionerendeKraftEjDefineretException;
+import exceptions.NegativKgException;
+import exceptions.erUnderFejlgraenseException;
 import javafx.collections.FXCollections;
+import javafx.geometry.Pos;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
@@ -12,11 +16,13 @@ import logic.Enhed;
 public class WeightHBox extends HBox {
 	TextField weightTextField;
 	ComboBox<Enhed> unit;
+	private KommaKontrol kommaKontrol = new KommaKontrol();
 
 	public WeightHBox() {
 
 		weightTextField = new TextField();
 		weightTextField.setPromptText("Indsæt vægt");
+//		weightTextField.setAlignment(Pos.CENTER_RIGHT);
 
 		unit = new ComboBox<Enhed>(FXCollections.observableArrayList(insetUnitOptions()));
 		unit.setValue(Enhed.KG);
@@ -60,16 +66,33 @@ public class WeightHBox extends HBox {
 	public void refresh() {
 
 		try {
-			//sæt normalbaggrundsfarve
-			if (!weightTextField.getText().isEmpty() && !weightTextField.getText().contains("-")) {
-				FrontPage.frontPageMediator.getObserver().getPteCalc()
-						.angivVaegt(Double.parseDouble(weightTextField.getText()), unit.getValue());
-				//Tjek om vægten er normal
-				//hvis unormal ændre baggrund til gul
+			// sæt normalbaggrundsfarve
+			setStyle("-fx-control-inner-background: #ffffff;");
+			if (weightTextField.getLength() > 0) {
+				weightTextField.setAlignment(Pos.CENTER_RIGHT);
+				char sidsteBogstav = weightTextField.getText().charAt(weightTextField.getLength() - 1);
+				if (!(sidsteBogstav >= '0' && sidsteBogstav <= '9' || sidsteBogstav == ',' || sidsteBogstav == '.')) {
+					String tekst = weightTextField.getText().substring(0, weightTextField.getText().length() - 1);
+					weightTextField.setText(tekst);
+					weightTextField.positionCaret(100);
+				} else {					
+//					int cursorPos = weightTextField.getCaretPosition();
+					weightTextField.setText(kommaKontrol.kontrol(weightTextField.getText(), weightTextField));
+					weightTextField.positionCaret(kommaKontrol.getCursorPos());
+					FrontPage.frontPageMediator.getObserver().getPteCalc()
+							.angivVaegt(Double.parseDouble(weightTextField.getText()), unit.getValue());
+				}
+				if (!FrontPage.frontPageMediator.getObserver().getPteCalc().erVaegtNormal())
+					setStyle("-fx-control-inner-background: #ffee6d;");
 			}
-		} catch (DimensionerendeKraftEjDefineretException e1) {
-			e1.printStackTrace();
+			else 
+				weightTextField.setAlignment(Pos.CENTER_LEFT);
+		} catch (NumberFormatException | DimensionerendeKraftEjDefineretException e) {
+//			e.printStackTrace();
+
+			setStyle("-fx-control-inner-background: #f92525;");
+		} catch (NegativKgException e) {
+			// Gør ingenting
 		}
 	}
-
 }

@@ -9,22 +9,36 @@ import exceptions.TvaerkraftEjDefineretException;
 import exceptions.VinkelEjDefineretException;
 import exceptions.erUnderFejlgraenseException;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import logic.PTECalculatorController;
 import logic.PTECalculatorControllerImpl;
 import observers.AngleObserver;
 
 public class HorizontalAngleTextField extends TextField {
 	public HorizontalAngleTextField() {
+		KommaKontrol kommaKontrol = new KommaKontrol();
 		this.setPromptText("Lodret vinkel");
 		this.setMaxSize(150, 20);
 		this.setOnKeyReleased(e -> {
 			try {
-				if(!this.getText().isEmpty())
-				notifyObservers();
-				else{
+				if (this.getText().length() > 0) {
+					char sidsteBogstav = this.getText().charAt(this.getLength() - 1);
+					if (!(sidsteBogstav >= '0' && sidsteBogstav <= '9' || sidsteBogstav == ','
+							|| sidsteBogstav == '.')) {
+						String tekst = this.getText().substring(0, this.getText().length() - 1);
+						this.setText(tekst);
+						this.positionCaret(100);
+					}else {
+						int cursorPos = this.getCaretPosition();
+						this.setText(kommaKontrol.kontrol(this.getText(),this));
+						this.positionCaret(cursorPos);
+						notifyObservers();
+					}
+				} else {					
 					FrontPage.frontPageMediator.getVerticalAngleText().setDisable(false);
 					FrontPage.frontPageMediator.getVerticalAngleText().setText("");
-					FrontPage.frontPageMediator.frontPageTopLeft.getTriangle().getChildren().setAll(new NeedMoreInputTriangle());
+					FrontPage.frontPageMediator.frontPageTopLeft.getTriangle().getChildren()
+							.setAll(new NeedMoreInputTriangle());
 				}
 			} catch (DimensionerendeKraftEjDefineretException e1) {
 				// TODO Auto-generated catch block
@@ -35,10 +49,10 @@ public class HorizontalAngleTextField extends TextField {
 
 	private void notifyObservers() throws DimensionerendeKraftEjDefineretException {
 		new AngleObserver().update(this.getText(), this);
-		
-		
+
 		try {
-			FrontPage.frontPageMediator.getObserver().getPteCalc().angivVinkel(Double.parseDouble(this.getText()), true);
+			FrontPage.frontPageMediator.getObserver().getPteCalc().angivVinkel(Double.parseDouble(this.getText()),
+					true);
 		} catch (NumberFormatException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -64,10 +78,11 @@ public class HorizontalAngleTextField extends TextField {
 				| TvaerkraftEjDefineretException e1) {
 			// Gør ingen ting
 		}
-		
+
 		try {
 			FrontPage.frontPageMediator.getObserver().getPteCalc().beregnNormalspaending();
-		} catch (NormalkraftEjDefineretException | DimensionerendeKraftEjDefineretException | VinkelEjDefineretException | NormalspaendingEjDefineretException | ArealEjDefineretException e1) {
+		} catch (NormalkraftEjDefineretException | DimensionerendeKraftEjDefineretException | VinkelEjDefineretException
+				| NormalspaendingEjDefineretException | ArealEjDefineretException e1) {
 			// gør ingen ting
 		}
 	}

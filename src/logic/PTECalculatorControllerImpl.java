@@ -8,6 +8,7 @@ import exceptions.ArealEjDefineretException;
 import exceptions.BoejningsMomentEjDefineretException;
 import exceptions.BoejningsspaendingEjDefineretException;
 import exceptions.DimensionerendeKraftEjDefineretException;
+import exceptions.ErOverFejlGraenseException;
 import exceptions.FlydeSpaendingEjDefineretException;
 import exceptions.ForskydningsspaendingEjDefineretException;
 import exceptions.HalvProfilhoejdeEjDefineretException;
@@ -54,13 +55,11 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 	
 	@Override
 	public double getBoejningsMoment() throws BoejningsMomentEjDefineretException, LaengdeEjDefineretException, DimensionerendeKraftEjDefineretException{
-		try {
-			return boejning.getBoejningsMoment();
-		} catch (LaengdeEjDefineretException e) {
-			throw new LaengdeEjDefineretException();
-		}catch(DimensionerendeKraftEjDefineretException e){
-			throw new DimensionerendeKraftEjDefineretException();
+		if ( boejning == null){
+			throw new BoejningsMomentEjDefineretException();
 		}
+		
+		return boejning.getBoejningsMoment();
 		
 	}
 	
@@ -81,17 +80,16 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 	}
 	@Override
 	public void beregnBoejningsMoment() throws DimensionerendeKraftEjDefineretException, LaengdeEjDefineretException {
-		if(fdim==null){
+		if(fdim == null){
 			throw new DimensionerendeKraftEjDefineretException();
 		}
-		if(l2 != null){
-			l2 = new LaengdeImpl();
-		}
-		else{
+		if(l2 == null){
 			throw new LaengdeEjDefineretException();
 		}
 		boejning = new BoejningsMomentImpl();
+		
 		boejning.angivDimensionerendeKraft(fdim);
+		
 		boejning.angivLaengde(l2);
 		
 		notifyObservers();
@@ -147,12 +145,11 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 	}	
 
 	@Override
-	public void angivVaegt(double vaegt, Enhed enhed) throws DimensionerendeKraftEjDefineretException, erUnderFejlgraenseException {
+	public void angivVaegt(double vaegt, Enhed enhed) throws  NegativKgException {
 		fdim = new DimensionerendekraftImpl();
 
 		fdim.setVaegt(vaegt,enhed);
-		if(!fdim.erVaegtNormal())
-			throw new erUnderFejlgraenseException();
+
 		notifyObservers();
 	}
 	
@@ -245,7 +242,11 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 			this.vinkel = new VinkelImpl();
 		}
 		
-		this.vinkel.setGrader(vinkel);
+		try {
+			this.vinkel.setGrader(vinkel);
+		} catch (ErOverFejlGraenseException e) {
+			e.printStackTrace();
+		}
 		this.vinkel.setMaaltTilLodret(MaaltTilLodret);
 		
 //		try {
@@ -301,10 +302,11 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 	}
 
 	@Override
-	public boolean erVaegtNormal() throws NegativKgException {
-		fdim = new DimensionerendekraftImpl();
+	public boolean erVaegtNormal() throws DimensionerendeKraftEjDefineretException {
+		if (fdim == null)
+				throw new DimensionerendeKraftEjDefineretException();
+		return fdim.erVaegtNormal();
 		
-		return false;
 	}
 	
 	@Override
@@ -369,7 +371,11 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 		}
 		sigmaN = new NormalspaendingImpl();
 		sigmaN.angivNormalkraft(fn);
-		sigmaN.angivAreal(a);
+		try {
+			sigmaN.angivAreal(a);
+		} catch (NegativArealException e) {
+			e.printStackTrace();
+		}
 		
 		notifyObservers();		
 	}
@@ -523,14 +529,44 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 		String sigmaBMellemregning = sigmaB.getBoejningsspaendingMellemregning();
 		return sigmaBMellemregning;
 	}
-	public void angivLaengde(Laengde l2) throws LaengdeEjDefineretException{
+
+	@Override
+	public void angivLaengde(double l2) throws LaengdeEjDefineretException{
+			if (this.l2 == null) {
+				this.l2 = new LaengdeImpl();
+			}
+			this.l2.angivLaengde(l2);
+
+			notifyObservers();
 		
-		if(l2!=null){
-			this.l2=l2;
+	}
+
+	@Override
+	public double getFlydeSpaending() throws FlydeSpaendingEjDefineretException {
+		if ( sigmaTill == null){
+			throw new FlydeSpaendingEjDefineretException();
 		}
-		else{
+		
+		return sigmaTill.getFlydeSpaending();	
+	}
+
+	@Override
+	public String getBoejningsMomentMellemRegning() throws BoejningsMomentEjDefineretException {
+		if (boejning == null) {
+			throw new BoejningsMomentEjDefineretException();
+
+		}
+
+		String BoejningsMomentMellemRegning = boejning.getBoejningsMomentMellemRegning();
+		return BoejningsMomentMellemRegning;
+	}
+
+	@Override
+	public double getLaengde() throws LaengdeEjDefineretException {
+		if (l2 == null)
 			throw new LaengdeEjDefineretException();
-		}
+		
+		return l2.getLaengde();
 	}
 
 }

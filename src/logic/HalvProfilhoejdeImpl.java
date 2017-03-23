@@ -3,7 +3,7 @@ package logic;
 import exceptions.NegativHalvProfilhoejdeException;
 
 public class HalvProfilhoejdeImpl implements HalvProfilhoejde {
-	private double mm;
+	private double mm = Double.NaN;
 
 	@Override
 	public double getHalvProfilhoejde() {
@@ -12,7 +12,7 @@ public class HalvProfilhoejdeImpl implements HalvProfilhoejde {
 	}
 	
 	public void setMm(double mm) throws NegativHalvProfilhoejdeException {
-		if (mm <= 0 || mm == Double.NaN)
+		if (mm <= 0 || Double.isNaN(mm))
 			throw new NegativHalvProfilhoejdeException();
 		this.mm = mm;
 	}
