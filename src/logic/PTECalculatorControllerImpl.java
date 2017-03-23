@@ -94,6 +94,8 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 		
 		boejning.angivLaengde(l2);
 		
+		boejning.beregnBoejningsMoment();
+		
 		notifyObservers();
 	}
 
