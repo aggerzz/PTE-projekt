@@ -1,5 +1,9 @@
 package presentation;
 
+import java.io.IOException;
+
+import com.itextpdf.text.DocumentException;
+
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -8,8 +12,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import logic.PdfExporter;
 import logic.SletAlt;
-import sun.misc.Cleaner;
 
 public class FrontPageTopRightInsetter {
 	private SletAlt sletAlt;
@@ -88,7 +92,10 @@ public class FrontPageTopRightInsetter {
 		Button exporterTilPdfKnap = new Button("Exporter til pdf");
 		exporterTilPdfKnap.setMinSize(150, 28);
 		exporterTilPdfKnap.setOnAction(e -> {
-			// TODO mangler forbindelse til funktionen exporterPDF (MN)
+			PdfExporter pdfExporter = new PdfExporter();
+			try {
+			pdfExporter.exportToPdf();
+			} catch (DocumentException | IOException e1) {}
 		});
 
 		knapperVBox.getChildren().addAll(sletAltKnap, exporterTilPdfKnap);
