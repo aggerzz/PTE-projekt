@@ -20,13 +20,13 @@ public class DimensionerendekraftImpl implements Dimensionerendekraft {
 			throw new NegativKgException();
 		switch(enhed){
 		case TON:
-			setKg(vaegt/1000);
+			setKg(vaegt*1000);
 			break;
 		case KG:
 			setKg(vaegt);
 			break;
 		case GRAM:
-			setKg(vaegt*1000);
+			setKg(vaegt/1000);
 			break;
 		case NEWTON:
 			setKg(vaegt/tyngdekraft);
