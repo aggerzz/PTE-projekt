@@ -561,6 +561,14 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 		return BoejningsMomentMellemRegning;
 	}
 
+	@Override
+	public double getLaengde() throws LaengdeEjDefineretException {
+		if (l2 == null)
+			throw new LaengdeEjDefineretException();
+		
+		return l2.getLaengde();
+	}
+
 }
 
 
