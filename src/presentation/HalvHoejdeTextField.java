@@ -1,8 +1,11 @@
 package presentation;
 
+import exceptions.BoejningsMomentEjDefineretException;
+import exceptions.BoejningsspaendingEjDefineretException;
 import exceptions.DimensionerendeKraftEjDefineretException;
 import exceptions.FlydeSpaendingEjDefineretException;
 import exceptions.HalvProfilhoejdeEjDefineretException;
+import exceptions.InertimomentEjDefineretException;
 import exceptions.LaengdeEjDefineretException;
 import exceptions.NegativHalvProfilhoejdeException;
 import exceptions.ReferenceSpaendingEjDefineretException;
@@ -49,11 +52,10 @@ public class HalvHoejdeTextField extends TextField {
 			}		
 			
 			try {
-				FrontPage.frontPageMediator.getObserver().getPteCalc().beregnSikkerhedsFaktor();
-			} catch (FlydeSpaendingEjDefineretException | ReferenceSpaendingEjDefineretException  e1) {
+				FrontPage.frontPageMediator.getObserver().getPteCalc().beregnBoejningsSpaending();
+			} catch (BoejningsMomentEjDefineretException |  BoejningsspaendingEjDefineretException |HalvProfilhoejdeEjDefineretException | InertimomentEjDefineretException  e1) {
 				// gør ingen ting
-			}
-			
+			} 			
 		});
 		
 		}

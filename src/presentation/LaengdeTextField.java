@@ -2,7 +2,10 @@ package presentation;
 
 
 import exceptions.DimensionerendeKraftEjDefineretException;
+import exceptions.ForskydningsspaendingEjDefineretException;
 import exceptions.LaengdeEjDefineretException;
+import exceptions.NormalspaendingEjDefineretException;
+import exceptions.angivBoejningsspaendingEjDefineretException;
 import javafx.geometry.Pos;
 import javafx.scene.control.TextField;
 
@@ -32,15 +35,26 @@ public class LaengdeTextField extends TextField {
 					this.positionCaret(kommaKontrol.getCursorPos());
 					FrontPage.frontPageMediator.getObserver().getPteCalc()
 							.angivLaengde(Double.parseDouble(this.getText()));
+					FrontPage.frontPageMediator.getObserver().getPteCalc().beregnBoejningsMoment();
+					FrontPage.frontPageMediator.getObserver().getPteCalc().beregnSigmaRef();
 				}
 			}
-		}catch (NumberFormatException e1) {
+		}catch (NumberFormatException | DimensionerendeKraftEjDefineretException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		} catch (LaengdeEjDefineretException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
-		}		
+		} catch (NormalspaendingEjDefineretException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (angivBoejningsspaendingEjDefineretException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (ForskydningsspaendingEjDefineretException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} 
 		
 		try {
 			FrontPage.frontPageMediator.getObserver().getPteCalc().beregnBoejningsMoment();

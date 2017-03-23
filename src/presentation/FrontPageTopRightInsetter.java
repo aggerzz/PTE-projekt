@@ -21,11 +21,11 @@ public class FrontPageTopRightInsetter {
 		GridPane gridRight = new GridPane();
 		gridRight.setAlignment(Pos.TOP_LEFT);
 		gridRight.setPadding(new Insets(0, 0, 0, 20));
-		
-		//Laengde
+
+		// Laengde
 		Label laengdeLabel = new Label("Vandret længde:");
 		laengde = new LaengdeTextField();
-		Label mmlaengdeLabel  = new Label("mm");
+		Label mmlaengdeLabel = new Label("mm");
 		HBox laengdeHBox = new HBox();
 		laengdeHBox.setSpacing(2);
 		laengdeHBox.setAlignment(Pos.BOTTOM_LEFT);
@@ -34,10 +34,10 @@ public class FrontPageTopRightInsetter {
 		// Areal
 		Label arealLabel = new Label("Areal:");
 		areal = new ArealTextField();
-//		if(areal.getText().length()>0){
-//			areal.setAlignment(Pos.CENTER_RIGHT);
-//		}
-		
+		// if(areal.getText().length()>0){
+		// areal.setAlignment(Pos.CENTER_RIGHT);
+		// }
+
 		HBox mm2LabelHBox = superSubStringHBox.generateSuperHBox("mm", "2");
 		HBox arealHBox = new HBox();
 		arealHBox.setSpacing(2);
@@ -61,19 +61,20 @@ public class FrontPageTopRightInsetter {
 		halvhoejdeHBox.setSpacing(2);
 		halvhoejdeHBox.setAlignment(Pos.BOTTOM_LEFT);
 		halvhoejdeHBox.getChildren().addAll(halvhoejde, mmLabel);
-		
+
 		// Flydespaending (SigmaTill)
-				Label sigmaTillLabel = new Label("SigmaTill:");
-				sigmaTill = new HalvHoejdeTextField();
-				HBox nmm2LabelHBox = superSubStringHBox.generateSuperHBox("nmm", "2");
-				HBox sigmaTillHBox = new HBox();
-				sigmaTillHBox.setSpacing(2);
-				sigmaTillHBox.setAlignment(Pos.BOTTOM_LEFT);
-				sigmaTillHBox.getChildren().addAll(sigmaTill, nmm2LabelHBox);
+		HBox sigmaTillHBox2 = superSubStringHBox.generateSubHBox("\u03C3", "Till");
+//		Label sigmaTillLabel = new Label("SigmaTill:");
+		sigmaTill = new SigmaTillTextField();
+		HBox nmm2LabelHBox = superSubStringHBox.generateSuperHBox("N/mm", "2");
+		HBox sigmaTillHBox = new HBox();
+		sigmaTillHBox.setSpacing(2);
+		sigmaTillHBox.setAlignment(Pos.BOTTOM_LEFT);
+		sigmaTillHBox.getChildren().addAll(sigmaTill, nmm2LabelHBox);
 
 		VBox samlingAfHBox = new VBox();
-		samlingAfHBox.getChildren().addAll(laengdeLabel, laengdeHBox, arealLabel, arealHBox, inertimomentLabel, inertimomentHBox, halvhoejdeLabel,
-				halvhoejdeHBox, sigmaTillLabel, sigmaTillHBox);
+		samlingAfHBox.getChildren().addAll(laengdeLabel, laengdeHBox, arealLabel, arealHBox, inertimomentLabel,
+				inertimomentHBox, halvhoejdeLabel, halvhoejdeHBox, sigmaTillHBox2, sigmaTillHBox);
 		gridRight.add(samlingAfHBox, 0, 0);
 
 		GridPane gridmini = new GridPane();
