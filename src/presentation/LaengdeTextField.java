@@ -11,6 +11,7 @@ import javafx.scene.control.TextField;
 
 public class LaengdeTextField extends TextField {
 	KommaKontrol kommaKontrol = new KommaKontrol();
+	Beregn beregn = new Beregn();
 	public LaengdeTextField() {	
 
 	this.setPromptText("Vandret længde");
@@ -35,25 +36,16 @@ public class LaengdeTextField extends TextField {
 					this.positionCaret(kommaKontrol.getCursorPos());
 					FrontPage.frontPageMediator.getObserver().getPteCalc()
 							.angivLaengde(Double.parseDouble(this.getText()));
-					FrontPage.frontPageMediator.getObserver().getPteCalc().beregnBoejningsMoment();
-					FrontPage.frontPageMediator.getObserver().getPteCalc().beregnSigmaRef();
+				beregn.beregn();
 				}
 			}
-		}catch (NumberFormatException | DimensionerendeKraftEjDefineretException e1) {
+		}catch (NumberFormatException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		} catch (LaengdeEjDefineretException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
-		} catch (NormalspaendingEjDefineretException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (angivBoejningsspaendingEjDefineretException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (ForskydningsspaendingEjDefineretException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+
 		} 
 		
 		try {
