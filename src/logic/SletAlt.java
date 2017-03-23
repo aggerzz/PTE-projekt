@@ -28,5 +28,10 @@ public class SletAlt {
 		fpm.getTriangle().getChildren().setAll(new NeedMoreInputTriangle());
 		fpm.getHalvHoejdeTextField().clear();
 		fpm.getLaengdeTextField().clear();
+		
+		fpm.getVerticalAngleText().setDisable(false);
+		fpm.getVerticalAngleText().setText("");
+		fpm.getHorizontalAngleText().setDisable(false);
+		fpm.getHorizontalAngleText().setText("");
 	}
 }

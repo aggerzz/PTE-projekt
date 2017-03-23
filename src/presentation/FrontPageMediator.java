@@ -14,9 +14,10 @@ public class FrontPageMediator {
 	
 	
 	
-	public FrontPageMediator(FrontPageTopLeftInsetter frontPageTopLeft, FrontPageBottomInsetter frontPageBottom) {
+	public FrontPageMediator(FrontPageTopLeftInsetter frontPageTopLeft, FrontPageBottomInsetter frontPageBottom, FrontPageTopRightInsetter frontPageTopRight) {
 		this.frontPageTopLeft = frontPageTopLeft;
 		this.frontPageBottom = frontPageBottom;
+		this.frontPageTopRight = frontPageTopRight;
 	}
 	public TextField getMBTextField(){
 		return frontPageBottom.getMbTextField();
@@ -78,7 +79,7 @@ public class FrontPageMediator {
 	}
 	
 	public TextField getArealText() {
-		return frontPageTopLeft.getAreal();
+		return frontPageTopRight.areal;
 	}
 	
 	public void setTriangle(Canvas triangle) {
