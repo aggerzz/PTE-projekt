@@ -15,6 +15,7 @@ import exceptions.HalvProfilhoejdeEjDefineretException;
 import exceptions.InertimomentEjDefineretException;
 import exceptions.LaengdeEjDefineretException;
 import exceptions.NegativArealException;
+import exceptions.NegativHalvProfilhoejdeException;
 import exceptions.NegativInertimomentException;
 import exceptions.NegativKgException;
 import exceptions.NormalkraftEjDefineretException;
@@ -593,6 +594,23 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 		this.sigmaTill.angivFlydeSpaending(flyde);
 
 		notifyObservers();		
+	}
+
+	@Override
+	public void angivHalvProfilhoejde(double e) throws HalvProfilhoejdeEjDefineretException, NegativHalvProfilhoejdeException {
+		this.e = new HalvProfilhoejdeImpl();
+		
+		this.e.setMm(e);
+		
+		notifyObservers();
+	}
+
+	@Override
+	public double getHalvProfilhoejde() throws HalvProfilhoejdeEjDefineretException {
+		if (e==null)
+			throw new HalvProfilhoejdeEjDefineretException();
+		
+		return e.getHalvProfilhoejde();
 	}
 
 }

@@ -10,6 +10,7 @@ import exceptions.HalvProfilhoejdeEjDefineretException;
 import exceptions.InertimomentEjDefineretException;
 import exceptions.LaengdeEjDefineretException;
 import exceptions.NegativArealException;
+import exceptions.NegativHalvProfilhoejdeException;
 import exceptions.NegativInertimomentException;
 import exceptions.NegativKgException;
 import exceptions.NormalkraftEjDefineretException;
@@ -109,4 +110,6 @@ public interface PTECalculatorController {
 	public String getBoejningsMomentMellemRegning() throws BoejningsMomentEjDefineretException;
 	public void angivIntertimoment(double i) throws InertimomentEjDefineretException, NegativInertimomentException;
 	public double getInertimoment() throws InertimomentEjDefineretException;
+	public void angivHalvProfilhoejde(double e) throws HalvProfilhoejdeEjDefineretException, NegativHalvProfilhoejdeException;
+	public double getHalvProfilhoejde() throws HalvProfilhoejdeEjDefineretException;
 }
