@@ -8,10 +8,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import logic.SletAlt;
 import sun.misc.Cleaner;
 
 public class FrontPageTopRightInsetter {
-	TextField areal, inertimoment, halvhoejde;
+	private SletAlt sletAlt;
+	TextField areal, inertimoment, halvhoejde, laengde;
 
 	public GridPane insetRight() {
 		SuperSubStringHBox superSubStringHBox = new SuperSubStringHBox();
@@ -19,13 +21,23 @@ public class FrontPageTopRightInsetter {
 		GridPane gridRight = new GridPane();
 		gridRight.setAlignment(Pos.TOP_LEFT);
 		gridRight.setPadding(new Insets(0, 0, 0, 20));
+		
+		//Laengde
+		Label laengdeLabel = new Label("Vandret længde:");
+		laengde = new LaengdeTextField();
+		Label mmlaengdeLabel  = new Label("mm");
+		HBox laengdeHBox = new HBox();
+		laengdeHBox.setSpacing(2);
+		laengdeHBox.setAlignment(Pos.BOTTOM_LEFT);
+		laengdeHBox.getChildren().addAll(laengde, mmlaengdeLabel);
 
 		// Areal
 		Label arealLabel = new Label("Areal:");
 		areal = new ArealTextField();
-		if(areal.getText().length()>0){
-			areal.setAlignment(Pos.CENTER_RIGHT);
-		}
+//		if(areal.getText().length()>0){
+//			areal.setAlignment(Pos.CENTER_RIGHT);
+//		}
+		
 		HBox mm2LabelHBox = superSubStringHBox.generateSuperHBox("mm", "2");
 		HBox arealHBox = new HBox();
 		arealHBox.setSpacing(2);
@@ -51,22 +63,17 @@ public class FrontPageTopRightInsetter {
 		halvhoejdeHBox.getChildren().addAll(halvhoejde, mmLabel);
 
 		VBox samlingAfHBox = new VBox();
-		samlingAfHBox.getChildren().addAll(arealLabel, arealHBox, inertimomentLabel, inertimomentHBox, halvhoejdeLabel,
+		samlingAfHBox.getChildren().addAll(laengdeLabel, laengdeHBox, arealLabel, arealHBox, inertimomentLabel, inertimomentHBox, halvhoejdeLabel,
 				halvhoejdeHBox);
 		gridRight.add(samlingAfHBox, 0, 0);
 
-		// Knapperne
-		Button beregnKnap = new Button("Beregn");
-		beregnKnap.setMinSize(150, 28);
-		beregnKnap.setOnAction(e -> {
-			// TODO mangler kommandoen til at opdatere siden til udregning (MN)
-		});
 		GridPane gridmini = new GridPane();
 		VBox knapperVBox = new VBox();
 		Button sletAltKnap = new Button("Slet Alt");
 		sletAltKnap.setMinSize(150, 28);
 		sletAltKnap.setOnAction(e -> {
-			// TODO mangler en funktion som sletter indhold i input/outputfelter (MN)
+			sletAlt = new SletAlt();
+			sletAlt.doIt();
 		});
 		Button exporterTilPdfKnap = new Button("Exporter til pdf");
 		exporterTilPdfKnap.setMinSize(150, 28);
@@ -74,7 +81,7 @@ public class FrontPageTopRightInsetter {
 			// TODO mangler forbindelse til funktionen exporterPDF (MN)
 		});
 
-		knapperVBox.getChildren().addAll(beregnKnap, sletAltKnap, exporterTilPdfKnap);
+		knapperVBox.getChildren().addAll(sletAltKnap, exporterTilPdfKnap);
 		gridmini.add(knapperVBox, 0, 0);
 		gridmini.setPadding(new Insets(30, 0, 0, 0));
 
