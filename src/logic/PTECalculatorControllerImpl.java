@@ -573,8 +573,9 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 
 	@Override
 	public void angivIntertimoment(double i) throws InertimomentEjDefineretException, NegativInertimomentException {
-		this.i = new InertimomentImpl();
-
+		if(this.i==null){
+			this.i = new InertimomentImpl();
+		}
 		this.i.setMm4(i);
 
 		notifyObservers();
