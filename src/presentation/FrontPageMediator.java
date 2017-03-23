@@ -1,5 +1,7 @@
 package presentation;
 
+import exceptions.DimensionerendeKraftEjDefineretException;
+import exceptions.NegativKgException;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
@@ -117,6 +119,14 @@ public class FrontPageMediator {
 	// De resterende
 	public PTEObserverImpl getObserver() {
 		return pteObs;
+	}
+	
+	public void angivVaegt(double vaegt, Enhed enhed) throws NegativKgException{
+		pteObs.getPteCalc().angivVaegt(vaegt, enhed);
+	}
+	public boolean ervaegtNormal() throws DimensionerendeKraftEjDefineretException{
+		return pteObs.getPteCalc().erVaegtNormal();
+		
 	}
 
 }
