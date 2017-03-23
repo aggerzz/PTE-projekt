@@ -473,7 +473,7 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 	}
 
 	@Override
-	public double getSikkerhedsfaktor() throws SikkerhedsFaktorEjDefineretException  {
+	public double getSikkerhedsfaktor() throws SikkerhedsFaktorEjDefineretException, FlydeSpaendingEjDefineretException, ReferenceSpaendingEjDefineretException  {
 		if(sf == null)
 			throw new SikkerhedsFaktorEjDefineretException();
 		double sfvaerdi = sf.getSikkerhedsFaktor();

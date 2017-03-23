@@ -96,7 +96,7 @@ public interface PTECalculatorController {
 	public double getBoejningsMoment() throws BoejningsMomentEjDefineretException,DimensionerendeKraftEjDefineretException,LaengdeEjDefineretException;
 	public void exportToPdf();
 	
-	public double getSikkerhedsfaktor()throws SikkerhedsFaktorEjDefineretException ;
+	public double getSikkerhedsfaktor()throws SikkerhedsFaktorEjDefineretException, FlydeSpaendingEjDefineretException, ReferenceSpaendingEjDefineretException ;
 	
 	public String getSikkerhedsfaktorMellemregning() throws SikkerhedsFaktorEjDefineretException, ReferenceSpaendingEjDefineretException, FlydeSpaendingEjDefineretException;
 	
