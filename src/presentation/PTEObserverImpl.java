@@ -1,11 +1,11 @@
 package presentation;
 
 import java.text.DecimalFormat;
+
 import exceptions.ArealEjDefineretException;
 import exceptions.BoejningsMomentEjDefineretException;
 import exceptions.BoejningsspaendingEjDefineretException;
 import exceptions.DimensionerendeKraftEjDefineretException;
-import exceptions.FDimEjDefineret;
 import exceptions.FlydeSpaendingEjDefineretException;
 import exceptions.ForskydningsspaendingEjDefineretException;
 import exceptions.LaengdeEjDefineretException;
