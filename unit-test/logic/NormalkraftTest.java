@@ -64,7 +64,7 @@ public class NormalkraftTest {
 			return 100*9.816;
 		}
 
-		@Override public void setKg(double kg) {}
+//		@Override public void setKg(double kg) {}
 
 		@Override
 		public double getKg() {

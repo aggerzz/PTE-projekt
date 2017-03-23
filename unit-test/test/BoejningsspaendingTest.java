@@ -84,6 +84,12 @@ public class BoejningsspaendingTest {
 			return 0.5;
 		}
 
+		@Override
+		public String getBoejningsMomentMellemRegning() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
 	}
 
 	@Test
