@@ -112,4 +112,6 @@ public interface PTECalculatorController {
 	public double getInertimoment() throws InertimomentEjDefineretException;
 	public void angivHalvProfilhoejde(double e) throws HalvProfilhoejdeEjDefineretException, NegativHalvProfilhoejdeException;
 	public double getHalvProfilhoejde() throws HalvProfilhoejdeEjDefineretException;
+
+	void sletAlt();
 }

@@ -28,13 +28,13 @@ import exceptions.angivBoejningsspaendingEjDefineretException;
 import exceptions.erUnderFejlgraenseException;
 
 public class PTECalculatorControllerImpl implements PTECalculatorController {
-
+	private PTEObserver observer;
+	
 	private Dimensionerendekraft fdim;
 	private Tvaerkraft ft;
 	private Vinkel vinkel;
 	private Normalkraft fn;
 	private ForskydningsSpaendning tau;
-	private PTEObserver observer;
 	private Normalspaending sigmaN;
 	private FlydeSpaending sigmaTill;
 	private Referencespaending sigmaRef;
@@ -613,8 +613,25 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 		return e.getHalvProfilhoejde();
 	}
 
-}
-
-
+	@Override
+	public void sletAlt() {
+		fdim = null;
+		ft = null;
+		vinkel = null;
+		fn = null;
+		tau = null;
+		sigmaN = null;
+		sigmaTill = null;
+		sigmaRef = null;
+		a = null;
+		sf = null;
+		l2 = null;
+		boejning = null;
+		i = null;
+		e = null;
+		sigmaB = null;
 		
-
+		notifyObservers();
+		
+	}
+}
