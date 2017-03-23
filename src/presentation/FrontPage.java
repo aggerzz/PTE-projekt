@@ -23,7 +23,7 @@ public class FrontPage {
 		root.setBottom(fpbInsetter.insetButtom());
 		root.setRight(fptrInsetter.insetRight());
 		
-		frontPageMediator = new FrontPageMediator(fptInsetter,fpbInsetter);
+		frontPageMediator = new FrontPageMediator(fptInsetter,fpbInsetter,fptrInsetter);
 		
 		frontPageMediator.getWeightValueTextField().requestFocus();
 		stage.setScene(frontPage);
