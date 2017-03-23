@@ -35,7 +35,7 @@ public class PdfExporter {
 		try {
 
 			document = new Document();
-			PdfWriter.getInstance(document, new FileOutputStream("test1.pdf"));
+			PdfWriter.getInstance(document, new FileOutputStream("Udregning.pdf"));
 
 			document.open();
 
@@ -48,7 +48,7 @@ public class PdfExporter {
 			e.printStackTrace();
 		}
 
-		System.out.println("i did it");
+//		System.out.println("i did it");
 	}
 
 	public void addTextFields() {
