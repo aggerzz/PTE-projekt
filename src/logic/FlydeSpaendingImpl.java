@@ -3,23 +3,23 @@ package logic;
 import exceptions.FlydeSpaendingEjDefineretException;
 
 public class FlydeSpaendingImpl implements FlydeSpaending {
-	private double Nmm2 = Double.NaN;
+	private double SigmaTill = Double.NaN;
 	
 	@Override
-	public void angivFlydeSpaending(double Nmm2) throws FlydeSpaendingEjDefineretException {
-		if(Nmm2<=0) 
+	public void angivFlydeSpaending(double SigmaTill) throws FlydeSpaendingEjDefineretException {
+		if(SigmaTill<=0) 
 			throw new FlydeSpaendingEjDefineretException();
-		this.Nmm2 = Nmm2;
+		this.SigmaTill = SigmaTill;
 
 	}
 
 	@Override
 	public double getFlydeSpaending() {
-		return Nmm2;
+		return SigmaTill;
 	}
 
 	@Override
 	public boolean erFlydeSpaendingNormal() {
-		return(0<Nmm2 && Nmm2<=2250);
+		return(0<SigmaTill && SigmaTill<=2250);
 	}
 }

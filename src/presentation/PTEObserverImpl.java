@@ -107,6 +107,7 @@ public class PTEObserverImpl implements PTEObserver {
 			}
 			
 			try {
+				pteCalc.beregnBoejningsMoment();
 				double boejningsmoment = pteCalc.getBoejningsMoment();
 				String boejningsmomentText = formatter.format(boejningsmoment);
 				
@@ -139,6 +140,7 @@ public class PTEObserverImpl implements PTEObserver {
 			} catch (SikkerhedsFaktorEjDefineretException | ReferenceSpaendingEjDefineretException | FlydeSpaendingEjDefineretException e1) {
 				frontPageMediator.getSikkerhedsFaktorTextField().clear();			
 			}
+			
 	}		
 	private void tilfoejMellemregning(String mellemregning) {
 		frontPageMediator.getMellemRegninger().appendText(mellemregning + "\n");
