@@ -29,10 +29,15 @@ public class SletAlt {
 		fpm.getHalvHoejdeTextField().clear();
 		fpm.getLaengdeTextField().clear();
 		fpm.getTauTextField().clear();
+		fpm.getSigmaTillTextField().clear();
+		fpm.getInertimomentTextField().clear();
+		fpm.getArmTextField().clear();
 		
 		fpm.getVerticalAngleText().setDisable(false);
 		fpm.getVerticalAngleText().setText("");
 		fpm.getHorizontalAngleText().setDisable(false);
 		fpm.getHorizontalAngleText().setText("");
+		
+		fpm.getObserver().getPteCalc().sletAlt();
 	}
 }
