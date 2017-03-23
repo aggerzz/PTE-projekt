@@ -107,7 +107,7 @@ public class PTEObserverImpl implements PTEObserver {
 			}
 			
 			try {
-				pteCalc.beregnBoejningsMoment();
+//				pteCalc.beregnBoejningsMoment();
 				double boejningsmoment = pteCalc.getBoejningsMoment();
 				String boejningsmomentText = formatter.format(boejningsmoment);
 				
