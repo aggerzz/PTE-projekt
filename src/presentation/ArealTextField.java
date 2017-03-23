@@ -16,15 +16,14 @@ public class ArealTextField extends TextField {
 	
 	public ArealTextField() {		
 		this.setPromptText("Areal");
-		// this.setAlignment(Pos.CENTER_RIGHT);
+		this.setAlignment(Pos.CENTER_RIGHT);
 		this.setMaxSize(150, 20);
 		this.setOnKeyReleased(e -> {
 			try {
 				// notifyObservers();
 				
 				setStyle("-fx-control-inner-background: #ffffff;");
-				if (this.getLength() > 0) {
-					this.setAlignment(Pos.CENTER_RIGHT);
+				if (this.getLength() > 0) {					
 					char sidsteBogstav = this.getText().charAt(this.getLength() - 1);
 					if (!(sidsteBogstav >= '0' && sidsteBogstav <= '9' || sidsteBogstav == ','
 							|| sidsteBogstav == '.')) {
@@ -38,12 +37,9 @@ public class ArealTextField extends TextField {
 						this.positionCaret(kommaKontrol.getCursorPos());
 						FrontPage.frontPageMediator.getObserver().getPteCalc()
 								.angivAreal(Double.parseDouble(this.getText()));
-					}
-				}else
-					this.setAlignment(Pos.CENTER_LEFT);
-
-			} catch (NegativArealException e1) {
-				this.setAlignment(Pos.CENTER_LEFT);
+					}				
+				}	
+			} catch (NegativArealException e1) {				
 				setStyle("-fx-control-inner-background: #f92525;");
 				e1.printStackTrace();
 			}
