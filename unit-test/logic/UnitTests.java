@@ -12,6 +12,7 @@ import test.BoejningsspaendingTest;
 	ForskydningsSpaendingTest.class,
 	HalvProfilhoejdeTest.class, 
 	InertimomentTest.class, 
+	NormalkraftTest.class,
 	BoejningsspaendingTest.class})
 
 public class UnitTests {
