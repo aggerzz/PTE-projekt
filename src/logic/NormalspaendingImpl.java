@@ -1,5 +1,7 @@
 package logic;
 
+import java.text.DecimalFormat;
+
 import exceptions.DimensionerendeKraftEjDefineretException;
 import exceptions.NegativArealException;
 import exceptions.NormalkraftEjDefineretException;
@@ -12,6 +14,8 @@ public class NormalspaendingImpl implements Normalspaending {
 	public double sigmaN;
 	private String mellemregning;
 	private double sigmaNMm2;
+	
+	DecimalFormat formatter = new DecimalFormat("#0.00000");
 	
 	public void angivNormalkraft(Normalkraft fn) throws NormalkraftEjDefineretException{
 		if(fn != null){
@@ -39,7 +43,11 @@ public class NormalspaendingImpl implements Normalspaending {
 		double fnNewton = fn.getNewton();
 		double mm2 = a.getMm2();
 		sigmaN = fnNewton / mm2;
-		setMellemregning("Fn\t	 /\t	A " + "\t	=\t	SigmaN" + "\n" + fnNewton + "\t	/\t	" + mm2 +"\t	=\t	" +sigmaN + "\n");
+		String fnText = formatter.format(fnNewton);
+		String mm2Text = formatter.format(mm2);
+		String sigmaNText = formatter.format(sigmaN);
+		//setMellemregning("Fn\t	 /\t	A " + "\t	=\t	SigmaN" + "\n" + fnNewton + "\t	/\t	" + mm2 +"\t	=\t	" +sigmaN + "\n");
+		setMellemregning("Fn / A " + "= SigmaN" + "\n" + fnText + " / " + mm2Text +" = " +sigmaNText + "\n");
 		return sigmaN;
 	}
 	
