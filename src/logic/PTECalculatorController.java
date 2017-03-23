@@ -10,6 +10,7 @@ import exceptions.HalvProfilhoejdeEjDefineretException;
 import exceptions.InertimomentEjDefineretException;
 import exceptions.LaengdeEjDefineretException;
 import exceptions.NegativArealException;
+import exceptions.NegativInertimomentException;
 import exceptions.NegativKgException;
 import exceptions.NormalkraftEjDefineretException;
 import exceptions.NormalspaendingEjDefineretException;
@@ -102,7 +103,10 @@ public interface PTECalculatorController {
 	public double getBoejningsspaending() throws BoejningsspaendingEjDefineretException;
 	public String getBoejningsspaendingMellemregning() throws BoejningsspaendingEjDefineretException;
 	public void angivLaengde(double l2) throws LaengdeEjDefineretException;
-	
+	public double getLaengde() throws LaengdeEjDefineretException;
+	public void angivFlydespaending(double flyde) throws FlydeSpaendingEjDefineretException;
 	public double getFlydeSpaending() throws FlydeSpaendingEjDefineretException;
 	public String getBoejningsMomentMellemRegning() throws BoejningsMomentEjDefineretException;
+	public void angivIntertimoment(double i) throws InertimomentEjDefineretException, NegativInertimomentException;
+	public double getInertimoment() throws InertimomentEjDefineretException;
 }
