@@ -15,6 +15,7 @@ import exceptions.HalvProfilhoejdeEjDefineretException;
 import exceptions.InertimomentEjDefineretException;
 import exceptions.LaengdeEjDefineretException;
 import exceptions.NegativArealException;
+import exceptions.NegativInertimomentException;
 import exceptions.NegativKgException;
 import exceptions.NormalkraftEjDefineretException;
 import exceptions.NormalspaendingEjDefineretException;
@@ -567,6 +568,22 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 			throw new LaengdeEjDefineretException();
 		
 		return l2.getLaengde();
+	}
+
+	@Override
+	public void angivIntertimoment(double i) throws InertimomentEjDefineretException, NegativInertimomentException {
+		this.i = new InertimomentImpl();
+
+		this.i.setMm4(i);
+
+		notifyObservers();
+	}
+
+	@Override
+	public double getInertimoment() throws InertimomentEjDefineretException {
+		if(i==null)
+			throw new InertimomentEjDefineretException();
+		return i.getInertimoment();
 	}
 
 }
