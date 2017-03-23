@@ -36,11 +36,12 @@ public class InertimomentTextField extends TextField {
 						this.positionCaret(kommaKontrol.getCursorPos());
 						FrontPage.frontPageMediator.getObserver().getPteCalc()
 								.angivIntertimoment(Double.parseDouble(this.getText()));
+						FrontPage.frontPageMediator.getObserver().getPteCalc().beregnBoejningsSpaending();
 					}
 				} else
 					this.setAlignment(Pos.CENTER_LEFT);
 
-			} catch (NumberFormatException | InertimomentEjDefineretException | NegativInertimomentException e1) {
+			} catch (NumberFormatException | InertimomentEjDefineretException | NegativInertimomentException | BoejningsMomentEjDefineretException | BoejningsspaendingEjDefineretException | HalvProfilhoejdeEjDefineretException e1) {
 				this.setAlignment(Pos.CENTER_LEFT);
 				setStyle("-fx-control-inner-background: #f92525;");
 				e1.printStackTrace();

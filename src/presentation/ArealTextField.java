@@ -37,9 +37,13 @@ public class ArealTextField extends TextField {
 						this.positionCaret(kommaKontrol.getCursorPos());
 						FrontPage.frontPageMediator.getObserver().getPteCalc()
 								.angivAreal(Double.parseDouble(this.getText()));
+					FrontPage.frontPageMediator.getObserver().getPteCalc().beregnForskydningsspaendning();
+					FrontPage.frontPageMediator.getObserver().getPteCalc().beregnNormalspaending();
 					}				
 				}	
-			} catch (NegativArealException e1) {				
+			} catch (NegativArealException | DimensionerendeKraftEjDefineretException | VinkelEjDefineretException
+					| ForskydningsspaendingEjDefineretException | ArealEjDefineretException
+					| TvaerkraftEjDefineretException | NormalspaendingEjDefineretException | NormalkraftEjDefineretException e1) {				
 				setStyle("-fx-control-inner-background: #f92525;");
 				e1.printStackTrace();
 			}
