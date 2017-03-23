@@ -12,16 +12,36 @@ import javafx.geometry.Pos;
 import javafx.scene.control.TextField;
 
 public class ArealTextField extends TextField {
-	public ArealTextField() {
+	private KommaKontrol kommaKontrol = new KommaKontrol();
+	
+	public ArealTextField() {		
 		this.setPromptText("Areal");
-//		this.setAlignment(Pos.CENTER_RIGHT);
+		// this.setAlignment(Pos.CENTER_RIGHT);
 		this.setMaxSize(150, 20);
 		this.setOnKeyReleased(e -> {
 			try {
 				// notifyObservers();
-				this.setAlignment(Pos.CENTER_RIGHT);
+				
 				setStyle("-fx-control-inner-background: #ffffff;");
-				FrontPage.frontPageMediator.getObserver().getPteCalc().angivAreal(Double.parseDouble(this.getText()));
+				if (this.getLength() > 0) {
+					this.setAlignment(Pos.CENTER_RIGHT);
+					char sidsteBogstav = this.getText().charAt(this.getLength() - 1);
+					if (!(sidsteBogstav >= '0' && sidsteBogstav <= '9' || sidsteBogstav == ','
+							|| sidsteBogstav == '.')) {
+						String tekst = this.getText().substring(0, this.getText().length() - 1);
+						this.setText(tekst);
+						this.positionCaret(100);
+
+					} else {
+						// int cursorPos = weightTextField.getCaretPosition();
+						this.setText(kommaKontrol.kontrol(this.getText(), this));
+						this.positionCaret(kommaKontrol.getCursorPos());
+						FrontPage.frontPageMediator.getObserver().getPteCalc()
+								.angivAreal(Double.parseDouble(this.getText()));
+					}
+				}else
+					this.setAlignment(Pos.CENTER_LEFT);
+
 			} catch (NegativArealException e1) {
 				this.setAlignment(Pos.CENTER_LEFT);
 				setStyle("-fx-control-inner-background: #f92525;");
