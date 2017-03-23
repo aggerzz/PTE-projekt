@@ -69,7 +69,7 @@ public class FrontPageMediator {
 		return frontPageTopRight.areal;
 	}
 
-	public TextField getInertimoment() {
+	public TextField getInertimomentTextField() {
 		return frontPageTopRight.inertimoment;
 	}
 
