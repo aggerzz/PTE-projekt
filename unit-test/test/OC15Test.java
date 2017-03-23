@@ -42,6 +42,11 @@ public class OC15Test {
 				return 0.5;
 		
 		}
+		@Override
+		public String getBoejningsMomentMellemRegning() {
+			// TODO Auto-generated method stub
+			return null;
+		}
 
 	}
 
