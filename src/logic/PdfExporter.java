@@ -1,10 +1,10 @@
 package logic;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.MalformedURLException;
-import java.util.List;
 
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
@@ -12,9 +12,8 @@ import com.itextpdf.text.Image;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 
-import javafx.scene.canvas.Canvas;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.stage.FileChooser;
 import presentation.FrontPage;
 import presentation.FrontPageMediator;
 
@@ -27,15 +26,14 @@ public class PdfExporter {
 	}
 
 	public void exportToPdf() throws DocumentException, MalformedURLException, IOException {
-		String placement = "C:\\PTE-Projekt pdf document";
-		List<TextField> TFList = new ListMaker().getTextFields();
-		Canvas triangle = fpm.getTriangle().getCanvas();
 		TextArea mellemRegninger = fpm.getMellemRegninger();
 
 		try {
-
+			FileChooser chooser = new FileChooser();
 			document = new Document();
-			PdfWriter.getInstance(document, new FileOutputStream("Udregning.pdf"));
+			File savedFile = chooser.showSaveDialog(null);
+			
+			PdfWriter.getInstance(document, new FileOutputStream(savedFile + ".pdf"));
 
 			document.open();
 
@@ -44,11 +42,10 @@ public class PdfExporter {
 			addTriangle();
 			document.close();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-//		System.out.println("i did it");
+		// System.out.println("i did it");
 	}
 
 	public void addTextFields() {
