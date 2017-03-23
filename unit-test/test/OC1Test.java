@@ -51,6 +51,6 @@ public class OC1Test {
 		fdim.setVaegt(1, Enhed.TON);
 		
 		double fdimINewton = fdim.getNewton();
-		assertEquals(9816, fdimINewton , 0.001);
+		assertEquals(9816.00, fdimINewton , 0.001);
 	}
 }
