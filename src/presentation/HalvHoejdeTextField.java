@@ -1,9 +1,12 @@
 package presentation;
 
 import exceptions.DimensionerendeKraftEjDefineretException;
+import exceptions.FlydeSpaendingEjDefineretException;
 import exceptions.HalvProfilhoejdeEjDefineretException;
 import exceptions.LaengdeEjDefineretException;
 import exceptions.NegativHalvProfilhoejdeException;
+import exceptions.ReferenceSpaendingEjDefineretException;
+import exceptions.SikkerhedsFaktorEjDefineretException;
 import javafx.geometry.Pos;
 import javafx.scene.control.TextField;
 
@@ -46,8 +49,8 @@ public class HalvHoejdeTextField extends TextField {
 			}		
 			
 			try {
-				FrontPage.frontPageMediator.getObserver().getPteCalc().beregnBoejningsMoment();
-			} catch (DimensionerendeKraftEjDefineretException | LaengdeEjDefineretException e1) {
+				FrontPage.frontPageMediator.getObserver().getPteCalc().beregnSikkerhedsFaktor();
+			} catch (FlydeSpaendingEjDefineretException | ReferenceSpaendingEjDefineretException  e1) {
 				// gør ingen ting
 			}
 			
