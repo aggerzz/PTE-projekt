@@ -13,7 +13,7 @@ import sun.misc.Cleaner;
 
 public class FrontPageTopRightInsetter {
 	private SletAlt sletAlt;
-	TextField areal, inertimoment, halvhoejde, laengde;
+	TextField areal, inertimoment, halvhoejde, laengde, sigmaTill;
 
 	public GridPane insetRight() {
 		SuperSubStringHBox superSubStringHBox = new SuperSubStringHBox();
@@ -61,10 +61,19 @@ public class FrontPageTopRightInsetter {
 		halvhoejdeHBox.setSpacing(2);
 		halvhoejdeHBox.setAlignment(Pos.BOTTOM_LEFT);
 		halvhoejdeHBox.getChildren().addAll(halvhoejde, mmLabel);
+		
+		// Flydespaending (SigmaTill)
+				Label sigmaTillLabel = new Label("SigmaTill:");
+				sigmaTill = new HalvHoejdeTextField();
+				HBox nmm2LabelHBox = superSubStringHBox.generateSuperHBox("nmm", "2");
+				HBox sigmaTillHBox = new HBox();
+				sigmaTillHBox.setSpacing(2);
+				sigmaTillHBox.setAlignment(Pos.BOTTOM_LEFT);
+				sigmaTillHBox.getChildren().addAll(sigmaTill, nmm2LabelHBox);
 
 		VBox samlingAfHBox = new VBox();
 		samlingAfHBox.getChildren().addAll(laengdeLabel, laengdeHBox, arealLabel, arealHBox, inertimomentLabel, inertimomentHBox, halvhoejdeLabel,
-				halvhoejdeHBox);
+				halvhoejdeHBox, sigmaTillLabel, sigmaTillHBox);
 		gridRight.add(samlingAfHBox, 0, 0);
 
 		GridPane gridmini = new GridPane();
