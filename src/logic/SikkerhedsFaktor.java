@@ -9,5 +9,5 @@ public interface SikkerhedsFaktor {
 	public void angivFlydeSpaending(FlydeSpaending sigmaTill) throws FlydeSpaendingEjDefineretException;
 	public void beregnSikkerhedsFaktor() throws FlydeSpaendingEjDefineretException, ReferenceSpaendingEjDefineretException;
 	public String getSikkerhedsFaktorMellemRegning() throws ReferenceSpaendingEjDefineretException, FlydeSpaendingEjDefineretException;
-	public double getSikkerhedsFaktor() throws SikkerhedsFaktorEjDefineretException;
+	public double getSikkerhedsFaktor() throws SikkerhedsFaktorEjDefineretException, FlydeSpaendingEjDefineretException, ReferenceSpaendingEjDefineretException;
 }

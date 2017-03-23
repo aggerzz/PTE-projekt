@@ -30,7 +30,11 @@ public class SikkerhedsFaktorImpl implements SikkerhedsFaktor {
 	public String getSikkerhedsFaktorMellemRegning(){
 		return sikkerhedsFaktorMellemRegning;
 	}
-	public double getSikkerhedsFaktor(){
+	public double getSikkerhedsFaktor() throws FlydeSpaendingEjDefineretException, ReferenceSpaendingEjDefineretException{
+		if(sigmaTill == null)
+			throw new FlydeSpaendingEjDefineretException();
+		if(sigmaRef == null)
+			throw new ReferenceSpaendingEjDefineretException();
 		return sigmaTill.getFlydeSpaending()/sigmaRef.getSigmaRef();
 	}
 
