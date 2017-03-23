@@ -104,6 +104,7 @@ public interface PTECalculatorController {
 	public String getBoejningsspaendingMellemregning() throws BoejningsspaendingEjDefineretException;
 	public void angivLaengde(double l2) throws LaengdeEjDefineretException;
 	public double getLaengde() throws LaengdeEjDefineretException;
+	public void angivFlydespaending(double flyde) throws FlydeSpaendingEjDefineretException;
 	public double getFlydeSpaending() throws FlydeSpaendingEjDefineretException;
 	public String getBoejningsMomentMellemRegning() throws BoejningsMomentEjDefineretException;
 	public void angivIntertimoment(double i) throws InertimomentEjDefineretException, NegativInertimomentException;

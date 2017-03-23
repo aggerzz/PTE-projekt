@@ -586,6 +586,15 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 		return i.getInertimoment();
 	}
 
+	@Override
+	public void angivFlydespaending(double flyde) throws FlydeSpaendingEjDefineretException {
+		sigmaTill = new FlydeSpaendingImpl();
+
+		this.sigmaTill.angivFlydeSpaending(flyde);
+
+		notifyObservers();		
+	}
+
 }
 
 
