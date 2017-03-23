@@ -1,5 +1,7 @@
 package logic;
 
+import java.text.DecimalFormat;
+
 import exceptions.ArealEjDefineretException;
 import exceptions.DimensionerendeKraftEjDefineretException;
 import exceptions.ForskydningsspaendingEjDefineretException;
@@ -10,7 +12,7 @@ public class ForskydningsSpaendningImpl implements ForskydningsSpaendning {
 	private Tvaerkraft ft;
 	private String mellemregning;
 	private double tau;
-
+	
 	private void setMellemregning(String mellemregning) {
 		this.mellemregning = mellemregning;
 	}
@@ -35,6 +37,8 @@ public class ForskydningsSpaendningImpl implements ForskydningsSpaendning {
 
 	public double getNmm2() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException,
 			ForskydningsspaendingEjDefineretException, ArealEjDefineretException {
+		DecimalFormat formatter = new DecimalFormat("#0.00000");
+		
 		if (ft == null || a == null) {
 			throw new ForskydningsspaendingEjDefineretException();
 		}
@@ -42,9 +46,14 @@ public class ForskydningsSpaendningImpl implements ForskydningsSpaendning {
 		double ftNewton = ft.getNewton();
 		double mm2 = a.getMm2();
 		double tau = ftNewton / mm2;
+				
+		String ftNewtonText = formatter.format(ftNewton);
+		String mm2Text = formatter.format(mm2);
+		String tauText = formatter.format(tau);
+		
 		// setMellemregning("Tau = Ft / A " + "\n" + tau + ftNewton + "/" + mm2
 		// + "\n");
-		setMellemregning("Ft\t	 /\tA\t=\tTau" + "\n" + ftNewton + "\t	/\t	" + mm2 + "\t	 =\t " + tau + "\n ");
+		setMellemregning("Ft / A = Tau" + "\n" + ftNewtonText + " / " + mm2Text + " = " + tauText + "\n ");
 		return tau;
 	}
 

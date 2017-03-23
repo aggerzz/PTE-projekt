@@ -1,5 +1,7 @@
 package logic;
 
+import java.text.DecimalFormat;
+
 import exceptions.DimensionerendeKraftEjDefineretException;
 import exceptions.VinkelEjDefineretException;
 
@@ -9,6 +11,8 @@ public class NormalkraftImpl implements Normalkraft {
 	private Dimensionerendekraft fdim = new DimensionerendekraftImpl();
 	public String mellemRegning;
 	private double fnNewton;
+	
+	DecimalFormat formatter = new DecimalFormat("#0.00000");
 	
 	@Override
 	public void angivDimensionerendekraft(Dimensionerendekraft fdim) throws DimensionerendeKraftEjDefineretException {
@@ -35,10 +39,15 @@ public class NormalkraftImpl implements Normalkraft {
 		
 		if (erMaaltTilLodret) {
 			fnNewton = cos * fdimNewton;
-			mellemRegning = "cos(vinkel)\t	 *\t	FDim\t	=\t	Fn" + "\n" + "cos( "  + vinkel.getGrader()+")\t		 *\t	"+fdimNewton +"\t	=\t	"+ fnNewton + "\n";
+			String fnText = formatter.format(fnNewton);
+			String fdimText = formatter.format(fdimNewton);
+			//mellemRegning = "cos(vinkel)\t	 *\t	FDim\t	=\t	Fn" + "\n" + "cos( "  + vinkel.getGrader()+")\t		 *\t	"+fdimNewton +"\t	=\t	"+ fnNewton + "\n";
+			mellemRegning = "cos(vinkel) * FDim = Fn" + "\n" + "cos(" + vinkel.getGrader()+") * "+fdimText +" = "+ fnText + "\n";
 		} else {
 			fnNewton = sin * fdimNewton;
-			mellemRegning = "sin(vinkel)\t	 *\t	FDim\t	=\t	Fn" + "\n" + "sin( "  + vinkel.getGrader()+")\t		 *\t	"+fdimNewton +"\t	=\t	"+ fnNewton + "\n";
+			String fnText = formatter.format(fnNewton);
+			String fdimText = formatter.format(fdimNewton);
+			mellemRegning = "sin(vinkel) * FDim = Fn" + "\n" + "sin(" + vinkel.getGrader()+") * "+fdimText +" = "+ fnText + "\n";
 		}
 		
 		return fnNewton;

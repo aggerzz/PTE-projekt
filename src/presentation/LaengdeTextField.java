@@ -36,7 +36,9 @@ public class LaengdeTextField extends TextField {
 					this.positionCaret(kommaKontrol.getCursorPos());
 					FrontPage.frontPageMediator.getObserver().getPteCalc()
 							.angivLaengde(Double.parseDouble(this.getText()));
+
 				beregn.beregn();
+				//FrontPage.frontPageMediator.getObserver().getPteCalc().beregnBoejningsMoment();
 				}
 			}
 		}catch (NumberFormatException e1) {
@@ -45,7 +47,6 @@ public class LaengdeTextField extends TextField {
 		} catch (LaengdeEjDefineretException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
-
 		} 
 		
 		try {

@@ -1,5 +1,7 @@
 package logic;
 
+import java.text.DecimalFormat;
+
 import exceptions.DimensionerendeKraftEjDefineretException;
 import exceptions.LaengdeEjDefineretException;
 
@@ -29,8 +31,14 @@ public class BoejningsMomentImpl implements BoejningsMoment {
 
 	@Override
 	public void beregnBoejningsMoment() {
+		DecimalFormat formatter = new DecimalFormat("#0.00000");
 		double boejningsMoment = fdim.getNewton() / l2.getLaengde();
-		mellemRegning = "Bm = Fdim / l \n" + boejningsMoment + " = " + fdim.getNewton() + " / " + l2.getLaengde();
+		
+		String fdimText = formatter.format(fdim.getNewton());
+		String laengdeText = formatter.format(l2.getLaengde());
+		String boejningsMomentText = formatter.format(boejningsMoment);
+				
+		mellemRegning = "Fdim / l  = BM\n" + fdimText + " / " + laengdeText + " = " + boejningsMomentText;
 	}
 
 	@Override
