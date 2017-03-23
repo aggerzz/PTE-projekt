@@ -46,7 +46,7 @@ public class TvaerkraftImpl implements Tvaerkraft {
 		//	mellemregning = "FT = cos(vinkel) * FDim" + "\n" + ftNewton + " = cos(" + grader + ") * " + fdimNewton + "\n"; 
 		//	mellemregning = "FT\t	 =\t	 cos(vinkel)\t	 *	 FDim" + "\n" + ftNewton +"\t	"+" = cos(" + grader + ")\t	 * 	" + fdimNewton + "\n";
 			//mellemregning = "cos(vinkel)\t	 *\t	FDim\t	=\t	FT	" + "\n" + "  cos(" + grader + ")\t	 *\t	" + fdimNewton + "\t	=\t" + ftNewton + "\n" ; 
-			mellemregning = "cos(vinkel) * FDim\t = FT	" + "\n" + "cos(" + grader + ") * " + fdimText + " = " + newtonText + "\n" ; 
+			mellemregning = "cos(vinkel) * FDim = FT" + "\n" + "cos(" + grader + ") * " + fdimText + " = " + newtonText + "\n" ; 
 		}
 		
 		else {
@@ -55,7 +55,7 @@ public class TvaerkraftImpl implements Tvaerkraft {
 			String fdimText = formatter.format(fdimNewton);
 		//	mellemregning = "FT = sin(vinkel) * FDim" + "\n" + ftNewton + " = sin(" + grader + ") * " + fdimNewton + "\n";
 			// mellemregning = "sin(vinkel) * FDim" +"= FT" + "\n" + ftNewton + " = sin(" + grader + ") * " + fdimNewton + "\n"; 
-			mellemregning = "sin(vinkel) * FDim" +"= FT" + "\n" + newtonText + " = sin(" + grader + ") * " + fdimText + "\n"; 
+			mellemregning = "sin(vinkel) * FDim" +" = FT" + "\n" + newtonText + " = sin(" + grader + ") * " + fdimText + "\n"; 
 
 		}
 		
