@@ -1,19 +1,10 @@
 package presentation;
 
-import exceptions.ArealEjDefineretException;
 import exceptions.BoejningsMomentEjDefineretException;
 import exceptions.BoejningsspaendingEjDefineretException;
-import exceptions.DimensionerendeKraftEjDefineretException;
-import exceptions.ForskydningsspaendingEjDefineretException;
 import exceptions.HalvProfilhoejdeEjDefineretException;
 import exceptions.InertimomentEjDefineretException;
-import exceptions.LaengdeEjDefineretException;
-import exceptions.NegativArealException;
 import exceptions.NegativInertimomentException;
-import exceptions.NormalkraftEjDefineretException;
-import exceptions.NormalspaendingEjDefineretException;
-import exceptions.TvaerkraftEjDefineretException;
-import exceptions.VinkelEjDefineretException;
 import javafx.geometry.Pos;
 import javafx.scene.control.TextField;
 
