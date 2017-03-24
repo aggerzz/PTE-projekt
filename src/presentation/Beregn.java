@@ -33,7 +33,7 @@ public class Beregn {
 		try {
 			pte.getBoejningsspaending();
       
-		} catch (BoejningsspaendingEjDefineretException | LaengdeEjDefineretException | DimensionerendeKraftEjDefineretException e) {
+		} catch (BoejningsspaendingEjDefineretException | LaengdeEjDefineretException | DimensionerendeKraftEjDefineretException | HalvProfilhoejdeEjDefineretException | InertimomentEjDefineretException e) {
 
 
 		}
@@ -72,13 +72,13 @@ public class Beregn {
 		}
 		try {
 			pte.getSigmaRef();
-		} catch (ReferenceSpaendingEjDefineretException | InertimomentEjDefineretException | HalvProfilhoejdeEjDefineretException e) {
+		} catch (ReferenceSpaendingEjDefineretException | InertimomentEjDefineretException | HalvProfilhoejdeEjDefineretException | LaengdeEjDefineretException e) {
 
 		}
 		try {
 			pte.getSikkerhedsfaktor();
 		} catch (SikkerhedsFaktorEjDefineretException | FlydeSpaendingEjDefineretException
-				| ReferenceSpaendingEjDefineretException | InertimomentEjDefineretException | HalvProfilhoejdeEjDefineretException e) {
+				| ReferenceSpaendingEjDefineretException | InertimomentEjDefineretException | HalvProfilhoejdeEjDefineretException | LaengdeEjDefineretException e) {
 
 		}
 		try {

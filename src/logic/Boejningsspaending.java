@@ -18,7 +18,7 @@ public interface Boejningsspaending {
 //	public void beregnBoejningsspaending() throws BoejningsMomentEjDefineretException, InertimomentEjDefineretException,
 //			HalvProfilhoejdeEjDefineretException;
 
-	public double getBoejningsspaending() throws BoejningsspaendingEjDefineretException, LaengdeEjDefineretException, DimensionerendeKraftEjDefineretException;
+	public double getBoejningsspaending() throws BoejningsspaendingEjDefineretException, LaengdeEjDefineretException, DimensionerendeKraftEjDefineretException, HalvProfilhoejdeEjDefineretException, InertimomentEjDefineretException;
 
 
 	public String getBoejningsspaendingMellemregning() throws BoejningsspaendingEjDefineretException;
