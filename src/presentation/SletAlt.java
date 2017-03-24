@@ -27,7 +27,7 @@ public class SletAlt {
 		fpm.getTauTextField().clear();
 		fpm.getSigmaTillTextField().clear();
 		fpm.getInertimomentTextField().clear();
-		fpm.getArmTextField().clear();
+		fpm.getBoejningsmomentFtTextField().clear();
 		
 		fpm.getVerticalAngleText().setDisable(false);
 		fpm.getVerticalAngleText().setText("");
