@@ -55,12 +55,8 @@ public class InertimomentTextField extends TextField {
 			}
 
 			
-				try {
-					FrontPage.frontPageMediator.getObserver().getPteCalc().beregnBoejningsSpaending();
-				} catch (BoejningsMomentEjDefineretException | BoejningsspaendingEjDefineretException
-						| HalvProfilhoejdeEjDefineretException | InertimomentEjDefineretException e1) {
-					//Gør ingenting
-				}
+			Beregn beregn = new Beregn();
+			beregn.beregn();
 			
 		});
 	}
