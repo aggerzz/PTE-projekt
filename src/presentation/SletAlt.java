@@ -27,8 +27,7 @@ public class SletAlt {
 		fpm.getTauTextField().clear();
 		fpm.getSigmaTillTextField().clear();
 		fpm.getInertimomentTextField().clear();
-//		TODO Fjern den her kommentar når det der textfield er lavet
-//		fpm.getArmTextField().clear();
+		fpm.getBoejningsmomentFtTextField().clear();
 		
 		fpm.getVerticalAngleText().setDisable(false);
 		fpm.getVerticalAngleText().setText("");
