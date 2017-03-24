@@ -1,8 +1,6 @@
 package logic;
 
 import java.text.DecimalFormat;
-
-import exceptions.FDimEjDefineret;
 import exceptions.NegativKgException;
 
 public class DimensionerendekraftImpl implements Dimensionerendekraft {
@@ -16,7 +14,7 @@ public class DimensionerendekraftImpl implements Dimensionerendekraft {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-	public void setVaegt(double vaegt, Enhed enhed) throws NegativKgException, FDimEjDefineret{
+	public void setVaegt(double vaegt, Enhed enhed) throws NegativKgException{
 		if (vaegt<=0)
 			throw new NegativKgException();
 		switch(enhed){
@@ -34,13 +32,11 @@ public class DimensionerendekraftImpl implements Dimensionerendekraft {
 			break;
 		}
 	}
-	public double getNewton() throws FDimEjDefineret {	
-		if (kg==Double.NaN)
-			throw new FDimEjDefineret();
+	public double getNewton() {		
 		return kg * tyngdekraft;
 	}
 
-	private void setKg(double kg) throws FDimEjDefineret {
+	private void setKg(double kg) {
 		DecimalFormat formatter = new DecimalFormat("#0.00000");
 		
 		this.kg = kg;

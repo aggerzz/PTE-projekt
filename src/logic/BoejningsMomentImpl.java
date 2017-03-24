@@ -3,7 +3,6 @@ package logic;
 import java.text.DecimalFormat;
 
 import exceptions.DimensionerendeKraftEjDefineretException;
-import exceptions.FDimEjDefineret;
 import exceptions.LaengdeEjDefineretException;
 
 public class BoejningsMomentImpl implements BoejningsMoment {
@@ -13,12 +12,11 @@ public class BoejningsMomentImpl implements BoejningsMoment {
 
 	@Override
 	public void angivDimensionerendeKraft(Dimensionerendekraft fdim) throws DimensionerendeKraftEjDefineretException {
-		if (fdim != null ) {
+		if (fdim != null) {
 			this.fdim = fdim;
 		} else {
 			throw new DimensionerendeKraftEjDefineretException();
 		}
-		
 	}
 
 	@Override
@@ -32,7 +30,7 @@ public class BoejningsMomentImpl implements BoejningsMoment {
 	}
 
 	@Override
-	public void beregnBoejningsMoment() throws FDimEjDefineret {
+	public void beregnBoejningsMoment() {
 		DecimalFormat formatter = new DecimalFormat("#0.00000");
 		double boejningsMoment = fdim.getNewton() / l2.getLaengde();
 		
@@ -44,14 +42,13 @@ public class BoejningsMomentImpl implements BoejningsMoment {
 	}
 
 	@Override
-	public double getBoejningsMoment() throws LaengdeEjDefineretException, DimensionerendeKraftEjDefineretException, FDimEjDefineret {
+	public double getBoejningsMoment() throws LaengdeEjDefineretException, DimensionerendeKraftEjDefineretException {
 		if (fdim == null) {
 			throw new DimensionerendeKraftEjDefineretException();
 		}
 		if (l2 == null) {
 			throw new LaengdeEjDefineretException();
 		}
-		
 
 		return fdim.getNewton() * l2.getLaengde();
 	}
