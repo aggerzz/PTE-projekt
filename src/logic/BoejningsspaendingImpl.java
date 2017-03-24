@@ -71,7 +71,7 @@ public class BoejningsspaendingImpl implements Boejningsspaending {
 			String eText = formatter.format(halvProfilHoejde);
 			String sigmaBText = formatter.format(boejningsspaending);
 	
-			boejningsSpaendingMellemregning = "MB * e / I = sigmaB" + "\n" + 
+			boejningsSpaendingMellemregning = "MB * e / I = SigmaB" + "\n" + 
 					 mbText + " * " + eText + " / " + iText + " = " + sigmaBText + "\n";
 			
 			return boejningsspaending;
