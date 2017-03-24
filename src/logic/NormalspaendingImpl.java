@@ -2,6 +2,7 @@ package logic;
 
 import java.text.DecimalFormat;
 
+import exceptions.ArealEjDefineretException;
 import exceptions.DimensionerendeKraftEjDefineretException;
 import exceptions.NegativArealException;
 import exceptions.NormalkraftEjDefineretException;
@@ -26,7 +27,7 @@ public class NormalspaendingImpl implements Normalspaending {
 		}
 	}
 	
-	public void angivAreal(Areal a) throws NegativArealException{
+	public void angivAreal(Areal a) throws NegativArealException, ArealEjDefineretException{
 		if(a.getMm2() > 0){
 			this.a = a;
 		}
@@ -35,7 +36,7 @@ public class NormalspaendingImpl implements Normalspaending {
 		}
 	}
 	
-	public double getSigmaNmm2() throws NormalspaendingEjDefineretException, DimensionerendeKraftEjDefineretException, VinkelEjDefineretException {
+	public double getSigmaNmm2() throws NormalspaendingEjDefineretException, DimensionerendeKraftEjDefineretException, VinkelEjDefineretException, ArealEjDefineretException {
 		
 		if(fn == null | a == null){
 			throw new NormalspaendingEjDefineretException();

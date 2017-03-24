@@ -30,7 +30,7 @@ public class BoejningsMomentImpl implements BoejningsMoment {
 	}
 
 	@Override
-	public void beregnBoejningsMoment() {
+	public void beregnBoejningsMoment() throws LaengdeEjDefineretException {
 		DecimalFormat formatter = new DecimalFormat("#0.00000");
 		double boejningsMoment = fdim.getNewton() / l2.getLaengde();
 		

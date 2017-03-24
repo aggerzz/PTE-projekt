@@ -75,6 +75,7 @@ public class BoejningsspaendingImpl implements Boejningsspaending {
 					 mbText + " * " + eText + " / " + iText + " = " + sigmaBText + "\n";
 			
 			return boejningsspaending;
+
 		}
 
 	@Override

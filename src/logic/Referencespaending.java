@@ -1,12 +1,14 @@
 package logic;
 
 import exceptions.ForskydningsspaendingEjDefineretException;
+import exceptions.HalvProfilhoejdeEjDefineretException;
+import exceptions.InertimomentEjDefineretException;
 import exceptions.NormalspaendingEjDefineretException;
 import exceptions.angivBoejningsspaendingEjDefineretException;
 
 public interface Referencespaending {
 	
-	public double getSigmaRef();
+	public double getSigmaRef() throws InertimomentEjDefineretException, HalvProfilhoejdeEjDefineretException;
 	
 	public String GetMellemRegning();
 	

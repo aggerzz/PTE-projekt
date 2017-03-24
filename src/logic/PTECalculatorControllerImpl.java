@@ -422,7 +422,7 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 
 	@Override
 	public double getNormalspaending() throws NormalspaendingEjDefineretException,
-			DimensionerendeKraftEjDefineretException, VinkelEjDefineretException {
+			DimensionerendeKraftEjDefineretException, VinkelEjDefineretException, ArealEjDefineretException {
 
 		if (sigmaN == null) {
 			throw new NormalspaendingEjDefineretException();
@@ -470,7 +470,7 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 	}
 
 	@Override
-	public double getSigmaRef() throws ReferenceSpaendingEjDefineretException {
+	public double getSigmaRef() throws ReferenceSpaendingEjDefineretException, InertimomentEjDefineretException, HalvProfilhoejdeEjDefineretException {
 		if (sigmaRef == null) {
 			throw new ReferenceSpaendingEjDefineretException();
 		}
@@ -504,7 +504,7 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 
 	@Override
 	public double getSikkerhedsfaktor() throws SikkerhedsFaktorEjDefineretException, FlydeSpaendingEjDefineretException,
-			ReferenceSpaendingEjDefineretException {
+			ReferenceSpaendingEjDefineretException, InertimomentEjDefineretException, HalvProfilhoejdeEjDefineretException {
 		if (sf == null)
 			throw new SikkerhedsFaktorEjDefineretException();
 		double sfvaerdi = sf.getSikkerhedsFaktor();
@@ -547,6 +547,7 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 
 	@Override
 	public double getBoejningsspaending() throws BoejningsspaendingEjDefineretException, LaengdeEjDefineretException, DimensionerendeKraftEjDefineretException {
+
 		if (sigmaB == null)
 			throw new BoejningsspaendingEjDefineretException();
 

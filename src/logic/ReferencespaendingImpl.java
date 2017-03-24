@@ -4,6 +4,8 @@ import exceptions.ArealEjDefineretException;
 import exceptions.BoejningsspaendingEjDefineretException;
 import exceptions.DimensionerendeKraftEjDefineretException;
 import exceptions.ForskydningsspaendingEjDefineretException;
+import exceptions.HalvProfilhoejdeEjDefineretException;
+import exceptions.InertimomentEjDefineretException;
 import exceptions.NormalspaendingEjDefineretException;
 import exceptions.TvaerkraftEjDefineretException;
 import exceptions.VinkelEjDefineretException;
@@ -19,7 +21,7 @@ public class ReferencespaendingImpl implements Referencespaending {
 	ForskydningsSpaendning tau = new ForskydningsSpaendningImpl();
 	
 	@Override
-	public double getSigmaRef() {
+	public double getSigmaRef() throws InertimomentEjDefineretException, HalvProfilhoejdeEjDefineretException {
 //		Den måde OC11 ville have vi skulle gøre det på:
 		
 //		if(sigmaN.getSigmaNmm2() != 0 && sigmaB.getSigmaBmm2() != 0){

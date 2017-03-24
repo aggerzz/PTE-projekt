@@ -20,6 +20,7 @@ public interface Boejningsspaending {
 
 	public double getBoejningsspaending() throws BoejningsspaendingEjDefineretException, LaengdeEjDefineretException, DimensionerendeKraftEjDefineretException;
 
+
 	public String getBoejningsspaendingMellemregning() throws BoejningsspaendingEjDefineretException;
 
 }
