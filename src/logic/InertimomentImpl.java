@@ -1,12 +1,15 @@
 package logic;
 
+import exceptions.InertimomentEjDefineretException;
 import exceptions.NegativInertimomentException;
 
 public class InertimomentImpl implements Inertimoment {
 	private double mm4 = Double.NaN;
 
 	@Override
-	public double getInertimoment() {
+	public double getInertimoment() throws InertimomentEjDefineretException {
+		if(mm4==Double.NaN)
+			throw new InertimomentEjDefineretException();
 		return mm4;
 	}
 	

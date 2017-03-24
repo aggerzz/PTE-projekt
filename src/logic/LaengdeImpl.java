@@ -1,5 +1,7 @@
 package logic;
 
+import exceptions.LaengdeEjDefineretException;
+
 public class LaengdeImpl implements Laengde {
 	double l2;
 	@Override
@@ -8,7 +10,9 @@ public class LaengdeImpl implements Laengde {
 	}
 
 	@Override
-	public double getLaengde() {
+	public double getLaengde() throws LaengdeEjDefineretException {
+		if(l2==Double.NaN)
+			throw new LaengdeEjDefineretException();
 		return l2;
 	}
 

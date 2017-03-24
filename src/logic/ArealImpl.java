@@ -1,12 +1,15 @@
 package logic;
 
+import exceptions.ArealEjDefineretException;
 import exceptions.NegativArealException;
 
 public class ArealImpl implements Areal {
 	private double mm2 = Double.NaN;
 
 	@Override
-	public double getMm2() {
+	public double getMm2() throws ArealEjDefineretException {
+		if (mm2 == Double.NaN)
+			throw new ArealEjDefineretException();
 		return mm2;
 	}
 

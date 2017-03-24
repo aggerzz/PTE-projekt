@@ -32,7 +32,7 @@ public class Beregn {
 		}
 		try {
 			pte.getBoejningsspaending();
-		} catch (BoejningsspaendingEjDefineretException e) {
+		} catch (BoejningsspaendingEjDefineretException | InertimomentEjDefineretException | HalvProfilhoejdeEjDefineretException e) {
 
 		}
 		try {
@@ -64,17 +64,19 @@ public class Beregn {
 		try {
 			pte.getNormalspaending();
 		} catch (NormalspaendingEjDefineretException | DimensionerendeKraftEjDefineretException
-				| VinkelEjDefineretException e1) {
+
+				| VinkelEjDefineretException | ArealEjDefineretException e1) {
+
 		}
 		try {
 			pte.getSigmaRef();
-		} catch (ReferenceSpaendingEjDefineretException e) {
+		} catch (ReferenceSpaendingEjDefineretException | InertimomentEjDefineretException | HalvProfilhoejdeEjDefineretException e) {
 
 		}
 		try {
 			pte.getSikkerhedsfaktor();
 		} catch (SikkerhedsFaktorEjDefineretException | FlydeSpaendingEjDefineretException
-				| ReferenceSpaendingEjDefineretException e) {
+				| ReferenceSpaendingEjDefineretException | InertimomentEjDefineretException | HalvProfilhoejdeEjDefineretException e) {
 
 		}
 		try {

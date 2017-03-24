@@ -1,6 +1,8 @@
 package logic;
 
 import exceptions.FlydeSpaendingEjDefineretException;
+import exceptions.HalvProfilhoejdeEjDefineretException;
+import exceptions.InertimomentEjDefineretException;
 import exceptions.ReferenceSpaendingEjDefineretException;
 
 public class SikkerhedsFaktorImpl implements SikkerhedsFaktor {
@@ -21,7 +23,7 @@ public class SikkerhedsFaktorImpl implements SikkerhedsFaktor {
 		else
 			throw new FlydeSpaendingEjDefineretException();
 	}
-	public void beregnSikkerhedsFaktor() throws ReferenceSpaendingEjDefineretException, FlydeSpaendingEjDefineretException {
+	public void beregnSikkerhedsFaktor() throws ReferenceSpaendingEjDefineretException, FlydeSpaendingEjDefineretException, InertimomentEjDefineretException, HalvProfilhoejdeEjDefineretException {
 		sikkerhedsFaktor = sigmaTill.getFlydeSpaending()/sigmaRef.getSigmaRef();
 		sikkerhedsFaktorMellemRegning = "SF = sigmaTill / sigmaRef \n"
 				+ getSikkerhedsFaktor() + " = " + sigmaTill.getFlydeSpaending() + " / " + sigmaRef.getSigmaRef() ;
@@ -30,7 +32,7 @@ public class SikkerhedsFaktorImpl implements SikkerhedsFaktor {
 	public String getSikkerhedsFaktorMellemRegning(){
 		return sikkerhedsFaktorMellemRegning;
 	}
-	public double getSikkerhedsFaktor() throws FlydeSpaendingEjDefineretException, ReferenceSpaendingEjDefineretException{
+	public double getSikkerhedsFaktor() throws FlydeSpaendingEjDefineretException, ReferenceSpaendingEjDefineretException, InertimomentEjDefineretException, HalvProfilhoejdeEjDefineretException{
 		if(sigmaTill == null)
 			throw new FlydeSpaendingEjDefineretException();
 		if(sigmaRef == null)

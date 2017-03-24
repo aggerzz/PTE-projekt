@@ -14,7 +14,9 @@ public class FlydeSpaendingImpl implements FlydeSpaending {
 	}
 
 	@Override
-	public double getFlydeSpaending() {
+	public double getFlydeSpaending() throws FlydeSpaendingEjDefineretException {
+		if (SigmaTill==Double.NaN)
+			throw new FlydeSpaendingEjDefineretException();
 		return SigmaTill;
 	}
 
