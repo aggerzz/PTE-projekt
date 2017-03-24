@@ -56,7 +56,7 @@ public class BoejningsspaendingImpl implements Boejningsspaending {
 //	}
 
 	@Override
-	public double getBoejningsspaending() throws BoejningsspaendingEjDefineretException, LaengdeEjDefineretException, DimensionerendeKraftEjDefineretException {
+	public double getBoejningsspaending() throws BoejningsspaendingEjDefineretException, LaengdeEjDefineretException, DimensionerendeKraftEjDefineretException, HalvProfilhoejdeEjDefineretException, InertimomentEjDefineretException {
 		if(boejning == null || i == null || e ==null){
 			throw new BoejningsspaendingEjDefineretException();
 		}
