@@ -82,6 +82,9 @@ public class FrontPageMediator {
 	public TextField getSigmaTillTextField() {
 		return frontPageTopRight.sigmaTill;
 	}
+	public TextField getBoejningsmomentFtTextField(){
+		return frontPageTopRight.boejningsmomentFt;
+	}
 
 	// Get og set på Input felter i FrontPageTopLeft
 	public TextField getVerticalAngleText() {
