@@ -78,7 +78,8 @@ public class FrontPageTopRightInsetter {
 		HBox boejningsmomentFtHBox = new HBox();
 		boejningsmomentFtHBox.setSpacing(2);
 		boejningsmomentFtHBox.setAlignment(Pos.BOTTOM_LEFT);
-		boejningsmomentFtHBox.getChildren().addAll(boejningsmomentFt, nmmLabel);
+//		TODO Slå til når bøjningsomentFtTextTextField er lavet
+//		boejningsmomentFtHBox.getChildren().addAll(boejningsmomentFt, nmmLabel);
 		
 		VBox samlingAfHBox = new VBox();
 		samlingAfHBox.getChildren().addAll(laengdeLabel, laengdeHBox, boejningsmomentFtHBoxLabel, boejningsmomentFtHBox, arealLabel, arealHBox, inertimomentLabel,
