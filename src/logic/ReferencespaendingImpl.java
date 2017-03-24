@@ -32,7 +32,7 @@ public class ReferencespaendingImpl implements Referencespaending {
 		try {
 		sigmaRef = (Math.sqrt((Math.pow((sigmaN.getSigmaNmm2() + sigmaB.getBoejningsspaending()), 2)) + 3 * Math.pow(tau.getNmm2(), 2)));
 		sigmaRefMellemRegning = "√((SigmaN + SigmaB)² + 3 * Tau²) = SigmaRef\n"
-		+ "√(" + sigmaN.getSigmaNmm2() + "+" + sigmaB.getBoejningsspaending() + ")² + 3 * " + tau.getNmm2() + "² = " + sigmaRef;
+		+ "√((" + sigmaN.getSigmaNmm2() + "+" + sigmaB.getBoejningsspaending() + ")² + 3 * " + tau.getNmm2() + "²) = " + sigmaRef;
 		} catch (DimensionerendeKraftEjDefineretException | VinkelEjDefineretException
 				| NormalspaendingEjDefineretException | BoejningsspaendingEjDefineretException
 				| ForskydningsspaendingEjDefineretException | ArealEjDefineretException
