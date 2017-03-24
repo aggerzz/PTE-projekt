@@ -38,7 +38,7 @@ public class BoejningsMomentImpl implements BoejningsMoment {
 		String laengdeText = formatter.format(l2.getLaengde());
 		String boejningsMomentText = formatter.format(boejningsMoment);
 				
-		mellemRegning = "Fdim / l  = BM\n" + fdimText + " / " + laengdeText + " = " + boejningsMomentText;
+		mellemRegning = "Fdim / l  = Mb\n" + fdimText + " / " + laengdeText + " = " + boejningsMomentText;
 	}
 
 	@Override
