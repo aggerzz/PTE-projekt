@@ -11,7 +11,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import logic.PdfExporter;
-import logic.SletAlt;
 
 public class FrontPageTopRightInsetter {
 	private SletAlt sletAlt;

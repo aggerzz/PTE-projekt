@@ -1,8 +1,4 @@
-package logic;
-
-import presentation.FrontPage;
-import presentation.FrontPageMediator;
-import presentation.NeedMoreInputTriangle;
+package presentation;
 
 public class SletAlt {
 	
