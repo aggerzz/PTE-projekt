@@ -65,7 +65,7 @@ public interface PTECalculatorController {
 	public void setFtNewton(double ftNewton)
 			throws TvaerkraftEjDefineretException, DimensionerendeKraftEjDefineretException;
 
-	public void setFnNewton(double fnNewton) throws DimensionerendeKraftEjDefineretException;
+//	public void setFnNewton(double fnNewton) throws DimensionerendeKraftEjDefineretException;
 
 	public void beregnSikkerhedsFaktor()
 			throws ReferenceSpaendingEjDefineretException, FlydeSpaendingEjDefineretException;
@@ -80,11 +80,11 @@ public interface PTECalculatorController {
 			throws ForskydningsspaendingEjDefineretException, ArealEjDefineretException, TvaerkraftEjDefineretException,
 			DimensionerendeKraftEjDefineretException, VinkelEjDefineretException;
 
-	public void setForskydningsspaending(double nMm2);
+//	public void setForskydningsspaending(double nMm2);
 
 	public boolean erVaegtNormal() throws DimensionerendeKraftEjDefineretException;
 
-	void setNormalspaending(double sigmaNmm2);
+//	void setNormalspaending(double sigmaNmm2);
 
 	double getNormalspaending() throws NormalspaendingEjDefineretException, DimensionerendeKraftEjDefineretException,
 			VinkelEjDefineretException;
@@ -98,7 +98,7 @@ public interface PTECalculatorController {
 
 	public String ReferenceSpaendingGetMellemRegning() throws ReferenceSpaendingEjDefineretException;
 
-	public void setReferenceSpaending(double sigmaRefNmm2);
+//	public void setReferenceSpaending(double sigmaRefNmm2);
 
 	public void beregnBoejningsMoment() throws DimensionerendeKraftEjDefineretException, LaengdeEjDefineretException;
 

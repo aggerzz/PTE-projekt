@@ -28,20 +28,17 @@ public class SigmaTillTextField extends TextField {
 						this.setText(kommaKontrol.kontrol(this.getText(), this));
 						this.positionCaret(kommaKontrol.getCursorPos());
 						FrontPage.frontPageMediator.getObserver().getPteCalc().angivFlydespaending(Double.parseDouble(this.getText()));
-						FrontPage.frontPageMediator.getObserver().getPteCalc().beregnSikkerhedsFaktor();
-
+						Beregn beregn = new Beregn();
+						beregn.beregn();
 					}
 				}
-			}catch (NumberFormatException | FlydeSpaendingEjDefineretException | ReferenceSpaendingEjDefineretException e1) {
+			}catch (NumberFormatException | FlydeSpaendingEjDefineretException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			} 
 			
-			try {
-				FrontPage.frontPageMediator.getObserver().getPteCalc().beregnSikkerhedsFaktor();
-			} catch (ReferenceSpaendingEjDefineretException |  FlydeSpaendingEjDefineretException  e1) {
-				// gør ingen ting
-			} 
+				Beregn beregn = new Beregn();
+				beregn.beregn();
 		});
 		
 		}
