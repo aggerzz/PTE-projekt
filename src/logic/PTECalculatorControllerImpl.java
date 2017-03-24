@@ -255,7 +255,8 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 		if (this.vinkel == null) {
 			this.vinkel = new VinkelImpl();
 		}
-
+		if (vinkel == Double.NaN)
+			this.vinkel = null;
 		try {
 			this.vinkel.setGrader(vinkel);
 		} catch (ErOverFejlGraenseException e) {

@@ -24,6 +24,7 @@ public class Beregn {
 
 		PTECalculatorController pte = FrontPage.getFrontPageMediator().getObserver().getPteCalc();
 
+		
 		try {
 			pte.getBoejningsMoment();
 		} catch (BoejningsMomentEjDefineretException | DimensionerendeKraftEjDefineretException
@@ -174,6 +175,7 @@ public class Beregn {
 			pte.beregnSikkerhedsFaktor();
 		} catch (ReferenceSpaendingEjDefineretException | FlydeSpaendingEjDefineretException e) {
 		}
+		
 
 	}
 }

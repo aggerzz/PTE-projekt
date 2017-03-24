@@ -1,6 +1,7 @@
 package logic;
 
 import exceptions.ErOverFejlGraenseException;
+import exceptions.VinkelEjDefineretException;
 import exceptions.erUnderFejlgraenseException;
 
 public class VinkelImpl implements Vinkel {
@@ -12,7 +13,9 @@ public class VinkelImpl implements Vinkel {
 	private String mellemregning;
 
 	@Override
-	public double getGrader() {
+	public double getGrader() throws VinkelEjDefineretException {
+		if (Double.isNaN(grader))
+			throw new VinkelEjDefineretException();
 		return grader;
 //		if (getMaaltTilLodret()) {
 //			graderMaaltTilLodret = grader;
@@ -38,7 +41,7 @@ public class VinkelImpl implements Vinkel {
 
 	@Override
 	public void setGrader(double grader)throws erUnderFejlgraenseException, ErOverFejlGraenseException{
-		if (grader<0 || Double.isNaN(grader))
+		if (grader<0 )
 			throw new erUnderFejlgraenseException();
 //		else if (0<this.grader && this.grader>90) 
 		else this.grader = grader;
