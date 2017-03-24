@@ -24,7 +24,6 @@ public class Beregn {
 
 		PTECalculatorController pte = FrontPage.getFrontPageMediator().getObserver().getPteCalc();
 
-		
 		try {
 			pte.getBoejningsMoment();
 		} catch (BoejningsMomentEjDefineretException | DimensionerendeKraftEjDefineretException
@@ -66,8 +65,6 @@ public class Beregn {
 			pte.getNormalspaending();
 		} catch (NormalspaendingEjDefineretException | DimensionerendeKraftEjDefineretException
 				| VinkelEjDefineretException e1) {
-
-			e1.printStackTrace();
 		}
 		try {
 			pte.getSigmaRef();
@@ -89,8 +86,6 @@ public class Beregn {
 		try {
 			pte.getVinkel();
 		} catch (VinkelEjDefineretException e1) {
-
-			e1.printStackTrace();
 		}
 		try {
 			pte.getBoejningsMomentMellemRegning();
@@ -175,7 +170,6 @@ public class Beregn {
 			pte.beregnSikkerhedsFaktor();
 		} catch (ReferenceSpaendingEjDefineretException | FlydeSpaendingEjDefineretException e) {
 		}
-		
 
 	}
 }
