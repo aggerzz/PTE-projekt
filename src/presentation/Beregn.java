@@ -1,6 +1,7 @@
 package presentation;
 
 import exceptions.ArealEjDefineretException;
+import exceptions.ArmEjDefineretException;
 import exceptions.BoejningsMomentEjDefineretException;
 import exceptions.BoejningsspaendingEjDefineretException;
 import exceptions.DimensionerendeKraftEjDefineretException;
@@ -29,6 +30,12 @@ public class Beregn {
 		} catch (BoejningsMomentEjDefineretException | DimensionerendeKraftEjDefineretException
 				| LaengdeEjDefineretException e) {
 
+		}
+		try {
+			pte.getBoejningsMomentMedFt();
+		} catch (BoejningsMomentEjDefineretException | LaengdeEjDefineretException
+				| DimensionerendeKraftEjDefineretException | TvaerkraftEjDefineretException | ArmEjDefineretException
+				| VinkelEjDefineretException e2) {
 		}
 		try {
 			pte.getBoejningsspaending();
@@ -148,6 +155,11 @@ public class Beregn {
 		try {
 			pte.beregnBoejningsMoment();
 		} catch (DimensionerendeKraftEjDefineretException | LaengdeEjDefineretException e) {
+		}
+		try {
+			pte.beregnBoejningsMomentMedFt();
+		} catch (TvaerkraftEjDefineretException | ArmEjDefineretException | DimensionerendeKraftEjDefineretException
+				| VinkelEjDefineretException e) {
 		}
 		try {
 			pte.beregnBoejningsSpaending();
