@@ -9,9 +9,13 @@ public class BoejningsmomentFtTextField extends TextField {
 	Beregn beregn = new Beregn();
 
 	public BoejningsmomentFtTextField() {
-		this.setPromptText("Hypotenusen");
+		this.setPromptText("Kommer måske");
 		this.setAlignment(Pos.CENTER_RIGHT);
 		this.setMaxSize(150, 20);
+		
+		//TODO FJERN NÅR DET VIRKER
+		this.setDisable(true);
+		
 		this.setOnKeyReleased(e -> {
 			try {
 				// notifyObservers();
