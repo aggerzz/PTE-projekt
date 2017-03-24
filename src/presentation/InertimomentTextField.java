@@ -16,10 +16,7 @@ public class InertimomentTextField extends TextField {
 		this.setAlignment(Pos.CENTER_RIGHT);
 		this.setMaxSize(150, 20);
 		this.setOnKeyReleased(e -> {
-
 			try {
-				// notifyObservers();
-
 				setStyle("-fx-control-inner-background: #ffffff;");
 				if (this.getLength() > 0) {
 					this.setAlignment(Pos.CENTER_RIGHT);
@@ -29,35 +26,23 @@ public class InertimomentTextField extends TextField {
 						String tekst = this.getText().substring(0, this.getText().length() - 1);
 						this.setText(tekst);
 						this.positionCaret(100);
-
 					} else {
-						// int cursorPos = weightTextField.getCaretPosition();
 						this.setText(kommaKontrol.kontrol(this.getText(), this));
 						this.positionCaret(kommaKontrol.getCursorPos());
+
 						FrontPage.frontPageMediator.getObserver().getPteCalc()
 								.angivIntertimoment(Double.parseDouble(this.getText()));
-						FrontPage.frontPageMediator.getObserver().getPteCalc().beregnBoejningsSpaending();
+
+						Beregn beregn = new Beregn();
+						beregn.beregn();
+
 					}
-				} else
-					this.setAlignment(Pos.CENTER_LEFT);
-
-			} catch (NumberFormatException | InertimomentEjDefineretException | NegativInertimomentException | BoejningsMomentEjDefineretException | BoejningsspaendingEjDefineretException | HalvProfilhoejdeEjDefineretException e1) {
-				this.setAlignment(Pos.CENTER_LEFT);
-				setStyle("-fx-control-inner-background: #f92525;");
-				e1.printStackTrace();
-			}
-
-			try {
-				FrontPage.frontPageMediator.getObserver().getPteCalc()
-						.angivIntertimoment(Double.parseDouble(this.getText()));
-			} catch (NumberFormatException | InertimomentEjDefineretException | NegativInertimomentException e2) {
+				}}
+				catch (NumberFormatException | InertimomentEjDefineretException | NegativInertimomentException e1) {
+				// TODO Auto-generated catch block
 				setStyle("-fx-control-inner-background: #f92525;");
 			}
 
-			
-			Beregn beregn = new Beregn();
-			beregn.beregn();
-			
 		});
 	}
 }
