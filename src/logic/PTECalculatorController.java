@@ -147,4 +147,6 @@ public interface PTECalculatorController {
 	public void beregnBoejningsMomentMedFt() throws TvaerkraftEjDefineretException, ArmEjDefineretException, DimensionerendeKraftEjDefineretException, VinkelEjDefineretException;
 	public double getBoejningsMomentMedFt() throws BoejningsMomentEjDefineretException, LaengdeEjDefineretException, DimensionerendeKraftEjDefineretException, TvaerkraftEjDefineretException, ArmEjDefineretException, VinkelEjDefineretException;
 	public String getBoejningsMomentMedFtMellemregning() throws BoejningsMomentEjDefineretException;
+	public void angivArm (double arm) throws ArmEjDefineretException;
+	public double getArm() throws ArmEjDefineretException;
 }
