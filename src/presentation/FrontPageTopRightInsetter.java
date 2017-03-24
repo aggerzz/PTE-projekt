@@ -1,9 +1,7 @@
 package presentation;
 
 import java.io.IOException;
-
 import com.itextpdf.text.DocumentException;
-
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -13,7 +11,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import logic.PdfExporter;
-import logic.SletAlt;
 
 public class FrontPageTopRightInsetter {
 	private SletAlt sletAlt;
@@ -38,10 +35,7 @@ public class FrontPageTopRightInsetter {
 		// Areal
 		Label arealLabel = new Label("Areal:");
 		areal = new ArealTextField();
-		// if(areal.getText().length()>0){
-		// areal.setAlignment(Pos.CENTER_RIGHT);
-		// }
-
+		
 		HBox mm2LabelHBox = superSubStringHBox.generateSuperHBox("mm", "2");
 		HBox arealHBox = new HBox();
 		arealHBox.setSpacing(2);
@@ -68,7 +62,7 @@ public class FrontPageTopRightInsetter {
 
 		// Flydespaending (SigmaTill)
 		HBox sigmaTillHBox2 = superSubStringHBox.generateSubHBox("\u03C3", "Till");
-//		Label sigmaTillLabel = new Label("SigmaTill:");
+		// Label sigmaTillLabel = new Label("SigmaTill:");
 		sigmaTill = new SigmaTillTextField();
 		HBox nmm2LabelHBox = superSubStringHBox.generateSuperHBox("N/mm", "2");
 		HBox sigmaTillHBox = new HBox();
@@ -94,8 +88,9 @@ public class FrontPageTopRightInsetter {
 		exporterTilPdfKnap.setOnAction(e -> {
 			PdfExporter pdfExporter = new PdfExporter();
 			try {
-			pdfExporter.exportToPdf();
-			} catch (DocumentException | IOException e1) {}
+				pdfExporter.exportToPdf();
+			} catch (DocumentException | IOException e1) {
+			}
 		});
 
 		knapperVBox.getChildren().addAll(sletAltKnap, exporterTilPdfKnap);
@@ -105,5 +100,4 @@ public class FrontPageTopRightInsetter {
 		gridRight.add(gridmini, 0, 1);
 		return gridRight;
 	}
-
 }

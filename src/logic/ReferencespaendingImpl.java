@@ -30,7 +30,7 @@ public class ReferencespaendingImpl implements Referencespaending {
 		
 //		Det her gør det samme, men fylder 1 linje kode...
 		try {
-		sigmaRef = (Math.sqrt((Math.pow((sigmaN.getSigmaNmm2() + sigmaB.getBoejningsspaending()), 2))) + 3 * Math.pow(tau.getNmm2(), 2));
+		sigmaRef = (Math.sqrt((Math.pow((sigmaN.getSigmaNmm2() + sigmaB.getBoejningsspaending()), 2)) + 3 * Math.pow(tau.getNmm2(), 2)));
 		sigmaRefMellemRegning = "√(SigmaN + SigmaB)² + 3 * Tau²\n"
 		+ "√(" + sigmaN.getSigmaNmm2() + "+" + sigmaB.getBoejningsspaending() + ")² + 3 * " + tau.getNmm2() + "² = " + sigmaRef;
 		} catch (DimensionerendeKraftEjDefineretException | VinkelEjDefineretException
