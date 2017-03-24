@@ -72,7 +72,8 @@ public class FrontPageTopRightInsetter {
 
 		//Boejningsmoment udregn. med Ft (Kranarmen)
 		HBox boejningsmomentFtHBoxLabel = superSubStringHBox.generateSubHBox("Længde af F", "N");
-		boejningsmomentFt = new BoejningsmommentFtTextField();
+//		TODO Slå til når bøjningsomentFtTextTextField er lavet
+//		boejningsmomentFt = new BoejningsmommentFtTextField();
 		Label nmmLabel = new Label("mm");
 		HBox boejningsmomentFtHBox = new HBox();
 		boejningsmomentFtHBox.setSpacing(2);
