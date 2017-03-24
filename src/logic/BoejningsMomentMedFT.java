@@ -9,7 +9,7 @@ import exceptions.VinkelEjDefineretException;
 public interface BoejningsMomentMedFT {
 	public void angivTvaerkraft(Tvaerkraft ftNewton) throws TvaerkraftEjDefineretException;
 	public void angivArm(Arm arm) throws ArmEjDefineretException;
-	public void beregnBoejningsMoment() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException;
+	public void beregnBoejningsMoment() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException, ArmEjDefineretException, TvaerkraftEjDefineretException;
 	public double getBoejningsMoment() throws LaengdeEjDefineretException, DimensionerendeKraftEjDefineretException, TvaerkraftEjDefineretException, ArmEjDefineretException, VinkelEjDefineretException;
 	public String getBoejningsMomentMellemRegning();
 

@@ -32,7 +32,12 @@ public class BoejningsMomentMedFTImpl implements BoejningsMomentMedFT {
 	}
 	*/
 	@Override
-	public void beregnBoejningsMoment() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException {
+	public void beregnBoejningsMoment() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException, ArmEjDefineretException, TvaerkraftEjDefineretException {
+		if(ftNewton == null)
+			throw new TvaerkraftEjDefineretException();
+			
+		if(arm == null)
+			throw new ArmEjDefineretException();
 		
 		DecimalFormat formatter = new DecimalFormat("#0.00000");
 		double boejningsMoment = ftNewton.getNewton() * arm.getArm();

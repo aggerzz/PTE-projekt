@@ -32,7 +32,7 @@ public class PTEObserverImpl implements PTEObserver {
 		pteCalc.tilmeldObserver(this);
 	}
 
-	public void update() {
+	public void update(){
 		frontPageMediator.getMellemRegninger().clear();
 		DecimalFormat formatter = new DecimalFormat("#0.000");
 
@@ -155,7 +155,7 @@ public class PTEObserverImpl implements PTEObserver {
 			frontPageMediator.getSigmaRefTextField().setText(referencespaendingText);
 			String referenceSpaendingMellemRegning = pteCalc.ReferenceSpaendingGetMellemRegning();
 			tilfoejMellemregning(referenceSpaendingMellemRegning);
-			} catch ( ReferenceSpaendingEjDefineretException | InertimomentEjDefineretException | HalvProfilhoejdeEjDefineretException | LaengdeEjDefineretException | DimensionerendeKraftEjDefineretException | VinkelEjDefineretException | NormalspaendingEjDefineretException | ArealEjDefineretException | BoejningsspaendingEjDefineretException | ForskydningsspaendingEjDefineretException | TvaerkraftEjDefineretException e1) {
+			} catch ( ReferenceSpaendingEjDefineretException | InertimomentEjDefineretException | HalvProfilhoejdeEjDefineretException | LaengdeEjDefineretException | DimensionerendeKraftEjDefineretException | VinkelEjDefineretException | NormalspaendingEjDefineretException | ArealEjDefineretException | BoejningsspaendingEjDefineretException | ForskydningsspaendingEjDefineretException | TvaerkraftEjDefineretException  e1) {
 				frontPageMediator.getSigmaRefTextField().clear();			
 			}
 			
@@ -169,7 +169,7 @@ public class PTEObserverImpl implements PTEObserver {
 
 		} catch (SikkerhedsFaktorEjDefineretException | ReferenceSpaendingEjDefineretException
 				| FlydeSpaendingEjDefineretException | InertimomentEjDefineretException
-				| HalvProfilhoejdeEjDefineretException | LaengdeEjDefineretException e1) {
+				| HalvProfilhoejdeEjDefineretException | LaengdeEjDefineretException | DimensionerendeKraftEjDefineretException | VinkelEjDefineretException | NormalspaendingEjDefineretException | ArealEjDefineretException | BoejningsspaendingEjDefineretException | ForskydningsspaendingEjDefineretException | TvaerkraftEjDefineretException e1) {
 			frontPageMediator.getSikkerhedsFaktorTextField().clear();
 		}
 

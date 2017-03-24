@@ -475,7 +475,7 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 
 	@Override
 	public double getSigmaRef() throws ReferenceSpaendingEjDefineretException, InertimomentEjDefineretException,
-			HalvProfilhoejdeEjDefineretException, LaengdeEjDefineretException {
+			HalvProfilhoejdeEjDefineretException, LaengdeEjDefineretException, DimensionerendeKraftEjDefineretException, VinkelEjDefineretException, NormalspaendingEjDefineretException, ArealEjDefineretException, BoejningsspaendingEjDefineretException, ForskydningsspaendingEjDefineretException, TvaerkraftEjDefineretException {
 		if (sigmaRef == null) {
 			throw new ReferenceSpaendingEjDefineretException();
 		}
@@ -510,7 +510,7 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 	@Override
 	public double getSikkerhedsfaktor() throws SikkerhedsFaktorEjDefineretException, FlydeSpaendingEjDefineretException,
 			ReferenceSpaendingEjDefineretException, InertimomentEjDefineretException,
-			HalvProfilhoejdeEjDefineretException, LaengdeEjDefineretException {
+			HalvProfilhoejdeEjDefineretException, LaengdeEjDefineretException, DimensionerendeKraftEjDefineretException, VinkelEjDefineretException, NormalspaendingEjDefineretException, ArealEjDefineretException, BoejningsspaendingEjDefineretException, ForskydningsspaendingEjDefineretException, TvaerkraftEjDefineretException {
 
 		if (sf == null)
 			throw new SikkerhedsFaktorEjDefineretException();
