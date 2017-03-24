@@ -72,14 +72,12 @@ public class FrontPageTopRightInsetter {
 
 		//Boejningsmoment udregn. med Ft (Kranarmen)
 		HBox boejningsmomentFtHBoxLabel = superSubStringHBox.generateSubHBox("Længde af F", "N");
-//		TODO Slå til når bøjningsomentFtTextTextField er lavet
-//		boejningsmomentFt = new BoejningsmommentFtTextField();
+		boejningsmomentFt = new BoejningsmommentFtTextField();
 		Label nmmLabel = new Label("mm");
 		HBox boejningsmomentFtHBox = new HBox();
 		boejningsmomentFtHBox.setSpacing(2);
 		boejningsmomentFtHBox.setAlignment(Pos.BOTTOM_LEFT);
-//		TODO Slå til når bøjningsomentFtTextTextField er lavet
-//		boejningsmomentFtHBox.getChildren().addAll(boejningsmomentFt, nmmLabel);
+		boejningsmomentFtHBox.getChildren().addAll(boejningsmomentFt, nmmLabel);
 		
 		VBox samlingAfHBox = new VBox();
 		samlingAfHBox.getChildren().addAll(laengdeLabel, laengdeHBox, boejningsmomentFtHBoxLabel, boejningsmomentFtHBox, arealLabel, arealHBox, inertimomentLabel,
