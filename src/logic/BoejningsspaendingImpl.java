@@ -3,6 +3,7 @@ package logic;
 import exceptions.BoejningsMomentEjDefineretException;
 import exceptions.BoejningsspaendingEjDefineretException;
 import exceptions.DimensionerendeKraftEjDefineretException;
+import exceptions.FDimEjDefineret;
 import exceptions.HalvProfilhoejdeEjDefineretException;
 import exceptions.InertimomentEjDefineretException;
 import exceptions.LaengdeEjDefineretException;
@@ -42,7 +43,7 @@ public class BoejningsspaendingImpl implements Boejningsspaending {
 
 	@Override
 	public void beregnBoejningsspaending() throws BoejningsMomentEjDefineretException, InertimomentEjDefineretException,
-			HalvProfilhoejdeEjDefineretException {
+			HalvProfilhoejdeEjDefineretException, FDimEjDefineret {
 		try{
 		double boejningsSpaending = boejning.getBoejningsMoment() * e.getHalvProfilhoejde() / i.getInertimoment();
 		boejningsSpaendingMellemregning = "sigmaB = mb * e / I" + "\n" + boejningsSpaending + " = "
@@ -54,7 +55,7 @@ public class BoejningsspaendingImpl implements Boejningsspaending {
 	}
 
 	@Override
-	public double getBoejningsspaending() throws BoejningsspaendingEjDefineretException {
+	public double getBoejningsspaending() throws BoejningsspaendingEjDefineretException, FDimEjDefineret {
 		double bm;
 		double inertiMoment;
 		double halvProfilHoejde;
