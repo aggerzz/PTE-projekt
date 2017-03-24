@@ -5,6 +5,7 @@ import java.io.IOException;
 import com.itextpdf.text.DocumentException;
 
 import exceptions.ArealEjDefineretException;
+import exceptions.ArmEjDefineretException;
 import exceptions.BoejningsMomentEjDefineretException;
 import exceptions.BoejningsspaendingEjDefineretException;
 import exceptions.DimensionerendeKraftEjDefineretException;
@@ -46,6 +47,8 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 	private Inertimoment i;
 	private HalvProfilhoejde e;
 	private Boejningsspaending sigmaB;
+	private Arm arm;
+	private BoejningsMomentMedFT boejningFt;
 
 	public void exportToPdf() {
 		try {
@@ -676,5 +679,39 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 
 		notifyObservers();
 
+	}
+
+	@Override
+	public void beregnBoejningsMomentMedFt() throws TvaerkraftEjDefineretException, ArmEjDefineretException, DimensionerendeKraftEjDefineretException, VinkelEjDefineretException {
+		if (ft == null){
+			throw new TvaerkraftEjDefineretException();
+		}
+		if (arm == null){
+			throw new ArmEjDefineretException();
+		}
+		if (boejningFt == null)
+			boejningFt = new BoejningsMomentMedFTImpl();
+		boejningFt.angivTvaerkraft(ft);
+		boejningFt.angivArm(arm);
+		boejningFt.beregnBoejningsMoment();
+		notifyObservers();
+		
+	}
+
+	@Override
+	public double getBoejningsMomentMedFt() throws BoejningsMomentEjDefineretException, LaengdeEjDefineretException, DimensionerendeKraftEjDefineretException, TvaerkraftEjDefineretException, ArmEjDefineretException, VinkelEjDefineretException {
+		if (boejningFt == null){
+			throw new BoejningsMomentEjDefineretException();
+		}
+		return boejningFt.getBoejningsMoment();
+	}
+
+	@Override
+	public String getBoejningsMomentMedFtMellemregning() throws BoejningsMomentEjDefineretException {
+		if (boejningFt == null) {
+			throw new BoejningsMomentEjDefineretException();
+		}
+		String BoejningsMomentMellemRegning = boejningFt.getBoejningsMomentMellemRegning();
+		return BoejningsMomentMellemRegning;
 	}
 }

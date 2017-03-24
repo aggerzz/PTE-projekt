@@ -1,6 +1,7 @@
 package logic;
 
 import exceptions.ArealEjDefineretException;
+import exceptions.ArmEjDefineretException;
 import exceptions.BoejningsMomentEjDefineretException;
 import exceptions.BoejningsspaendingEjDefineretException;
 import exceptions.DimensionerendeKraftEjDefineretException;
@@ -142,4 +143,8 @@ public interface PTECalculatorController {
 	public double getHalvProfilhoejde() throws HalvProfilhoejdeEjDefineretException;
 
 	void sletAlt();
+	
+	public void beregnBoejningsMomentMedFt() throws TvaerkraftEjDefineretException, ArmEjDefineretException, DimensionerendeKraftEjDefineretException, VinkelEjDefineretException;
+	public double getBoejningsMomentMedFt() throws BoejningsMomentEjDefineretException, LaengdeEjDefineretException, DimensionerendeKraftEjDefineretException, TvaerkraftEjDefineretException, ArmEjDefineretException, VinkelEjDefineretException;
+	public String getBoejningsMomentMedFtMellemregning() throws BoejningsMomentEjDefineretException;
 }
