@@ -70,7 +70,8 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 	@Override
 	public void beregnSikkerhedsFaktor()
 			throws ReferenceSpaendingEjDefineretException, FlydeSpaendingEjDefineretException {
-		sf = new SikkerhedsFaktorImpl();
+		if (sf == null)
+			sf = new SikkerhedsFaktorImpl();
 		if (sigmaTill == null) {
 			throw new FlydeSpaendingEjDefineretException();
 		}
@@ -92,7 +93,8 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 		if (l2 == null) {
 			throw new LaengdeEjDefineretException();
 		}
-		boejning = new BoejningsMomentImpl();
+		if (boejning == null)
+			boejning = new BoejningsMomentImpl();
 
 		boejning.angivDimensionerendeKraft(fdim);
 
@@ -114,7 +116,8 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 			throw new VinkelEjDefineretException();
 		}
 
-		fn = new NormalkraftImpl();
+		if (fn == null)
+			fn = new NormalkraftImpl();
 
 		fn.angivDimensionerendekraft(fdim);
 
@@ -154,7 +157,9 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 
 	@Override
 	public void angivVaegt(double vaegt, Enhed enhed) throws NegativKgException {
-		fdim = new DimensionerendekraftImpl();
+		
+		if(fdim == null)
+			fdim = new DimensionerendekraftImpl();
 
 		fdim.setVaegt(vaegt, enhed);
 
@@ -299,20 +304,22 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 	@Override
 	public void setFtNewton(double ftNewton)
 			throws TvaerkraftEjDefineretException, DimensionerendeKraftEjDefineretException {
-		ft = new TvaerkraftImpl();
+		if (ft == null)
+			ft = new TvaerkraftImpl();
 
 		ft.setFtNewton(ftNewton);
 
 		notifyObservers();
 	}
 
-	@Override
-	public void setFnNewton(double fnNewton) throws DimensionerendeKraftEjDefineretException {
-		fn = new NormalkraftImpl();
-		fn.setFnNewton(fnNewton);
-
-		notifyObservers();
-	}
+//	@Override
+//	public void setFnNewton(double fnNewton) throws DimensionerendeKraftEjDefineretException {
+//		if (fn == null)
+//			fn = new NormalkraftImpl();
+//		fn.setFnNewton(fnNewton);
+//
+//		notifyObservers();
+//	}
 
 	@Override
 	public boolean erVaegtNormal() throws DimensionerendeKraftEjDefineretException {
@@ -334,7 +341,8 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 		if (a == null) {
 			throw new ArealEjDefineretException();
 		}
-		tau = new ForskydningsSpaendningImpl();
+		if (tau == null)
+			tau = new ForskydningsSpaendningImpl();
 		tau.angivTvaerkraft(ft);
 		tau.angivAreal(a);
 
@@ -369,13 +377,14 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 
 	}
 
-	@Override
-	public void setForskydningsspaending(double nMm2) {
-		tau = new ForskydningsSpaendningImpl();
-		tau.setNmm2(nMm2);
-
-		notifyObservers();
-	}
+//	@Override
+//	public void setForskydningsspaending(double nMm2) {
+//		
+//			tau = new ForskydningsSpaendningImpl();
+//		tau.setNmm2(nMm2);
+//
+//		notifyObservers();
+//	}
 
 	@Override
 	public void beregnNormalspaending() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException,
@@ -386,7 +395,8 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 		if (a == null) {
 			throw new ArealEjDefineretException();
 		}
-		sigmaN = new NormalspaendingImpl();
+		if (sigmaN == null)
+			sigmaN = new NormalspaendingImpl();
 		sigmaN.angivNormalkraft(fn);
 		try {
 			sigmaN.angivAreal(a);
@@ -397,13 +407,13 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 		notifyObservers();
 	}
 
-	@Override
-	public void setNormalspaending(double sigmaNmm2) {
-		sigmaN = new NormalspaendingImpl();
-		sigmaN.setSigmaNmm2(sigmaNmm2);
-
-		notifyObservers();
-	}
+//	@Override
+//	public void setNormalspaending(double sigmaNmm2) {
+//		sigmaN = new NormalspaendingImpl();
+//		sigmaN.setSigmaNmm2(sigmaNmm2);
+//
+//		notifyObservers();
+//	}
 
 	@Override
 	public double getNormalspaending() throws NormalspaendingEjDefineretException,
@@ -442,7 +452,8 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 			throw new ForskydningsspaendingEjDefineretException();
 		}
 
-		sigmaRef = new ReferencespaendingImpl();
+		if (sigmaRef == null)
+			sigmaRef = new ReferencespaendingImpl();
 
 		sigmaRef.angivBoejningsspaending(sigmaB);
 
@@ -478,13 +489,13 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 
 	}
 
-	@Override
-	public void setReferenceSpaending(double sigmaRefNmm2) {
-		sigmaRef = new ReferencespaendingImpl();
-		sigmaRef.setSigmaRefNmm2(sigmaRefNmm2);
-
-		notifyObservers();
-	}
+//	@Override
+//	public void setReferenceSpaending(double sigmaRefNmm2) {
+//		sigmaRef = new ReferencespaendingImpl();
+//		sigmaRef.setSigmaRefNmm2(sigmaRefNmm2);
+//
+//		notifyObservers();
+//	}
 
 	@Override
 	public double getSikkerhedsfaktor() throws SikkerhedsFaktorEjDefineretException, FlydeSpaendingEjDefineretException,
@@ -519,7 +530,8 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 			throw new BoejningsMomentEjDefineretException();
 		}
 
-		sigmaB = new BoejningsspaendingImpl();
+		if (sigmaB == null)
+			sigmaB = new BoejningsspaendingImpl();
 		sigmaB.angivBoejningsmoment(boejning);
 		sigmaB.angivInertimoment(i);
 		sigmaB.angivHalvProfilhoejde(e);
