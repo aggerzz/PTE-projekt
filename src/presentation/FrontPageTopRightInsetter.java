@@ -14,7 +14,7 @@ import logic.PdfExporter;
 
 public class FrontPageTopRightInsetter {
 	private SletAlt sletAlt;
-	TextField areal, inertimoment, halvhoejde, laengde, sigmaTill;
+	TextField areal, inertimoment, halvhoejde, laengde, sigmaTill, boejningsmomentFt;
 
 	public GridPane insetRight() {
 		SuperSubStringHBox superSubStringHBox = new SuperSubStringHBox();
@@ -70,8 +70,17 @@ public class FrontPageTopRightInsetter {
 		sigmaTillHBox.setAlignment(Pos.BOTTOM_LEFT);
 		sigmaTillHBox.getChildren().addAll(sigmaTill, nmm2LabelHBox);
 
+		//Boejningsmoment udregn. med Ft (Kranarmen)
+		HBox boejningsmomentFtHBoxLabel = superSubStringHBox.generateSubHBox("Længde af F", "N");
+		boejningsmomentFt = new BoejningsmommentFtTextField();
+		Label nmmLabel = new Label("mm");
+		HBox boejningsmomentFtHBox = new HBox();
+		boejningsmomentFtHBox.setSpacing(2);
+		boejningsmomentFtHBox.setAlignment(Pos.BOTTOM_LEFT);
+		boejningsmomentFtHBox.getChildren().addAll(boejningsmomentFt, nmmLabel);
+		
 		VBox samlingAfHBox = new VBox();
-		samlingAfHBox.getChildren().addAll(laengdeLabel, laengdeHBox, arealLabel, arealHBox, inertimomentLabel,
+		samlingAfHBox.getChildren().addAll(laengdeLabel, laengdeHBox, boejningsmomentFtHBoxLabel, boejningsmomentFtHBox, arealLabel, arealHBox, inertimomentLabel,
 				inertimomentHBox, halvhoejdeLabel, halvhoejdeHBox, sigmaTillHBox2, sigmaTillHBox);
 		gridRight.add(samlingAfHBox, 0, 0);
 
