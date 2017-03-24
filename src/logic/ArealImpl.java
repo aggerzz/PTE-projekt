@@ -1,6 +1,5 @@
 package logic;
 
-import exceptions.ArealEjDefineretException;
 import exceptions.NegativArealException;
 
 public class ArealImpl implements Areal {
@@ -12,11 +11,9 @@ public class ArealImpl implements Areal {
 	}
 
 	@Override
-	public void setMm2(double mm2) throws NegativArealException, ArealEjDefineretException {
+	public void setMm2(double mm2) throws NegativArealException {
 		if(mm2<=0) 
 			throw new NegativArealException();
-		if (mm2 == Double.NaN)
-			throw new ArealEjDefineretException();
 		this.mm2 = mm2;
 
 	}
