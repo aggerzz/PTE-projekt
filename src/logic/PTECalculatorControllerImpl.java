@@ -160,6 +160,8 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 		
 		if(fdim == null)
 			fdim = new DimensionerendekraftImpl();
+		if(vaegt == Double.NaN)
+			fdim = null;
 
 		fdim.setVaegt(vaegt, enhed);
 
@@ -179,6 +181,8 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 		if (this.a == null) {
 			this.a = new ArealImpl();
 		}
+		if (mm2==Double.NaN)
+			a=null;
 		this.a.setMm2(mm2);
 
 		notifyObservers();
@@ -604,6 +608,8 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 		if(this.i==null){
 			this.i = new InertimomentImpl();
 		}
+		if (i == Double.NaN)
+			this.i = null;
 		this.i.setMm4(i);
 
 		notifyObservers();
@@ -618,7 +624,10 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 
 	@Override
 	public void angivFlydespaending(double flyde) throws FlydeSpaendingEjDefineretException {
+		if(sigmaTill==null)
 		sigmaTill = new FlydeSpaendingImpl();
+		if(flyde==Double.NaN)
+			sigmaTill=null;
 
 		this.sigmaTill.angivFlydeSpaending(flyde);
 
@@ -628,7 +637,10 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 	@Override
 	public void angivHalvProfilhoejde(double e)
 			throws HalvProfilhoejdeEjDefineretException, NegativHalvProfilhoejdeException {
+		if(this.e==null)
 		this.e = new HalvProfilhoejdeImpl();
+		if(e == Double.NaN)
+			this.e= null;
 
 		this.e.setMm(e);
 
