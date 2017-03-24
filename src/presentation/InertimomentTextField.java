@@ -37,8 +37,9 @@ public class InertimomentTextField extends TextField {
 						beregn.beregn();
 
 					}
-				}}
-				catch (NumberFormatException | InertimomentEjDefineretException | NegativInertimomentException e1) {
+				}else
+					FrontPage.getFrontPageMediator().getObserver().getPteCalc().angivIntertimoment(Double.NaN);
+			} catch (NumberFormatException | InertimomentEjDefineretException | NegativInertimomentException e1) {
 				// TODO Auto-generated catch block
 				setStyle("-fx-control-inner-background: #f92525;");
 			}

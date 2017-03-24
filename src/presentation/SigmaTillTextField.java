@@ -31,7 +31,8 @@ public class SigmaTillTextField extends TextField {
 						Beregn beregn = new Beregn();
 						beregn.beregn();
 					}
-				}
+				}else
+					FrontPage.getFrontPageMediator().getObserver().getPteCalc().angivFlydespaending(Double.NaN);
 			}catch (NumberFormatException | FlydeSpaendingEjDefineretException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
