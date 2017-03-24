@@ -33,7 +33,7 @@ public class Beregn {
 		}
 		try {
 			pte.getBoejningsspaending();
-		} catch (BoejningsspaendingEjDefineretException e) {
+		} catch (BoejningsspaendingEjDefineretException | LaengdeEjDefineretException | DimensionerendeKraftEjDefineretException e) {
 
 		}
 		try {
