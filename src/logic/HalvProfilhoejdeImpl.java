@@ -15,7 +15,7 @@ public class HalvProfilhoejdeImpl implements HalvProfilhoejde {
 	}
 	
 	public void setMm(double mm) throws NegativHalvProfilhoejdeException {
-		if (mm <= 0 || Double.isNaN(mm))
+		if (mm <= 0)
 			throw new NegativHalvProfilhoejdeException();
 		this.mm = mm;
 	}
