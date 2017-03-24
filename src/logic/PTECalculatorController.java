@@ -117,7 +117,8 @@ public interface PTECalculatorController {
 			throws BoejningsMomentEjDefineretException, BoejningsspaendingEjDefineretException,
 			HalvProfilhoejdeEjDefineretException, InertimomentEjDefineretException;
 
-	public double getBoejningsspaending() throws BoejningsspaendingEjDefineretException, InertimomentEjDefineretException, HalvProfilhoejdeEjDefineretException;
+	public double getBoejningsspaending() throws BoejningsspaendingEjDefineretException, LaengdeEjDefineretException, DimensionerendeKraftEjDefineretException;
+
 
 	public String getBoejningsspaendingMellemregning() throws BoejningsspaendingEjDefineretException;
 

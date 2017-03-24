@@ -546,7 +546,8 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 	}
 
 	@Override
-	public double getBoejningsspaending() throws BoejningsspaendingEjDefineretException, InertimomentEjDefineretException, HalvProfilhoejdeEjDefineretException {
+	public double getBoejningsspaending() throws BoejningsspaendingEjDefineretException, LaengdeEjDefineretException, DimensionerendeKraftEjDefineretException {
+
 		if (sigmaB == null)
 			throw new BoejningsspaendingEjDefineretException();
 

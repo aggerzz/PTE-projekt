@@ -95,16 +95,17 @@ public class PTEObserverImpl implements PTEObserver {
 				| VinkelEjDefineretException | ArealEjDefineretException e1) {
 			frontPageMediator.getSigmaNTextField().clear();			
 		}
-			double boejningsSpaending;
+			
 			try {
-				boejningsSpaending = pteCalc.getBoejningsspaending();
+			double boejningsSpaending = pteCalc.getBoejningsspaending();
 			
 			String boejningsSpaendingText = formatter.format(boejningsSpaending);
 			
 			frontPageMediator.getSigmaBTextField().setText(boejningsSpaendingText);
 			String boejningsSpaendingMellemRegninger = pteCalc.getBoejningsspaendingMellemregning();
 			tilfoejMellemregning(boejningsSpaendingMellemRegninger);
-			} catch (BoejningsspaendingEjDefineretException | InertimomentEjDefineretException | HalvProfilhoejdeEjDefineretException e) {
+			} catch (BoejningsspaendingEjDefineretException | DimensionerendeKraftEjDefineretException |LaengdeEjDefineretException e) {
+
 				frontPageMediator.getSigmaBTextField().clear();
 			}
 			
