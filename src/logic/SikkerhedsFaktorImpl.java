@@ -1,5 +1,7 @@
 package logic;
 
+import java.text.DecimalFormat;
+
 import exceptions.ArealEjDefineretException;
 import exceptions.BoejningsspaendingEjDefineretException;
 import exceptions.DimensionerendeKraftEjDefineretException;
@@ -10,6 +12,7 @@ import exceptions.InertimomentEjDefineretException;
 import exceptions.LaengdeEjDefineretException;
 import exceptions.NormalspaendingEjDefineretException;
 import exceptions.ReferenceSpaendingEjDefineretException;
+import exceptions.SikkerhedsFaktorEjDefineretException;
 import exceptions.TvaerkraftEjDefineretException;
 import exceptions.VinkelEjDefineretException;
 
@@ -32,21 +35,32 @@ public class SikkerhedsFaktorImpl implements SikkerhedsFaktor {
 		else
 			throw new FlydeSpaendingEjDefineretException();
 	}
-	public void beregnSikkerhedsFaktor() throws ReferenceSpaendingEjDefineretException, FlydeSpaendingEjDefineretException, InertimomentEjDefineretException, HalvProfilhoejdeEjDefineretException, LaengdeEjDefineretException, DimensionerendeKraftEjDefineretException, VinkelEjDefineretException, NormalspaendingEjDefineretException, ArealEjDefineretException, BoejningsspaendingEjDefineretException, ForskydningsspaendingEjDefineretException, TvaerkraftEjDefineretException {
-		sikkerhedsFaktor = sigmaTill.getFlydeSpaending()/sigmaRef.getSigmaRef();
-		sikkerhedsFaktorMellemRegning = "SF = sigmaTill / sigmaRef \n"
-				+ getSikkerhedsFaktor() + " = " + sigmaTill.getFlydeSpaending() + " / " + sigmaRef.getSigmaRef() ;
+	//public void beregnSikkerhedsFaktor() throws ReferenceSpaendingEjDefineretException, FlydeSpaendingEjDefineretException, InertimomentEjDefineretException, HalvProfilhoejdeEjDefineretException, LaengdeEjDefineretException, DimensionerendeKraftEjDefineretException, VinkelEjDefineretException, NormalspaendingEjDefineretException, ArealEjDefineretException, BoejningsspaendingEjDefineretException, ForskydningsspaendingEjDefineretException, TvaerkraftEjDefineretException {
+		//sikkerhedsFaktor = sigmaTill.getFlydeSpaending()/sigmaRef.getSigmaRef();
+		//sikkerhedsFaktorMellemRegning = "SF = sigmaTill / sigmaRef \n"
+			//	+ getSikkerhedsFaktor() + " = " + sigmaTill.getFlydeSpaending() + " / " + sigmaRef.getSigmaRef() ;
 		
-	}
+	//}
 	public String getSikkerhedsFaktorMellemRegning(){
 		return sikkerhedsFaktorMellemRegning;
 	}
-	public double getSikkerhedsFaktor() throws FlydeSpaendingEjDefineretException, ReferenceSpaendingEjDefineretException, InertimomentEjDefineretException, HalvProfilhoejdeEjDefineretException, LaengdeEjDefineretException, DimensionerendeKraftEjDefineretException, VinkelEjDefineretException, NormalspaendingEjDefineretException, ArealEjDefineretException, BoejningsspaendingEjDefineretException, ForskydningsspaendingEjDefineretException, TvaerkraftEjDefineretException{
-		if(sigmaTill == null)
-			throw new FlydeSpaendingEjDefineretException();
-		if(sigmaRef == null)
-			throw new ReferenceSpaendingEjDefineretException();
-		return sigmaTill.getFlydeSpaending()/sigmaRef.getSigmaRef();
+	public double getSikkerhedsFaktor() throws FlydeSpaendingEjDefineretException, ReferenceSpaendingEjDefineretException, InertimomentEjDefineretException, HalvProfilhoejdeEjDefineretException, LaengdeEjDefineretException, DimensionerendeKraftEjDefineretException, VinkelEjDefineretException, NormalspaendingEjDefineretException, ArealEjDefineretException, BoejningsspaendingEjDefineretException, ForskydningsspaendingEjDefineretException, TvaerkraftEjDefineretException, SikkerhedsFaktorEjDefineretException{
+		if(sigmaRef == null || sigmaTill == null ){
+			throw new SikkerhedsFaktorEjDefineretException();
+		}
+		DecimalFormat formatter = new DecimalFormat("#0.00000");
+		double st = sigmaTill.getFlydeSpaending();
+		double sr = sigmaRef.getSigmaRef();
+		double sikkerhedsfaktor = sigmaTill.getFlydeSpaending()/sigmaRef.getSigmaRef();
+			
+			String stText = formatter.format(st);
+			String srText = formatter.format(sr);
+			String sikkerhedsfaktorText = formatter.format(sikkerhedsfaktor);
+			
+			sikkerhedsFaktorMellemRegning = "SigmaTill / SigmaRef = SF" + "\n" + 
+			stText + " / " + srText + " = " + sikkerhedsfaktorText + "\n"; 
+			
+		return sikkerhedsfaktor;
 	}
 
 }
