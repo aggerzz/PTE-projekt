@@ -8,6 +8,8 @@ import exceptions.BoejningsspaendingEjDefineretException;
 import exceptions.DimensionerendeKraftEjDefineretException;
 import exceptions.FlydeSpaendingEjDefineretException;
 import exceptions.ForskydningsspaendingEjDefineretException;
+import exceptions.HalvProfilhoejdeEjDefineretException;
+import exceptions.InertimomentEjDefineretException;
 import exceptions.LaengdeEjDefineretException;
 import exceptions.NormalkraftEjDefineretException;
 import exceptions.NormalspaendingEjDefineretException;
@@ -90,7 +92,7 @@ public class PTEObserverImpl implements PTEObserver {
 			tilfoejMellemregning(normalspaendingMellemregning);
 
 		} catch (NormalspaendingEjDefineretException | DimensionerendeKraftEjDefineretException
-				| VinkelEjDefineretException e1) {
+				| VinkelEjDefineretException | ArealEjDefineretException e1) {
 			frontPageMediator.getSigmaNTextField().clear();			
 		}
 			double boejningsSpaending;
@@ -102,7 +104,7 @@ public class PTEObserverImpl implements PTEObserver {
 			frontPageMediator.getSigmaBTextField().setText(boejningsSpaendingText);
 			String boejningsSpaendingMellemRegninger = pteCalc.getBoejningsspaendingMellemregning();
 			tilfoejMellemregning(boejningsSpaendingMellemRegninger);
-			} catch (BoejningsspaendingEjDefineretException e) {
+			} catch (BoejningsspaendingEjDefineretException | InertimomentEjDefineretException | HalvProfilhoejdeEjDefineretException e) {
 				frontPageMediator.getSigmaBTextField().clear();
 			}
 			
@@ -126,7 +128,7 @@ public class PTEObserverImpl implements PTEObserver {
 				String referenceSpaendingMellemRegning = pteCalc.ReferenceSpaendingGetMellemRegning();
 				tilfoejMellemregning(referenceSpaendingMellemRegning);
 
-			} catch (ReferenceSpaendingEjDefineretException e1) {
+			} catch (ReferenceSpaendingEjDefineretException | InertimomentEjDefineretException | HalvProfilhoejdeEjDefineretException e1) {
 				frontPageMediator.getSigmaRefTextField().clear();			
 			}
 			try {
@@ -137,7 +139,7 @@ public class PTEObserverImpl implements PTEObserver {
 				String sikkerhedsfaktorMellemRegning = pteCalc.getSikkerhedsfaktorMellemregning();
 				tilfoejMellemregning(sikkerhedsfaktorMellemRegning);
 
-			} catch (SikkerhedsFaktorEjDefineretException | ReferenceSpaendingEjDefineretException | FlydeSpaendingEjDefineretException e1) {
+			} catch (SikkerhedsFaktorEjDefineretException | ReferenceSpaendingEjDefineretException | FlydeSpaendingEjDefineretException | InertimomentEjDefineretException | HalvProfilhoejdeEjDefineretException e1) {
 				frontPageMediator.getSikkerhedsFaktorTextField().clear();			
 			}
 			

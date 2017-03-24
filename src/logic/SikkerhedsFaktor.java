@@ -1,13 +1,15 @@
 package logic;
 
 import exceptions.FlydeSpaendingEjDefineretException;
+import exceptions.HalvProfilhoejdeEjDefineretException;
+import exceptions.InertimomentEjDefineretException;
 import exceptions.ReferenceSpaendingEjDefineretException;
 import exceptions.SikkerhedsFaktorEjDefineretException;
 
 public interface SikkerhedsFaktor {
 	public void angivReferencespaending(Referencespaending sigmaRef) throws ReferenceSpaendingEjDefineretException;
 	public void angivFlydeSpaending(FlydeSpaending sigmaTill) throws FlydeSpaendingEjDefineretException;
-	public void beregnSikkerhedsFaktor() throws FlydeSpaendingEjDefineretException, ReferenceSpaendingEjDefineretException;
+	public void beregnSikkerhedsFaktor() throws FlydeSpaendingEjDefineretException, ReferenceSpaendingEjDefineretException, InertimomentEjDefineretException, HalvProfilhoejdeEjDefineretException;
 	public String getSikkerhedsFaktorMellemRegning() throws ReferenceSpaendingEjDefineretException, FlydeSpaendingEjDefineretException;
-	public double getSikkerhedsFaktor() throws SikkerhedsFaktorEjDefineretException, FlydeSpaendingEjDefineretException, ReferenceSpaendingEjDefineretException;
+	public double getSikkerhedsFaktor() throws SikkerhedsFaktorEjDefineretException, FlydeSpaendingEjDefineretException, ReferenceSpaendingEjDefineretException, InertimomentEjDefineretException, HalvProfilhoejdeEjDefineretException;
 }
