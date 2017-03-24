@@ -450,12 +450,12 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 
 	@Override
 	public void beregnSigmaRef() throws NormalspaendingEjDefineretException,
-			angivBoejningsspaendingEjDefineretException, ForskydningsspaendingEjDefineretException {
+			BoejningsspaendingEjDefineretException, ForskydningsspaendingEjDefineretException, BoejningsspaendingEjDefineretException {
 		if (sigmaN == null) {
 			throw new NormalspaendingEjDefineretException();
 		}
 		if (sigmaB == null) {// TODO sigmaB ikke implamenteret (SA)
-			throw new angivBoejningsspaendingEjDefineretException();
+			throw new BoejningsspaendingEjDefineretException();
 		}
 		if (tau == null) {
 			throw new ForskydningsspaendingEjDefineretException();
@@ -493,7 +493,7 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 
 		}
 
-		String referenceSpaendingMellemregning = sigmaRef.GetMellemRegning();
+		String referenceSpaendingMellemregning = sigmaRef.getSigmaRefMellemregning();
 
 		return referenceSpaendingMellemregning;
 
@@ -511,6 +511,7 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 	public double getSikkerhedsfaktor() throws SikkerhedsFaktorEjDefineretException, FlydeSpaendingEjDefineretException,
 			ReferenceSpaendingEjDefineretException, InertimomentEjDefineretException,
 			HalvProfilhoejdeEjDefineretException, LaengdeEjDefineretException {
+
 		if (sf == null)
 			throw new SikkerhedsFaktorEjDefineretException();
 		double sfvaerdi = sf.getSikkerhedsFaktor();

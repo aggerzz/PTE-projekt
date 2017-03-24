@@ -86,6 +86,19 @@ public class PTEObserverImpl implements PTEObserver {
 		}
 
 		try {
+//			pteCalc.beregnBoejningsMoment();
+			double boejningsmoment = pteCalc.getBoejningsMoment();
+			String boejningsmomentText = formatter.format(boejningsmoment);
+			
+			frontPageMediator.getMBTextField().setText(boejningsmomentText);
+			String boejningsmomentMellemRegninger = pteCalc.getBoejningsMomentMellemRegning();
+			tilfoejMellemregning(boejningsmomentMellemRegninger);
+
+		} catch (BoejningsMomentEjDefineretException | DimensionerendeKraftEjDefineretException |LaengdeEjDefineretException e1) {
+			frontPageMediator.getMBTextField().clear();			
+		}			
+		
+		try {
 			double normalspaending = pteCalc.getNormalspaending();
 			String normalspaendingText = formatter.format(normalspaending);
 
@@ -122,7 +135,6 @@ public class PTEObserverImpl implements PTEObserver {
 			String boejningsmomentMellemRegninger = pteCalc.getBoejningsMomentMellemRegning();
 			tilfoejMellemregning(boejningsmomentMellemRegninger);
 		} catch (BoejningsMomentEjDefineretException | DimensionerendeKraftEjDefineretException | LaengdeEjDefineretException e) {
-
 			try {
 				boejningsmoment = pteCalc.getBoejningsMomentMedFt();
 
@@ -143,11 +155,10 @@ public class PTEObserverImpl implements PTEObserver {
 			frontPageMediator.getSigmaRefTextField().setText(referencespaendingText);
 			String referenceSpaendingMellemRegning = pteCalc.ReferenceSpaendingGetMellemRegning();
 			tilfoejMellemregning(referenceSpaendingMellemRegning);
-
-		} catch (ReferenceSpaendingEjDefineretException | InertimomentEjDefineretException
-				| HalvProfilhoejdeEjDefineretException | LaengdeEjDefineretException e1) {
-			frontPageMediator.getSigmaRefTextField().clear();
-		}
+			} catch ( ReferenceSpaendingEjDefineretException | InertimomentEjDefineretException | HalvProfilhoejdeEjDefineretException | LaengdeEjDefineretException | DimensionerendeKraftEjDefineretException | VinkelEjDefineretException | NormalspaendingEjDefineretException | ArealEjDefineretException | BoejningsspaendingEjDefineretException | ForskydningsspaendingEjDefineretException | TvaerkraftEjDefineretException e1) {
+				frontPageMediator.getSigmaRefTextField().clear();			
+			}
+			
 		try {
 			double sikkerhedsfaktor = pteCalc.getSikkerhedsfaktor();
 			String sikkerhedsfaktorText = formatter.format(sikkerhedsfaktor);

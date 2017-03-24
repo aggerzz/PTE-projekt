@@ -93,9 +93,9 @@ public interface PTECalculatorController {
 	String getNormalspaendingMellemregning() throws NormalspaendingEjDefineretException;
 
 	public void beregnSigmaRef() throws NormalspaendingEjDefineretException,
-			angivBoejningsspaendingEjDefineretException, ForskydningsspaendingEjDefineretException;
+			BoejningsspaendingEjDefineretException, ForskydningsspaendingEjDefineretException, BoejningsspaendingEjDefineretException;
 
-	public double getSigmaRef() throws ReferenceSpaendingEjDefineretException, InertimomentEjDefineretException, HalvProfilhoejdeEjDefineretException, LaengdeEjDefineretException;
+	public double getSigmaRef() throws ReferenceSpaendingEjDefineretException, InertimomentEjDefineretException, HalvProfilhoejdeEjDefineretException, LaengdeEjDefineretException, DimensionerendeKraftEjDefineretException, VinkelEjDefineretException, NormalspaendingEjDefineretException, ArealEjDefineretException, BoejningsspaendingEjDefineretException, ForskydningsspaendingEjDefineretException, TvaerkraftEjDefineretException;
 
 	public String ReferenceSpaendingGetMellemRegning() throws ReferenceSpaendingEjDefineretException;
 
@@ -109,7 +109,7 @@ public interface PTECalculatorController {
 	public void exportToPdf();
 
 	public double getSikkerhedsfaktor() throws SikkerhedsFaktorEjDefineretException, FlydeSpaendingEjDefineretException,
-			ReferenceSpaendingEjDefineretException, InertimomentEjDefineretException, HalvProfilhoejdeEjDefineretException, LaengdeEjDefineretException;
+			ReferenceSpaendingEjDefineretException, InertimomentEjDefineretException, HalvProfilhoejdeEjDefineretException, LaengdeEjDefineretException, DimensionerendeKraftEjDefineretException, VinkelEjDefineretException, NormalspaendingEjDefineretException, ArealEjDefineretException, BoejningsspaendingEjDefineretException, ForskydningsspaendingEjDefineretException, TvaerkraftEjDefineretException;
 
 	public String getSikkerhedsfaktorMellemregning() throws SikkerhedsFaktorEjDefineretException,
 			ReferenceSpaendingEjDefineretException, FlydeSpaendingEjDefineretException;
