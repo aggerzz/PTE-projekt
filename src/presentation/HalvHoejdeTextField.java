@@ -51,11 +51,8 @@ public class HalvHoejdeTextField extends TextField {
 				// gør ingenting
 			}		
 			
-			try {
-				FrontPage.frontPageMediator.getObserver().getPteCalc().beregnBoejningsSpaending();
-			} catch (BoejningsMomentEjDefineretException |  BoejningsspaendingEjDefineretException |HalvProfilhoejdeEjDefineretException | InertimomentEjDefineretException  e1) {
-				// gør ingen ting
-			} 			
+			Beregn beregn = new Beregn();
+			beregn.beregn();		
 		});
 		
 		}

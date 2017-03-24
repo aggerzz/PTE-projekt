@@ -46,14 +46,15 @@ try{
 		pte.getNormalspaendingMellemregning();
 		pte.getSikkerhedsfaktorMellemregning();
 		pte.getTvaerkraftMellemregning();
+		pte.beregnNormalkraft();
+		pte.beregnTvaerkraft();
 		pte.beregnBoejningsMoment();
 		pte.beregnBoejningsSpaending();
-		pte.beregnForskydningsspaendning();
-		pte.beregnNormalkraft();
 		pte.beregnNormalspaending();
+		pte.beregnForskydningsspaendning();
 		pte.beregnSigmaRef();
 		pte.beregnSikkerhedsFaktor();
-		pte.beregnTvaerkraft();
+		
 		
 	} catch (BoejningsMomentEjDefineretException | DimensionerendeKraftEjDefineretException
 			| LaengdeEjDefineretException | BoejningsspaendingEjDefineretException

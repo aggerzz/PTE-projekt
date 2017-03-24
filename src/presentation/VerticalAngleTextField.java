@@ -59,30 +59,9 @@ public class VerticalAngleTextField extends TextField{
 			// TODO Auto-generated catch block
 //			e.printStackTrace();
 		}
-		try {
-			FrontPage.frontPageMediator.getObserver().getPteCalc().beregnNormalkraft();
-		} catch (DimensionerendeKraftEjDefineretException | VinkelEjDefineretException e2) {
-			// Gør ingen ting
-		}
-		try {
-			FrontPage.frontPageMediator.getObserver().getPteCalc().beregnTvaerkraft();
-		} catch (DimensionerendeKraftEjDefineretException | VinkelEjDefineretException e2) {
-			// Gør ingen ting
-		}
+		Beregn beregn = new Beregn();
+		beregn.beregn();
 
-		try {
-			FrontPage.frontPageMediator.getObserver().getPteCalc().beregnForskydningsspaendning();
-		} catch (DimensionerendeKraftEjDefineretException | VinkelEjDefineretException
-				| ForskydningsspaendingEjDefineretException | ArealEjDefineretException
-				| TvaerkraftEjDefineretException e1) {
-			// Gør ingen ting
-		}
-		
-		try {
-			FrontPage.frontPageMediator.getObserver().getPteCalc().beregnNormalspaending();
-		} catch (NormalkraftEjDefineretException | DimensionerendeKraftEjDefineretException | VinkelEjDefineretException | NormalspaendingEjDefineretException | ArealEjDefineretException e1) {
-			// gør ingen ting
-		}
 	}
 
 }

@@ -17,6 +17,7 @@ public class WeightHBox extends HBox {
 	TextField weightTextField;
 	ComboBox<Enhed> unit;
 	private KommaKontrol kommaKontrol = new KommaKontrol();
+	Beregn beregn = new Beregn();
 
 	public WeightHBox() {
 
@@ -79,10 +80,10 @@ public class WeightHBox extends HBox {
 //					int cursorPos = weightTextField.getCaretPosition();
 					weightTextField.setText(kommaKontrol.kontrol(weightTextField.getText(), weightTextField));
 					weightTextField.positionCaret(kommaKontrol.getCursorPos());
-					FrontPage.frontPageMediator.getObserver().getPteCalc()
-							.angivVaegt(Double.parseDouble(weightTextField.getText()), unit.getValue());
+					FrontPage.frontPageMediator.angivVaegt(Double.parseDouble(weightTextField.getText()), unit.getValue());
+					beregn.beregn();
 				}
-				if (!FrontPage.frontPageMediator.getObserver().getPteCalc().erVaegtNormal())
+				if (!FrontPage.frontPageMediator.ervaegtNormal())
 					setStyle("-fx-control-inner-background: #ffee6d;");
 			}
 			else 
