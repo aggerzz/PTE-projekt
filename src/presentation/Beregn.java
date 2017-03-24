@@ -72,13 +72,13 @@ public class Beregn {
 		}
 		try {
 			pte.getSigmaRef();
-		} catch (ReferenceSpaendingEjDefineretException | InertimomentEjDefineretException | HalvProfilhoejdeEjDefineretException | LaengdeEjDefineretException e) {
+		} catch (InertimomentEjDefineretException | HalvProfilhoejdeEjDefineretException | LaengdeEjDefineretException | ReferenceSpaendingEjDefineretException | DimensionerendeKraftEjDefineretException | VinkelEjDefineretException | NormalspaendingEjDefineretException | ArealEjDefineretException | BoejningsspaendingEjDefineretException | ForskydningsspaendingEjDefineretException | TvaerkraftEjDefineretException e) {
 
 		}
 		try {
 			pte.getSikkerhedsfaktor();
 		} catch (SikkerhedsFaktorEjDefineretException | FlydeSpaendingEjDefineretException
-				| ReferenceSpaendingEjDefineretException | InertimomentEjDefineretException | HalvProfilhoejdeEjDefineretException | LaengdeEjDefineretException e) {
+				| ReferenceSpaendingEjDefineretException | InertimomentEjDefineretException | HalvProfilhoejdeEjDefineretException | LaengdeEjDefineretException | DimensionerendeKraftEjDefineretException | VinkelEjDefineretException | NormalspaendingEjDefineretException | ArealEjDefineretException | BoejningsspaendingEjDefineretException | ForskydningsspaendingEjDefineretException | TvaerkraftEjDefineretException e) {
 
 		}
 		try {
@@ -167,8 +167,8 @@ public class Beregn {
 		}
 		try {
 			pte.beregnSigmaRef();
-		} catch (NormalspaendingEjDefineretException | angivBoejningsspaendingEjDefineretException
-				| ForskydningsspaendingEjDefineretException e) {
+		} catch (NormalspaendingEjDefineretException | BoejningsspaendingEjDefineretException | ForskydningsspaendingEjDefineretException e) {
+			
 		}
 		try {
 			pte.beregnSikkerhedsFaktor();
