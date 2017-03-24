@@ -8,7 +8,7 @@ import javafx.scene.control.TextField;
 public class SigmaTillTextField extends TextField {
 	KommaKontrol kommaKontrol = new KommaKontrol();
 	public SigmaTillTextField() {
-		this.setPromptText("\u03C3 Till");
+		this.setPromptText("sigmaTill");
 		this.setAlignment(Pos.CENTER_RIGHT);
 		this.setMaxSize(150, 20);
 		this.setOnKeyReleased(e -> {
