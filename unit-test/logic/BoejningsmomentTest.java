@@ -1,12 +1,12 @@
 package logic;
 
 import static org.junit.Assert.*;
-import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
 import exceptions.DimensionerendeKraftEjDefineretException;
 import exceptions.LaengdeEjDefineretException;
+import exceptions.NegativKgException;
 import logic.BoejningsMoment;
 import logic.BoejningsMomentImpl;
 import logic.Dimensionerendekraft;
@@ -17,6 +17,93 @@ import logic.Laengde;
 
 
 public class BoejningsmomentTest {
+	
+	
+	private class DimensionerendekraftMock2 implements Dimensionerendekraft {
+
+		@Override
+		public double getNewton() {
+			return 3083.6964;
+		}
+
+		@Override
+		public double getKg() {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+
+		@Override
+		public void setMellemRegning(String mellemRegning) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public String getMellemRegning() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public double setNewton(double newton) {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+
+		@Override
+		public void setVaegt(double vaegt, Enhed enhed)
+				throws NegativKgException {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public boolean erVaegtNormal() {
+			// TODO Auto-generated method stub
+			return false;
+		}
+
+	}
+	private class LaengdeMock2 implements Laengde {
+
+		@Override
+		public void angivLaengde(double l2) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public double getLaengde() throws LaengdeEjDefineretException {
+			return 1034.16;
+		}
+
+	}
+
+	@Test
+	public void testMBMellemregning() throws LaengdeEjDefineretException, DimensionerendeKraftEjDefineretException {
+		BoejningsMoment mb = new BoejningsMomentImpl();
+		LaengdeMock2 l2 = new LaengdeMock2();
+		DimensionerendekraftMock2 fdim = new DimensionerendekraftMock2(); 
+		
+		
+		
+		mb.angivLaengde(l2);
+		mb.angivDimensionerendeKraft(fdim);
+		mb.beregnBoejningsMoment();
+		
+		
+		double bmINmm =  mb.getBoejningsMoment();
+		assertEquals(3189035.469, bmINmm , 0.001);
+		String mellemregning = "Fdim * l  = MB" + "\n"+ "3083,69640 * 1034,16000 = 3189035,46902" + "\n";
+		assertEquals(mellemregning , mb.getBoejningsMomentMellemRegning());
+	}
+	
+	
+	
+	
+	
+	
+	
 
 	private class LaengdeMock implements Laengde {
 

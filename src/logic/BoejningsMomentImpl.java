@@ -30,15 +30,15 @@ public class BoejningsMomentImpl implements BoejningsMoment {
 	}
 
 	@Override
-	public void beregnBoejningsMoment() throws LaengdeEjDefineretException {
+	public void beregnBoejningsMoment() throws LaengdeEjDefineretException, DimensionerendeKraftEjDefineretException {
 		DecimalFormat formatter = new DecimalFormat("#0.00000");
-		double boejningsMoment = fdim.getNewton() / l2.getLaengde();
+		double boejningsMoment = getBoejningsMoment();
 		
 		String fdimText = formatter.format(fdim.getNewton());
 		String laengdeText = formatter.format(l2.getLaengde());
 		String boejningsMomentText = formatter.format(boejningsMoment);
 				
-		mellemRegning = "Fdim / l  = MB\n" + fdimText + " / " + laengdeText + " = " + boejningsMomentText + "\n";
+		mellemRegning = "Fdim * l  = MB\n" + fdimText + " * " + laengdeText + " = " + boejningsMomentText + "\n";
 	}
 
 	@Override
