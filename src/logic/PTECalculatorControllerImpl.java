@@ -5,6 +5,7 @@ import java.io.IOException;
 import com.itextpdf.text.DocumentException;
 
 import exceptions.ArealEjDefineretException;
+import exceptions.ArmEjDefineretException;
 import exceptions.BoejningsMomentEjDefineretException;
 import exceptions.BoejningsspaendingEjDefineretException;
 import exceptions.DimensionerendeKraftEjDefineretException;
@@ -46,6 +47,8 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 	private Inertimoment i;
 	private HalvProfilhoejde e;
 	private Boejningsspaending sigmaB;
+	private Arm arm;
+	private BoejningsMomentMedFT boejningFt;
 
 	public void exportToPdf() {
 		try {
@@ -70,7 +73,8 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 	@Override
 	public void beregnSikkerhedsFaktor()
 			throws ReferenceSpaendingEjDefineretException, FlydeSpaendingEjDefineretException {
-		sf = new SikkerhedsFaktorImpl();
+		if (sf == null)
+			sf = new SikkerhedsFaktorImpl();
 		if (sigmaTill == null) {
 			throw new FlydeSpaendingEjDefineretException();
 		}
@@ -92,14 +96,15 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 		if (l2 == null) {
 			throw new LaengdeEjDefineretException();
 		}
-		boejning = new BoejningsMomentImpl();
+		if (boejning == null)
+			boejning = new BoejningsMomentImpl();
 
 		boejning.angivDimensionerendeKraft(fdim);
 
 		boejning.angivLaengde(l2);
 
-    boejning.beregnBoejningsMoment();
-    
+		boejning.beregnBoejningsMoment();
+
 		notifyObservers();
 	}
 
@@ -114,7 +119,8 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 			throw new VinkelEjDefineretException();
 		}
 
-		fn = new NormalkraftImpl();
+		if (fn == null)
+			fn = new NormalkraftImpl();
 
 		fn.angivDimensionerendekraft(fdim);
 
@@ -154,7 +160,11 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 
 	@Override
 	public void angivVaegt(double vaegt, Enhed enhed) throws NegativKgException {
-		fdim = new DimensionerendekraftImpl();
+
+		if (fdim == null)
+			fdim = new DimensionerendekraftImpl();
+		if (vaegt == Double.NaN)
+			fdim = null;
 
 		fdim.setVaegt(vaegt, enhed);
 
@@ -174,6 +184,8 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 		if (this.a == null) {
 			this.a = new ArealImpl();
 		}
+		if (mm2 == Double.NaN)
+			a = null;
 		this.a.setMm2(mm2);
 
 		notifyObservers();
@@ -250,7 +262,8 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 		if (this.vinkel == null) {
 			this.vinkel = new VinkelImpl();
 		}
-
+		if (vinkel == Double.NaN)
+			this.vinkel = null;
 		try {
 			this.vinkel.setGrader(vinkel);
 		} catch (ErOverFejlGraenseException e) {
@@ -299,20 +312,23 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 	@Override
 	public void setFtNewton(double ftNewton)
 			throws TvaerkraftEjDefineretException, DimensionerendeKraftEjDefineretException {
-		ft = new TvaerkraftImpl();
+		if (ft == null)
+			ft = new TvaerkraftImpl();
 
 		ft.setFtNewton(ftNewton);
 
 		notifyObservers();
 	}
 
-	@Override
-	public void setFnNewton(double fnNewton) throws DimensionerendeKraftEjDefineretException {
-		fn = new NormalkraftImpl();
-		fn.setFnNewton(fnNewton);
-
-		notifyObservers();
-	}
+	// @Override
+	// public void setFnNewton(double fnNewton) throws
+	// DimensionerendeKraftEjDefineretException {
+	// if (fn == null)
+	// fn = new NormalkraftImpl();
+	// fn.setFnNewton(fnNewton);
+	//
+	// notifyObservers();
+	// }
 
 	@Override
 	public boolean erVaegtNormal() throws DimensionerendeKraftEjDefineretException {
@@ -334,7 +350,8 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 		if (a == null) {
 			throw new ArealEjDefineretException();
 		}
-		tau = new ForskydningsSpaendningImpl();
+		if (tau == null)
+			tau = new ForskydningsSpaendningImpl();
 		tau.angivTvaerkraft(ft);
 		tau.angivAreal(a);
 
@@ -369,13 +386,14 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 
 	}
 
-	@Override
-	public void setForskydningsspaending(double nMm2) {
-		tau = new ForskydningsSpaendningImpl();
-		tau.setNmm2(nMm2);
-
-		notifyObservers();
-	}
+	// @Override
+	// public void setForskydningsspaending(double nMm2) {
+	//
+	// tau = new ForskydningsSpaendningImpl();
+	// tau.setNmm2(nMm2);
+	//
+	// notifyObservers();
+	// }
 
 	@Override
 	public void beregnNormalspaending() throws DimensionerendeKraftEjDefineretException, VinkelEjDefineretException,
@@ -386,7 +404,8 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 		if (a == null) {
 			throw new ArealEjDefineretException();
 		}
-		sigmaN = new NormalspaendingImpl();
+		if (sigmaN == null)
+			sigmaN = new NormalspaendingImpl();
 		sigmaN.angivNormalkraft(fn);
 		try {
 			sigmaN.angivAreal(a);
@@ -397,17 +416,17 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 		notifyObservers();
 	}
 
-	@Override
-	public void setNormalspaending(double sigmaNmm2) {
-		sigmaN = new NormalspaendingImpl();
-		sigmaN.setSigmaNmm2(sigmaNmm2);
-
-		notifyObservers();
-	}
+	// @Override
+	// public void setNormalspaending(double sigmaNmm2) {
+	// sigmaN = new NormalspaendingImpl();
+	// sigmaN.setSigmaNmm2(sigmaNmm2);
+	//
+	// notifyObservers();
+	// }
 
 	@Override
 	public double getNormalspaending() throws NormalspaendingEjDefineretException,
-			DimensionerendeKraftEjDefineretException, VinkelEjDefineretException {
+			DimensionerendeKraftEjDefineretException, VinkelEjDefineretException, ArealEjDefineretException {
 
 		if (sigmaN == null) {
 			throw new NormalspaendingEjDefineretException();
@@ -431,18 +450,19 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 
 	@Override
 	public void beregnSigmaRef() throws NormalspaendingEjDefineretException,
-			angivBoejningsspaendingEjDefineretException, ForskydningsspaendingEjDefineretException {
+			BoejningsspaendingEjDefineretException, ForskydningsspaendingEjDefineretException, BoejningsspaendingEjDefineretException {
 		if (sigmaN == null) {
 			throw new NormalspaendingEjDefineretException();
 		}
 		if (sigmaB == null) {// TODO sigmaB ikke implamenteret (SA)
-			throw new angivBoejningsspaendingEjDefineretException();
+			throw new BoejningsspaendingEjDefineretException();
 		}
 		if (tau == null) {
 			throw new ForskydningsspaendingEjDefineretException();
 		}
 
-		sigmaRef = new ReferencespaendingImpl();
+		if (sigmaRef == null)
+			sigmaRef = new ReferencespaendingImpl();
 
 		sigmaRef.angivBoejningsspaending(sigmaB);
 
@@ -454,7 +474,8 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 	}
 
 	@Override
-	public double getSigmaRef() throws ReferenceSpaendingEjDefineretException {
+	public double getSigmaRef() throws ReferenceSpaendingEjDefineretException, InertimomentEjDefineretException,
+			HalvProfilhoejdeEjDefineretException, LaengdeEjDefineretException, DimensionerendeKraftEjDefineretException, VinkelEjDefineretException, NormalspaendingEjDefineretException, ArealEjDefineretException, BoejningsspaendingEjDefineretException, ForskydningsspaendingEjDefineretException, TvaerkraftEjDefineretException {
 		if (sigmaRef == null) {
 			throw new ReferenceSpaendingEjDefineretException();
 		}
@@ -472,23 +493,25 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 
 		}
 
-		String referenceSpaendingMellemregning = sigmaRef.GetMellemRegning();
+		String referenceSpaendingMellemregning = sigmaRef.getSigmaRefMellemregning();
 
 		return referenceSpaendingMellemregning;
 
 	}
 
-	@Override
-	public void setReferenceSpaending(double sigmaRefNmm2) {
-		sigmaRef = new ReferencespaendingImpl();
-		sigmaRef.setSigmaRefNmm2(sigmaRefNmm2);
-
-		notifyObservers();
-	}
+	// @Override
+	// public void setReferenceSpaending(double sigmaRefNmm2) {
+	// sigmaRef = new ReferencespaendingImpl();
+	// sigmaRef.setSigmaRefNmm2(sigmaRefNmm2);
+	//
+	// notifyObservers();
+	// }
 
 	@Override
 	public double getSikkerhedsfaktor() throws SikkerhedsFaktorEjDefineretException, FlydeSpaendingEjDefineretException,
-			ReferenceSpaendingEjDefineretException {
+			ReferenceSpaendingEjDefineretException, InertimomentEjDefineretException,
+			HalvProfilhoejdeEjDefineretException, LaengdeEjDefineretException, DimensionerendeKraftEjDefineretException, VinkelEjDefineretException, NormalspaendingEjDefineretException, ArealEjDefineretException, BoejningsspaendingEjDefineretException, ForskydningsspaendingEjDefineretException, TvaerkraftEjDefineretException {
+
 		if (sf == null)
 			throw new SikkerhedsFaktorEjDefineretException();
 		double sfvaerdi = sf.getSikkerhedsFaktor();
@@ -519,7 +542,8 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 			throw new BoejningsMomentEjDefineretException();
 		}
 
-		sigmaB = new BoejningsspaendingImpl();
+		if (sigmaB == null)
+			sigmaB = new BoejningsspaendingImpl();
 		sigmaB.angivBoejningsmoment(boejning);
 		sigmaB.angivInertimoment(i);
 		sigmaB.angivHalvProfilhoejde(e);
@@ -529,7 +553,10 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 	}
 
 	@Override
-	public double getBoejningsspaending() throws BoejningsspaendingEjDefineretException {
+	public double getBoejningsspaending() throws BoejningsspaendingEjDefineretException, LaengdeEjDefineretException,
+			DimensionerendeKraftEjDefineretException, HalvProfilhoejdeEjDefineretException,
+			InertimomentEjDefineretException {
+
 		if (sigmaB == null)
 			throw new BoejningsspaendingEjDefineretException();
 
@@ -588,9 +615,11 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 
 	@Override
 	public void angivIntertimoment(double i) throws InertimomentEjDefineretException, NegativInertimomentException {
-		if(this.i==null){
+		if (this.i == null) {
 			this.i = new InertimomentImpl();
 		}
+		if (i == Double.NaN)
+			this.i = null;
 		this.i.setMm4(i);
 
 		notifyObservers();
@@ -605,7 +634,10 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 
 	@Override
 	public void angivFlydespaending(double flyde) throws FlydeSpaendingEjDefineretException {
-		sigmaTill = new FlydeSpaendingImpl();
+		if (sigmaTill == null)
+			sigmaTill = new FlydeSpaendingImpl();
+		if (flyde == Double.NaN)
+			sigmaTill = null;
 
 		this.sigmaTill.angivFlydeSpaending(flyde);
 
@@ -615,7 +647,10 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 	@Override
 	public void angivHalvProfilhoejde(double e)
 			throws HalvProfilhoejdeEjDefineretException, NegativHalvProfilhoejdeException {
-		this.e = new HalvProfilhoejdeImpl();
+		if (this.e == null)
+			this.e = new HalvProfilhoejdeImpl();
+		if (e == Double.NaN)
+			this.e = null;
 
 		this.e.setMm(e);
 
@@ -650,5 +685,60 @@ public class PTECalculatorControllerImpl implements PTECalculatorController {
 
 		notifyObservers();
 
+	}
+
+	@Override
+	public void beregnBoejningsMomentMedFt() throws TvaerkraftEjDefineretException, ArmEjDefineretException,
+			DimensionerendeKraftEjDefineretException, VinkelEjDefineretException {
+		if (ft == null) {
+			throw new TvaerkraftEjDefineretException();
+		}
+		if (arm == null) {
+			throw new ArmEjDefineretException();
+		}
+		if (boejningFt == null)
+			boejningFt = new BoejningsMomentMedFTImpl();
+		boejningFt.angivTvaerkraft(ft);
+		boejningFt.angivArm(arm);
+		boejningFt.beregnBoejningsMoment();
+		notifyObservers();
+
+	}
+
+	@Override
+	public double getBoejningsMomentMedFt() throws BoejningsMomentEjDefineretException, LaengdeEjDefineretException,
+			DimensionerendeKraftEjDefineretException, TvaerkraftEjDefineretException, ArmEjDefineretException,
+			VinkelEjDefineretException {
+		if (boejningFt == null) {
+			throw new BoejningsMomentEjDefineretException();
+		}
+		return boejningFt.getBoejningsMoment();
+	}
+
+	@Override
+	public String getBoejningsMomentMedFtMellemregning() throws BoejningsMomentEjDefineretException {
+		if (boejningFt == null) {
+			throw new BoejningsMomentEjDefineretException();
+		}
+		String BoejningsMomentMellemRegning = boejningFt.getBoejningsMomentMellemRegning();
+		return BoejningsMomentMellemRegning;
+	}
+
+	@Override
+	public void angivArm(double arm) throws ArmEjDefineretException {
+		if (this.arm == null) {
+			this.arm = new ArmImpl();
+		}
+
+		this.arm.angivArm(arm);
+		notifyObservers();
+	}
+
+	@Override
+	public double getArm() throws ArmEjDefineretException {
+		if (arm == null)
+			throw new ArmEjDefineretException();
+
+		return arm.getArm();
 	}
 }

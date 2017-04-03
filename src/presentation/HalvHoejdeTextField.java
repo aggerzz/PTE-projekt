@@ -38,7 +38,8 @@ public class HalvHoejdeTextField extends TextField {
 						FrontPage.frontPageMediator.getObserver().getPteCalc().angivHalvProfilhoejde
 								(Double.parseDouble(this.getText()));
 					}
-				}
+				}else
+					FrontPage.getFrontPageMediator().getObserver().getPteCalc().angivHalvProfilhoejde(Double.NaN);
 			}catch (NumberFormatException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

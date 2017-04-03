@@ -22,12 +22,14 @@ public class VerticalAngleTextField extends TextField{
 		
 		this.setOnKeyReleased(e->{
 			try {
+				
 				if(this.getText().length()>0){					
 					char sidsteBogstav = this.getText().charAt(this.getLength()-1);
 					if(!(sidsteBogstav >= '0' && sidsteBogstav <= '9' || sidsteBogstav == ',' || sidsteBogstav == '.' )){										
 						String tekst = this.getText().substring(0, this.getText().length()-1 );
 						this.setText(tekst);
 						this.positionCaret(100);
+						
 					}else{
 						int cursorPos = this.getCaretPosition();
 						this.setText(kommaKontrol.kontrol(this.getText(),this));
@@ -39,10 +41,11 @@ public class VerticalAngleTextField extends TextField{
 					this.setAlignment(Pos.CENTER_LEFT);
 					FrontPage.frontPageMediator.getHorizontalAngleText().setDisable(false);
 					FrontPage.frontPageMediator.getHorizontalAngleText().setText("");
+					FrontPage.getFrontPageMediator().getObserver().getPteCalc().angivVinkel(Double.NaN, false);
 					FrontPage.frontPageMediator.frontPageTopLeft.getTriangle().getChildren().setAll(new NeedMoreInputTriangle());
-					
+//					FrontPage.frontPageMediator.getObserver().getPteCalc().angivVinkel(null, null);
 				}
-			} catch (DimensionerendeKraftEjDefineretException e1) {
+			} catch (DimensionerendeKraftEjDefineretException | erUnderFejlgraenseException e1) {
 				e1.printStackTrace();
 			}
 		});

@@ -37,10 +37,12 @@ public class HorizontalAngleTextField extends TextField {
 				} else {					
 					FrontPage.frontPageMediator.getVerticalAngleText().setDisable(false);
 					FrontPage.frontPageMediator.getVerticalAngleText().setText("");
+					FrontPage.getFrontPageMediator().getObserver().getPteCalc().angivVinkel(Double.NaN, false);
 					FrontPage.frontPageMediator.frontPageTopLeft.getTriangle().getChildren()
 							.setAll(new NeedMoreInputTriangle());
+					
 				}
-			} catch (DimensionerendeKraftEjDefineretException e1) {
+			} catch (DimensionerendeKraftEjDefineretException | erUnderFejlgraenseException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
@@ -54,11 +56,7 @@ public class HorizontalAngleTextField extends TextField {
 			FrontPage.frontPageMediator.getObserver().getPteCalc().angivVinkel(Double.parseDouble(this.getText()),
 					true);
 		} catch (NumberFormatException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		} catch (erUnderFejlgraenseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 
 

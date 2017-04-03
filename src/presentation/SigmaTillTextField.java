@@ -8,7 +8,7 @@ import javafx.scene.control.TextField;
 public class SigmaTillTextField extends TextField {
 	KommaKontrol kommaKontrol = new KommaKontrol();
 	public SigmaTillTextField() {
-		this.setPromptText("\u03C3 Till");
+		this.setPromptText("sigmaTill");
 		this.setAlignment(Pos.CENTER_RIGHT);
 		this.setMaxSize(150, 20);
 		this.setOnKeyReleased(e -> {
@@ -31,7 +31,8 @@ public class SigmaTillTextField extends TextField {
 						Beregn beregn = new Beregn();
 						beregn.beregn();
 					}
-				}
+				}else
+					FrontPage.getFrontPageMediator().getObserver().getPteCalc().angivFlydespaending(Double.NaN);
 			}catch (NumberFormatException | FlydeSpaendingEjDefineretException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

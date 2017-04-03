@@ -40,7 +40,8 @@ public class LaengdeTextField extends TextField {
 				beregn.beregn();
 				//FrontPage.frontPageMediator.getObserver().getPteCalc().beregnBoejningsMoment();
 				}
-			}
+			}else
+				FrontPage.getFrontPageMediator().getObserver().getPteCalc().angivLaengde(Double.NaN);
 		}catch (NumberFormatException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

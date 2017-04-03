@@ -2,8 +2,10 @@ package logic;
 
 import exceptions.BoejningsMomentEjDefineretException;
 import exceptions.BoejningsspaendingEjDefineretException;
+import exceptions.DimensionerendeKraftEjDefineretException;
 import exceptions.HalvProfilhoejdeEjDefineretException;
 import exceptions.InertimomentEjDefineretException;
+import exceptions.LaengdeEjDefineretException;
 
 public interface Boejningsspaending {
 
@@ -13,10 +15,11 @@ public interface Boejningsspaending {
 
 	public void angivHalvProfilhoejde(HalvProfilhoejde e) throws HalvProfilhoejdeEjDefineretException;
 
-	public void beregnBoejningsspaending() throws BoejningsMomentEjDefineretException, InertimomentEjDefineretException,
-			HalvProfilhoejdeEjDefineretException;
+//	public void beregnBoejningsspaending() throws BoejningsMomentEjDefineretException, InertimomentEjDefineretException,
+//			HalvProfilhoejdeEjDefineretException;
 
-	public double getBoejningsspaending() throws BoejningsspaendingEjDefineretException;
+	public double getBoejningsspaending() throws BoejningsspaendingEjDefineretException, LaengdeEjDefineretException, DimensionerendeKraftEjDefineretException, HalvProfilhoejdeEjDefineretException, InertimomentEjDefineretException;
+
 
 	public String getBoejningsspaendingMellemregning() throws BoejningsspaendingEjDefineretException;
 

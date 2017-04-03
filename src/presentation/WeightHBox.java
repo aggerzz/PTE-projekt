@@ -85,9 +85,10 @@ public class WeightHBox extends HBox {
 				}
 				if (!FrontPage.frontPageMediator.ervaegtNormal())
 					setStyle("-fx-control-inner-background: #ffee6d;");
-			}
-			else 
+			}else {
 				weightTextField.setAlignment(Pos.CENTER_LEFT);
+				FrontPage.getFrontPageMediator().getObserver().getPteCalc().angivVaegt(Double.NaN, Enhed.KG);
+			}
 		} catch (NumberFormatException | DimensionerendeKraftEjDefineretException e) {
 //			e.printStackTrace();
 

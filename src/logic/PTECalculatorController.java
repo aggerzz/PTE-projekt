@@ -1,6 +1,7 @@
 package logic;
 
 import exceptions.ArealEjDefineretException;
+import exceptions.ArmEjDefineretException;
 import exceptions.BoejningsMomentEjDefineretException;
 import exceptions.BoejningsspaendingEjDefineretException;
 import exceptions.DimensionerendeKraftEjDefineretException;
@@ -65,7 +66,7 @@ public interface PTECalculatorController {
 	public void setFtNewton(double ftNewton)
 			throws TvaerkraftEjDefineretException, DimensionerendeKraftEjDefineretException;
 
-	public void setFnNewton(double fnNewton) throws DimensionerendeKraftEjDefineretException;
+//	public void setFnNewton(double fnNewton) throws DimensionerendeKraftEjDefineretException;
 
 	public void beregnSikkerhedsFaktor()
 			throws ReferenceSpaendingEjDefineretException, FlydeSpaendingEjDefineretException;
@@ -80,25 +81,25 @@ public interface PTECalculatorController {
 			throws ForskydningsspaendingEjDefineretException, ArealEjDefineretException, TvaerkraftEjDefineretException,
 			DimensionerendeKraftEjDefineretException, VinkelEjDefineretException;
 
-	public void setForskydningsspaending(double nMm2);
+//	public void setForskydningsspaending(double nMm2);
 
 	public boolean erVaegtNormal() throws DimensionerendeKraftEjDefineretException;
 
-	void setNormalspaending(double sigmaNmm2);
+//	void setNormalspaending(double sigmaNmm2);
 
 	double getNormalspaending() throws NormalspaendingEjDefineretException, DimensionerendeKraftEjDefineretException,
-			VinkelEjDefineretException;
+			VinkelEjDefineretException, ArealEjDefineretException;
 
 	String getNormalspaendingMellemregning() throws NormalspaendingEjDefineretException;
 
 	public void beregnSigmaRef() throws NormalspaendingEjDefineretException,
-			angivBoejningsspaendingEjDefineretException, ForskydningsspaendingEjDefineretException;
+			BoejningsspaendingEjDefineretException, ForskydningsspaendingEjDefineretException, BoejningsspaendingEjDefineretException;
 
-	public double getSigmaRef() throws ReferenceSpaendingEjDefineretException;
+	public double getSigmaRef() throws ReferenceSpaendingEjDefineretException, InertimomentEjDefineretException, HalvProfilhoejdeEjDefineretException, LaengdeEjDefineretException, DimensionerendeKraftEjDefineretException, VinkelEjDefineretException, NormalspaendingEjDefineretException, ArealEjDefineretException, BoejningsspaendingEjDefineretException, ForskydningsspaendingEjDefineretException, TvaerkraftEjDefineretException;
 
 	public String ReferenceSpaendingGetMellemRegning() throws ReferenceSpaendingEjDefineretException;
 
-	public void setReferenceSpaending(double sigmaRefNmm2);
+//	public void setReferenceSpaending(double sigmaRefNmm2);
 
 	public void beregnBoejningsMoment() throws DimensionerendeKraftEjDefineretException, LaengdeEjDefineretException;
 
@@ -108,7 +109,7 @@ public interface PTECalculatorController {
 	public void exportToPdf();
 
 	public double getSikkerhedsfaktor() throws SikkerhedsFaktorEjDefineretException, FlydeSpaendingEjDefineretException,
-			ReferenceSpaendingEjDefineretException;
+			ReferenceSpaendingEjDefineretException, InertimomentEjDefineretException, HalvProfilhoejdeEjDefineretException, LaengdeEjDefineretException, DimensionerendeKraftEjDefineretException, VinkelEjDefineretException, NormalspaendingEjDefineretException, ArealEjDefineretException, BoejningsspaendingEjDefineretException, ForskydningsspaendingEjDefineretException, TvaerkraftEjDefineretException;
 
 	public String getSikkerhedsfaktorMellemregning() throws SikkerhedsFaktorEjDefineretException,
 			ReferenceSpaendingEjDefineretException, FlydeSpaendingEjDefineretException;
@@ -117,7 +118,8 @@ public interface PTECalculatorController {
 			throws BoejningsMomentEjDefineretException, BoejningsspaendingEjDefineretException,
 			HalvProfilhoejdeEjDefineretException, InertimomentEjDefineretException;
 
-	public double getBoejningsspaending() throws BoejningsspaendingEjDefineretException;
+	public double getBoejningsspaending() throws BoejningsspaendingEjDefineretException, LaengdeEjDefineretException, DimensionerendeKraftEjDefineretException, HalvProfilhoejdeEjDefineretException, InertimomentEjDefineretException;
+
 
 	public String getBoejningsspaendingMellemregning() throws BoejningsspaendingEjDefineretException;
 
@@ -141,4 +143,10 @@ public interface PTECalculatorController {
 	public double getHalvProfilhoejde() throws HalvProfilhoejdeEjDefineretException;
 
 	void sletAlt();
+	
+	public void beregnBoejningsMomentMedFt() throws TvaerkraftEjDefineretException, ArmEjDefineretException, DimensionerendeKraftEjDefineretException, VinkelEjDefineretException;
+	public double getBoejningsMomentMedFt() throws BoejningsMomentEjDefineretException, LaengdeEjDefineretException, DimensionerendeKraftEjDefineretException, TvaerkraftEjDefineretException, ArmEjDefineretException, VinkelEjDefineretException;
+	public String getBoejningsMomentMedFtMellemregning() throws BoejningsMomentEjDefineretException;
+	public void angivArm (double arm) throws ArmEjDefineretException;
+	public double getArm() throws ArmEjDefineretException;
 }
